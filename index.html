@@ -11,7 +11,7 @@
 <div class="container-fluid">
 
     <div class="row">
-        <img id="bimage" class="img-responsive" onload="show_image()" style="opacity: 0;">
+        <img id="bimage" class="img-responsive" onload="show_image()" style="opacity: 0; margin-bottom: -20%;">
         <div class="container-fluid text-right">
             <div class="col-md-3"></div>
             <div class="col-md-6">
@@ -65,7 +65,6 @@
     bimg.src="images/background" + bnumber + ".jpg";
 
     function show_image() {
-        bimg.style.marginBottom = "-20%";
         bimg.style.opacity = "1";
     }
 </script>
