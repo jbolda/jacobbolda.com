@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 </head>
 
-<body style="color: #73A2B1;">
+<body style="color: #423A75; background-color: #C0C5C1">
 
 <div class="container-fluid">
 
@@ -16,7 +16,7 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <div class="col-sm-6"></div>
-                <div class="col-sm-6 container-fluid" style="background-color: #D5F2E3; border-style: solid; border-width: 4px; border-radius: 10px; border-color: #46B1C9;">
+                <div class="col-sm-6 container-fluid" style="background-color: #80E8FF; border-style: solid; border-width: 4px; border-radius: 10px; border-color: #EAF0CE;">
                     <h1><span>Jacob Bolda</span></h1>
                     <h4><span>Milwaukee, WI </span><span class="glyphicon glyphicon-home"></span></h4>
                     <h4><a href="mailto:jbolda@gmail.com">jbolda@gmail.com </a><span class="glyphicon glyphicon-envelope"></span></h4>
@@ -33,7 +33,7 @@
 
     <div class="row" style="margin-top: 5em;">
         <div class="col-md-1"></div>
-        <div class="col-md-10" style="background-color: #D5F2E3; border-style: solid; border-width: 4px; border-radius: 10px; border-color: #46B1C9;">
+        <div class="col-md-10" style="background-color: #80E8FF; border-style: solid; border-width: 4px; border-radius: 10px; border-color: #EAF0CE;">
             <div class="col-md-1"></div>
             <div class="col-md-10">
                 <h3>Notables</h3>
@@ -65,6 +65,8 @@
     bimg.src="images/background" + bnumber + ".jpg";
 
     function show_image() {
+        bimg.style.transitionProperty = "opacity";
+        bimg.style.transitionDuration = "1s";
         bimg.style.opacity = "1";
     }
 </script>
