@@ -1,0 +1,900 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"form",
+				"formNode"
+			],
+			[
+				"da",
+				"da_math"
+			],
+			[
+				"get",
+				"getRandom"
+			],
+			[
+				"node",
+				"nodeGroup"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"new",
+				"newData"
+			],
+			[
+				"nodeE",
+				"nodeEnter"
+			],
+			[
+				"data",
+				"data"
+			],
+			[
+				"compo",
+				"componentWillUpdate"
+			],
+			[
+				"d3",
+				"d3graph"
+			],
+			[
+				"cons",
+				"console"
+			],
+			[
+				"add",
+				"addNode"
+			],
+			[
+				"re",
+				"return"
+			],
+			[
+				"P",
+				"PropTypes"
+			],
+			[
+				"comp",
+				"componentWillUnmount"
+			],
+			[
+				"D3",
+				"D3View"
+			],
+			[
+				"draw",
+				"drawshit"
+			],
+			[
+				"send",
+				"send_file"
+			],
+			[
+				"pa",
+				"password	param"
+			],
+			[
+				"codename",
+				"codenameyear"
+			],
+			[
+				"Code",
+				"CodesRecord	class"
+			],
+			[
+				"st",
+				"static_file	function"
+			],
+			[
+				"stat",
+				"static_file"
+			],
+			[
+				"static",
+				"static_file"
+			],
+			[
+				"stati",
+				"static_root	statement"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"u",
+				"ul	Tag"
+			],
+			[
+				"None",
+				"None	keyword"
+			],
+			[
+				"fi",
+				"filter_by"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"prov",
+				"provider_name	param"
+			],
+			[
+				"provid",
+				"provider_type	class"
+			],
+			[
+				"usernameS",
+				"usernameS	statement"
+			],
+			[
+				"strip",
+				"stripe_customer"
+			],
+			[
+				"first",
+				"first_or_404"
+			],
+			[
+				"stri",
+				"stripe_customer"
+			],
+			[
+				"cu",
+				"current_user	import"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"date",
+				"datetime"
+			],
+			[
+				"str",
+				"stripe"
+			],
+			[
+				"text-",
+				"text-align"
+			],
+			[
+				"acc",
+				"accounts_begin"
+			],
+			[
+				"income",
+				"income"
+			],
+			[
+				"Date",
+				"DateField	import"
+			],
+			[
+				"Budgetr",
+				"BudgetUser	class"
+			],
+			[
+				"dis",
+				"disabled"
+			],
+			[
+				"contain",
+				"container-fluid"
+			],
+			[
+				"slect",
+				"selectAll"
+			],
+			[
+				"bu",
+				"budget_name	param"
+			],
+			[
+				"lin",
+				"line2node"
+			],
+			[
+				"pos",
+				"poscolors"
+			],
+			[
+				"neg",
+				"negcolors"
+			],
+			[
+				"po",
+				"poscolors"
+			],
+			[
+				"valu",
+				"value_int	function"
+			],
+			[
+				"exp",
+				"expenses"
+			],
+			[
+				"url",
+				"url_for	import"
+			],
+			[
+				"budg",
+				"budget_name"
+			],
+			[
+				"Budget",
+				"BudgetUser	class"
+			],
+			[
+				"is",
+				"is_owner"
+			],
+			[
+				"bud",
+				"budget_name"
+			],
+			[
+				"has",
+				"has_permission	function"
+			],
+			[
+				"dra",
+				"draw_div"
+			],
+			[
+				"mar",
+				"margin-right"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"cre",
+				"create_pdf	function"
+			],
+			[
+				"va",
+				"vaccount_id	statement"
+			],
+			[
+				"login",
+				"login_required	import"
+			],
+			[
+				"log",
+				"login_required	import"
+			],
+			[
+				"budgets",
+				"budget_ids	statement"
+			],
+			[
+				"js",
+				"jsonurl"
+			],
+			[
+				"json",
+				"jsonlocation"
+			],
+			[
+				"budget",
+				"budget_id	statement"
+			],
+			[
+				"tes",
+				"test_accounts"
+			],
+			[
+				"j",
+				"j"
+			],
+			[
+				"pr",
+				"provider_name"
+			],
+			[
+				"expen",
+				"expense_total"
+			],
+			[
+				"acou",
+				"accounts"
+			],
+			[
+				"acco",
+				"accounts_begin"
+			],
+			[
+				"v",
+				"vaccount_id"
+			],
+			[
+				"inco",
+				"income_total"
+			],
+			[
+				"inc",
+				"income_total"
+			],
+			[
+				"ori",
+				"original2"
+			],
+			[
+				"Budge",
+				"Budget_User	class"
+			],
+			[
+				"dbA",
+				"dbArray2"
+			],
+			[
+				"db",
+				"dbArray1"
+			],
+			[
+				"days",
+				"daysinfuture"
+			],
+			[
+				"graph",
+				"graphrange"
+			],
+			[
+				"in",
+				"income	statement"
+			],
+			[
+				"di",
+				"difference	statement"
+			],
+			[
+				"app",
+				"append"
+			],
+			[
+				"pisa",
+				"pisaPDF"
+			],
+			[
+				"div",
+				"div_width"
+			],
+			[
+				"div_",
+				"div_width"
+			],
+			[
+				"ex",
+				"expenses"
+			],
+			[
+				"parse",
+				"parseDate"
+			],
+			[
+				"par",
+				"parseDate"
+			],
+			[
+				"seleca",
+				"selectAll"
+			],
+			[
+				"tlin",
+				"tline1node"
+			],
+			[
+				"line",
+				"linedata"
+			],
+			[
+				"sta",
+				"staticArray2"
+			],
+			[
+				"value",
+				"value"
+			],
+			[
+				"he",
+				"max-height"
+			],
+			[
+				"padding-",
+				"padding-bottom"
+			],
+			[
+				"padd",
+				"padding-bottom"
+			],
+			[
+				"backgrou",
+				"background-size"
+			],
+			[
+				"budget_",
+				"budget_name	param"
+			],
+			[
+				"filter",
+				"filter_by"
+			],
+			[
+				"a",
+				"add_column"
+			],
+			[
+				"loc",
+				"location	param"
+			],
+			[
+				"loca",
+				"location"
+			],
+			[
+				"In",
+				"Ingredient	class"
+			],
+			[
+				"play",
+				"playlists"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 127.0,
+		"last_filter": "insta",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"installpack",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"package ",
+				"Package Control: Install Package"
+			],
+			[
+				"package control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"pack	",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 542.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/jbolda/Documents/GitHub/jbolda.github.io",
+		"/C/Users/jbolda/Documents/GitHub/jbolda.github.io/blog",
+		"/C/Users/jbolda/Documents/GitHub/jbolda.github.io/blog/components"
+	],
+	"file_history":
+	[
+		"/C/Users/jbolda/Documents/GitHub/flowy/package.json",
+		"/C/Users/jbolda/Documents/GitHub/jbolda.github.io/package.json",
+		"/C/Users/jbolda/Documents/GitHub/jbolda.github.io/blog/config.toml",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/routes/index.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/routes/Flow/index.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/bin/nginx.conf",
+		"/C/Users/jbolda/Documents/GitHub/flowy/Dockerfile",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/layouts/CoreLayout/CoreLayout.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/routes/Home/components/LandingView.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/routes/Home/index.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/routes/Flow/components/D3View.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/routes/Home/components/HomeView.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/components/Header/Header.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/containers/AppContainer.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/index.html",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/store/reducers.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/routes/Flow/containers/D3View.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/routes/Flow/containers/FlowContainer.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/wercker.yml",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/routes/Counter/containers/CounterContainer.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/dist/index.html",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/components/Counter/Counter.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/components/Counter/Counter.scss",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/routes/Counter/index.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/routes/Counter/modules/counter.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/components/Counter/index.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/styles/core.scss",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/components/Header/Header.scss",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/components/Header/index.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/store/createStore.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/routes/Home/components/HomeView.scss",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/layouts/CoreLayout/index.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/layouts/CoreLayout/CoreLayout.scss",
+		"/C/Users/jbolda/Documents/GitHub/flowy/server/main.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/main.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/server/lib/apply-express-middleware.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/server/middleware/webpack-dev.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/server/middleware/webpack-hmr.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/dist/index.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/build/karma.conf.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/build/webpack-compiler.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/bin/server.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/bin/compile.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/build/webpack.config.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/config/index.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/config/environments.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/server/server.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/dist/package.json",
+		"/C/Users/jbolda/Documents/GitHub/flowy/server/package.json",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/redux/modules/d3form.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/views/D3View/D3form.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/redux/modules/d3graph.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/npm-debug.log",
+		"/C/Users/jbolda/Documents/GitHub/flowy/server/serve.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/views/D3View/D3View.js",
+		"/C/Users/jbolda/Documents/GitHub/npm-debug.log",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/static/humans.txt",
+		"/C/Users/jbolda/Documents/GitHub/flowy/dist/humans.txt",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/redux/rootReducer.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/views/LandingView/LandingView.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/views/LandingView/LandingView.scss",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/views/D3View/D3View.scss",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/layouts/BaseLayout/BaseLayout.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/views/BaseView/BaseView.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/layouts/FlowLayout/FlowLayout.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/redux/modules/counter.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/views/HomeView/HomeView.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/styles/_base.scss",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/redux/configureStore.js",
+		"/C/Users/jbolda/Downloads/rentalscam.mbox",
+		"/C/Users/jbolda/Downloads/Amy Bolda.vcf",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/layouts/LandingLayout/LandingLayout.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/containers/Root.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/views/FlowView/FlowView.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/redux/modules/drawer.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/.eslintrc",
+		"/C/Users/jbolda/Documents/GitHub/flowy/.gitignore",
+		"/C/Users/jbolda/Documents/GitHub/flowy/.editorconfig",
+		"/C/Users/jbolda/Documents/GitHub/flowy/src/redux/utils/createDevToolsWindow.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/server/middleware/webpack-proxy.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/tests/test-bundler.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/tests/framework.spec.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/config/_production.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/config/_development.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/config/_base.js",
+		"/C/Users/jbolda/Documents/GitHub/flowy/bin/flow-check.js",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/app/model.py",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/app/views.py",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/config.py",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/db/versions/4f018f9c2e38_user_changes_1.py",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/db/versions/4ec5efae5bda_add_user_rating.py",
+		"/C/Users/jbolda/Documents/GitHub/budget/app/static/js/graph.js",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/app/templates/base.html",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/app/templates/profile.html",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/app/templates/index.html",
+		"/C/Users/jbolda/Documents/GitHub/Remember-Last-Time/app/templates/ticker.html",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/db/versions/6ad1df2e054_user_changes_2.py",
+		"/C/Users/jbolda/Documents/GitHub/Remember-Last-Time/app/templates/base.html",
+		"/C/Users/jbolda/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/app/templates/profile2.html",
+		"/C/Users/jbolda/Downloads/passwords.csv",
+		"/C/Users/jbolda/Downloads/Sample-Import-Spreadsheet.csv",
+		"/C/Users/jbolda/Downloads/103965538_12272015.csv",
+		"/C/Users/jbolda/Downloads/JACOB_NEWMEDICALCLAIMSUMMARY.csv",
+		"/F/Dropbox/Financials/Capital One 360/103965538_12272015 (1).csv",
+		"/F/Dropbox/Financials/Capital One 360/103965538_12272015 (2).csv",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/app/templates/email/password.txt",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/app/templates/email/password.html",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/app/emails.py",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/app/templates/email/signup.html",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/app/templates/email/signup.txt",
+		"/C/Users/jbolda/Documents/GitHub/budget/requirements/common.txt",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/requirements/common.txt",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/requirements.txt",
+		"/F/Dropbox/dev/github/sourcetree.license",
+		"/E/hollow/Photos Organized/picture file maker.py",
+		"/F/Dropbox/dev/github/main.py",
+		"/E/strawberry/picture file maker.py",
+		"/F/Dropbox/Nickey's Wedding Photos/NEF2/test.py",
+		"/F/Dropbox/Nickey's Wedding Photos/JPG2/test.py",
+		"/F/Dropbox/Nickey's Wedding Photos/fix2/test.py",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/setup.py",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/buildcode.py",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/app/__init__.py",
+		"/C/Users/jbolda/Documents/GitHub/Remember-Last-Time/app/views.py",
+		"/C/Users/jbolda/Documents/GitHub/Remember-Last-Time/config.py",
+		"/C/Users/jbolda/Downloads/Activity (1).CSV",
+		"/C/Users/jbolda/Documents/GitHub/codetracker/logs.txt"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			",",
+			" = ",
+			"payment.services.",
+			"	",
+			"\"",
+			"	",
+			"\"",
+			"\")",
+			"console.log",
+			"$",
+			"dataRoot",
+			"dragListener",
+			"treeData",
+			"\"",
+			"data",
+			"line",
+			"source",
+			"	",
+			">\n",
+			"	",
+			"Route",
+			"account.",
+			"margin",
+			"hsa",
+			"|",
+			"\"",
+			",",
+			"generatedWaffleChart",
+			"$_",
+			"'/'",
+			"buildcode",
+			"weddingparty",
+			"<div class=\"clearfix visible-xs-block\"></div>",
+			"<div class=\"break col-centered\"></div>",
+			"3 col-centered",
+			"well",
+			"codetracker",
+			"            ",
+			"produc",
+			"local",
+			"fail",
+			"\\n",
+			"i",
+			"end",
+			"id",
+			"A",
+			"owner_id=user.id, ",
+			"	",
+			";\n",
+			"if",
+			"console",
+			"expense_tot",
+			"console.log",
+			"auth",
+			"\\",
+			"design of post-",
+			">\n",
+			"page-break-after:avoid",
+			"orphans:2;",
+			"widows:2;",
+			"line-height:1.0;",
+			"&nbsp;",
+			"“",
+			"”",
+			"exp",
+			"pisa",
+			">",
+			";",
+			"{",
+			"}",
+			"width",
+			"\"2014",
+			"tline2node",
+			"tline1node",
+			"2014-07",
+			"2014-06",
+			"</span></p>",
+			"            <p><span id=\"exp{{exp.id}}\">",
+			"}",
+			"196679711",
+			"category:",
+			"value:",
+			"value",
+			"date:",
+			"date",
+			"map",
+			"dbArray",
+			"});\n",
+			"date: ",
+			"pip",
+			"@requires_ssl",
+			"h1",
+			"h3",
+			"moment",
+			"install",
+			"change",
+			"weddingparty",
+			"BACKGROUND.",
+			"0.5",
+			"0.9",
+			"\n\n        </div>",
+			"<br />\n<br />\n\n<br />\n\n<br />\n\n<br />\n\n<br />",
+			"</span>",
+			"</span>    ",
+			"stuff.",
+			"    -webkit-background-size: cover;\n    -moz-background-size: cover;\n    -o-background-size: cover;\n    background-size: cover;\n    margin-bottom: 0px;\n    background-position: bottom;",
+			".col-md-6",
+			"    padding-bottom: 400px;",
+			"    vertical-align: bottom;",
+			"    -webkit-background-size: cover;\n    -moz-background-size: cover;\n    -o-background-size: cover;\n    background-size: cover;",
+			"class=\"slide\" ",
+			"class=\"slidetall\" ",
+			"center",
+			"data-stellar-background-ratio=\"0\"",
+			".png",
+			"\"images",
+			"</strong>",
+			"<strong>",
+			"	",
+			"static",
+			"sa.Timestamp",
+			"_table = ",
+			"sa.Table",
+			" metadata,",
+			"autoincrement=True, ",
+			"post",
+			"s = ",
+			"post"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "jbolda.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 248.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
