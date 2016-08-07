@@ -5,7 +5,6 @@ import { config } from 'config'
 import SiteNav from '../SiteNav'
 import SiteLinks from '../SiteLinks'
 import './style.css'
-import profilePic from '../../pages/photo.jpg'
 
 class SiteSidebar extends React.Component {
     render() {
@@ -15,10 +14,13 @@ class SiteSidebar extends React.Component {
         let header = (
         <header>
           <Link style={ {    textDecoration: 'none',    borderBottom: 'none',    outline: 'none'} } to={ prefixLink('/') }>
-          <img src={prefixLink(profilePic)} width='75' height='75' />
+          <img src='https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAhnAAAAJDM3YzExODMwLTkyYmItNDk0Ni1iY2Q5LTA4ZmNhMmEwODU3Nw.jpg' width='75' height='75' />
           </Link>
           { isHome ? (
-            <h1><Link style={ {    textDecoration: 'none',    borderBottom: 'none',    color: 'inherit'} } to={ prefixLink('/') }> { config.siteAuthor } </Link></h1>
+            <div>
+              <h1><Link style={ {    textDecoration: 'none',    borderBottom: 'none',    color: 'inherit'} } to={ prefixLink('/') }> { config.siteAuthor } </Link></h1>
+              <h4><span>Milwaukee, WI </span><span className='glyphicon glyphicon-home'></span></h4>
+            </div>
             ) :
             <h2><Link style={ {    textDecoration: 'none',    borderBottom: 'none',    color: 'inherit'} } to={ prefixLink('/') }> { config.siteAuthor } </Link></h2> }
           <p>
