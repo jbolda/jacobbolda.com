@@ -5,14 +5,13 @@
   "main": "index.js",
   "scripts": {
     "develop": "./node_modules/.bin/gatsby develop",
-    "build": "npm run clean & gatsby build & copy",
+    "build": "npm run clean & gatsby build & npm run copy",
     "clean:public": "rm -rf public",
     "clean": "npm run clean:public",
-    "copy:files": "cp pages/*.{pdf,txt,png,jpg,jpeg,gif} public/",
+    "copy:files": "copy .\\pages\\*.png .\\public /Y",
     "copy": "npm run copy:files",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gatsby build --prefix-links && gh-pages -d public"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
