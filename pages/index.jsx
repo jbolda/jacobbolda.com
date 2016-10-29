@@ -35,6 +35,14 @@ class SiteIndex extends React.Component {
                       </Link>
                     </div>
                 )
+            } else if (access(page, 'file.ext') === 'js') {
+                // console.log(page)
+                pageLinks.push(
+                    <div className='blog-post'>
+                      <Link className='readmore' to={ prefixLink(page.path) }> Read
+                      </Link>
+                    </div>
+                )
             }
         })
 
