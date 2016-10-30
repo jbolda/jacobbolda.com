@@ -124,6 +124,13 @@ calculator.Fcr = (Fe, Fy) => {
   }
 }
 
+calculator.FeE4_2 = (Cw, Lcz, J, Ix, Iy) => {
+  let Fe1 = (Math.pow(Math.PI, 2) * calculator.E * Cw) / Math.pow(Lcz, 2);
+  let Fe2 = calculator.G * J;
+  let Fe3 = (1 / (Ix + Iy));
+  return (Fe1 + Fe2) * Fe3;  
+}
+
 calculator.FeE4_3 = (Fey, Fez, H) => {
   let Fe1 = (Fey + Fez) / (2 * H);
   let Fe2 = (4 * Fey * Fez * H) / Math.pow(Fey + Fez, 2);
@@ -138,6 +145,18 @@ calculator.Fez = (Cw, Lcz, J, Ag, ro2) => {
 }
 
 calculator.FeE4_7 = calculator.Fez;
+
+calculator.Fel = (c2, lamdaR, lamda, Fy) => {
+  return Math.pow(c2 * lamdaR / lamda, 2) * Fy;
+}
+
+calculator.FeE7_5 = calculator.Fel;
+
+calculator.be = (b, c1, Fel, Fcr) => {
+  return b * (1 - c1 * Math.sqrt(Fel / Fcr)) * Math.sqrt(Fel / Fcr);
+}
+
+calculator.beE7_3 = calculator.be;
 
 calculator.list = () => {
   for (let attr in calculator) {
