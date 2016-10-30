@@ -112,6 +112,10 @@ calculator.FcrE3_2 = (Fe, Fy) => {
   return Math.pow(0.658, Fy / Fe) * Fy;
 }
 
+calculator.FcrE3_2alt = (Fy_Fe, Fy) => {
+  return Math.pow(0.658, Fy_Fe) * Fy;
+}
+
 calculator.FcrE3_3 = (Fe) => {
   return 0.877 * Fe;
 }
@@ -164,6 +168,10 @@ calculator.list = () => {
   }
   return 'done';
 }
+
+calculator.inDegrees = Math.PI / 180;
+
+calculator.inRadians = 180 / Math.PI;
 
 calculatorPost.defaultProps = {
   c: calculator
