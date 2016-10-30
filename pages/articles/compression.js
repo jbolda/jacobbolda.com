@@ -11,7 +11,7 @@ class calculatorPost extends React.Component {
 
         return (
             <div>
-              stuff
+              This is compression stuff. Press F12. Run c.list() in the console.
             </div>
             );
     }
@@ -34,7 +34,7 @@ calculator.G = 11200;
 
 
 calculator.LRFD = (dead, live) => {
-  return 1.2 * dead + 1.6 * live + 5000;
+  return 1.2 * dead + 1.6 * live;
 }
 
 calculator.ASD = (dead, live) => {
@@ -45,8 +45,24 @@ calculator.loads = (dead, live) => {
   console.log('LRFD', calculator.LRFD(dead,live), '|', 'ASD', calculator.ASD(dead, live));
 }
 
+calculator.factorLRFD = (nominal) => {
+  return 0.9 * nominal;
+}
+
+calculator.factorASD = (nominal) => {
+  return nominal / 1.67;
+}
+
+calculator.factor = (nominal) => {
+  console.log('LRFD', calculator.factorLRFD(nominal), '|', 'ASD', calculator.factorASD(nominal));
+}
+
 calculator.lamdaR = (limit, Fy, E) => {
   return limit * Math.sqrt(calculator.E / Fy);
+}
+
+calculator.r = (I, A) => {
+  return Math.sqrt(I / A);
 }
 
 calculator.Fe = (Lc_r) => {
@@ -57,14 +73,37 @@ calculator.kc = (h, tw) => {
   return 4 / Math.sqrt(h / tw);
 }
 
-calculator.I = (b, h) => {
-  return 'fuck';
+calculator.I = (arr) => {
+  // where [0] is b, [1] is h, and [2] is distance to origin
+  let val = 0;
+  for (let i in arr) {
+    let b = arr[i][0];
+    let h = arr[i][1];
+    let distanceOrigin = arr[i][2];
+    val += b * Math.pow(h, 3) / 12
+    val += b * h * Math.pow(distanceOrigin, 2);
+  }
+  return val;
+}
+
+calculator.ybar = (arr) => {
+  let summationA = 0;
+  let summationAy = 0;
+  for (let i in arr) {
+    let A = arr[i][0];
+    let distanceOrigin = arr[i][1];
+    summationAy += A * distanceOrigin;
+    summationA += A;
+  }
+  return summationAy / summationA;
 }
 
 calculator.J = (arr) => {
   let val = 0;
   for (let i in arr) {
-    val += (arr[i][0] * Math.pow(arr[i][1], 3) / 3);
+    let b = arr[i][0];
+    let t = arr[i][1];
+    val += (b * Math.pow(t, 3) / 3);
   }
   return val;
 }
@@ -95,8 +134,16 @@ calculator.Fez = (Cw, Lcz, J, Ag, ro2) => {
   let Fez1 = Math.pow(Math.PI, 2) * calculator.E * Cw / Math.pow(Lcz, 2);
   let Fez2 = calculator.G * J;
   let Fez3 = (1 / (Ag * ro2));
-  console.log(Fez1,Fez2,Fez3);
   return (Fez1 + Fez2) * Fez3;
+}
+
+calculator.FeE4_7 = calculator.Fez;
+
+calculator.list = () => {
+  for (let attr in calculator) {
+    console.log(attr, calculator[attr]);
+  }
+  return 'done';
 }
 
 calculatorPost.defaultProps = {
