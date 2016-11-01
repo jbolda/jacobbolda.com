@@ -12,10 +12,12 @@ import SiteSidebar from '../components/SiteSidebar'
 class SiteIndex extends React.Component {
     render() {
         const pageLinks = []
+        let iteratorKey = 0
         // Sort pages.
         const sortedPages = sortBy(this.props.route.pages, (page) => access(page, 'data.date')
         ).reverse()
         sortedPages.forEach((page) => {
+            iteratorKey += 1;
             if (access(page, 'file.ext') === 'md' && access(page, 'data.layout') === 'post') {
                 const title = access(page, 'data.title') || page.path
                 const description = access(page, 'data.description')
@@ -23,7 +25,7 @@ class SiteIndex extends React.Component {
                 const category = access(page, 'data.category')
 
                 pageLinks.push(
-                    <div className='blog-post'>
+                    <div className='blog-post' key={iteratorKey}>
                       <time dateTime={ moment(datePublished).format('MMMM D, YYYY') }>
                         { moment(datePublished).format('MMMM YYYY') }
                       </time>
