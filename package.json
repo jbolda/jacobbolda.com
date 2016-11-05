@@ -42,6 +42,7 @@
     "react": "^15.3.0",
     "react-document-title": "^2.0.2",
     "react-dom": "^15.3.0",
+    "react-ga": "^2.1.2",
     "react-router": "^2.6.1",
     "safe-access": "^0.1.0",
     "underscore.string": "^3.2.3"
