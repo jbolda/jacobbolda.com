@@ -4,21 +4,38 @@ import { RouteHandler, Link } from 'react-router'
 import DocumentTitle from 'react-document-title'
 import { prefixLink } from 'gatsby-helpers'
 import access from 'safe-access'
-import { config } from 'config'
-import ReadNext from '../ReadNext'
-import './style.css'
-import '../../static/css/highlight.css'
+import { config } from 'config';
+import ReadNext from '../ReadNext';
+import './style.css';
+import '../../static/css/highlight.css';
 
 class SitePost extends React.Component {
     render() {
-        const {route} = this.props
-        const post = route.page.data
+        const {route} = this.props;
+        const post = route.page.data;
         const home = (
-        <div>
-          <Link className='gohome' to={ prefixLink('/') }> All Articles
-          </Link>
-        </div>
-        )
+          <div>
+            <Link className='gohome' to={ prefixLink('/') }> All Articles
+            </Link>
+          </div>
+        );
+
+        if (post.updated === undefined) {
+          console.log('here');
+          var published = (
+            <div className='date-published'>
+              <p><em>published { moment(post.written).format('D MMM YYYY') }</em></p>
+            </div>
+          );
+        } else {
+          console.log('stuff');
+          var published = (
+            <div className='date-published'>
+              <p><em>originally published { moment(post.written).format('D MMM YYYY') } and updated { moment(post.updated).format('D MMM YYYY') }</em></p>
+            </div>
+          );
+        }
+
 
         return (
             <div>
@@ -27,9 +44,7 @@ class SitePost extends React.Component {
                 <div className='text'>
                   <h1>{ post.title }</h1>
                   <div dangerouslySetInnerHTML={ {    __html: post.body} } />
-                  <div className='date-published'>
-                    <em>Published { moment(post.date).format('D MMM YYYY') }</em>
-                  </div>
+                  { published }
                 </div>
                 <div className='footer'>
                   <ReadNext post={ post } {...this.props}/>

@@ -10,6 +10,9 @@ import SitePost from '../components/SitePost'
 import SiteSidebar from '../components/SiteSidebar'
 
 class SiteIndex extends React.Component {
+    componentWillMount() {
+    }
+
     render() {
         const pageLinks = []
         let iteratorKey = 0
