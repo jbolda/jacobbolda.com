@@ -1,4 +1,12 @@
 import React from 'react';
+import DocumentTitle from 'react-document-title';
+import { prefixLink } from 'gatsby-helpers'
+import { config } from 'config'
+import moment from 'moment'
+import { RouteHandler, Link } from 'react-router'
+import ReadNext from '../../components/ReadNext';
+import './steel-compression-calculations.css';
+import '../../static/css/highlight.css';
 
 class calculatorPost extends React.Component {
 
@@ -8,12 +16,67 @@ class calculatorPost extends React.Component {
 
     render() {
         const {route} = this.props;
+        const post = route.page.data
+        post.title = 'Steel Compression Calculations'
+        post.written = '2016-11-05'
+        post.path = '/steel-compression-calculations'
+        post.category = 'engineering'
+        post.description = 'Putting together some functions to run the compression calculations from the steel manual.'
+
+        let layout, template
+
+        const home = (
+          <div>
+            <Link className='gohome' to={ prefixLink('/') }> All Articles
+            </Link>
+          </div>
+        );
+
+        if (post.updated === undefined) {
+          var published = (
+            <div className='date-published'>
+              <p><em>published { moment(post.written).format('D MMM YYYY') }</em></p>
+            </div>
+          );
+        } else {
+          var published = (
+            <div className='date-published'>
+              <p><em>originally published { moment(post.written).format('D MMM YYYY') } and updated { moment(post.updated).format('D MMM YYYY') }</em></p>
+            </div>
+          );
+        }
+
+        layout = post.layout
 
         return (
+          <DocumentTitle title={ `${post.title} - ${config.siteTitle}` }>
             <div>
-              This is compression stuff. Press F12. Run c.list() in the console.
+              { home }
+              <div className='blog-single'>
+                <div className='text'>
+                  <h1>{ post.title }</h1>
+                  <div className='postBody'>
+                    <p>
+                      These functions are written in javascript and embedded into the window.
+                      Press F12 (on windows in chrome) to get into the developer console.
+                      Click the console tab, and run c.list() in the console.
+                    </p>
+                  </div>
+                  { published }
+                </div>
+                <div className='footer'>
+                  <ReadNext post={ post } {...this.props}/>
+                  <hr></hr>
+                  <p>
+                    { config.siteDescr }
+                    <a href={ config.siteTwitterUrl }>
+                      <br></br> <strong>{ config.siteAuthor }</strong> on Twitter</a>
+                  </p>
+                </div>
+              </div>
             </div>
-            );
+          </DocumentTitle>
+        );
     }
 }
 

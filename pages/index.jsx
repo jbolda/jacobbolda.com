@@ -32,7 +32,7 @@ class SiteIndex extends React.Component {
                       <time dateTime={ moment(datePublished).format('MMMM D, YYYY') }>
                         { moment(datePublished).format('MMMM YYYY') }
                       </time>
-                      <span style={ {    padding: '5px'} }></span>
+                      <span style={ {padding: '5px'} }></span>
                       <span className='blog-category'>{ category }</span>
                       <h2><Link style={ {    borderBottom: 'none',} } to={ prefixLink(page.path) } > { title } </Link></h2>
                       <p dangerouslySetInnerHTML={ {    __html: description} } />
@@ -51,7 +51,7 @@ class SiteIndex extends React.Component {
                       <time dateTime={ moment(datePublished).format('MMMM D, YYYY') }>
                         { moment(datePublished).format('MMMM YYYY') }
                       </time>
-                      <span style={ {    padding: '5px'} }></span>
+                      <span style={ {padding: '5px'} }></span>
                       <span className='blog-category'>{ category }</span>
                       <h2><Link style={ {    borderBottom: 'none',} } to={ prefixLink(page.path) } > { title } </Link></h2>
                       <p dangerouslySetInnerHTML={ {    __html: description} } />
