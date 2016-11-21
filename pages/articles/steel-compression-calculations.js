@@ -10,18 +10,19 @@ import '../../static/css/highlight.css';
 
 class calculatorPost extends React.Component {
 
-    componentDidMount() {
+    componentWillMount() {
         window.c = {...this.props.c};
+        console.log(this);
     }
 
     render() {
         const {route} = this.props;
         const post = route.page.data
-        post.title = 'Steel Compression Calculations'
-        post.written = '2016-11-05'
-        post.path = '/steel-compression-calculations'
-        post.category = 'engineering'
-        post.description = 'Putting together some functions to run the compression calculations from the steel manual.'
+//        post.title = 'Steel Compression Calculations'
+//        post.written = '2016-11-05'
+//        post.path = '/steel-compression-calculations'
+//        post.category = 'engineering'
+//        post.description = 'Putting together some functions to run the compression calculations from the steel manual.'
 
         let layout, template
 
@@ -78,6 +79,14 @@ class calculatorPost extends React.Component {
           </DocumentTitle>
         );
     }
+}
+
+calculatorPost.defaultProps = {
+    title: 'Steel Compression Calculations',
+    written: '2016-11-05',
+    path: '/steel-compression-calculations',
+    category: 'engineering',
+    description: 'Putting together some functions to run the compression calculations from the steel manual.'
 }
 
 calculatorPost.propTypes = {

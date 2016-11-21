@@ -1,3 +1,6 @@
+import htmlFrontMatter from 'html-frontmatter'
+import objectAssign from 'object-assign'
+
 var rucksack = require('rucksack-css')
 var lost = require("lost")
 var cssnext = require("postcss-cssnext")
@@ -17,6 +20,14 @@ exports.modifyWebpackConfig = function(config, env) {
        test: /\.(svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
        loader: 'file-loader',
     })
+
+    // config.loader('js', function (content) {
+    //     this.cacheable()
+    //     const data = objectAssign({}, htmlFrontMatter(content), { body: content })
+    //     this.value = data
+    //     return `module.exports = ${JSON.stringify(data)}`
+    // })
+
 
     return config
 };
