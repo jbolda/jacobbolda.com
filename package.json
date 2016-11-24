@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "develop": "node_modules/.bin/gatsby develop",
-    "build": "npm run clean & .\\node_modules\\.bin\\gatsby build & npm run copy",
+    "build": "npm run clean & .\\node_modules\\.bin\\gatsby build",
     "clean:public": "rm -rf public & mkdir public",
     "clean": "npm run clean:public",
     "copy:files": "copy .\\pages\\*.png .\\public /Y",
