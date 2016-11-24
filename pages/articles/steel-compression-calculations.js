@@ -8,11 +8,15 @@ import ReadNext from '../../components/ReadNext';
 import './steel-compression-calculations.css';
 import '../../static/css/highlight.css';
 
+exports.data = {
+  title: 'Steel Construction Calculations',
+}
+
 class calculatorPost extends React.Component {
 
-    componentWillMount() {
+    componentDidMount() {
         window.c = {...this.props.c};
-        console.log(this);
+        // console.log(this);
     }
 
     render() {
