@@ -4,12 +4,16 @@ import { prefixLink } from 'gatsby-helpers'
 import { config } from 'config'
 import moment from 'moment'
 import { RouteHandler, Link } from 'react-router'
-import ReadNext from '../../components/ReadNext';
-import './steel-compression-calculations.css';
-import '../../static/css/highlight.css';
+import ReadNext from '../../../components/ReadNext';
+import './style.css';
+import '../../../static/css/highlight.css';
 
 exports.data = {
-  title: 'Steel Construction Calculations',
+    title: 'Steel Compression Calculations',
+    written: '2016-11-05',
+    path: '/steel-compression-calculations',
+    category: 'engineering',
+    description: 'Putting together some functions to run the compression calculations from the steel manual.'
 }
 
 class calculatorPost extends React.Component {
@@ -83,14 +87,6 @@ class calculatorPost extends React.Component {
           </DocumentTitle>
         );
     }
-}
-
-calculatorPost.defaultProps = {
-    title: 'Steel Compression Calculations',
-    written: '2016-11-05',
-    path: '/steel-compression-calculations',
-    category: 'engineering',
-    description: 'Putting together some functions to run the compression calculations from the steel manual.'
 }
 
 calculatorPost.propTypes = {

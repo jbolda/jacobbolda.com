@@ -41,7 +41,6 @@ class SiteIndex extends React.Component {
                     </div>
                 )
             } else if (access(page, 'file.ext') === 'js') {
-                console.log(page)
                 const title = access(page, 'data.title') || page.path
                 const description = access(page, 'data.description')
                 const datePublished = access(page, 'data.date')
