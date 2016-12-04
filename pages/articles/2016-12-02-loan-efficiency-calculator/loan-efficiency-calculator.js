@@ -23,15 +23,15 @@ class loanEfficiencyCalculator extends React.Component {
       loans.payment = 1200;
       loans.loans.sort((a, b) => b.intRate - a.intRate);
 
-      //loans = remainingMonths(loans);
+      loans = remainingMonths(loans);
       console.log('loans', loans);
 
-      // let loans2 = fakeLoan(3);
-      // loans2.payment = 1200;
-      // loans2.loans.sort((a, b) => a.ratio - b.ratio);
+      let loans2 = fakeLoan(3);
+      loans2.payment = 1200;
+      loans2.loans.sort((a, b) => a.ratio - b.ratio);
 
-      //loans2 = remainingMonths(loans2);
-      // console.log('loans2', loans2);
+      loans2 = remainingMonths(loans2);
+      console.log('loans2', loans2);
     }
 
     render() {
@@ -121,8 +121,10 @@ let fakeLoan = (createLoans) => {
 
 let remainingMonths = (loanGroup) => {
   loanGroup.chest = 1000000000;
-  for (let months = 1; loanGroup.chest > 0; months++) {
+  let months = 1;
+  do {
     loanGroup.wallet = loanGroup.payment;
+    // console.log('loanGroup', loanGroup)
     for (let i = 0; i < loanGroup.loans.length; i++) {
       let loan = loanGroup.loans[i];
       loan.chest = months === 1 ? loan.balance : loan.chest;
@@ -134,6 +136,7 @@ let remainingMonths = (loanGroup) => {
         loanGroup.chest = (i === 0) ? loan.chest : (loanGroup.chest + loan.chest);
         loan.accumulatedInterest += loan.interest;
       }
+      console.log(loanGroup.chest, 'loan'+i, loan.chest)
     }
 
     for (let i = 0; i < loanGroup.loans.length; i++) {
@@ -141,11 +144,13 @@ let remainingMonths = (loanGroup) => {
         loanGroup.loans[i].chest -= loanGroup.wallet;
         loanGroup.wallet = 0;
       }
-      if (loanGroup.loans[i].chest < 0) {
+      if (loanGroup.loans[i].chest <= 0) {
         loanGroup.wallet -= loanGroup.loans[i].chest;
         loanGroup.loans[i].chest = 0;
       }
     }
-  }
+
+    months += 1;
+  } while (loanGroup.chest > 0 && months < 144)
   return loanGroup;
 }
