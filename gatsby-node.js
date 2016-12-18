@@ -1,5 +1,6 @@
 import htmlFrontMatter from 'html-frontmatter'
 import objectAssign from 'object-assign'
+import Shell from 'child_process'
 
 var rucksack = require('rucksack-css')
 var lost = require("lost")
@@ -31,3 +32,8 @@ exports.modifyWebpackConfig = function(config, env) {
 
     return config
 };
+
+function postBuild(pages, callback) {
+  Shell.execSync("cp -r static/* /")
+  callback()
+}
