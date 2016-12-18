@@ -17,6 +17,18 @@ exports.data = {
 }
 
 class loanEfficiencyCalculator extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {loans: [{name: 'loan', balance: 0, intRate: 0, payment: 0}]};
+
+      this.handleChange = this.handleChange.bind(this);
+//      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+      this.setState({value: event.target.value});
+      console.log(this.state)
+    }
 
     componentDidMount() {
       let testloans = fakeLoan(3);
@@ -60,6 +72,8 @@ class loanEfficiencyCalculator extends React.Component {
 
       loans4 = remainingMonths(loans4);
       console.log('sort by ratio', loans4);
+
+      this.state = {}
     }
 
     render() {
@@ -91,6 +105,41 @@ class loanEfficiencyCalculator extends React.Component {
 
         layout = post.layout
 
+        const loanInputs = this.state.loans.map((loan) => {
+          return (
+            <div key={loan.name + loan.balance} className='input-group'>
+              <label>
+                Name
+                <input
+                  type='text'
+                  value={this.state.name}
+                  onChange={this.handleChange} />
+              </label>
+              <label>
+                Balance
+                <input
+                  type='number'
+                  value={this.state.balance}
+                  onChange={this.handleChange} />
+              </label>
+              <label>
+                interest rate
+                <input
+                  type='number'
+                  value={this.state.intRate}
+                  onChange={this.handleChange} />
+              </label>
+              <label>
+                payment
+                <input
+                  type='number'
+                  value={this.state.payment}
+                  onChange={this.handleChange} />
+              </label>
+            </div>
+          );
+        });
+
         return (
           <DocumentTitle title={ `${post.title} - ${config.siteTitle}` }>
             <div>
@@ -102,6 +151,9 @@ class loanEfficiencyCalculator extends React.Component {
                     <p>
                       We do some fancy stuff here. Trust us.
                     </p>
+                    <div>
+                      { loanInputs }
+                    </div>
                   </div>
                   { published }
                 </div>
