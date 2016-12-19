@@ -21,14 +21,12 @@ class SitePost extends React.Component {
         );
 
         if (post.updated === undefined) {
-          console.log('here');
           var published = (
             <div className='date-published'>
               <p><em>published { moment(post.written).format('D MMM YYYY') }</em></p>
             </div>
           );
         } else {
-          console.log('stuff');
           var published = (
             <div className='date-published'>
               <p><em>originally published { moment(post.written).format('D MMM YYYY') } and updated { moment(post.updated).format('D MMM YYYY') }</em></p>
