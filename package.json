@@ -68,6 +68,7 @@
     "redbox-react": "^1.2.10",
     "rucksack-css": "^0.8.5",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "copy-webpack-plugin": "^4.0.1"
   }
 }
