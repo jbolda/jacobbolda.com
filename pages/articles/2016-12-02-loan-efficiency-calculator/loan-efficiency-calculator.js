@@ -10,7 +10,7 @@ import '../../../static/css/highlight.css';
 
 exports.data = {
     title: 'Loan Efficiency Calculator',
-    written: '2016-12-02',
+    written: '',
     path: '/loan-efficiency-calculator',
     category: 'finance',
     description: 'Loan efficiency calculator.'

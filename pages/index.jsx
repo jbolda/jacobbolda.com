@@ -21,7 +21,7 @@ class SiteIndex extends React.Component {
         ).reverse()
         sortedPages.forEach((page) => {
             iteratorKey += 1;
-            if (access(page, 'file.ext') === 'md' && access(page, 'data.layout') === 'post') {
+            if (access(page, 'file.ext') === 'md' && access(page, 'data.layout') === 'post' && access(page, 'data.written') != '') {
                 const title = access(page, 'data.title') || page.path
                 const description = access(page, 'data.description')
                 const datePublished = access(page, 'data.date')
@@ -40,7 +40,7 @@ class SiteIndex extends React.Component {
                       </Link>
                     </div>
                 )
-            } else if (access(page, 'file.ext') === 'js') {
+            } else if (access(page, 'file.ext') === 'js' && access(page, 'data.written') != '') {
                 const title = access(page, 'data.title') || page.path
                 const description = access(page, 'data.description')
                 const datePublished = access(page, 'data.date')
