@@ -15,7 +15,7 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Title", name: "title", widget: "string", tagname: "h1"}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Description", name: "description", widget: "markdown"}
-      - {label: "Publish Date", name: "written", widget: "datetime"}
+      - {label: "Publish Date", name: "written", widget: "datetime", format: "YYYY-MM-DD"}
       - {label: "Path", name: "path", widget: "string"}
       - {label: "Category", name: "category", widget: "string"}
       - {label: "type", name: "type", widget: "hidden", default: "post"}
