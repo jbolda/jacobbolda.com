@@ -18,7 +18,7 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Publish Date", name: "written", widget: "datetime", format: "YYYY-MM-DD"}
       - {label: "Path", name: "path", widget: "string"}
       - {label: "Category", name: "category", widget: "string"}
-      - {label: "type", name: "type", widget: "hidden", default: "post"}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
   - name: "pages" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Page" # Used in the UI, ie.: "New Post"
     folder: "pages/pages/justmd" # The path to the folder where the documents are stored
@@ -28,7 +28,7 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Title", name: "title", widget: "string", tagname: "h1"}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "type", name: "type", widget: "hidden", default: "page"}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
   - name: "settings"
     label: "Settings"
     files:
