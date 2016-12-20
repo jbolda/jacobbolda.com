@@ -8,8 +8,9 @@ media_folder: "static/img" # Folder where user uploaded files should go
 collections: # A list of collections the CMS should be able to edit
   - name: "post" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Post" # Used in the UI, ie.: "New Post"
-    folder: "pages/articles/*" # The path to the folder where the documents are stored
+    folder: "pages/articles/{{year}}-{{month}}-{{day}}-" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}-{{path}}"
     fields: # The fields each document in this collection have
       - {label: "Title", name: "title", widget: "string", tagname: "h1"}
       - {label: "Body", name: "body", widget: "markdown"}
@@ -19,8 +20,9 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Category", name: "category", widget: "string"}
   - name: "pages" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Page" # Used in the UI, ie.: "New Post"
-    folder: "pages/pages/*" # The path to the folder where the documents are stored
+    folder: "pages/pages/{{year}}-{{month}}-{{day}}-{{path}}" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields: # The fields each document in this collection have
       - {label: "Title", name: "title", widget: "string", tagname: "h1"}
       - {label: "Body", name: "body", widget: "markdown"}
