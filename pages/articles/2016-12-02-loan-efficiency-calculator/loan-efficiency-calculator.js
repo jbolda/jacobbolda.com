@@ -19,61 +19,78 @@ exports.data = {
 class loanEfficiencyCalculator extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {loans: [{name: 'loan', balance: 0, intRate: 0, payment: 0}]};
+      this.state = {loans: [{name: 'loan1', balance: 0, intRate: 0, payment: 0}]};
 
-      this.handleChange = this.handleChange.bind(this);
+      // this.handleChange = this.handleChange.bind(this);
 //      this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event) {
-      this.setState({value: event.target.value});
-      console.log(this.state)
+    addAnother(event) {
+      console.log(event)
+      this.setState({loans: [...this.state.loans, {name: '', balance: 0, intRate: 0, payment: 0}]})
+    }
+
+    handleChange(index, event) {
+      let loanArray = [...this.state.loans];
+      let loan = loanArray[index];
+      if (event.target.type === 'number') {
+          loan[event.target.name] = Number.parseFloat(event.target.value);
+      } else {
+          loan[event.target.name] = event.target.value;
+      }
+      let procLoans = loanSet(loanArray);
+      procLoans.payment = 1200;
+      procLoans.wallet = 0;
+      procLoans.chest = 7;
+      let setLoans = remainingMonths(procLoans);
+      this.setState(setLoans);
     }
 
     componentDidMount() {
-      let testloans = fakeLoan(3);
-      let loans = Object.assign({}, testloans);
-      loans.payment = 1200;
-      loans.loans.sort((a, b) => b.intRate - a.intRate);
+      // let testloans = fakeLoan(3);
+      // let loans = Object.assign({}, testloans);
+      // loans.payment = 1200;
+      // loans.loans.sort((a, b) => b.intRate - a.intRate);
 
-      loans = remainingMonths(loans);
-      console.log('sort by interest rate', loans);
+      // loans = remainingMonths(loans);
+      // console.log('sort by interest rate', loans);
 
-      let loans2 = Object.assign({}, testloans);
-      loans2.payment = 1200;
-      loans2.loans.sort((a, b) => a.ratio - b.ratio);
+      // let loans2 = Object.assign({}, testloans);
+      // loans2.payment = 1200;
+      // loans2.loans.sort((a, b) => a.ratio - b.ratio);
 
-      loans2 = remainingMonths(loans2);
-      console.log('sort by ratio', loans2);
+      // loans2 = remainingMonths(loans2);
+      // console.log('sort by ratio', loans2);
 
-      let realloans = loanSet([{
-                        balance: 18000,
-                        intRate: 0.054,
-                        payment: 788.12  
-                        }, {
-                        balance: 4000,
-                        intRate: 0.058,
-                        payment: 65  
-                        }, {
-                        balance: 3000,
-                        intRate: 0.034,
-                        payment: 32  
-                        }]);
-      let loans3 = Object.assign({}, realloans);
-      loans3.payment = 1200;
-      loans3.loans.sort((a, b) => b.intRate - a.intRate);
+      // let realloans = loanSet([{
+      //                   balance: 18000,
+      //                   intRate: 0.054,
+      //                   payment: 788.12  
+      //                   }, {
+      //                   balance: 4000,
+      //                   intRate: 0.058,
+      //                   payment: 65  
+      //                   }, {
+      //                   balance: 3000,
+      //                   intRate: 0.034,
+      //                   payment: 32  
+      //                   }]);
+      // let loans3 = Object.assign({}, realloans);
+      // loans3.payment = 1200;
+      // loans3.loans.sort((a, b) => b.intRate - a.intRate);
 
-      loans3 = remainingMonths(loans3);
-      console.log('sort by interest rate', loans3);
+      // loans3 = remainingMonths(loans3);
+      // console.log('sort by interest rate', loans3);
 
-      let loans4 = Object.assign({}, realloans);
-      loans4.payment = 1200;
-      loans4.loans.sort((a, b) => a.ratio - b.ratio);
+      // let loans4 = Object.assign({}, realloans);
+      // loans4.payment = 1200;
+      // loans4.loans.sort((a, b) => a.ratio - b.ratio);
 
-      loans4 = remainingMonths(loans4);
-      console.log('sort by ratio', loans4);
+      // loans4 = remainingMonths(loans4);
+      // console.log('sort by ratio', loans4);
 
-      this.state = {}
+      // this.state = {}
+
     }
 
     render() {
@@ -105,38 +122,44 @@ class loanEfficiencyCalculator extends React.Component {
 
         layout = post.layout
 
-        const loanInputs = this.state.loans.map((loan) => {
+        const loanInputs = this.state.loans.map((loan, index) => {
           return (
-            <div key={loan.name + loan.balance} className='input-group'>
-              <label>
-                Name
-                <input
-                  type='text'
-                  value={this.state.name}
-                  onChange={this.handleChange} />
-              </label>
-              <label>
-                Balance
-                <input
-                  type='number'
-                  value={this.state.balance}
-                  onChange={this.handleChange} />
-              </label>
-              <label>
-                interest rate
-                <input
-                  type='number'
-                  value={this.state.intRate}
-                  onChange={this.handleChange} />
-              </label>
-              <label>
-                payment
-                <input
-                  type='number'
-                  value={this.state.payment}
-                  onChange={this.handleChange} />
-              </label>
-            </div>
+                <tbody key={index}><tr
+                key={index}
+                className='input-group'>
+                  <td>
+                    <input
+                      name='name'
+                      type='text'
+                      value={loan.name}
+                      onChange={this.handleChange.bind(this, index)}/>
+                  </td>
+                  <td>
+                    <input
+                      name='balance'
+                      type='number'
+                      value={loan.balance}
+                      onChange={this.handleChange.bind(this, index)} />
+                  </td>
+                  <td>
+                    <input
+                      name='intRate'
+                      type='number'
+                      value={loan.intRate}
+                      onChange={this.handleChange.bind(this, index)} />
+                  </td>
+                  <td>
+                    <input
+                      name='payment'
+                      type='number'
+                      value={loan.payment}
+                      onChange={this.handleChange.bind(this, index)} />
+                  </td>
+                  <td>
+                    <span>{loan.accumulatedInterest}||</span>
+                  </td>
+                  <td><span>{loan.months}</span></td>
+                </tr></tbody>
           );
         });
 
@@ -152,7 +175,20 @@ class loanEfficiencyCalculator extends React.Component {
                       We do some fancy stuff here. Trust us.
                     </p>
                     <div>
-                      { loanInputs }
+                      <table>
+                        <thead><tr>
+                          <th>Name</th>
+                          <th>Balance</th>
+                          <th>Interest Rate</th>
+                          <th>Payment</th>
+                          <th>Interest</th>
+                          <th>Months</th>
+                        </tr></thead>
+                        { loanInputs }
+                      </table>
+                      <button onClick={this.addAnother.bind(this)}>
+                        add another
+                      </button>
                     </div>
                   </div>
                   { published }
@@ -174,7 +210,6 @@ class loanEfficiencyCalculator extends React.Component {
 }
 
 loanEfficiencyCalculator.propTypes = {
-    c: React.PropTypes.object,
     post: React.PropTypes.object,
     pages: React.PropTypes.array,
 }
@@ -206,7 +241,6 @@ let loanSet = (loanArray) => {
 }
 
 let loanCalcProcess = (loan) => {
-  console.log(loan)
   loan.months = 0;
   loan.ratio = Math.round((loan.balance / loan.payment) * 10) / 10;
   loan.accumulatedInterest = 0;
