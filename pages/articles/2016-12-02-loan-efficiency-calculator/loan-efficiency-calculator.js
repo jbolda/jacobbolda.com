@@ -43,6 +43,7 @@ class loanEfficiencyCalculator extends React.Component {
       procLoans.wallet = 0;
       procLoans.chest = 7;
       let setLoans = remainingMonths(procLoans);
+      cleanNumbers(setLoans.loans);
       this.setState(setLoans);
     }
 
@@ -158,7 +159,7 @@ class loanEfficiencyCalculator extends React.Component {
                   <td>
                     <span>{loan.accumulatedInterest}||</span>
                   </td>
-                  <td><span>{loan.months}</span></td>
+                  <td><span>{loan.months}d|{loan.months / 12}y</span></td>
                 </tr></tbody>
           );
         });
@@ -283,6 +284,13 @@ let remainingMonths = (loanGroup) => {
     }
 
     months += 1;
-  } while (loanGroup.chest > 0)
+  } while (loanGroup.chest > 0 && months < 721)
   return loanGroup;
 }
+
+let cleanNumbers = (loans) => {
+  loans.forEach((loan) => {
+      loan.accumulatedInterest = Math.round(loan.accumulatedInterest, 2)
+    }
+  )
+};
