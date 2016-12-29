@@ -22,19 +22,31 @@ class loanEfficiencyCalculator extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        payment: 1200,
-        wallet: 0,
-        chest: 7,
-        loans: [{name: 'loan1', balance: 30000, intRate: 0.05, payment: 320}]
+        payment: Big(1200),
+        wallet: Big(0),
+        chest: Big(7),
+        loans: [{
+            name: 'loan1',
+            balance: Big(30000),
+            intRate: Big(0.05),
+            payment: Big(320),
+            accumulatedInterest: Big(0),
+            months: Big(0),
+            years: Big(0)
+          }]
       };
-
-      // this.handleChange = this.handleChange.bind(this);
-//      this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     addAnother(event) {
-      console.log(event)
-      this.setState({loans: [...this.state.loans, {name: '', balance: 0, intRate: 0, payment: 0}]})
+      this.setState({loans: [...this.state.loans, {
+                name: '',
+                balance: Big(0),
+                intRate: Big(0),
+                payment: Big(0),
+                accumulatedInterest: Big(0),
+                months: Big(0),
+                years: Big(0)
+              }]})
     }
 
     handleChange(index, event) {
@@ -45,15 +57,13 @@ class loanEfficiencyCalculator extends React.Component {
       } else {
           loan[event.target.name] = event.target.value;
       }
-      console.log(loanGroup)
-      let setLoans = processLoans(procLoans);
+      let setLoans = processLoans(loanGroup);
       this.setState(setLoans);
     }
 
     handlePayment(event) {
       let original = {...this.state};
-      original.payment = Number.parseFloat(event.target.value);
-      console.log(original)
+      original.payment = Big(event.target.value);
       let setLoans = processLoans(original);
       this.setState(setLoans);
     }
@@ -106,27 +116,30 @@ class loanEfficiencyCalculator extends React.Component {
                     <input
                       name='balance'
                       type='number'
-                      value={loan.balance}
+                      step='100'
+                      value={loan.balance.toString()}
                       onChange={this.handleChange.bind(this, index)} />
                   </td>
                   <td>
                     <input
                       name='intRate'
                       type='number'
-                      value={loan.intRate}
+                      step='0.001'
+                      value={loan.intRate.toString()}
                       onChange={this.handleChange.bind(this, index)} />
                   </td>
                   <td>
                     <input
                       name='payment'
                       type='number'
-                      value={loan.payment}
+                      step='5'
+                      value={loan.payment.toString()}
                       onChange={this.handleChange.bind(this, index)} />
                   </td>
                   <td>
-                    <span>{loan.accumulatedInterest}||</span>
+                    <span>{loan.accumulatedInterest.round(2).toString()}||</span>
                   </td>
-                  <td><span>{loan.months || 0}m|{loan.years || 0}y</span></td>
+                  <td><span>{loan.months.toString()}m|{loan.years.toString()}y</span></td>
                 </tr></tbody>
           );
         });
@@ -148,6 +161,7 @@ class loanEfficiencyCalculator extends React.Component {
                         <input
                           name='maxpayment'
                           type='number'
+                          step='10'
                           value={this.state.payment}
                           onChange={this.handlePayment.bind(this)} />
                       </div>
@@ -192,18 +206,6 @@ loanEfficiencyCalculator.propTypes = {
 
 export default loanEfficiencyCalculator;
 
-let fakeLoan = (createLoans) => {
-  let loanArray = [];
-  for (let i = 1; i <= createLoans; i++) {
-    let newLoan = {};
-    newLoan.balance = Math.round(40000 * Math.random() * 100) / 100;
-    newLoan.intRate = Math.max(0.01, Math.round(0.15 * Math.random() * 1000) / 1000);
-    newLoan.payment = Math.min(newLoan.balance, Math.round(1000 * Math.random() * 100) / 100);
-    loanArray.push(newLoan);
-  }
-  return loanSet(loanArray);
-}
-
 let processLoans = (loanGroup) => {
   let newLoanGroup = {...loanGroup};
   newLoanGroup.loans = [];
@@ -219,56 +221,52 @@ let processLoans = (loanGroup) => {
 }
 
 let loanStats = (loan) => {
-  loan.months = 0;
+  loan.months = Big(0);
   loan.ratio = Big(loan.balance).div(loan.payment);
   loan.accumulatedInterest = Big(0);
   return loan;
 }
 
 let remainingMonths = (loanGroup) => {
-  let months = 1;
+  let months = Big(1);
   do {
     loanGroup.wallet = loanGroup.payment;
-    loanGroup.chest = 0;
-    // console.log('loanGroup', loanGroup)
+    loanGroup.chest = Big(0);
     for (let i = 0; i < loanGroup.loans.length; i++) {
       let loan = loanGroup.loans[i];
-      loan.chest = months === 1 ? loan.balance : loan.chest; // chest is the emphereal version of balance
-      // console.log('i', i, 'months', loan.months, 'chest', loan.chest, loanGroup.chest, 'payment', loan.payment, 'accumulatedInterest', loan.accumulatedInterest)
-      if (loan.chest > 0) {
-        loan.months += 1;
+      loan.chest = months.eq(1) ? loan.balance : loan.chest; // chest is the emphereal version of balance
+      if (loan.chest.gt(0)) {
+        loan.months = loan.months.plus(1);
         loan.interest = Big(loan.chest).times(loan.intRate).div(12);
         loan.chest = Big(loan.chest).minus(loan.payment).plus(loan.interest);
         loanGroup.wallet = Big(loanGroup.wallet).minus(loan.payment); // the emphereal version of payment for everything
         loanGroup.chest = Big(loanGroup.chest).plus(loan.chest);
-        loan.accumulatedInterest.plus(loan.interest);
-        // if (i === 2) console.log(JSON.stringify(loanGroup))
+        loan.accumulatedInterest = loan.accumulatedInterest.plus(loan.interest);
       }
     }
 
     for (let i = 0; i < loanGroup.loans.length; i++) {
-      if (loanGroup.loans[i].chest > 0) {
-        loanGroup.loans[i].chest -= loanGroup.wallet;
-        loanGroup.wallet = 0;
+      if (loanGroup.loans[i].chest.gt(0)) {
+        loanGroup.loans[i].chest = loanGroup.loans[i].chest.minus(loanGroup.wallet);
+        loanGroup.wallet = Big(0);
       }
-      if (loanGroup.loans[i].chest < 0) {
-        // console.log('loans dropped below zero')
-        loanGroup.wallet -= loanGroup.loans[i].chest;
-        loanGroup.loans[i].chest = 0;
-        loanGroup.loans[i].total = loanGroup.loans[i].balance + loanGroup.loans[i].accumulatedInterest;
+      if (loanGroup.loans[i].chest.lt(0)) {
+        loanGroup.wallet = loanGroup.wallet.minus(loanGroup.loans[i].chest);
+        loanGroup.loans[i].chest = Big(0);
+        loanGroup.loans[i].total = loanGroup.loans[i].balance.plus(loanGroup.loans[i].accumulatedInterest);
         loanGroup.total = loanGroup.loans[i].total;
       }
     }
 
-    months += 1;
-  } while (loanGroup.chest > 0 && months < 721)
+    months = months.plus(1);
+  } while (loanGroup.chest.gt(0) && months.lt(721))
   return loanGroup;
 }
 
 let cleanNumbers = (loans) => {
   loans.forEach((loan) => {
-      loan.accumulatedInterest = Math.round(loan.accumulatedInterest, 2)
-      loan.years = Math.round(loan.months / 12, -2) 
+      loan.accumulatedInterest = Big(loan.accumulatedInterest)
+      loan.years = Big(loan.months).div(12) 
     }
   )
 };
