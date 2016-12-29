@@ -1,10 +1,12 @@
 import React from 'react';
 import DocumentTitle from 'react-document-title';
-import { prefixLink } from 'gatsby-helpers'
-import { config } from 'config'
-import moment from 'moment'
-import { RouteHandler, Link } from 'react-router'
+import { prefixLink } from 'gatsby-helpers';
+import { config } from 'config';
+import moment from 'moment';
+import { RouteHandler, Link } from 'react-router';
 import ReadNext from '../../../components/ReadNext';
+//import { Big, plus, minus, div } from 'big.js';
+var Big = require('big.js');
 import './style.css';
 import '../../../static/css/highlight.css';
 
@@ -19,7 +21,12 @@ exports.data = {
 class loanEfficiencyCalculator extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {loans: [{name: 'loan1', balance: 0, intRate: 0, payment: 0}]};
+      this.state = {
+        payment: 1200,
+        wallet: 0,
+        chest: 7,
+        loans: [{name: 'loan1', balance: 30000, intRate: 0.05, payment: 320}]
+      };
 
       // this.handleChange = this.handleChange.bind(this);
 //      this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,67 +38,27 @@ class loanEfficiencyCalculator extends React.Component {
     }
 
     handleChange(index, event) {
-      let loanArray = [...this.state.loans];
-      let loan = loanArray[index];
+      let loanGroup = {...this.state};
+      let loan = loanGroup.loans[index];
       if (event.target.type === 'number') {
-          loan[event.target.name] = Number.parseFloat(event.target.value);
+          loan[event.target.name] = Big(event.target.value);
       } else {
           loan[event.target.name] = event.target.value;
       }
-      let procLoans = loanSet(loanArray);
-      procLoans.payment = 1200;
-      procLoans.wallet = 0;
-      procLoans.chest = 7;
-      let setLoans = remainingMonths(procLoans);
-      cleanNumbers(setLoans.loans);
+      console.log(loanGroup)
+      let setLoans = processLoans(procLoans);
+      this.setState(setLoans);
+    }
+
+    handlePayment(event) {
+      let original = {...this.state};
+      original.payment = Number.parseFloat(event.target.value);
+      console.log(original)
+      let setLoans = processLoans(original);
       this.setState(setLoans);
     }
 
     componentDidMount() {
-      // let testloans = fakeLoan(3);
-      // let loans = Object.assign({}, testloans);
-      // loans.payment = 1200;
-      // loans.loans.sort((a, b) => b.intRate - a.intRate);
-
-      // loans = remainingMonths(loans);
-      // console.log('sort by interest rate', loans);
-
-      // let loans2 = Object.assign({}, testloans);
-      // loans2.payment = 1200;
-      // loans2.loans.sort((a, b) => a.ratio - b.ratio);
-
-      // loans2 = remainingMonths(loans2);
-      // console.log('sort by ratio', loans2);
-
-      // let realloans = loanSet([{
-      //                   balance: 18000,
-      //                   intRate: 0.054,
-      //                   payment: 788.12  
-      //                   }, {
-      //                   balance: 4000,
-      //                   intRate: 0.058,
-      //                   payment: 65  
-      //                   }, {
-      //                   balance: 3000,
-      //                   intRate: 0.034,
-      //                   payment: 32  
-      //                   }]);
-      // let loans3 = Object.assign({}, realloans);
-      // loans3.payment = 1200;
-      // loans3.loans.sort((a, b) => b.intRate - a.intRate);
-
-      // loans3 = remainingMonths(loans3);
-      // console.log('sort by interest rate', loans3);
-
-      // let loans4 = Object.assign({}, realloans);
-      // loans4.payment = 1200;
-      // loans4.loans.sort((a, b) => a.ratio - b.ratio);
-
-      // loans4 = remainingMonths(loans4);
-      // console.log('sort by ratio', loans4);
-
-      // this.state = {}
-
     }
 
     render() {
@@ -159,7 +126,7 @@ class loanEfficiencyCalculator extends React.Component {
                   <td>
                     <span>{loan.accumulatedInterest}||</span>
                   </td>
-                  <td><span>{loan.months}d|{loan.months / 12}y</span></td>
+                  <td><span>{loan.months || 0}m|{loan.years || 0}y</span></td>
                 </tr></tbody>
           );
         });
@@ -176,6 +143,14 @@ class loanEfficiencyCalculator extends React.Component {
                       We do some fancy stuff here. Trust us.
                     </p>
                     <div>
+                      <div>
+                        Total Payment: 
+                        <input
+                          name='maxpayment'
+                          type='number'
+                          value={this.state.payment}
+                          onChange={this.handlePayment.bind(this)} />
+                      </div>
                       <table>
                         <thead><tr>
                           <th>Name</th>
@@ -229,22 +204,24 @@ let fakeLoan = (createLoans) => {
   return loanSet(loanArray);
 }
 
-let loanSet = (loanArray) => {
-  let loanGroup = {}
-  loanGroup.loans = [];
-  loanGroup.balance = 0;
-  for (let i = 0; i < loanArray.length; i++) {
-    let newLoan = loanCalcProcess(loanArray[i]);
-    loanGroup.loans.push(newLoan);
-    loanGroup.balance += newLoan.balance;
+let processLoans = (loanGroup) => {
+  let newLoanGroup = {...loanGroup};
+  newLoanGroup.loans = [];
+  newLoanGroup.balance = Big(0);
+  for (let i = 0; i < loanGroup.loans.length; i++) {
+    let newLoan = loanStats(loanGroup.loans[i]);
+    newLoanGroup.loans.push(newLoan);
+    newLoanGroup.balance.plus(newLoan.balance);
   }
-  return loanGroup
+  let setLoans = remainingMonths(newLoanGroup);
+  cleanNumbers(setLoans.loans);
+  return setLoans;
 }
 
-let loanCalcProcess = (loan) => {
+let loanStats = (loan) => {
   loan.months = 0;
-  loan.ratio = Math.round((loan.balance / loan.payment) * 10) / 10;
-  loan.accumulatedInterest = 0;
+  loan.ratio = Big(loan.balance).div(loan.payment);
+  loan.accumulatedInterest = Big(0);
   return loan;
 }
 
@@ -260,11 +237,11 @@ let remainingMonths = (loanGroup) => {
       // console.log('i', i, 'months', loan.months, 'chest', loan.chest, loanGroup.chest, 'payment', loan.payment, 'accumulatedInterest', loan.accumulatedInterest)
       if (loan.chest > 0) {
         loan.months += 1;
-        loan.interest = (loan.chest * loan.intRate / 12);
-        loan.chest = loan.chest - loan.payment + loan.interest;
-        loanGroup.wallet = loanGroup.wallet - loan.payment; // the emphereal version of payment for everything
-        loanGroup.chest = loanGroup.chest + loan.chest;
-        loan.accumulatedInterest += loan.interest;
+        loan.interest = Big(loan.chest).times(loan.intRate).div(12);
+        loan.chest = Big(loan.chest).minus(loan.payment).plus(loan.interest);
+        loanGroup.wallet = Big(loanGroup.wallet).minus(loan.payment); // the emphereal version of payment for everything
+        loanGroup.chest = Big(loanGroup.chest).plus(loan.chest);
+        loan.accumulatedInterest.plus(loan.interest);
         // if (i === 2) console.log(JSON.stringify(loanGroup))
       }
     }
@@ -291,6 +268,7 @@ let remainingMonths = (loanGroup) => {
 let cleanNumbers = (loans) => {
   loans.forEach((loan) => {
       loan.accumulatedInterest = Math.round(loan.accumulatedInterest, 2)
+      loan.years = Math.round(loan.months / 12, -2) 
     }
   )
 };
