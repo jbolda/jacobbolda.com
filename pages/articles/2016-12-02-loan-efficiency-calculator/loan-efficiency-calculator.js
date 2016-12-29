@@ -139,7 +139,7 @@ class loanEfficiencyCalculator extends React.Component {
                   <td>
                     <span>{loan.accumulatedInterest.round(2).toString()}||</span>
                   </td>
-                  <td><span>{loan.months.toString()}m|{loan.years.toString()}y</span></td>
+                  <td><span>{loan.months.round(2).toString()}m|{loan.years.round(2).toString()}y</span></td>
                 </tr></tbody>
           );
         });
