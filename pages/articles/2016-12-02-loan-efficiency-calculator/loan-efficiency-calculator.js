@@ -28,7 +28,7 @@ class loanEfficiencyCalculator extends React.Component {
         loans: [{
             name: 'loan1',
             balance: Big(30000),
-            intRate: Big(0.05),
+            intRate: Big(5.00),
             payment: Big(320),
             accumulatedInterest: Big(0),
             months: Big(0),
@@ -41,7 +41,7 @@ class loanEfficiencyCalculator extends React.Component {
       this.setState({loans: [...this.state.loans, {
                 name: '',
                 balance: Big(100),
-                intRate: Big(1),
+                intRate: Big(1.00),
                 payment: Big(10),
                 accumulatedInterest: Big(0),
                 months: Big(0),
@@ -71,6 +71,15 @@ class loanEfficiencyCalculator extends React.Component {
     handleDelete(index, event) {
       let loanGroup = {...this.state};
       loanGroup.loans.splice(index, 1);
+      let setLoans = processLoans(loanGroup);
+      this.setState(setLoans);
+    }
+
+    handleShift(index, event) {
+      let loanGroup = {...this.state};
+      let loan = loanGroup.loans[index];
+      loanGroup.loans.splice(index, 1);
+      loanGroup.loans.splice(index - 1, 0, loan);
       let setLoans = processLoans(loanGroup);
       this.setState(setLoans);
     }
@@ -108,6 +117,19 @@ class loanEfficiencyCalculator extends React.Component {
         layout = post.layout
 
         const loanInputs = this.state.loans.map((loan, index) => {
+
+          if (index === 0) {
+            var upArrow = (
+              <span></span>
+              );
+          } else {
+            var upArrow = (
+              <button onClick={this.handleShift.bind(this, index)}>
+                ^
+              </button>
+              );
+          }
+
           return (
                 <tbody key={index}><tr
                 key={index}
@@ -116,6 +138,9 @@ class loanEfficiencyCalculator extends React.Component {
                     <button onClick={this.handleDelete.bind(this, index)}>
                       x
                     </button>
+                  </td>
+                  <td>
+                    { upArrow }
                   </td>
                   <td>
                     <input
@@ -137,7 +162,7 @@ class loanEfficiencyCalculator extends React.Component {
                       name='intRate'
                       type='number'
                       step='0.01'
-                      value={loan.intRate.times(100).toFixed(2)}
+                      value={loan.intRate.toFixed(2)}
                       onChange={this.handleChange.bind(this, index)} />
                   </td>
                   <td>
@@ -179,6 +204,7 @@ class loanEfficiencyCalculator extends React.Component {
                       </div>
                       <table>
                         <thead><tr>
+                          <th></th>
                           <th></th>
                           <th>Name</th>
                           <th>Balance</th>
@@ -234,7 +260,6 @@ let processLoans = (loanGroup) => {
 }
 
 let loanStats = (loan) => {
-  loan.intRate = loan.intRate.div(100);
   loan.months = Big(0);
   loan.ratio = Big(loan.balance).div(loan.payment);
   loan.accumulatedInterest = Big(0);
@@ -251,7 +276,7 @@ let remainingMonths = (loanGroup) => {
       loan.chest = months.eq(1) ? loan.balance : loan.chest; // chest is the emphereal version of balance
       if (loan.chest.gt(0)) {
         loan.months = loan.months.plus(1);
-        loan.interest = Big(loan.chest).times(loan.intRate).div(12);
+        loan.interest = Big(loan.chest).times(loan.intRate).div(100).div(12);
         loan.chest = Big(loan.chest).minus(loan.payment).plus(loan.interest);
         loanGroup.wallet = Big(loanGroup.wallet).minus(loan.payment); // the emphereal version of payment for everything
         loanGroup.chest = Big(loanGroup.chest).plus(loan.chest);
