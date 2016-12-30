@@ -40,9 +40,9 @@ class loanEfficiencyCalculator extends React.Component {
     addAnother(event) {
       this.setState({loans: [...this.state.loans, {
                 name: '',
-                balance: Big(0),
-                intRate: Big(0),
-                payment: Big(0),
+                balance: Big(100),
+                intRate: Big(1),
+                payment: Big(10),
                 accumulatedInterest: Big(0),
                 months: Big(0),
                 years: Big(0)
@@ -65,6 +65,13 @@ class loanEfficiencyCalculator extends React.Component {
       let original = {...this.state};
       original.payment = Big(event.target.value);
       let setLoans = processLoans(original);
+      this.setState(setLoans);
+    }
+
+    handleDelete(index, event) {
+      let loanGroup = {...this.state};
+      loanGroup.loans.splice(index, 1);
+      let setLoans = processLoans(loanGroup);
       this.setState(setLoans);
     }
 
@@ -105,6 +112,11 @@ class loanEfficiencyCalculator extends React.Component {
                 <tbody key={index}><tr
                 key={index}
                 className='input-group'>
+                  <td>
+                    <button onClick={this.handleDelete.bind(this, index)}>
+                      x
+                    </button>
+                  </td>
                   <td>
                     <input
                       name='name'
@@ -167,6 +179,7 @@ class loanEfficiencyCalculator extends React.Component {
                       </div>
                       <table>
                         <thead><tr>
+                          <th></th>
                           <th>Name</th>
                           <th>Balance</th>
                           <th>Interest Rate</th>
