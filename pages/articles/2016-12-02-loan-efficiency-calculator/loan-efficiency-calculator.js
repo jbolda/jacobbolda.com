@@ -124,8 +124,8 @@ class loanEfficiencyCalculator extends React.Component {
                     <input
                       name='intRate'
                       type='number'
-                      step='0.001'
-                      value={loan.intRate.toString()}
+                      step='0.01'
+                      value={loan.intRate.times(100).toFixed(2)}
                       onChange={this.handleChange.bind(this, index)} />
                   </td>
                   <td>
@@ -221,6 +221,7 @@ let processLoans = (loanGroup) => {
 }
 
 let loanStats = (loan) => {
+  loan.intRate = loan.intRate.div(100);
   loan.months = Big(0);
   loan.ratio = Big(loan.balance).div(loan.payment);
   loan.accumulatedInterest = Big(0);
