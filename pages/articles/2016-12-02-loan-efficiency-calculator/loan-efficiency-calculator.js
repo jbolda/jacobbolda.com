@@ -117,7 +117,7 @@ class loanEfficiencyCalculator extends React.Component {
                       name='balance'
                       type='number'
                       step='100'
-                      value={loan.balance.toString()}
+                      value={loan.balance.toFixed(2)}
                       onChange={this.handleChange.bind(this, index)} />
                   </td>
                   <td>
@@ -133,7 +133,7 @@ class loanEfficiencyCalculator extends React.Component {
                       name='payment'
                       type='number'
                       step='5'
-                      value={loan.payment.toString()}
+                      value={loan.payment.toFixed(2)}
                       onChange={this.handleChange.bind(this, index)} />
                   </td>
                   <td>
@@ -162,7 +162,7 @@ class loanEfficiencyCalculator extends React.Component {
                           name='maxpayment'
                           type='number'
                           step='10'
-                          value={this.state.payment}
+                          value={this.state.payment.toFixed(2)}
                           onChange={this.handlePayment.bind(this)} />
                       </div>
                       <table>
