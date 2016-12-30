@@ -21,7 +21,7 @@ exports.data = {
 class loanEfficiencyCalculator extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {
+      let initialLoans = {
         payment: Big(1200),
         wallet: Big(0),
         chest: Big(7),
@@ -35,6 +35,7 @@ class loanEfficiencyCalculator extends React.Component {
             years: Big(0)
           }]
       };
+      this.state = processLoans(initialLoans);
     }
 
     addAnother(event) {
