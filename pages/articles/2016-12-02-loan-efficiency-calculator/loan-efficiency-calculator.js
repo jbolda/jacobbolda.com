@@ -125,7 +125,9 @@ class loanEfficiencyCalculator extends React.Component {
               );
           } else {
             var upArrow = (
-              <button onClick={this.handleShift.bind(this, index)}>
+              <button
+                className='button is-info'
+                onClick={this.handleShift.bind(this, index)}>
                 ^
               </button>
               );
@@ -136,7 +138,9 @@ class loanEfficiencyCalculator extends React.Component {
                 key={index}
                 className='input-group'>
                   <td>
-                    <button onClick={this.handleDelete.bind(this, index)}>
+                    <button
+                      className='button is-danger'
+                      onClick={this.handleDelete.bind(this, index)}>
                       x
                     </button>
                   </td>
@@ -203,7 +207,7 @@ class loanEfficiencyCalculator extends React.Component {
                           value={this.state.payment.toFixed(2)}
                           onChange={this.handlePayment.bind(this)} />
                       </div>
-                      <table>
+                      <table className='table is-bordered is-striped is-narrow'>
                         <thead><tr>
                           <th></th>
                           <th></th>
@@ -216,7 +220,9 @@ class loanEfficiencyCalculator extends React.Component {
                         </tr></thead>
                         { loanInputs }
                       </table>
-                      <button onClick={this.addAnother.bind(this)}>
+                      <button
+                        className='button is-success'
+                        onClick={this.addAnother.bind(this)}>
                         add another
                       </button>
                     </div>

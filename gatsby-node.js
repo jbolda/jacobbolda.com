@@ -1,11 +1,7 @@
-import htmlFrontMatter from 'html-frontmatter'
-import objectAssign from 'object-assign'
-import Shell from 'child_process'
-
 var path = require('path');
-var rucksack = require('rucksack-css')
-var lost = require("lost")
-var cssnext = require("postcss-cssnext")
+var rucksack = require('rucksack-css');
+var lost = require('lost');
+var cssnext = require('postcss-cssnext');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 exports.modifyWebpackConfig = function(config, env) {

@@ -28,17 +28,21 @@ class SiteIndex extends React.Component {
                 const category = access(page, 'data.category')
 
                 pageLinks.push(
-                    <div className='blog-post' key={iteratorKey}>
-                      <time dateTime={ moment(datePublished).format('MMMM D, YYYY') }>
-                        { moment(datePublished).format('MMMM YYYY') }
-                      </time>
-                      <span style={ {padding: '5px'} }></span>
-                      <span className='blog-category'>{ category }</span>
-                      <h2><Link style={ {    borderBottom: 'none',} } to={ prefixLink(page.path) } > { title } </Link></h2>
+                  <div className='container is-fluid' key={iteratorKey}>
+                    <div className='box'>
+                      <div className='card-header'>
+                        <h2><Link style={ {    borderBottom: 'none',} } to={ prefixLink(page.path) } > { title } </Link></h2>
+                        <time dateTime={ moment(datePublished).format('MMMM D, YYYY') }>
+                          { moment(datePublished).format('MMMM YYYY') }
+                        </time>
+                        <span style={ {padding: '5px'} }></span>
+                        <span className='blog-category'>{ category }</span>
+                      </div>
                       <p dangerouslySetInnerHTML={ {    __html: description} } />
                       <Link className='readmore' to={ prefixLink(page.path) }> Read
                       </Link>
                     </div>
+                  </div>
                 )
             } else if (access(page, 'file.ext') === 'js' && access(page, 'data.written') != '') {
                 const title = access(page, 'data.title') || page.path
@@ -47,31 +51,35 @@ class SiteIndex extends React.Component {
                 const category = access(page, 'data.category')
 
                 pageLinks.push(
-                    <div className='blog-post' key={iteratorKey}>
-                      <time dateTime={ moment(datePublished).format('MMMM D, YYYY') }>
-                        { moment(datePublished).format('MMMM YYYY') }
-                      </time>
-                      <span style={ {padding: '5px'} }></span>
-                      <span className='blog-category'>{ category }</span>
-                      <h2><Link style={ {    borderBottom: 'none',} } to={ prefixLink(page.path) } > { title } </Link></h2>
+                  <div className='container is-fluid' key={iteratorKey}>
+                    <div className='box'>
+                      <div className='card-header'>
+                        <h2><Link style={ {    borderBottom: 'none',} } to={ prefixLink(page.path) } > { title } </Link></h2>
+                        <time dateTime={ moment(datePublished).format('MMMM D, YYYY') }>
+                          { moment(datePublished).format('MMMM YYYY') }
+                        </time>
+                        <span style={ {padding: '5px'} }></span>
+                        <span className='blog-category'>{ category }</span>
+                      </div>
                       <p dangerouslySetInnerHTML={ {    __html: description} } />
                       <Link className='readmore' to={ prefixLink(page.path) }> Read
                       </Link>
                     </div>
+                  </div>
                 )
             }
         })
 
         return (
             <DocumentTitle title={ config.siteTitle }>
-              <div>
-                <SiteSidebar {...this.props}/>
-                <div className='content'>
-                  <div className='main'>
-                    <div className='main-inner'>
-                      { pageLinks }
-                    </div>
+              <div className='columns'>
+                <div className='column is-narrow'>
+                  <div className='container is-fluid'>
+                    <SiteSidebar {...this.props}/>
                   </div>
+                </div>
+                <div className='column'>
+                  { pageLinks }
                 </div>
               </div>
             </DocumentTitle>
