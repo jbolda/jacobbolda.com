@@ -28,20 +28,40 @@ class SiteIndex extends React.Component {
                 const category = access(page, 'data.category')
 
                 pageLinks.push(
-                  <div className='container is-fluid' key={iteratorKey}>
-                    <div className='box'>
-                      <div className='card-header'>
-                        <h2><Link style={ {    borderBottom: 'none',} } to={ prefixLink(page.path) } > { title } </Link></h2>
-                        <time dateTime={ moment(datePublished).format('MMMM D, YYYY') }>
-                          { moment(datePublished).format('MMMM YYYY') }
-                        </time>
-                        <span style={ {padding: '5px'} }></span>
-                        <span className='blog-category'>{ category }</span>
+                  <div className='box' key={iteratorKey}>
+                    <article className='media'>
+                      <div className='media-content'>
+                        <div className='heading'>
+                          <div className='level'>
+                            <h4 className='level-left'>
+                              <time className='subtitle' dateTime={ moment(datePublished).format('MMMM D, YYYY') }>
+                                { moment(datePublished).format('MMMM YYYY') }
+                              </time>
+                            </h4>
+                            <h5 className='level-right'>{ category }</h5>
+                          </div>
+                          <h1 className='title is-marginless'>
+                            <Link
+                              to={ prefixLink(page.path) } >
+                              { title }
+                            </Link>
+                          </h1>
+                        </div>
+                        <div className='content'>
+                          <p dangerouslySetInnerHTML={ {    __html: description} } />
+                        </div>
+                        <nav className='level'>
+                          <div className='level-left'>
+                            <a className='level-item'>
+                              <Link
+                                to={ prefixLink(page.path) }>
+                                Read
+                              </Link>
+                            </a>
+                          </div>
+                        </nav>
                       </div>
-                      <p dangerouslySetInnerHTML={ {    __html: description} } />
-                      <Link className='readmore' to={ prefixLink(page.path) }> Read
-                      </Link>
-                    </div>
+                    </article>
                   </div>
                 )
             } else if (access(page, 'file.ext') === 'js' && access(page, 'data.written') != '') {
@@ -51,20 +71,40 @@ class SiteIndex extends React.Component {
                 const category = access(page, 'data.category')
 
                 pageLinks.push(
-                  <div className='container is-fluid' key={iteratorKey}>
-                    <div className='box'>
-                      <div className='card-header'>
-                        <h2><Link style={ {    borderBottom: 'none',} } to={ prefixLink(page.path) } > { title } </Link></h2>
-                        <time dateTime={ moment(datePublished).format('MMMM D, YYYY') }>
-                          { moment(datePublished).format('MMMM YYYY') }
-                        </time>
-                        <span style={ {padding: '5px'} }></span>
-                        <span className='blog-category'>{ category }</span>
+                  <div className='box' key={iteratorKey}>
+                    <article className='media'>
+                      <div className='media-content'>
+                        <div className='heading'>
+                          <div className='level'>
+                            <h4 className='level-left'>
+                              <time className='subtitle' dateTime={ moment(datePublished).format('MMMM D, YYYY') }>
+                                { moment(datePublished).format('MMMM YYYY') }
+                              </time>
+                            </h4>
+                            <h5 className='level-right'>{ category }</h5>
+                          </div>
+                          <h1 className='title is-marginless'>
+                            <Link
+                              to={ prefixLink(page.path) } >
+                              { title }
+                            </Link>
+                          </h1>
+                        </div>
+                        <div className='content'>
+                          <p dangerouslySetInnerHTML={ {    __html: description} } />
+                        </div>
+                        <nav className='level'>
+                          <div className='level-left'>
+                            <a className='level-item'>
+                              <Link
+                                to={ prefixLink(page.path) }>
+                                Read
+                              </Link>
+                            </a>
+                          </div>
+                        </nav>
                       </div>
-                      <p dangerouslySetInnerHTML={ {    __html: description} } />
-                      <Link className='readmore' to={ prefixLink(page.path) }> Read
-                      </Link>
-                    </div>
+                    </article>
                   </div>
                 )
             }
