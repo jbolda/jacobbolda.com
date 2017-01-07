@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import { prefixLink } from 'gatsby-helpers';
 import { config } from 'config';
 
-import 'normalize-css';
 import '../static/css/base.scss';
 
 class Template extends React.Component {
