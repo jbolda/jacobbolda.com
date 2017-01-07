@@ -1,14 +1,11 @@
-var path = require('path');
-var rucksack = require('rucksack-css');
-var lost = require('lost');
 var cssnext = require('postcss-cssnext');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+
+var extractTextWebpackPlugin = require('extract-text-webpack-plugin');
 
 exports.modifyWebpackConfig = function(config, env) {
     config.merge({
         postcss: [
-            lost(),
-            rucksack(),
             cssnext({
                 browsers: ['>1%', 'last 2 versions']
             })
@@ -35,13 +32,6 @@ exports.modifyWebpackConfig = function(config, env) {
        test: /\.(svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
        loader: 'file-loader',
     })
-
-    // config.loader('js', function (content) {
-    //     this.cacheable()
-    //     const data = objectAssign({}, htmlFrontMatter(content), { body: content })
-    //     this.value = data
-    //     return `module.exports = ${JSON.stringify(data)}`
-    // })
 
     return config
 };
