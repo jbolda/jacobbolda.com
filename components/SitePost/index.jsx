@@ -60,7 +60,7 @@ class SitePost extends React.Component {
 }
 
 SitePost.propTypes = {
-    post: React.PropTypes.object.isRequired,
+    post: React.PropTypes.object,
     pages: React.PropTypes.array,
 }
 

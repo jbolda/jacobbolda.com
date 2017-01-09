@@ -27,7 +27,7 @@ class SiteSidebar extends React.Component {
         )
 
         return (
-            <div className='menu'>
+            <div className='box'>
               <div className='sidebar-inner'>
                 <div className='blog-details'>
                   <header>

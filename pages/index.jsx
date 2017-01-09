@@ -52,12 +52,12 @@ class SiteIndex extends React.Component {
                         </div>
                         <nav className='level'>
                           <div className='level-left'>
-                            <a className='level-item'>
+                            <span className='level-item'>
                               <Link
                                 to={ prefixLink(page.path) }>
                                 Read
                               </Link>
-                            </a>
+                            </span>
                           </div>
                         </nav>
                       </div>
@@ -95,12 +95,12 @@ class SiteIndex extends React.Component {
                         </div>
                         <nav className='level'>
                           <div className='level-left'>
-                            <a className='level-item'>
+                            <span className='level-item'>
                               <Link
                                 to={ prefixLink(page.path) }>
                                 Read
                               </Link>
-                            </a>
+                            </span>
                           </div>
                         </nav>
                       </div>
@@ -113,7 +113,7 @@ class SiteIndex extends React.Component {
         return (
             <DocumentTitle title={ config.siteTitle }>
               <div className='columns'>
-                <div className='column is-narrow'>
+                <div className='column is-one-third'>
                   <div className='container is-fluid'>
                     <SiteSidebar {...this.props}/>
                   </div>
