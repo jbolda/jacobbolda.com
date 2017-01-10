@@ -13,16 +13,51 @@ class SiteSidebar extends React.Component {
 
         let header = (
         <header>
-          <Link style={ {    textDecoration: 'none',    borderBottom: 'none',    outline: 'none'} } to={ prefixLink('/') }>
-          <img src='https://s.gravatar.com/avatar/c02111afdbe9776a53fb197c0f459fb4?s=200' width='200' height='200' />
+          <Link
+              style={{
+                textDecoration: 'none',
+                borderBottom: 'none',
+                outline: 'none'
+              }}
+              to={ prefixLink('/') }>
+            <div className='card'>
+              <div className='card-image'>
+                <figure className='image'>
+                  <img src='https://s.gravatar.com/avatar/c02111afdbe9776a53fb197c0f459fb4?s=256' />
+                </figure>
+              </div>
+            </div>
           </Link>
-          { isHome ? (
-            <h1><Link style={ {    textDecoration: 'none',    borderBottom: 'none',    color: 'inherit'} } to={ prefixLink('/') }> { config.siteAuthor } </Link></h1>
-            ) :
-            <h2><Link style={ {    textDecoration: 'none',    borderBottom: 'none',    color: 'inherit'} } to={ prefixLink('/') }> { config.siteAuthor } </Link></h2> }
-          <p>
-            { config.siteDescr }
-          </p>
+          <div><br />
+            { isHome ? (
+              <h1 className='title'>
+                <Link
+                  style={{
+                    textDecoration: 'none',
+                    borderBottom: 'none',
+                    color: 'inherit'
+                  }}
+                  to={ prefixLink('/') }>
+                  { config.siteAuthor }
+                </Link>
+              </h1>
+              ) :
+              <h2 className='title'>
+                <Link
+                  style={{
+                    textDecoration: 'none',
+                    borderBottom: 'none',
+                    color: 'inherit'
+                  }}
+                  to={ prefixLink('/') }>
+                  { config.siteAuthor }
+                </Link>
+              </h2>
+            }
+            <p className='subtitle'>
+              { config.siteDescr }
+            </p>
+          </div>
         </header>
         )
 

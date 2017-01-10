@@ -14,21 +14,23 @@ class SitePage extends React.Component {
         const post = route.page.data
 
         return (
-            <div>
-              <SiteSidebar {...this.props}/>
-              <div className='content'>
-                <div className='main'>
-                  <div className='main-inner'>
-                    <div className='blog-page'>
-                      <div className='text'>
-                        <h1>{ post.title }</h1>
-                        <div dangerouslySetInnerHTML={ {    __html: post.body} } />
+              <div className='section'>
+                <div className='columns'>
+                  <div className='column is-one-quarter'>
+                    <div className='container is-fluid'>
+                      <SiteSidebar {...this.props}/>
+                    </div>
+                  </div>
+                  <div className='column'>
+                    <div className='box'>
+                      <div className='content'>
+                          <h1>{ post.title }</h1>
+                          <div dangerouslySetInnerHTML={ {    __html: post.body} } />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
             );
     }
 }

@@ -112,14 +112,16 @@ class SiteIndex extends React.Component {
 
         return (
             <DocumentTitle title={ config.siteTitle }>
-              <div className='columns'>
-                <div className='column is-one-third'>
-                  <div className='container is-fluid'>
-                    <SiteSidebar {...this.props}/>
+              <div className='section'>
+                <div className='columns'>
+                  <div className='column is-one-quarter'>
+                    <div className='container is-fluid'>
+                      <SiteSidebar {...this.props}/>
+                    </div>
                   </div>
-                </div>
-                <div className='column'>
-                  { pageLinks }
+                  <div className='column'>
+                    { pageLinks }
+                  </div>
                 </div>
               </div>
             </DocumentTitle>
