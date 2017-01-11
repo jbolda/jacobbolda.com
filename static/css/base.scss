@@ -3,11 +3,16 @@
 // Override variables here
 // You can add new ones or update existing ones:
 
-$orange: #FF613F;
-$primary: $orange;
+$primary: #0041A4;
+$info: #0060F0;
+$success: #14A900;
+$warning: #F0B800;
+$danger: #E80000;
+$text: #5C5C5C;
 $body-background: #FFFFFF;
 $background: #FFFFFF;
-// $family-serif: "Georgia", serif; // Add a serif family
+$family-sans-serif: 'Varela Round', sans-serif;
+$family-serif: 'Lora', serif; // Add a serif family
 
 // Override generated variables here
 // For example, by default, the $danger color is $red and the font is sans-serif
