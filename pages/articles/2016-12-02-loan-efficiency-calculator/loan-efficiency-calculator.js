@@ -22,9 +22,11 @@ class loanEfficiencyCalculator extends React.Component {
     constructor(props) {
       super(props);
       let initialLoans = {
+        balance: Big(0),
         payment: Big(1200),
         wallet: Big(0),
         chest: Big(7),
+        interest: Big(0),
         loans: [{
             name: 'loan1',
             balance: Big(30000),
@@ -119,7 +121,6 @@ class loanEfficiencyCalculator extends React.Component {
         layout = post.layout
 
         const loanInputs = this.state.loans.map((loan, index) => {
-          console.log(loan)
           if (index === 0) {
             var upArrow = (
               <span></span>
@@ -144,7 +145,7 @@ class loanEfficiencyCalculator extends React.Component {
                     </button>
                     { upArrow }
                   </div>
-                  <div className='tile is-child is-3 container is-fluid'>
+                  <div className='tile is-child is-2 container is-fluid'>
                     <p className='is-hidden-tablet'>
                       Name
                     </p>
@@ -176,7 +177,7 @@ class loanEfficiencyCalculator extends React.Component {
                       value={loan.intRate.toFixed(2)}
                       onChange={this.handleChange.bind(this, index)} />
                   </div>
-                  <div className='tile is-child is-1 container is-fluid'>
+                  <div className='tile is-child is-2 container is-fluid'>
                     <p className='is-hidden-tablet'>
                       Min Payment
                     </p>
@@ -214,7 +215,7 @@ class loanEfficiencyCalculator extends React.Component {
                 </div>
           );
         });
-
+console.log(this.state)
         return (
           <DocumentTitle title={ `${post.title} - ${config.siteTitle}` }>
             <div>
@@ -239,16 +240,33 @@ class loanEfficiencyCalculator extends React.Component {
                       <div className='tile is-ancestor is-vertical section'>
                         <div className='tile is-parent is-hidden-mobile box'>
                           <div className='tile is-child is-1'></div>
-                          <div className='tile is-child is-3'>Name</div>
+                          <div className='tile is-child is-2'>Name</div>
                           <div className='tile is-child is-2'>Balance</div>
                           <div className='tile is-child is-1'>Rate</div>
-                          <div className='tile is-child is-1'>Min Pay</div>
+                          <div className='tile is-child is-2'>Min Pay</div>
                           <div className='tile is-child is-1'>Interest</div>
                           <div className='tile is-child is-1'>Months</div>
                           <div className='tile is-child is-1'>Years</div>
                           <div className='tile is-child is-1'>Ratio</div>
                         </div>
                         { loanInputs }
+                        <div className='tile is-parent box'>
+                          <div className='tile is-child is-1'>Totals: </div>
+                          <div className='tile is-child is-2'></div>
+                          <div className='tile is-child is-2'>
+                            {this.state.total.toFixed(2)}
+                          </div>
+                          <div className='tile is-child is-1'></div>
+                          <div className='tile is-child is-2'>
+                            {this.state.payment.toFixed(2)}
+                          </div>
+                          <div className='tile is-child is-1'>
+                            {this.state.interest.toFixed(2)}
+                          </div>
+                          <div className='tile is-child is-1'></div>
+                          <div className='tile is-child is-1'></div>
+                          <div className='tile is-child is-1'></div>
+                        </div>
                       </div>
                       <button
                         className='button is-success'
