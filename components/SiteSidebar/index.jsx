@@ -12,49 +12,29 @@ class SiteSidebar extends React.Component {
         const isHome = location.pathname === prefixLink('/')
 
         let header = (
-        <header>
+        <header className='card is-fullwidth'>
           <Link
-              style={{
-                textDecoration: 'none',
-                borderBottom: 'none',
-                outline: 'none'
-              }}
-              to={ prefixLink('/') }>
-            <div className='card'>
-              <div className='card-image'>
-                <figure className='image'>
-                  <img src='https://s.gravatar.com/avatar/c02111afdbe9776a53fb197c0f459fb4?s=256' />
-                </figure>
-              </div>
+            to={ prefixLink('/') }>
+            <div className='card-image'>
+              <figure className='image'>
+                <img src='https://s.gravatar.com/avatar/c02111afdbe9776a53fb197c0f459fb4?s=256' />
+              </figure>
             </div>
           </Link>
-          <div><br />
-            { isHome ? (
-              <h1 className='title'>
-                <Link
-                  style={{
-                    textDecoration: 'none',
-                    borderBottom: 'none',
-                    color: 'inherit'
-                  }}
-                  to={ prefixLink('/') }>
-                  { config.siteAuthor }
-                </Link>
-              </h1>
-              ) :
-              <h2 className='title'>
-                <Link
-                  style={{
-                    textDecoration: 'none',
-                    borderBottom: 'none',
-                    color: 'inherit'
-                  }}
-                  to={ prefixLink('/') }>
-                  { config.siteAuthor }
-                </Link>
-              </h2>
-            }
-            <p className='subtitle'>
+          <div className='card-content'>
+            <p className='title'>
+              <Link
+                style={{
+                  textDecoration: 'none',
+                  borderBottom: 'none',
+                  color: 'inherit'
+                }}
+                to={ prefixLink('/') }>
+                { config.siteAuthor }
+              </Link>
+            </p>
+            <p
+              style={{'fontStyle': 'italic'}}>
               { config.siteDescr }
             </p>
           </div>
@@ -62,22 +42,20 @@ class SiteSidebar extends React.Component {
         )
 
         return (
-            <div className='box'>
-              <div className='sidebar-inner'>
-                <div className='blog-details'>
-                  <header>
-                    { header }
-                  </header>
-                </div>
-                <div className='blog-options'>
-                  <SiteNav {...this.props}/>
-                  <footer>
-                    <SiteLinks {...this.props}/>
+            <div className='container'>
+              { header }
+              <div className='box'>
+                <SiteNav {...this.props}/>
+                <footer>
+                  <div className='is-hidden-mobile'>
+                    <SiteLinks {...this.props} />
+                  </div>
+                  <div>
                     <p className='copyright'>
                       &copy; All rights reserved.
                     </p>
-                  </footer>
-                </div>
+                  </div>
+                </footer>
               </div>
             </div>
             );
