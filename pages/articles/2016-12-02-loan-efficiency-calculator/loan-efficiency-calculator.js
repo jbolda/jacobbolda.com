@@ -175,7 +175,7 @@ class loanEfficiencyCalculator extends React.Component {
                       value={loan.intRate.toFixed(2)}
                       onChange={this.handleChange.bind(this, index)} />
                   </div>
-                  <div className='tile is-child is-2 container is-fluid'>
+                  <div className='tile is-child is-1 container is-fluid'>
                     <p className='is-hidden-tablet'>
                       Min Payment
                     </p>
@@ -203,6 +203,12 @@ class loanEfficiencyCalculator extends React.Component {
                       Years:&nbsp;
                     </span>
                     <span>{loan.years.round(2).toString()}y</span>
+                  </div>
+                  <div className='tile is-child is-1 container is-fluid'>
+                    <span className='is-hidden-tablet'>
+                      Years:&nbsp;
+                    </span>
+                    <span>{loan.ratio.round(2).toString()}</span>
                   </div>
                 </div>
           );
@@ -235,10 +241,11 @@ class loanEfficiencyCalculator extends React.Component {
                           <div className='tile is-child is-3'>Name</div>
                           <div className='tile is-child is-2'>Balance</div>
                           <div className='tile is-child is-1'>Rate</div>
-                          <div className='tile is-child is-2'>Min Payment</div>
+                          <div className='tile is-child is-1'>Min Pay</div>
                           <div className='tile is-child is-1'>Interest</div>
                           <div className='tile is-child is-1'>Months</div>
                           <div className='tile is-child is-1'>Years</div>
+                          <div className='tile is-child is-1'>Ratio</div>
                         </div>
                         { loanInputs }
                       </div>
