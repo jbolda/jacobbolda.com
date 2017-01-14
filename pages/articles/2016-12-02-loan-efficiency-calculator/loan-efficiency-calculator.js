@@ -206,7 +206,7 @@ class loanEfficiencyCalculator extends React.Component {
                   </div>
                   <div className='tile is-child is-1 container is-fluid'>
                     <span className='is-hidden-tablet'>
-                      Years:&nbsp;
+                      Ratio:&nbsp;
                     </span>
                     <span>{loan.ratio.round(2).toString()}</span>
                   </div>
