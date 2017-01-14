@@ -134,55 +134,56 @@ class loanEfficiencyCalculator extends React.Component {
           }
 
           return (
-                <tbody key={index}><tr
-                key={index}
-                className='input-group'>
-                  <td>
+                <div key={index} className='tile is-parent'>
+                  <div className='tile is-child is-1'>
                     <button
                       className='button is-danger'
                       onClick={this.handleDelete.bind(this, index)}>
                       x
                     </button>
-                  </td>
-                  <td>
                     { upArrow }
-                  </td>
-                  <td>
+                  </div>
+                  <div className='tile is-child is-3'>
                     <input
                       name='name'
                       type='text'
                       value={loan.name}
                       onChange={this.handleChange.bind(this, index)}/>
-                  </td>
-                  <td>
+                  </div>
+                  <div className='tile is-child is-2'>
                     <input
                       name='balance'
                       type='number'
                       step='100'
                       value={loan.balance.toFixed(2)}
                       onChange={this.handleChange.bind(this, index)} />
-                  </td>
-                  <td>
+                  </div>
+                  <div className='tile is-child is-1'>
                     <input
                       name='intRate'
                       type='number'
                       step='0.01'
                       value={loan.intRate.toFixed(2)}
                       onChange={this.handleChange.bind(this, index)} />
-                  </td>
-                  <td>
+                  </div>
+                  <div className='tile is-child is-2'>
                     <input
                       name='payment'
                       type='number'
                       step='5'
                       value={loan.payment.toFixed(2)}
                       onChange={this.handleChange.bind(this, index)} />
-                  </td>
-                  <td>
-                    <span>{loan.accumulatedInterest.round(2).toString()}||</span>
-                  </td>
-                  <td><span>{loan.months.round(2).toString()}m|{loan.years.round(2).toString()}y</span></td>
-                </tr></tbody>
+                  </div>
+                  <div className='tile is-child is-1'>
+                    <span>${loan.accumulatedInterest.round(2).toString()}</span>
+                  </div>
+                  <div className='tile is-child is-1'>
+                    <span>{loan.months.round(2).toString()}m</span>
+                  </div>
+                  <div className='tile is-child is-1'>
+                    <span>{loan.years.round(2).toString()}y</span>
+                  </div>
+                </div>
           );
         });
 
@@ -207,19 +208,19 @@ class loanEfficiencyCalculator extends React.Component {
                           value={this.state.payment.toFixed(2)}
                           onChange={this.handlePayment.bind(this)} />
                       </div>
-                      <table className='table is-bordered is-striped is-narrow'>
-                        <thead><tr>
-                          <th></th>
-                          <th></th>
-                          <th>Name</th>
-                          <th>Balance</th>
-                          <th>Interest Rate</th>
-                          <th>Payment</th>
-                          <th>Interest</th>
-                          <th>Months</th>
-                        </tr></thead>
+                      <div className='tile is-ancestor is-vertical'>
+                        <div className='tile is-parent is-hidden-mobile'>
+                          <div className='tile is-child is-1'></div>
+                          <div className='tile is-child is-3'>Name</div>
+                          <div className='tile is-child is-2'>Balance</div>
+                          <div className='tile is-child is-1'>Rate</div>
+                          <div className='tile is-child is-2'>Payment</div>
+                          <div className='tile is-child is-1'>Interest</div>
+                          <div className='tile is-child is-1'>Months</div>
+                          <div className='tile is-child is-1'>Years</div>
+                        </div>
                         { loanInputs }
-                      </table>
+                      </div>
                       <button
                         className='button is-success'
                         onClick={this.addAnother.bind(this)}>
