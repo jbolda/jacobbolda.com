@@ -46,7 +46,8 @@ class loanEfficiencyCalculator extends React.Component {
                 payment: Big(10),
                 accumulatedInterest: Big(0),
                 months: Big(0),
-                years: Big(0)
+                years: Big(0),
+                ratio: Big(0)
               }]})
     }
 
@@ -118,7 +119,7 @@ class loanEfficiencyCalculator extends React.Component {
         layout = post.layout
 
         const loanInputs = this.state.loans.map((loan, index) => {
-
+          console.log(loan)
           if (index === 0) {
             var upArrow = (
               <span></span>
@@ -134,7 +135,7 @@ class loanEfficiencyCalculator extends React.Component {
           }
 
           return (
-                <div key={index} className='tile is-parent'>
+                <div key={index} className='tile is-parent box'>
                   <div className='tile is-child is-1'>
                     <button
                       className='button is-danger'
@@ -208,7 +209,7 @@ class loanEfficiencyCalculator extends React.Component {
                     <span className='is-hidden-tablet'>
                       Ratio:&nbsp;
                     </span>
-                    <span>{loan.ratio.round(2).toString()}</span>
+                    <span>{loan.ratio.toFixed(2)}</span>
                   </div>
                 </div>
           );
@@ -226,7 +227,7 @@ class loanEfficiencyCalculator extends React.Component {
                       We do some fancy stuff here. Trust us.
                     </p>
                     <div>
-                      <div>
+                      <div className='box'>
                         Total Payment: 
                         <input
                           name='maxpayment'
@@ -235,8 +236,8 @@ class loanEfficiencyCalculator extends React.Component {
                           value={this.state.payment.toFixed(2)}
                           onChange={this.handlePayment.bind(this)} />
                       </div>
-                      <div className='tile is-ancestor is-vertical'>
-                        <div className='tile is-parent is-hidden-mobile'>
+                      <div className='tile is-ancestor is-vertical section'>
+                        <div className='tile is-parent is-hidden-mobile box'>
                           <div className='tile is-child is-1'></div>
                           <div className='tile is-child is-3'>Name</div>
                           <div className='tile is-child is-2'>Balance</div>
