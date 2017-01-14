@@ -258,13 +258,22 @@ console.log(this.state)
                           <div className='tile is-child is-1'>Totals: </div>
                           <div className='tile is-child is-2'></div>
                           <div className='tile is-child is-2'>
+                            <span className='is-hidden-tablet'>
+                              Total Balance:&nbsp;
+                            </span>
                             {this.state.totalBalance.toFixed(2)}
                           </div>
                           <div className='tile is-child is-1'></div>
                           <div className='tile is-child is-2'>
+                            <span className='is-hidden-tablet'>
+                              Total Minimum Payment:&nbsp;
+                            </span>
                             {this.state.totalMin.toFixed(2)}+{this.state.additionalPayment.toFixed(2)}
                           </div>
                           <div className='tile is-child is-1'>
+                            <span className='is-hidden-tablet'>
+                              Total Interest Paid:&nbsp;
+                            </span>
                             {this.state.interest.toFixed(2)}
                           </div>
                           <div className='tile is-child is-1'></div>
