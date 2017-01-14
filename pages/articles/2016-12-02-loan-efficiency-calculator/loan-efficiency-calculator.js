@@ -143,20 +143,20 @@ class loanEfficiencyCalculator extends React.Component {
                     </button>
                     { upArrow }
                   </div>
-                  <div className='tile is-child is-3'>
-                    <span className='is-hidden-tablet'>
+                  <div className='tile is-child is-3 container is-fluid'>
+                    <p className='is-hidden-tablet'>
                       Name
-                    </span>
+                    </p>
                     <input
                       name='name'
                       type='text'
                       value={loan.name}
                       onChange={this.handleChange.bind(this, index)}/>
                   </div>
-                  <div className='tile is-child is-2'>
-                    <span className='is-hidden-tablet'>
+                  <div className='tile is-child is-2 container is-fluid'>
+                    <p className='is-hidden-tablet'>
                       Balance
-                    </span>
+                    </p>
                     <input
                       name='balance'
                       type='number'
@@ -164,10 +164,10 @@ class loanEfficiencyCalculator extends React.Component {
                       value={loan.balance.toFixed(2)}
                       onChange={this.handleChange.bind(this, index)} />
                   </div>
-                  <div className='tile is-child is-1'>
-                    <span className='is-hidden-tablet'>
+                  <div className='tile is-child is-1 container is-fluid'>
+                    <p className='is-hidden-tablet'>
                       Interest Rate
-                    </span>
+                    </p>
                     <input
                       name='intRate'
                       type='number'
@@ -175,10 +175,10 @@ class loanEfficiencyCalculator extends React.Component {
                       value={loan.intRate.toFixed(2)}
                       onChange={this.handleChange.bind(this, index)} />
                   </div>
-                  <div className='tile is-child is-2'>
-                    <span className='is-hidden-tablet'>
+                  <div className='tile is-child is-2 container is-fluid'>
+                    <p className='is-hidden-tablet'>
                       Min Payment
-                    </span>
+                    </p>
                     <input
                       name='payment'
                       type='number'
@@ -186,19 +186,19 @@ class loanEfficiencyCalculator extends React.Component {
                       value={loan.payment.toFixed(2)}
                       onChange={this.handleChange.bind(this, index)} />
                   </div>
-                  <div className='tile is-child is-1'>
+                  <div className='tile is-child is-1 container is-fluid'>
                     <span className='is-hidden-tablet'>
                       Interest Paid:&nbsp;
                     </span>
                     <span>${loan.accumulatedInterest.round(2).toString()}</span>
                   </div>
-                  <div className='tile is-child is-1'>
+                  <div className='tile is-child is-1 container is-fluid'>
                     <span className='is-hidden-tablet'>
                       Months:&nbsp;
                     </span>
                     <span>{loan.months.round(2).toString()}m</span>
                   </div>
-                  <div className='tile is-child is-1'>
+                  <div className='tile is-child is-1 container is-fluid'>
                     <span className='is-hidden-tablet'>
                       Years:&nbsp;
                     </span>
