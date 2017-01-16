@@ -1,5 +1,5 @@
 import React from 'react';
-import DocumentTitle from 'react-document-title';
+import Helmet from 'react-helmet';
 import { prefixLink } from 'gatsby-helpers'
 import { config } from 'config'
 import moment from 'moment'
@@ -58,7 +58,14 @@ class calculatorPost extends React.Component {
         layout = post.layout
 
         return (
-          <DocumentTitle title={ `${post.title} - ${config.siteTitle}` }>
+          <div>
+            <Helmet
+              title={ config.siteTitle }
+              meta={[
+                {"name": "description", "content": "A living blog written by Jacob Bolda"},
+                {"name": "keywords", "content": "articles, calculators"}
+              ]}
+            />
             <div>
               { home }
               <div className='blog-single'>
@@ -84,7 +91,7 @@ class calculatorPost extends React.Component {
                 </div>
               </div>
             </div>
-          </DocumentTitle>
+          </div>
         );
     }
 }

@@ -1,13 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router'
-import sortBy from 'lodash/sortBy'
-import moment from 'moment'
-import DocumentTitle from 'react-document-title'
-import { prefixLink } from 'gatsby-helpers'
-import access from 'safe-access'
-import { config } from 'config'
-import SitePost from '../components/SitePost'
-import SiteSidebar from '../components/SiteSidebar'
+import React from 'react';
+import { Link } from 'react-router';
+import sortBy from 'lodash/sortBy';
+import moment from 'moment';
+import Helmet from 'react-helmet';
+import { prefixLink } from 'gatsby-helpers';
+import access from 'safe-access';
+import { config } from 'config';
+import SitePost from '../components/SitePost';
+import SiteSidebar from '../components/SiteSidebar';
 
 class SiteIndex extends React.Component {
     componentWillMount() {
@@ -111,7 +111,14 @@ class SiteIndex extends React.Component {
         })
 
         return (
-            <DocumentTitle title={ config.siteTitle }>
+            <div>
+              <Helmet
+                title={ config.siteTitle }
+                meta={[
+                  {"name": "description", "content": "A living blog written by Jacob Bolda"},
+                  {"name": "keywords", "content": "articles, calculators"}
+                ]}
+              />
               <div className='section'>
                 <div className='columns'>
                   <div className='column is-one-quarter'>
@@ -124,7 +131,7 @@ class SiteIndex extends React.Component {
                   </div>
                 </div>
               </div>
-            </DocumentTitle>
+            </div>
         )
     }
 }

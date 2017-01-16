@@ -1,5 +1,5 @@
 import React from 'react';
-import DocumentTitle from 'react-document-title';
+import Helmet from 'react-helmet';
 import { config } from 'config';
 import SiteLinks from 'components/SiteLinks';
 import SiteSidebar from 'components/SiteSidebar';
@@ -13,7 +13,14 @@ class ContactMe extends React.Component {
         const {location, children} = this.props
 
         return (
-            <DocumentTitle title={ config.siteTitle }>
+            <div>
+              <Helmet
+                title={ config.siteTitle }
+                meta={[
+                  {"name": "description", "content": "A living blog written by Jacob Bolda"},
+                  {"name": "keywords", "content": "articles, calculators"}
+                ]}
+              />
               <div className='section'>
                 <div className='columns'>
                   <div className='column is-one-quarter'>
@@ -33,7 +40,7 @@ class ContactMe extends React.Component {
                   </div>
                 </div>
               </div>
-            </DocumentTitle>
+            </div>
             );
     }
 }
