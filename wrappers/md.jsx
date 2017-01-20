@@ -1,37 +1,24 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import SitePost from '../components/SitePost';
-import SitePage from '../components/SitePage';
 import { config } from 'config';
 
 class MarkdownWrapper extends React.Component {
     render() {
-        const {route} = this.props
+        const { route } = this.props
         const post = route.page.data
-        let layout, template
-
-        layout = post.layout
-
-        if (layout === 'page') {
-            template = <SitePage {...this.props}/>
-        } else if (layout === 'post') {
-            template = <SitePost {...this.props}/>
-        }
-
+console.log('test', this)
         return (
-            <div className="markdown">
-              <Helmet
-                title={`${post.title} | ${config.siteTitle}`}
-              />
-              <div>
-                { template }
-              </div>
+            <div className='markdown'>
+                <h1>{post.title}</h1>
+                <div dangerouslySetInnerHTML={{ __html: post.body }} />
             </div>
             );
     }
 }
 
 MarkdownWrapper.propTypes = {
+    children: React.PropTypes.any,
+    location: React.PropTypes.object,
     route: React.PropTypes.object,
 }
 

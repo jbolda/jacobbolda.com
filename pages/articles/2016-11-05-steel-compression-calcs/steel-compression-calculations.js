@@ -4,9 +4,7 @@ import { prefixLink } from 'gatsby-helpers'
 import { config } from 'config'
 import moment from 'moment'
 import { RouteHandler, Link } from 'react-router'
-import ReadNext from '../../../components/ReadNext';
-import './style.css';
-import '../../../static/css/highlight.css';
+import ReadNext from 'components/ReadNext';
 
 exports.data = {
     title: 'Steel Compression Calculations',
@@ -26,11 +24,6 @@ class calculatorPost extends React.Component {
     render() {
         const {route} = this.props;
         const post = route.page.data
-//        post.title = 'Steel Compression Calculations'
-//        post.written = '2016-11-05'
-//        post.path = '/steel-compression-calculations'
-//        post.category = 'engineering'
-//        post.description = 'Putting together some functions to run the compression calculations from the steel manual.'
 
         let layout, template
 
@@ -58,40 +51,17 @@ class calculatorPost extends React.Component {
         layout = post.layout
 
         return (
-          <div>
-            <Helmet
-              title={ config.siteTitle }
-              meta={[
-                {"name": "description", "content": "A living blog written by Jacob Bolda"},
-                {"name": "keywords", "content": "articles, calculators"}
-              ]}
-            />
-            <div>
-              { home }
-              <div className='blog-single'>
-                <div className='text'>
-                  <h1>{ post.title }</h1>
-                  <div className='postBody'>
-                    <p>
-                      These functions are written in javascript and embedded into the window.
-                      Press F12 (on windows in chrome) to get into the developer console.
-                      Click the console tab, and run c.list() in the console.
-                    </p>
-                  </div>
-                  { published }
-                </div>
-                <div className='footer'>
-                  <ReadNext post={ post } {...this.props}/>
-                  <hr></hr>
-                  <p>
-                    { config.siteDescr }
-                    <a href={ config.siteTwitterUrl }>
-                      <br></br> <strong>{ config.siteAuthor }</strong> on Twitter</a>
-                  </p>
-                </div>
+            <div className='text'>
+              <h1>{ post.title }</h1>
+              <div className='postBody'>
+                <p>
+                  These functions are written in javascript and embedded into the window.
+                  Press F12 (on windows in chrome) to get into the developer console.
+                  Click the console tab, and run c.list() in the console.
+                </p>
               </div>
+              { published }
             </div>
-          </div>
         );
     }
 }

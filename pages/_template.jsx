@@ -1,26 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { prefixLink } from 'gatsby-helpers';
+import Helmet from 'react-helmet';
 import { config } from 'config';
 
-import '../static/css/base.scss';
+import 'static/css/base.scss';
 
-class Template extends React.Component {
+class MasterTemplate extends React.Component {
     render() {
-        const {location, children} = this.props
+        const {children, route} = this.props;
 
         return (
-            <div className='wrapper'>
+            <div className='MasterTemplate'>
+              <Helmet
+                title={ config.siteTitle }
+                meta={[
+                  {"name": "description", "content": "A living blog written by Jacob Bolda"},
+                  {"name": "keywords", "content": "articles, calculators"}
+                ]}
+              />
               { children }
             </div>
             );
     }
 }
 
-Template.propTypes = {
-    children: React.PropTypes.any,
-    location: React.PropTypes.object,
+MasterTemplate.propTypes = {
     route: React.PropTypes.object,
 }
 
-export default Template;
+export default MasterTemplate;
