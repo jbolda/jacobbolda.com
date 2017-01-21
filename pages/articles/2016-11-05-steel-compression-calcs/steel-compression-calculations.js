@@ -1,5 +1,4 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import { prefixLink } from 'gatsby-helpers'
 import { config } from 'config'
 import { RouteHandler, Link } from 'react-router'
@@ -26,24 +25,19 @@ class calculatorPost extends React.Component {
 
         let layout, template
 
-        const home = (
-          <div>
-            <Link className='gohome' to={ prefixLink('/') }> All Articles
-            </Link>
-          </div>
-        );
-
         layout = post.layout
 
         return (
-            <div className='blog-single content'>
-              <h1>{ post.title }</h1>
-              <div className='postBody'>
-                <p>
-                  These functions are written in javascript and embedded into the window.
-                  Press F12 (on windows in chrome) to get into the developer console.
-                  Click the console tab, and run c.list() in the console.
-                </p>
+            <div className='section'>
+              <div className='container content'>
+                <h1>{ post.title }</h1>
+                <div className='postBody'>
+                  <p>
+                    These functions are written in javascript and embedded into the window.
+                    Press F12 (on windows in chrome) to get into the developer console.
+                    Click the console tab, and run c.list() in the console.
+                  </p>
+                </div>
               </div>
             </div>
         );

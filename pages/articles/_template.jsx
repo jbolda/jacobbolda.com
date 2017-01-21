@@ -19,7 +19,7 @@ class ArticleTemplate extends React.Component {
             <div className='container'>
               <div className='nav-left'>
                 <Link
-                  className='nav-item'
+                  className='nav-item is-tab is-active'
                   to={ prefixLink('/') }>
                   All Articles
                 </Link>
@@ -43,22 +43,20 @@ class ArticleTemplate extends React.Component {
         }
 
         return (
-            <div className='ArticleTemplate container'  style={{padding: 20}}>
+            <div className='ArticleTemplate'>
               { home }
               <div className=''>
-                <div className=''>
-                  { children }
-                </div>
-                <div className='footer blog-single'>
-                  { published }
-                  <ReadNext post={ post } {...this.props}/>
-                  <hr></hr>
-                  <p>
-                    { config.siteDescr }
-                    <a href={ config.siteTwitterUrl }>
-                      <br></br> <strong>{ config.siteAuthor }</strong> on Twitter</a>
-                  </p>
-                </div>
+                { children }
+              </div>
+              <div className='footer blog-single'>
+                { published }
+                <ReadNext post={ post } {...this.props}/>
+                <hr></hr>
+                <p>
+                  { config.siteDescr }
+                  <a href={ config.siteTwitterUrl }>
+                    <br></br> <strong>{ config.siteAuthor }</strong> on Twitter</a>
+                </p>
               </div>
             </div>
             );

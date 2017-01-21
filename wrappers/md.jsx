@@ -7,9 +7,11 @@ class MarkdownWrapper extends React.Component {
         const post = route.page.data
 
         return (
-            <div className='markdown blog-single content'>
+            <div className='markdown section'>
+              <div className='container content'>
                 <h1>{post.title}</h1>
                 <div dangerouslySetInnerHTML={{ __html: post.body }} />
+              </div>
             </div>
             );
     }
