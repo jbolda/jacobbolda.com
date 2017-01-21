@@ -21,7 +21,7 @@ class ArticleTemplate extends React.Component {
                 <Link
                   className='nav-item is-tab is-active'
                   to={ prefixLink('/') }>
-                  All Articles
+                  Home
                 </Link>
               </div>
             </div>
