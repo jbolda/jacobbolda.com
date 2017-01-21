@@ -13,7 +13,7 @@ class ArticleTemplate extends React.Component {
         const post = children.props.route;
         const data = post.page.data;
         let layout, template
-console.log(post)
+
         const home = (
           <div>
             <Link className='gohome' to={ prefixLink('/') }> All Articles
@@ -39,7 +39,7 @@ console.log(post)
             <div className='ArticleTemplate'>
               { home }
               <div>
-                <div>
+                <div className='container is-fluid'>
                   { children }
                 </div>
                 <div className='footer blog-single'>
