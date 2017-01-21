@@ -5,10 +5,9 @@ import { config } from 'config';
 import moment from 'moment';
 import { RouteHandler, Link } from 'react-router';
 import ReadNext from '../../../components/ReadNext';
-//import { Big, plus, minus, div } from 'big.js';
 var Big = require('big.js');
-import './style.css';
-import '../../../static/css/highlight.css';
+import './style.scss';
+import 'static/css/highlight.css';
 
 exports.data = {
     title: 'Loan Efficiency Calculator',
@@ -156,6 +155,7 @@ class loanEfficiencyCalculator extends React.Component {
                     <input
                       name='name'
                       type='text'
+                      className='input'
                       value={loan.name}
                       onChange={this.handleChange.bind(this, index)}/>
                   </div>
@@ -166,6 +166,7 @@ class loanEfficiencyCalculator extends React.Component {
                     <input
                       name='balance'
                       type='number'
+                      className='input'
                       step='100'
                       value={loan.balance.toFixed(2)}
                       onChange={this.handleChange.bind(this, index)} />
@@ -177,6 +178,7 @@ class loanEfficiencyCalculator extends React.Component {
                     <input
                       name='intRate'
                       type='number'
+                      className='input'
                       step='0.01'
                       value={loan.intRate.toFixed(2)}
                       onChange={this.handleChange.bind(this, index)} />
@@ -188,6 +190,7 @@ class loanEfficiencyCalculator extends React.Component {
                     <input
                       name='payment'
                       type='number'
+                      className='input'
                       step='5'
                       value={loan.payment.toFixed(2)}
                       onChange={this.handleChange.bind(this, index)} />
@@ -219,100 +222,105 @@ class loanEfficiencyCalculator extends React.Component {
                 </div>
           );
         });
-console.log(this.state)
+
         return (
-              <div className='blog-single'>
-                <div className='text'>
-                  <h1>{ post.title }</h1>
-                  <div className='postBody'>
-                    <div classNane='content'>
-                      <h2>Debt Payoff</h2>
-                      <p>When tackling debt, there are plenty of pointers out there for the best method. The most efficient way to pay down the debt is with the highest interest first. Finances are highly emotional though. If they weren't, it would be simply that income has to be greater then expenses, and nobody would ever struggle.</p>
+            <div className=''>
 
-                      <p>Yes, they are clearly emotional.</p>
+              <div className='blog-single content'>
+                <h1>{ post.title }</h1>
+                <h2>Debt Payoff</h2>
+                <p>When tackling debt, there are plenty of pointers out there for the best method. The most efficient way to pay down the debt is with the highest interest first. Finances are highly emotional though. If they weren't, it would be simply that income has to be greater then expenses, and nobody would ever struggle.</p>
 
-                      <p>So how do we best approach things then? Well, paying off the loan with the smallest balance first is the answer. Depending on your loan situation though, this can be very fiscally inefficient. If you are anything like me, your hate paying interest and fees.</p>
+                <p>Yes, they are clearly emotional.</p>
 
-                      <p>Perhaps hate is too strong a word.</p>
+                <p>So how do we best approach things then? Well, paying off the loan with the smallest balance first is the answer. Depending on your loan situation though, this can be very fiscally inefficient. If you are anything like me, your hate paying interest and fees.</p>
 
-                      <p>There has to be a solution to this, right? Well, it seems to best to have a mix of both of these methods. Only you know you. Start off with a quick win, and then tackle that high interest debt. Or hit the high interest head first.</p>
+                <p>Perhaps hate is too strong a word.</p>
 
-                      <p>Most importantly though, know what effects these choices create, emotional highs paying off loans or fiscal wins paying less interest. Secondly make the plan consistent by paying the same amount every month. As loans pay off, you will be making greater and greater additional payments as that payment "snowball" or creates an "avalanche" effect.</p>
+                <p>There has to be a solution to this, right? Well, it seems to best to have a mix of both of these methods. Only you know you. Start off with a quick win, and then tackle that high interest debt. Or hit the high interest head first.</p>
 
-                      <p>The best part? I created a calculator below to help you run the numbers. Feel free to shoot me an email or tweet me with any feedback or questions!</p>
+                <p>Most importantly though, know what effects these choices create, emotional highs paying off loans or fiscal wins paying less interest. Secondly make the plan consistent by paying the same amount every month. As loans pay off, you will be making greater and greater additional payments as that payment "snowball" or creates an "avalanche" effect.</p>
 
-                      <h2>Calculator Breakdown</h2>
-                      <p>Firstly, we enter the total payment. This is the amount you pay month over month, consistently, even as you pay off loans.</p>
+                <p>The best part? I created a calculator below to help you run the numbers. Feel free to shoot me an email or tweet me with any feedback or questions!</p>
 
-                      <p>Next, we add all of our loans. The name is just a label to keep you sane. The balance is how much you owe on the loan; the amount of money that interest accrues upon. The interest rate is entered as a percent. It is the APY, not APR. The minimum payment is the smallest you owe monthly to not go into default.</p>
+                <h2>Calculator Breakdown</h2>
+                <p>Firstly, we enter the total payment. This is the amount you pay month over month, consistently, even as you pay off loans.</p>
 
-                      <p>Continuing, each loan will show the interest paid as well as the time it took to pay off this loan. There is a max loan of 60 years to prevent errors, but hopefully that is not a limit you will need to consider.</p>
+                <p>Next, we add all of our loans. The name is just a label to keep you sane. The balance is how much you owe on the loan; the amount of money that interest accrues upon. The interest rate is entered as a percent. It is the APY, not APR. The minimum payment is the smallest you owe monthly to not go into default.</p>
 
-                      <p>As loans are paid off, the additional payment amount increases by the minimum payment of each loan that is paid off. At the bottom, you can view the total numbers. The total balance is how much debt you have right now. The minimum payment represents the (total minimum payment) + (the additional payment) = (total payment), where the total payment is the first number that we entered.</p>
+                <p>Continuing, each loan will show the interest paid as well as the time it took to pay off this loan. There is a max loan of 60 years to prevent errors, but hopefully that is not a limit you will need to consider.</p>
 
-                      <p>Lastly we have the total interest paid. Feel free to play around with the order of loan payment and see how it affects this number. Strike a good balance between minimizing this number and getting enough wins to keep you on the horse.</p>
+                <p>As loans are paid off, the additional payment amount increases by the minimum payment of each loan that is paid off. At the bottom, you can view the total numbers. The total balance is how much debt you have right now. The minimum payment represents the (total minimum payment) + (the additional payment) = (total payment), where the total payment is the first number that we entered.</p>
 
-                      <p>Good luck, and happy math!</p>
+                <p>Lastly we have the total interest paid. Feel free to play around with the order of loan payment and see how it affects this number. Strike a good balance between minimizing this number and getting enough wins to keep you on the horse.</p>
+
+                <p>Good luck, and happy math!</p>
+
+                { published }
+              </div>
+
+              <div
+                className='section'
+                style={{backgroundColor: 'hsl(0, 0%, 96%)'}}>
+                <div className='blog-single'>
+                  <div className='box is-3'>
+                    Total Payment: 
+                    <input
+                      name='maxpayment'
+                      type='number'
+                      className='input'
+                      step='10'
+                      value={this.state.payment.toFixed(2)}
+                      onChange={this.handlePayment.bind(this)} />
+                  </div>
+                  <div className='tile is-ancestor is-vertical section' style={{backgroundColor: 'inherit'}}>
+                    <div className='tile is-parent is-hidden-mobile box'>
+                      <div className='tile is-child is-1'></div>
+                      <div className='tile is-child is-2'>Name</div>
+                      <div className='tile is-child is-2'>Balance</div>
+                      <div className='tile is-child is-1'>Rate</div>
+                      <div className='tile is-child is-2'>Min Pay</div>
+                      <div className='tile is-child is-1'>Interest</div>
+                      <div className='tile is-child is-1'>Months</div>
+                      <div className='tile is-child is-1'>Years</div>
+                      <div className='tile is-child is-1'>Ratio</div>
                     </div>
-                    <div>
-                      <div className='box'>
-                        Total Payment: 
-                        <input
-                          name='maxpayment'
-                          type='number'
-                          step='10'
-                          value={this.state.payment.toFixed(2)}
-                          onChange={this.handlePayment.bind(this)} />
+                    { loanInputs }
+                    <div className='tile is-parent box'>
+                      <div className='tile is-child is-1'>Totals: </div>
+                      <div className='tile is-child is-2'></div>
+                      <div className='tile is-child is-2'>
+                        <span className='is-hidden-tablet'>
+                          Total Balance:&nbsp;
+                        </span>
+                        {this.state.totalBalance.toFixed(2)}
                       </div>
-                      <div className='tile is-ancestor is-vertical section'>
-                        <div className='tile is-parent is-hidden-mobile box'>
-                          <div className='tile is-child is-1'></div>
-                          <div className='tile is-child is-2'>Name</div>
-                          <div className='tile is-child is-2'>Balance</div>
-                          <div className='tile is-child is-1'>Rate</div>
-                          <div className='tile is-child is-2'>Min Pay</div>
-                          <div className='tile is-child is-1'>Interest</div>
-                          <div className='tile is-child is-1'>Months</div>
-                          <div className='tile is-child is-1'>Years</div>
-                          <div className='tile is-child is-1'>Ratio</div>
-                        </div>
-                        { loanInputs }
-                        <div className='tile is-parent box'>
-                          <div className='tile is-child is-1'>Totals: </div>
-                          <div className='tile is-child is-2'></div>
-                          <div className='tile is-child is-2'>
-                            <span className='is-hidden-tablet'>
-                              Total Balance:&nbsp;
-                            </span>
-                            {this.state.totalBalance.toFixed(2)}
-                          </div>
-                          <div className='tile is-child is-1'></div>
-                          <div className='tile is-child is-2'>
-                            <span className='is-hidden-tablet'>
-                              Total Minimum Payment:&nbsp;
-                            </span>
-                            {this.state.totalMin.toFixed(2)}+{this.state.additionalPayment.toFixed(2)}
-                          </div>
-                          <div className='tile is-child is-1'>
-                            <span className='is-hidden-tablet'>
-                              Total Interest Paid:&nbsp;
-                            </span>
-                            {this.state.interest.toFixed(2)}
-                          </div>
-                          <div className='tile is-child is-1'></div>
-                          <div className='tile is-child is-1'></div>
-                          <div className='tile is-child is-1'></div>
-                        </div>
+                      <div className='tile is-child is-1'></div>
+                      <div className='tile is-child is-2'>
+                        <span className='is-hidden-tablet'>
+                          Total Minimum Payment:&nbsp;
+                        </span>
+                        {this.state.totalMin.toFixed(2)}+{this.state.additionalPayment.toFixed(2)}
                       </div>
-                      <button
-                        className='button is-success'
-                        onClick={this.addAnother.bind(this)}>
-                        add another
-                      </button>
+                      <div className='tile is-child is-1'>
+                        <span className='is-hidden-tablet'>
+                          Total Interest Paid:&nbsp;
+                        </span>
+                        {this.state.interest.toFixed(2)}
+                      </div>
+                      <div className='tile is-child is-1'></div>
+                      <div className='tile is-child is-1'></div>
+                      <div className='tile is-child is-1'></div>
                     </div>
                   </div>
-                  { published }
+                  <button
+                    className='button is-success'
+                    onClick={this.addAnother.bind(this)}>
+                    add another
+                  </button>
                 </div>
+              </div>
+
             </div>
         );
     }
