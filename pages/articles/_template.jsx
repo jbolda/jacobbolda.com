@@ -15,9 +15,16 @@ class ArticleTemplate extends React.Component {
         let layout, template
 
         const home = (
-          <div>
-            <Link className='button gohome' to={ prefixLink('/') }> All Articles
-            </Link>
+          <div className='nav'>
+            <div className='container'>
+              <div className='nav-left'>
+                <Link
+                  className='nav-item'
+                  to={ prefixLink('/') }>
+                  All Articles
+                </Link>
+              </div>
+            </div>
           </div>
         );
 
@@ -36,10 +43,10 @@ class ArticleTemplate extends React.Component {
         }
 
         return (
-            <div className='ArticleTemplate'>
+            <div className='ArticleTemplate container'  style={{padding: 20}}>
               { home }
-              <div>
-                <div className='container is-fluid'>
+              <div className=''>
+                <div className=''>
                   { children }
                 </div>
                 <div className='footer blog-single'>
