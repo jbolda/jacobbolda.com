@@ -2,7 +2,6 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { prefixLink } from 'gatsby-helpers'
 import { config } from 'config'
-import moment from 'moment'
 import { RouteHandler, Link } from 'react-router'
 import ReadNext from 'components/ReadNext';
 
@@ -34,24 +33,10 @@ class calculatorPost extends React.Component {
           </div>
         );
 
-        if (post.updated === undefined) {
-          var published = (
-            <div className='date-published'>
-              <p><em>published { moment(post.written).format('D MMM YYYY') }</em></p>
-            </div>
-          );
-        } else {
-          var published = (
-            <div className='date-published'>
-              <p><em>originally published { moment(post.written).format('D MMM YYYY') } and updated { moment(post.updated).format('D MMM YYYY') }</em></p>
-            </div>
-          );
-        }
-
         layout = post.layout
 
         return (
-            <div className='text'>
+            <div className='blog-single content'>
               <h1>{ post.title }</h1>
               <div className='postBody'>
                 <p>
@@ -60,7 +45,6 @@ class calculatorPost extends React.Component {
                   Click the console tab, and run c.list() in the console.
                 </p>
               </div>
-              { published }
             </div>
         );
     }

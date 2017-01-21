@@ -11,8 +11,9 @@ class ArticleTemplate extends React.Component {
     render() {
         const {children, route} = this.props;
         const post = children.props.route;
+        const data = post.page.data;
         let layout, template
-
+console.log(post)
         const home = (
           <div>
             <Link className='gohome' to={ prefixLink('/') }> All Articles
@@ -20,16 +21,16 @@ class ArticleTemplate extends React.Component {
           </div>
         );
 
-        if (post.updated === undefined) {
+        if (data.updated === undefined) {
           var published = (
             <div className='date-published'>
-              <p><em>published { moment(post.written).format('D MMM YYYY') }</em></p>
+              <p><em>published { moment(data.written).format('D MMM YYYY') }</em></p>
             </div>
           );
         } else {
           var published = (
             <div className='date-published'>
-              <p><em>originally published { moment(post.written).format('D MMM YYYY') } and updated { moment(post.updated).format('D MMM YYYY') }</em></p>
+              <p><em>originally published { moment(data.written).format('D MMM YYYY') } and updated { moment(data.updated).format('D MMM YYYY') }</em></p>
             </div>
           );
         }

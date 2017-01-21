@@ -1,8 +1,6 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import { prefixLink } from 'gatsby-helpers';
 import { config } from 'config';
-import moment from 'moment';
 import { RouteHandler, Link } from 'react-router';
 import ReadNext from '../../../components/ReadNext';
 var Big = require('big.js');
@@ -99,27 +97,6 @@ class loanEfficiencyCalculator extends React.Component {
         const post = route.page.data
 
         let layout, template
-
-        const home = (
-          <div>
-            <Link className='gohome' to={ prefixLink('/') }> All Articles
-            </Link>
-          </div>
-        );
-
-        if (post.updated === undefined) {
-          var published = (
-            <div className='date-published'>
-              <p><em>published { moment(post.written).format('D MMM YYYY') }</em></p>
-            </div>
-          );
-        } else {
-          var published = (
-            <div className='date-published'>
-              <p><em>originally published { moment(post.written).format('D MMM YYYY') } and updated { moment(post.updated).format('D MMM YYYY') }</em></p>
-            </div>
-          );
-        }
 
         layout = post.layout
 
@@ -255,8 +232,6 @@ class loanEfficiencyCalculator extends React.Component {
                 <p>Lastly we have the total interest paid. Feel free to play around with the order of loan payment and see how it affects this number. Strike a good balance between minimizing this number and getting enough wins to keep you on the horse.</p>
 
                 <p>Good luck, and happy math!</p>
-
-                { published }
               </div>
 
               <div
