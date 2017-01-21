@@ -210,7 +210,7 @@ class loanEfficiencyCalculator extends React.Component {
 
                 <p>Yes, they are clearly emotional.</p>
 
-                <p>So how do we best approach things then? Well, paying off the loan with the smallest balance first is the answer. Depending on your loan situation though, this can be very fiscally inefficient. If you are anything like me, your hate paying interest and fees.</p>
+                <p>So how do we best approach things then? Well, paying off the loan with the smallest balance first is the answer. Depending on your loan situation though, this can be very fiscally inefficient. If you are anything like me, you hate paying interest and fees.</p>
 
                 <p>Perhaps hate is too strong a word.</p>
 
