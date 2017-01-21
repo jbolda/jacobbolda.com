@@ -75,6 +75,7 @@
 	background: #f4f4f4;
 	font-weight: 400;
 	border-radius: 3px;
+	z-index: 99;
 }
 .gohome:focus {
 	color: #444;

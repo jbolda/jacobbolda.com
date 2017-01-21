@@ -16,7 +16,7 @@ class ArticleTemplate extends React.Component {
 
         const home = (
           <div>
-            <Link className='gohome' to={ prefixLink('/') }> All Articles
+            <Link className='button gohome' to={ prefixLink('/') }> All Articles
             </Link>
           </div>
         );
