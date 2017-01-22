@@ -116,87 +116,93 @@ class loanEfficiencyCalculator extends React.Component {
           }
 
           return (
-                <div key={index} className='tile is-parent box'>
-                  <div className='tile is-child is-1'>
-                    <button
-                      className='button is-danger'
-                      onClick={this.handleDelete.bind(this, index)}>
-                      x
-                    </button>
-                    { upArrow }
+                <div key={index} className='tile is-vertical box'>
+                  <div className='tile is-parent is-12'>
+                    <div className='tile is-child is-1'>
+                      <button
+                        className='button is-danger'
+                        onClick={this.handleDelete.bind(this, index)}>
+                        x
+                      </button>
+                      { upArrow }
+                    </div>
+                    <div className='tile is-child is-3'>
+                      <p>
+                        Name
+                      </p>
+                      <input
+                        name='name'
+                        type='text'
+                        className='input'
+                        value={loan.name}
+                        onChange={this.handleChange.bind(this, index)}/>
+                    </div>
+                    <div className='tile is-child is-3'>
+                      <p>
+                        Balance
+                      </p>
+                      <div>
+                        <input
+                          name='balance'
+                          type='number'
+                          className='input'
+                          step='100'
+                          value={loan.balance.toFixed(2)}
+                          onChange={this.handleChange.bind(this, index)} />
+                      </div>
+                    </div>
+                    <div className='tile is-child is-2'>
+                      <p>
+                        Interest Rate
+                      </p>
+                      <input
+                        name='intRate'
+                        type='number'
+                        className='input'
+                        step='0.01'
+                        value={loan.intRate.toFixed(2)}
+                        onChange={this.handleChange.bind(this, index)} />
+                    </div>
+                    <div className='tile is-child is-3'>
+                      <p>
+                        Minimum Payment
+                      </p>
+                      <input
+                        name='payment'
+                        type='number'
+                        className='input'
+                        step='5'
+                        value={loan.payment.toFixed(2)}
+                        onChange={this.handleChange.bind(this, index)} />
+                    </div>
                   </div>
-                  <div className='tile is-child is-2 container is-fluid'>
-                    <p className='is-hidden-tablet'>
-                      Name
-                    </p>
-                    <input
-                      name='name'
-                      type='text'
-                      className='input'
-                      value={loan.name}
-                      onChange={this.handleChange.bind(this, index)}/>
-                  </div>
-                  <div className='tile is-child is-2 container is-fluid'>
-                    <p className='is-hidden-tablet'>
-                      Balance
-                    </p>
-                    <input
-                      name='balance'
-                      type='number'
-                      className='input'
-                      step='100'
-                      value={loan.balance.toFixed(2)}
-                      onChange={this.handleChange.bind(this, index)} />
-                  </div>
-                  <div className='tile is-child is-1 container is-fluid'>
-                    <p className='is-hidden-tablet'>
-                      Interest Rate
-                    </p>
-                    <input
-                      name='intRate'
-                      type='number'
-                      className='input'
-                      step='0.01'
-                      value={loan.intRate.toFixed(2)}
-                      onChange={this.handleChange.bind(this, index)} />
-                  </div>
-                  <div className='tile is-child is-2 container is-fluid'>
-                    <p className='is-hidden-tablet'>
-                      Min Payment
-                    </p>
-                    <input
-                      name='payment'
-                      type='number'
-                      className='input'
-                      step='5'
-                      value={loan.payment.toFixed(2)}
-                      onChange={this.handleChange.bind(this, index)} />
-                  </div>
-                  <div className='tile is-child is-1 container is-fluid'>
-                    <span className='is-hidden-tablet'>
-                      Interest Paid:&nbsp;
-                    </span>
-                    <span>${loan.accumulatedInterest.round(2).toString()}</span>
-                  </div>
-                  <div className='tile is-child is-1 container is-fluid'>
-                    <span className='is-hidden-tablet'>
-                      Months:&nbsp;
-                    </span>
-                    <span>{loan.months.round(2).toString()}m</span>
-                  </div>
-                  <div className='tile is-child is-1 container is-fluid'>
-                    <span className='is-hidden-tablet'>
-                      Years:&nbsp;
-                    </span>
-                    <span>{loan.years.round(2).toString()}y</span>
-                  </div>
-                  <div className='tile is-child is-1 container is-fluid'>
-                    <span className='is-hidden-tablet'>
-                      Ratio:&nbsp;
-                    </span>
-                    <span>{loan.ratio.toFixed(2)}</span>
-                  </div>
+                  <div className='tile is-parent is-12'>
+                    <div className='tile is-child is-2'>
+                      <span>
+                        Interest Paid:&nbsp;
+                      </span>
+                      <span>${loan.accumulatedInterest.round(2).toString()}</span>
+                    </div>
+                    <div className='tile is-child is-2'>
+                      <span>
+                        Months:&nbsp;
+                      </span>
+                      <span>{loan.months.round(2).toString()}m</span>
+                    </div>
+                    <div className='tile is-child is-2'>
+                      <span>
+                        Years:&nbsp;
+                      </span>
+                      <span>{loan.years.round(2).toString()}y</span>
+                    </div>
+                    <div className='tile is-child is-2'>
+                      <span>
+                        Ratio:&nbsp;
+                      </span>
+                      <span>{loan.ratio.toFixed(2)}</span>
+                    </div>
                 </div>
+              </div>
           );
         });
 
@@ -251,17 +257,6 @@ class loanEfficiencyCalculator extends React.Component {
                       onChange={this.handlePayment.bind(this)} />
                   </div>
                   <div className='tile is-ancestor is-vertical section' style={{backgroundColor: 'inherit'}}>
-                    <div className='tile is-parent is-hidden-mobile box'>
-                      <div className='tile is-child is-1'></div>
-                      <div className='tile is-child is-2'>Name</div>
-                      <div className='tile is-child is-2'>Balance</div>
-                      <div className='tile is-child is-1'>Rate</div>
-                      <div className='tile is-child is-2'>Min Pay</div>
-                      <div className='tile is-child is-1'>Interest</div>
-                      <div className='tile is-child is-1'>Months</div>
-                      <div className='tile is-child is-1'>Years</div>
-                      <div className='tile is-child is-1'>Ratio</div>
-                    </div>
                     { loanInputs }
                     <div className='tile is-parent box'>
                       <div className='tile is-child is-1'>Totals: </div>
