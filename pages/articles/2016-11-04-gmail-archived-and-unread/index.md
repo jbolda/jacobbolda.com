@@ -2,7 +2,7 @@
 title: Gmail Archive and Unread
 written: "2016-11-04"
 layout: post
-path: "/gmail-archive-and-unread/"
+path: "/gmail-archive-and-unread"
 category: "productivity"
 description: "Fix the OCD by marking archived emails from unread to read in Gmail."
 ---
