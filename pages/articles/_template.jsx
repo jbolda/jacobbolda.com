@@ -49,12 +49,17 @@ class ArticleTemplate extends React.Component {
                 title={ data.title }
                 meta={[
                   { name: 'description', content: data.description },
+                  { property: 'og:url', content: ('https://www.jacobbolda.com'+data.path) },
                   { property: 'og:description', content: data.description },
                   { property: 'og:type', content: 'article' },
                   { property: 'og:article:author', content: 'Jacob Bolda' },
                   { property: 'og:article:published_time', content: moment(data.written, 'YYYY-MM-DD') },
                   { property: 'og:article:modified_time', content: moment(data.updated, 'YYYY-MM-DD') },
-                  { property: 'og:article:tag', content: data.category }
+                  { property: 'og:article:tag', content: data.category },
+                  { property: 'label1', content: 'Category' },
+                  { property: 'data1', content: data.category },
+                  { property: 'label2', content: 'Written' },
+                  { property: 'data2', content: data.written },
                 ]}
               />
               { home }
