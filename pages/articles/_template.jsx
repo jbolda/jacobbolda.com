@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Helmet from 'react-helmet';
 import moment from 'moment';
 import { prefixLink } from 'gatsby-helpers';
 import { config } from 'config';
@@ -44,6 +45,18 @@ class ArticleTemplate extends React.Component {
 
         return (
             <div className='ArticleTemplate'>
+              <Helmet
+                title={ data.title }
+                meta={[
+                  { name: 'description', content: data.description },
+                  { property: 'og:description', content: data.description },
+                  { property: 'og:type', content: 'article' },
+                  { property: 'og:article:author', content: 'Jacob Bolda' },
+                  { property: 'og:article:published_time', content: moment(data.written, 'YYYY-MM-DD') },
+                  { property: 'og:article:modified_time', content: moment(data.updated, 'YYYY-MM-DD') },
+                  { property: 'og:article:tag', content: data.category }
+                ]}
+              />
               { home }
               <div className=''>
                 { children }
