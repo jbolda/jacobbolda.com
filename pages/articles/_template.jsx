@@ -56,10 +56,10 @@ class ArticleTemplate extends React.Component {
                   { property: 'og:article:published_time', content: moment(data.written, 'YYYY-MM-DD') },
                   { property: 'og:article:modified_time', content: moment(data.updated, 'YYYY-MM-DD') },
                   { property: 'og:article:tag', content: data.category },
-                  { property: 'label1', content: 'Category' },
-                  { property: 'data1', content: data.category },
-                  { property: 'label2', content: 'Written' },
-                  { property: 'data2', content: data.written },
+                  { property: 'twitter:label1', content: 'Category' },
+                  { property: 'twitter:data1', content: data.category },
+                  { property: 'twitter:label2', content: 'Written' },
+                  { property: 'twitter:data2', content: data.written },
                 ]}
               />
               { home }
