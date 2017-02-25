@@ -10,7 +10,7 @@ import 'static/css/highlight.css';
 exports.data = {
     title: 'Loan Efficiency Calculator',
     written: '2017-01-22',
-    path: '/loan-efficiency-calculator',
+    path: 'loan-efficiency-calculator',
     category: 'finance',
     description: 'This calculator assists in running the numbers on loan overpayment and how that affects your interest paid and time to final payment.'
 }

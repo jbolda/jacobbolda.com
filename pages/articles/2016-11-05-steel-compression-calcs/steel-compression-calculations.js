@@ -7,7 +7,7 @@ import ReadNext from 'components/ReadNext';
 exports.data = {
     title: 'Steel Compression Calculations',
     written: '2016-11-05',
-    path: '/steel-compression-calculations',
+    path: 'steel-compression-calculations',
     category: 'engineering',
     description: 'Putting together some functions to run the compression calculations from the steel manual.'
 }

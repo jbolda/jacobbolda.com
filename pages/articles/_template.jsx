@@ -49,7 +49,7 @@ class ArticleTemplate extends React.Component {
                 title={ data.title }
                 meta={[
                   { name: 'description', content: data.description },
-                  { property: 'og:url', content: ('https://www.jacobbolda.com'+data.path) },
+                  { property: 'og:url', content: ('https://www.jacobbolda.com/'+data.path) },
                   { property: 'og:description', content: data.description },
                   { property: 'og:type', content: 'article' },
                   { property: 'og:article:author', content: 'Jacob Bolda' },

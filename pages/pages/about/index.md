@@ -1,7 +1,7 @@
 ---
 title: "About me"
 layout: page
-path: "/about"
+path: "about"
 ---
 ## Nostaglia Feels Good
 I spent my formative years in small town Minnesota before moving to small town Wisconsin. I made my way through high school doing well but never feeling satisfactorily engaged. I want a challenge! I made the leap to college at Milwaukee School of Engineer (MSOE) in ***big city*** Milwaukee, Wisconsin earning my Master's in Structural Engineer, Bachelor's in Architectural Engineering and a minor in management. From there I began to exponentially expand my horizons through learning and travel, both domestic and abroad.
