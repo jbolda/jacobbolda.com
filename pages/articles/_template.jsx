@@ -66,7 +66,7 @@ class ArticleTemplate extends React.Component {
               <div className=''>
                 { children }
               </div>
-              <div className='footer blog-single'>
+              <div className='footer container'>
                 { published }
                 <ReadNext post={ post } {...this.props}/>
                 <hr></hr>
