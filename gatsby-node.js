@@ -33,5 +33,11 @@ exports.modifyWebpackConfig = function(config, env) {
        loader: 'file-loader',
     })
 
+
+    config.loader('geojson', {
+       test: /\.(geojson)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+       loader: 'json-loader',
+    })
+
     return config
 };
