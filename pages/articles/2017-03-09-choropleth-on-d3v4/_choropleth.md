@@ -2,7 +2,7 @@
 what: text for Choropleth on d3v4
 ---
 
-Hello everyone!!! I am setting up a sort of quasi-blog that I can present various calculators. You may also find some productivity hacks and thoughts on my travels. I am a structural engineer by trade with an interest in finance, business and programming. Feel free to learn more about my story at my about page or contact me with any questions.
+I have been using d3js for a few years now. It is an amazing library, but very low level. In my mind, there is a spectrum of libraries that ranges from _press a button and it is complete_ to _toil away for hours, connect many wires and out comes a square_. But they square is completely custom!
 
 ```javascript
 var graph = {}; // we namespace our d3 into graph.setup and graph.draw
