@@ -70,7 +70,7 @@ console.log(ChoroplethText)
               </div>
               <div className='section'>
                 <div className='container'>
-                  <div dangerouslySetInnerHTML={{__html: ChoroplethText.body}} />
+                  <div className='content' dangerouslySetInnerHTML={{__html: ChoroplethText.body}} />
                 </div>
               </div>
             </div>

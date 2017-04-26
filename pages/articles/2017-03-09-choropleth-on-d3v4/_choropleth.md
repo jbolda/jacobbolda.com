@@ -2,7 +2,116 @@
 what: text for Choropleth on d3v4
 ---
 
-I have been using d3js for a few years now. It is an amazing library, but very low level. In my mind, there is a spectrum of libraries that ranges from _press a button and it is complete_ to _toil away for hours, connect many wires and out comes a square_. But they square is completely custom!
+I have been using d3js for a few years now. It is an amazing library, but very low level. In my mind, there is a spectrum of libraries that ranges from _press a button and it is complete_ to _toil away for hours, connect many wires and out comes a square_. But the square is completely custom!
+
+There are a swath of tutorials out for v3 of the library, but v4 is still looking for more attention. Especially when configured in (what I'll call) the lifecycle style.
+
+D3 started in an era when it needed to control the DOM. It ran the whole show, from computing to drawing to updating. As of late, we have seen multiple implementations of the vDOM, where reactjs​ has been my preference to use. All of this has been great for the frontend world, but opens up the question of how should you plug your d3 into reactjs. I won't go into all the options, but if you want to know more, check out @shirleyxu's write up found on medium.
+
+I choose to break things up that reactjs controls the container and just hands off control part of the DOM, triggering updates as necessary. It still requires new considerations from the typical imperative style of d3. We aren't just giving the computer a "to do list" that it needs to perform in order.
+
+Let's get a few things started here. First I make a graph object so our functions aren't poluting the global space. Then define a couple urls at the top here for convenient updating in the future.
+
+```javascript
+var graph = {}; // we namespace our d3 into graph.setup and graph.draw
+
+var stateDataURL = 'states.json';
+var statisticsDataURL = 'stats.csv';
+```
+
+I think of my d3 like a theater or music performance. We need to set up the stage, do things during the performance to transition between scenes, and then tear it down at the end of the show to get ready for the next venue.
+
+The first step is the setup. We have the same setup everytime, but we want to be able to respond to venues of various sizes and work within those confines. In practical terms, this is desktop vs tablet vs phone vs ???.
+
+
+```javascript
+graph.setup = () => {
+  let width = 1000;
+  let height = 600;
+
+  let svg = d3.select('div#states').append('svg')
+    .attr('width', width)
+    .attr('height', height);
+
+  return svg;
+}
+```
+We are just giving it a set width/height, but we can eventually make it dynamic. We just set up the svg, and pass it back out to be consumed later.
+
+Next, we start drawing some stuff. This function takes two parameters, the svg (from the previous function) and the data. I like to put a handy little comment immediately below to remind myself how I am expecting my data to be formatted.
+
+```javascript
+graph.draw = (svg, data) => {
+/*
+our data expects an array of objects
+each object is expected to have:
+name: tooltip - the full name of the state
+abbrev: mergeData - used as the key to merge the json and csv
+low: tooltip, color domain
+high: tooltip, color domain
+average: tooltip, path fill
+*/
+  let color = d3.scaleQuantize()
+                .range(["rgb(237,248,233)",
+                        "rgb(186,228,179)",
+                        "rgb(116,196,118)",
+                        "rgb(49,163,84)",
+                        "rgb(0,109,44)"]);
+
+    color.domain([
+          d3.min(data, function(d) { return d.low; }),
+          d3.max(data, function(d) { return d.high; })
+    ]);
+
+  let states = svg.selectAll('path.states')
+                      .data(data);
+
+  let drawStates = states.enter().append('path')
+                      .attr('class', 'state')
+                      .attr('id', d => d.abbrev)
+                      .attr('stroke', 'gray')
+                      .attr('d', d => d.path)
+                      .style('fill', d => color(d.average))
+                      .on('mouseover', mouseOver)
+                      .on('mouseout', mouseOut);
+
+}
+```
+Let's unpack this a bit. The first parts set the color ranges we will see. The color scale sets the colors that you will see for the min, max and a few points in between. It will transition the colors in between when mapped to your numbers. The color domain maps your data to the colors.
+
+```javascript
+  let color = d3.scaleQuantize()
+                .range(["rgb(237,248,233)",
+                        "rgb(186,228,179)",
+                        "rgb(116,196,118)",
+                        "rgb(49,163,84)",
+                        "rgb(0,109,44)"]);
+
+    color.domain([
+          d3.min(data, function(d) { return d.low; }),
+          d3.max(data, function(d) { return d.high; })
+    ]);
+```
+
+The real important bit that creates the svg is snipped below.
+
+```javascript
+  let states = svg.selectAll('path.states')
+                      .data(data);
+
+  let drawStates = states.enter().append('path')
+                      .attr('class', 'state')
+                      .attr('id', d => d.abbrev)
+                      .attr('stroke', 'gray')
+                      .attr('d', d => d.path)
+                      .style('fill', d => color(d.average))
+                      .on('mouseover', mouseOver)
+                      .on('mouseout', mouseOut);
+
+}
+```
+
+
 
 ```javascript
 var graph = {}; // we namespace our d3 into graph.setup and graph.draw
