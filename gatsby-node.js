@@ -17,7 +17,7 @@ exports.modifyWebpackConfig = function(config, env) {
             CopyWebpackPlugin,
             [
                 [
-                    { from: '../static/admin', to: 'admin' }
+                    { from: '../static/images/logo/favicon.ico', to: '' }
                 ],
                 {
                     ignore: [
