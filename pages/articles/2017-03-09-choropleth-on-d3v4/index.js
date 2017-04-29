@@ -10,8 +10,8 @@ import 'static/css/highlight.css';
 
 exports.data = {
     title: 'Choropleth on d3v4',
-    written: '',
-    updated: '',
+    written: '2017-03-09',
+    updated: '2017-04-28',
     path: 'choropleth-on-d3v4',
     category: 'data science',
     description: 'Things about the choropleth.'

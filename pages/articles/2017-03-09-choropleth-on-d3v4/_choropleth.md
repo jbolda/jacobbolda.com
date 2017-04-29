@@ -93,7 +93,7 @@ Let's unpack this a bit. The first parts set the color ranges we will see. The c
     ]);
 ```
 
-The real important bit that creates the svg is snipped below.
+The real important bit that creates the svg is snipped below. We attach to the svg we created earlier, and attach the data to the (as of yet uncreated) paths. The next variable, `drawStates`, creates the actual svg paths based on the attached data. d3 is effectively running a loop on all of the attached data. We can access any of the data on the path by using a function with parameter `d`. An example is seen when setting the `.style('fill')`.
 
 ```javascript
   let states = svg.selectAll('path.states')
@@ -110,7 +110,64 @@ The real important bit that creates the svg is snipped below.
 
 }
 ```
+The last important snippet is to kick this function off. When working with react, we can hook into the lifecycle events and kick off d3 when the component mounts. We use `d3.queue` seen below grab multiple sets of data, massage it, and then pass it off to our graphing functions. The massaging is shown immediately below `d3.queue`.
 
+```javascript
+d3.queue()
+  .defer(d3.json, stateDataURL)
+  .defer(d3.csv,statisticsDataURL)
+  .awaitAll(function(error, results) {
+    let states = results[0].states;
+    let stats = results[1];
+    let mergedData = mergeData(states, 'abbrev', stats, 'Abbreviation')
+    graph.draw(space, mergedData);
+  });
+
+let mergeData = (d1, d1key, d2, d2key) => {
+  let data = [];
+  d1.forEach((s1) => {
+    d2.forEach((s2) => {
+      if (s1[d1key] === s2[d2key]) {
+        data.push(Object.assign({}, s1, s2))
+      }
+    })
+  })
+
+  return data;
+};
+```
+
+That is it! But really, it is not worth all of that work without adding a little bit of flair. You might have noticed before that `drawStates` referenced `mouseOver` and `mouseOut`. These are below.
+
+
+```javascript
+let tooltipHtml = (d) => {
+  return '<h4>'+d.name+'</h4><table>'+
+    '<tr><td>Low</td><td>'+(d.low)+'</td></tr>'+
+    '<tr><td>High</td><td>'+(d.high)+'</td></tr>'+
+    '<tr><td>Avg</td><td>'+(d.average)+'</td></tr>'+
+    '</table>';
+}
+
+let mouseOver = (d) => {
+  let tooltip = d3.select('#tooltip')
+      .html(tooltipHtml(d))
+      .style('opacity', .9)
+      .style('left', (d3.event.pageX) + 'px')
+      .style('top', (d3.event.pageY - 28) + 'px');
+
+  tooltip.transition().duration(200)
+}
+
+let mouseOut = () => {
+    d3.select('#tooltip')
+      .transition().duration(500)
+      .style('opacity', 0);
+}
+```
+
+
+The full set of code is below. It should be ready to drop into a jsbin if you would like to play around. I enjoyed taking a dip into d3, and I hope you did as well. Feel free to reach out with any questions!
 
 
 ```javascript
@@ -218,5 +275,5 @@ let mergeData = (d1, d1key, d2, d2key) => {
   })
 
   return data;
-};0
+};
 ```
