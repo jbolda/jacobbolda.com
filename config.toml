@@ -1,0 +1,20 @@
+siteTitle = "Blog by Jacob Bolda"
+siteDescr = "Structural Engineer with a knack for creative solutions with computers, programming and snarky comments."
+siteAuthor = "Jacob Bolda"
+
+siteEmailUrl = "me@jacobbolda.com"
+siteEmailPretty = "me@jacobbolda.com"
+siteLinkedInUrl = "https://linkedin.com/in/bolda"
+siteLinkedInPretty = "linkedin.com/in/bolda"
+siteTwitterUrl = "https://twitter.com/jacob_bolda"
+siteTwitterPretty = "@jacob_bolda"
+siteGithubUrl = "https://github.com/jbolda"
+siteGithubPretty = "github.com/jbolda"
+siteKeybaseUrl = "https://keybase.io/jbolda"
+siteKeybasePretty = "keybase.io/jbolda"
+sitePhotoUrl = "http://www.jbolda.com/photo"
+sitePhotoPretty = "My Photographs"
+
+googleAnalyticsId = "UA-54041151-2"
+
+linkPrefix = "/"
