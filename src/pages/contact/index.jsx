@@ -1,7 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { config } from 'config';
-import SiteLinks from 'components/SiteLinks';
+import SiteLinks from '../../components/SiteLinks';
 
 exports.data = {
   path: 'contact'

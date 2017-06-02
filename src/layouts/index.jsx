@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router';
+import Link from "gatsby-link";
 import Helmet from 'react-helmet';
-import { config } from 'config';
+// import { config } from 'config';
 
-import 'static/css/base.scss';
+// import '../static/css/base.scss';
 
 class MasterTemplate extends React.Component {
     render() {
@@ -12,13 +12,13 @@ class MasterTemplate extends React.Component {
         return (
             <div className='MasterTemplate'>
               <Helmet
-                title={ config.siteTitle }
+                // title={ config.siteTitle }
                 meta={[
                   {"name": "description", "content": "A living blog written by Jacob Bolda"},
                   {"name": "keywords", "content": "articles, calculators"}
                 ]}
               />
-              { children }
+              { children() }
             </div>
             );
     }

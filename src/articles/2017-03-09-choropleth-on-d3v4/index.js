@@ -1,8 +1,5 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-import { prefixLink } from 'gatsby-helpers';
-import { config } from 'config';
-import { RouteHandler, Link } from 'react-router';
 import ChoroplethText from './_choropleth.md';
 var d3 = require('d3');
 import './style.scss';

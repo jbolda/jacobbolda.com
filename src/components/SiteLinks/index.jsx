@@ -1,9 +1,6 @@
 import React from 'react'
-import { RouteHandler, Link } from 'react-router'
-import { prefixLink } from 'gatsby-helpers'
-import { config } from 'config'
-import './style.css'
-import '../../static/fonts/fontawesome/style.css'
+// import './style.css'
+// import '../../static/fonts/fontawesome/style.css';
 
 class SiteLinks extends React.Component {
     render() {
@@ -11,6 +8,16 @@ class SiteLinks extends React.Component {
         return (
             <div className='blog-social'>
               <ul>
+all the sites links
+              </ul>
+            </div>
+            );
+    }
+}
+
+export default SiteLinks;
+
+/*
                 <li>
                   <a href={ config.siteEmailUrl }><i className='fa fa-envelope-o'></i> { config.siteEmailPretty }</a>
                 </li>
@@ -29,10 +36,4 @@ class SiteLinks extends React.Component {
                 <li>
                   <a href={ config.sitePhotoUrl }><i className='fa fa-camera'></i> { config.sitePhotoPretty }</a>
                 </li>
-              </ul>
-            </div>
-            );
-    }
-}
-
-export default SiteLinks
+*/

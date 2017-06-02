@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 import SiteSidebar from 'components/SiteSidebar';
-import { config } from 'config';
 
 import 'static/css/base.scss';
 

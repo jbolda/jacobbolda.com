@@ -1,7 +1,4 @@
 import React from 'react';
-import { prefixLink } from 'gatsby-helpers'
-import { config } from 'config'
-import { RouteHandler, Link } from 'react-router'
 import ReadNext from 'components/ReadNext';
 
 exports.data = {

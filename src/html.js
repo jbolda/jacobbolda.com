@@ -1,6 +1,5 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { prefixLink } from 'gatsby-helpers';
 
 const BUILD_TIME = new Date().getTime();
 
@@ -37,6 +36,7 @@ module.exports = React.createClass({
               { head.meta.toComponent() }
               { font }
               { css }
+              { this.props.headComponents }
             </head>
             <body>
               {/* Google Tag Manager (noscript) */}
@@ -50,7 +50,7 @@ module.exports = React.createClass({
               </noscript>
               {/* End Google Tag Manager (noscript) */}
               <div id="react-mount" dangerouslySetInnerHTML={ {    __html: this.props.body} } />
-              <script async src={ prefixLink(`/bundle.js?t=${BUILD_TIME}`) } />
+              { this.props.postBodyComponents }
             </body>
             </html>
         )

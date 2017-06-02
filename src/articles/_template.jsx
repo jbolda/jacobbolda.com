@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router';
+import Link from "gatsby-link";
 import Helmet from 'react-helmet';
 import moment from 'moment';
-import { prefixLink } from 'gatsby-helpers';
-import { config } from 'config';
+// import { config } from 'config';
 import ReadNext from 'components/ReadNext';
 
 import 'static/css/base.scss';
@@ -21,7 +20,7 @@ class ArticleTemplate extends React.Component {
               <div className='nav-left'>
                 <Link
                   className='nav-item is-tab is-active'
-                  to={ prefixLink('/') }>
+                  to='/'>
                   Home
                 </Link>
               </div>
@@ -71,9 +70,7 @@ class ArticleTemplate extends React.Component {
                 <ReadNext post={ post } {...this.props}/>
                 <hr></hr>
                 <p>
-                  { config.siteDescr }
-                  <a href={ config.siteTwitterUrl }>
-                    <br></br> <strong>{ config.siteAuthor }</strong> on Twitter</a>
+
                 </p>
               </div>
             </div>
@@ -86,3 +83,9 @@ ArticleTemplate.propTypes = {
 }
 
 export default ArticleTemplate;
+
+/*
+                  { config.siteDescr }
+                  <a href={ config.siteTwitterUrl }>
+                    <br></br> <strong>{ config.siteAuthor }</strong> on Twitter</a>
+*/
