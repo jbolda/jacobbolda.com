@@ -7,6 +7,7 @@ import Helmet from 'react-helmet';
 
 class MasterTemplate extends React.Component {
     render() {
+        console.log("js", this)
         const {children, route} = this.props;
 
         return (
@@ -18,7 +19,7 @@ class MasterTemplate extends React.Component {
                   {"name": "keywords", "content": "articles, calculators"}
                 ]}
               />
-              { children() }
+
             </div>
             );
     }
@@ -29,3 +30,14 @@ MasterTemplate.propTypes = {
 }
 
 export default MasterTemplate;
+
+export const pageQuery = graphql`
+      query jsBlogPostBySlug($slug: String!) {
+        markdownRemark(fields: { slug: { eq: $slug }}) {
+          html
+          frontmatter {
+            title
+          }
+        }
+      }
+    `

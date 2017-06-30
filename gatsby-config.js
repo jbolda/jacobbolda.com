@@ -18,13 +18,22 @@ module.exports = {
     sitePhotoPretty: "My Photographs",
   },
   plugins: [
-    {
+   {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
-        path: `${__dirname}/src/pages/`,
+        path: `${__dirname}/src/mainPages/`,
       },
     },
+   {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `articles`,
+        path: `${__dirname}/src/articles/`,
+      },
+    },
+    `gatsby-transformer-javascript-static-exports`,
+    `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -42,11 +51,11 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
-          `gatsby-remark-autolink-headers`,
         ],
       },
     },
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-postcss-sass`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

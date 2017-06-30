@@ -8,7 +8,6 @@ exports.data = {
     title: 'Choropleth on d3v4',
     written: '2017-03-09',
     updated: '2017-04-28',
-    layoutType: 'post',
     path: 'choropleth-on-d3v4',
     category: 'data science',
     description: 'Things about the choropleth.'

@@ -2,7 +2,7 @@
 title: A Living Blog
 written: "2016-10-22"
 updated: "2016-11-04"
-layoutType: post
+layout: post
 path: "a-living-blog"
 category: "Beginnings"
 description: "A new beginning to delivering content and math."

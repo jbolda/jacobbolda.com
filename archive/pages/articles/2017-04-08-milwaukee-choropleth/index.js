@@ -10,7 +10,6 @@ exports.data = {
     title: 'Milwaukee Choropleth',
     written: '',
     updated: '',
-    layoutType: 'post',
     path: 'milwaukee-choropleth',
     category: 'data science',
     description: 'Things about the choropleth.'

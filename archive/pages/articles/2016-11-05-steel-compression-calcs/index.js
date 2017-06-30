@@ -4,7 +4,6 @@ import React from 'react';
 exports.data = {
     title: 'Steel Compression Calculations',
     written: '2016-11-05',
-    layoutType: 'post',
     path: 'steel-compression-calculations',
     category: 'engineering',
     description: 'Putting together some functions to run the compression calculations from the steel manual.'
