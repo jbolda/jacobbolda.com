@@ -5,6 +5,7 @@ import siteMetadata from '../components/metadata.yaml';
 import '../static/css/base.scss';
 
 import InsetPage from './inset-page';
+import BlogPost from './blog-post';
 
 class MasterLayout extends React.Component {
     static propTypes = {
@@ -13,6 +14,15 @@ class MasterLayout extends React.Component {
 
     render() {
         console.log(this)
+        let location = this.props.location.pathname;
+        let jimmyPage // you jimmy a lock until it opens, so same thing here
+        if (location === '/') {
+          jimmyPage = this.props.children()
+        } else if (location === '/about' || location === '/contact') {
+          jimmyPage = <InsetPage {...this.props} />
+        } else {
+          jimmyPage = <BlogPost {...this.props} />
+        };
 
         return (
             <div className='MasterLayout'>
@@ -23,35 +33,10 @@ class MasterLayout extends React.Component {
                   {"name": "keywords", "content": "articles, calculators"}
                 ]}
               />
-              <InsetPage {...this.props} />
+              { jimmyPage }
             </div>
             );
     }
 }
 
 export default MasterLayout;
-
-export const pageQuery = graphql`
-      query componentMetadata
-          {
-            site {
-              siteMetadata {
-                title
-                siteDescr
-                siteAuthor
-                siteEmailUrl
-                siteEmailPretty
-                siteLinkedInUrl
-                siteLinkedInPretty
-                siteTwitterUrl
-                siteTwitterPretty
-                siteGithubUrl
-                siteGithubPretty
-                siteKeybaseUrl
-                siteKeybasePretty
-                sitePhotoUrl
-                sitePhotoPretty
-              }
-            }
-          }
-          `

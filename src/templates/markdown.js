@@ -2,7 +2,6 @@ import React from 'react';
 
 class markdownTemplate extends React.Component {
   render() {
-    console.log(this)
     const data = this.props.data.markdownRemark;
 
     return (

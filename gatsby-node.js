@@ -98,13 +98,20 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                   component: path.resolve(edge.node.fileAbsolutePath),
                   context: {
                     layoutType: frontmatter.layoutType,
-                    slug: edge.node.fileAbsolutePath,
+                    slug: edge.node.fields.slug,
                   },
                 })
-            }
+              } else if (edge.node.fields.slug === '/index/') {
+                createPage({
+                  path: '/', // required
+                  component: path.resolve(edge.node.fileAbsolutePath),
+                  context: {
+                    slug: edge.node.fields.slug,
+                  },
+                })
+              }
         })
 
-        // console.log(result.data.allFile)
         return
       })
     )

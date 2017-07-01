@@ -59,12 +59,7 @@ class BlogPostTemplate extends React.Component {
             />
             { home }
             <div className='container'>
-              <div className='markdown section'>
-                <div className='container content'>
-                  <h1>{data.frontmatter.title}</h1>
-                  <div dangerouslySetInnerHTML={{ __html: data.html }} />
-                </div>
-              </div>
+              { this.props.children() }
             </div>
             <div className='footer container'>
               { published }
@@ -80,4 +75,13 @@ class BlogPostTemplate extends React.Component {
   }
 }
 
-export default markdownBlogPostTemplate;
+export default BlogPostTemplate;
+
+export const pageQuery = graphql`
+    fragment postMetadata_data on MarkdownRemark {
+      frontmatter {
+        layoutType
+        path
+      }
+    }
+`

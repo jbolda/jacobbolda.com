@@ -9,7 +9,7 @@ import siteMetadata from '../metadata.yaml';
 class SiteSidebar extends React.Component {
     render() {
         const isHome = location.pathname === ('/');
-        // const siteMetadata = this.props.data.siteMetadata;
+        // const siteMetadata = this.props.siteMetadata;
         // console.log(this)
 
         let header = (
@@ -69,3 +69,23 @@ SiteSidebar.propTypes = {
 }
 
 export default SiteSidebar
+
+const pageQuery = graphql`
+    fragment siteMetadata on siteMetadata {
+        siteTitle,
+        siteDescr,
+        siteAuthor,
+        siteEmailUrl,
+        siteEmailPretty,
+        siteLinkedInUrl,
+        siteLinkedInPretty,
+        siteTwitterUrl,
+        siteTwitterPretty,
+        siteGithubUrl,
+        siteGithubPretty,
+        siteKeybaseUrl,
+        siteKeybasePretty,
+        sitePhotoUrl,
+        sitePhotoPretty,
+    }
+`
