@@ -51,7 +51,7 @@ export const pageQuery = graphql`
       edges {
         node {
           siteMetadata {
-            title
+            siteTitle
             siteDescr
             siteAuthor
             siteEmailUrl
