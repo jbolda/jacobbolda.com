@@ -3,8 +3,8 @@ import * as PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import '../static/css/base.scss';
 
-import InsetPage from "./inset-page"
-import BlogPost from "./blog-post"
+import InsetPage from '"./inset-page'
+import BlogPost from './blog-post'
 
 class MasterLayout extends React.Component {
   render() {
@@ -30,7 +30,7 @@ class MasterLayout extends React.Component {
     return (
       <div className="MasterLayout">
         <Helmet
-          defaultTitle={siteMetadata.title}
+          defaultTitle={siteMetadata.siteTitle}
           meta={[
             { name: `description`, content: siteMetadata.siteDescr },
             { name: `keywords`, content: `articles` },

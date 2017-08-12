@@ -1,7 +1,7 @@
-import React from "react"
-import Link from "gatsby-link"
-import Helmet from "react-helmet"
-import moment from "moment"
+import React from 'react'
+import Link from 'gatsby-link'
+import Helmet from 'react-helmet'
+import moment from 'moment'
 
 class BlogPostTemplate extends React.Component {
   render() {
