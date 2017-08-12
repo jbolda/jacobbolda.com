@@ -21,7 +21,7 @@ class MasterLayout extends React.Component {
         siteMetadata: siteMetadata,
         children: this.props.children
       }
-      if (location === `/` || location === `/contact`) {
+      if (location === `/` || location === `/about` || location === `/contact`) {
         jimmyPage = <InsetPage {...passdown} />
       } else {
         jimmyPage = <BlogPost {...passdown} />
