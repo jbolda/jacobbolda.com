@@ -5,14 +5,11 @@
   "main": "index.js",
   "scripts": {
     "develop": "node_modules/.bin/gatsby develop",
-    "dev:hard": "rm -rf .cache && rm -rf public && npm run develop",
-    "build": "npm run c/lean & .\\node_modules\\.bin\\gatsby build",
+    "dev:hard": "npm run clean && npm run develop",
+    "build": "npm run clean & .\\node_modules\\.bin\\gatsby build",
     "serve-build": "node_modules/.bin/gatsby serve-build",
-    "clean:public": "rm -rf public & mkdir public",
-    "clean": "npm run clean:public",
-    "copy:files": "copy .\\pages\\*.png .\\public /Y",
+    "clean": "rm -rf .cache && rm -rf public",
     "copy": "npm run copy:files",
-    "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
