@@ -1,5 +1,6 @@
 import React from 'react';
-// import ReadNext from 'components/ReadNext';
+import PostPublished from '../../components/PostPublished';
+import HelmetBlock from '../../components/HelmetBlock';
 
 exports.data = {
     title: 'Steel Compression Calculations',
@@ -18,17 +19,13 @@ class calculatorPost extends React.Component {
     }
 
     render() {
-        // const {route} = this.props;
-        // const post = route.page.data
+      let frontmatter = this.props.data.jsFrontmatter.data;
 
-        // let layout, template
-
-        // layout = post.layout
-                // <h1>{ post.title }</h1>
         return (
             <div className='section'>
+              <HelmetBlock {...frontmatter} />
               <div className='container content'>
-
+              <h1>{ frontmatter.title }</h1>
                 <div className='postBody'>
                   <p>
                     These functions are written in javascript and embedded into the window.
@@ -37,15 +34,10 @@ class calculatorPost extends React.Component {
                   </p>
                 </div>
               </div>
+              <PostPublished {...frontmatter} />
             </div>
         );
     }
-}
-
-calculatorPost.propTypes = {
-    c: React.PropTypes.object,
-    post: React.PropTypes.object,
-    pages: React.PropTypes.array,
 }
 
 export default calculatorPost;
@@ -201,3 +193,21 @@ calculator.inRadians = 180 / Math.PI;
 calculatorPost.defaultProps = {
   c: calculator
 }
+
+
+export const pageQuery = graphql`
+query steelCompressionCalcs($slug: String!) {
+	jsFrontmatter(fields: {slug: {eq: $slug}}) {
+		data {
+		  error
+		  layoutType
+		  path
+		  title
+		  written
+		  category
+		  description
+		  updated
+		}  
+  }
+}
+`

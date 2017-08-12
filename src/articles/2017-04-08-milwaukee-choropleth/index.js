@@ -1,10 +1,11 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-// import ChoroplethText from './_choropleth.md';
 var d3 = require('d3');
 // import './style.scss';
 // import 'static/css/highlight.css';
 // import rawData from './_info.geojson';
+import PostPublished from '../../components/PostPublished';
+import HelmetBlock from '../../components/HelmetBlock';
 
 exports.data = {
     title: 'Milwaukee Choropleth',
@@ -50,16 +51,14 @@ class milwaukeeCountyChoropleth extends React.Component {
     }
 
     render() {
-        // const {route, children} = this.props;
-        // const post = route
-// console.log(this)
-// console.log(ChoroplethText)
-        // let layout, template
-
-        // layout = post.layout
+      console.log(this)
+      let data = this.props.data.markdownRemark;
+      let html = data.html;
+      let frontmatter = this.props.data.jsFrontmatter.data;
 
         return (
             <div className=''>
+              <HelmetBlock {...frontmatter} />
               <div className='section'>
                 <div className='container'>
                   <div id='tooltip'></div>
@@ -68,17 +67,13 @@ class milwaukeeCountyChoropleth extends React.Component {
               </div>
               <div className='section'>
                 <div className='container'>
-
+                  <div dangerouslySetInnerHTML={{ __html: html }} />
                 </div>
               </div>
+              <PostPublished {...frontmatter} />
             </div>
         );
     }
-}
-
-milwaukeeCountyChoropleth.propTypes = {
-    post: React.PropTypes.object,
-    pages: React.PropTypes.array,
 }
 
 export default milwaukeeCountyChoropleth;
@@ -195,3 +190,23 @@ graph.draw = (svg, data, measurements) => {
 //       .on('mouseout', mouseout)
 //       .on('click', clicked);
 // });
+
+export const pageQuery = graphql`
+query milwaukeeChoropleth($slug: String!) {
+  markdownRemark(fields: { slug: { eq: "/2017-04-08-milwaukee-choropleth/_choropleth/" }}) {
+    html
+  }
+	jsFrontmatter(fields: {slug: {eq: $slug}}) {
+		data {
+		  error
+		  layoutType
+		  path
+		  title
+		  written
+		  category
+		  description
+		  updated
+    }
+  }
+}
+`

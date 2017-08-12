@@ -1,91 +1,64 @@
-import React from 'react'
-import Link from 'gatsby-link'
-import SiteNav from '../SiteNav'
-import SiteLinks from '../SiteLinks'
-import '../../static/css/base.scss';
-import siteMetadata from '../metadata.yaml';
-// import './style.css'
+import React from "react"
+import Link from "gatsby-link"
+import SiteNav from "../SiteNav"
+import SiteLinks from "../SiteLinks"
 
 class SiteSidebar extends React.Component {
     render() {
-        const isHome = location.pathname === ('/');
-        // const siteMetadata = this.props.siteMetadata;
-        // console.log(this)
+        const isHome = this.props.location.pathname === ('/');
+        const siteMetadata = this.props.siteMetadata;
+        // TODO, deal with image more nice like
 
-        let header = (
-        <div className='card is-fullwidth'>
-          <div className='card-image'>
-            <Link
-              to={ '/' }>
-              <figure className='image'>
-                <img src='https://s.gravatar.com/avatar/c02111afdbe9776a53fb197c0f459fb4?s=256' />
-              </figure>
-            </Link>
-          </div>
-          <div className='card-content'>
-            <p className='title'>
-              <Link
-                style={{
-                  textDecoration: 'none',
-                  borderBottom: 'none',
-                  color: 'inherit'
-                }}
-                to={ '/' }>
-                { siteMetadata.siteAuthor }
-              </Link>
-            </p>
-            <p
-              style={{'fontStyle': 'italic'}}>
-              { siteMetadata.siteDescr }
-            </p>
-          </div>
+    let header = (
+      <div className="">
+        <div className="card-image">
+          <Link to={`/`}>
+            <figure className="image">
+              <img src="https://s.gravatar.com/avatar/c02111afdbe9776a53fb197c0f459fb4?s=256" />
+            </figure>
+          </Link>
         </div>
-        )
+        <div className="card-content">
+          <p className="title">
+            <Link
+              style={{
+                textDecoration: `none`,
+                borderBottom: `none`,
+                color: `inherit`,
+              }}
+              to={`/`}
+            >
+              {siteMetadata.title}
+            </Link>
+          </p>
+          <p style={{ fontStyle: `italic` }}>
+            {siteMetadata.siteDescr}
+          </p>
+        </div>
+      </div>
+    )
 
-        return (
-            <div className=''>
-              { header }
-              <div className='box'>
-                <SiteNav {...this.props}/>
-                <footer>
-                  <div className='is-hidden-mobile'>
-                    <SiteLinks {...this.props} />
-                  </div>
-                  <div>
-                    <p className='copyright'>
-                      &copy; All rights reserved.
-                    </p>
-                  </div>
-                </footer>
-              </div>
+    return (
+      <div className="card is-fullwidth">
+        {header}
+        <div className="card-content">
+          <SiteNav {...this.props} />
+          <footer>
+            <div className="is-hidden-mobile">
+              <SiteLinks {...this.props} />
             </div>
-            );
-    }
-}
-
-SiteSidebar.propTypes = {
-    children: React.PropTypes.any,
-    location: React.PropTypes.object,
+            <div>
+              <p className="copyright">&copy; All rights reserved.</p>
+              <p className="copyright">
+                Made with <i className="fa fa-heart" aria-hidden="true" /> by{` `}
+                <Link to={siteMetadata.siteTwitterUrl}>Jacob Bolda</Link>
+              </p>
+            </div>
+          </footer>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default SiteSidebar
-
-const pageQuery = graphql`
-    fragment siteMetadata on siteMetadata {
-        siteTitle,
-        siteDescr,
-        siteAuthor,
-        siteEmailUrl,
-        siteEmailPretty,
-        siteLinkedInUrl,
-        siteLinkedInPretty,
-        siteTwitterUrl,
-        siteTwitterPretty,
-        siteGithubUrl,
-        siteGithubPretty,
-        siteKeybaseUrl,
-        siteKeybasePretty,
-        sitePhotoUrl,
-        sitePhotoPretty,
-    }
-`

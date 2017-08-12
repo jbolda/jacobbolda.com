@@ -13,8 +13,6 @@ const propTypes = {
 
 class Html extends React.Component {
     render() {
-        console.log("place3")
-
         return (
             <html lang="en">
             <head>

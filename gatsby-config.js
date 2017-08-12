@@ -21,6 +21,13 @@ module.exports = {
    {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `layouts`,
+        path: `${__dirname}/src/layouts/`,
+      },
+    },
+   {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `pages`,
         path: `${__dirname}/src/mainPages/`,
       },
@@ -39,7 +46,7 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-responsive-image`,
+            resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 690,
             },
@@ -48,6 +55,7 @@ module.exports = {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {},
           },
+          `gatsby-remark-flowchart`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,

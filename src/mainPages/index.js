@@ -13,14 +13,26 @@ class SiteIndex extends React.Component {
 
         const pageLinks = []
         let iteratorKey = 0
-        const sortedPages = [
+        let pageRaw = [
                               ...this.props.data.allMarkdownRemark.edges,
                               ...this.props.data.allJsFrontmatter.edges
                             ]
-        // const sortedPages = sortBy(this.props.data.allFile.edges, (page) => page.node.date).reverse()
+        let pageArray = []
+        pageRaw.forEach(page => {
+          if (typeof page.node.frontmatter === "object") {
+            if (typeof page.node.frontmatter.written != "undefined") {
+              pageArray.push(page.node.frontmatter)
+            }
+          } else if (typeof page.node.data === "object") {
+            if (typeof page.node.data.written != "undefined" && page.node.data.written != "") {
+              pageArray.push(page.node.data)
+            }
+          }
+        })
+
+        const sortedPages = sortBy(pageArray, (page) => page.updated || page.written).reverse()
         sortedPages.forEach((page) => {
-            console.log(page.node)
-            const frontmatter = page.node.frontmatter || page.node.data;
+            let frontmatter = page;
 
             if (frontmatter.layoutType == 'post') {
               iteratorKey += 1;
@@ -31,8 +43,8 @@ class SiteIndex extends React.Component {
                       <div className='heading'>
                         <div className='level'>
                           <h4 className='level-left'>
-                            <time className='subtitle' dateTime={ moment(frontmatter.datePublished).format('MMMM D, YYYY') }>
-                              { moment(frontmatter.datePublished).format('MMMM YYYY') }
+                            <time className='subtitle' dateTime={ moment(frontmatter.updated || frontmatter.written).format('MMMM D, YYYY') }>
+                              { moment(frontmatter.updated || frontmatter.written).format('MMMM YYYY') }
                             </time>
                           </h4>
                           <h5 className='level-right'>{ frontmatter.category }</h5>
@@ -66,13 +78,6 @@ class SiteIndex extends React.Component {
 
         return (
             <div>
-              <Helmet
-                title={ "siteTitle" }
-                meta={[
-                  {"name": "description", "content": "A living blog written by Jacob Bolda"},
-                  {"name": "keywords", "content": "articles, calculators"}
-                ]}
-              />
               <div className='section'>
                 <div className='columns'>
                   <div className='column is-one-quarter'>
@@ -86,10 +91,6 @@ class SiteIndex extends React.Component {
             </div>
         )
     }
-}
-
-SiteIndex.propTypes = {
-    route: React.PropTypes.object,
 }
 
 export default SiteIndex;

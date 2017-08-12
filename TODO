@@ -1,3 +1,0 @@
-#Things to note:
-Add id="___gatsby" to html.js
-.scss doesn't work in html.js. It must just be for the out structure.

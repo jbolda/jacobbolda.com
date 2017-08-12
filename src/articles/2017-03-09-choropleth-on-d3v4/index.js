@@ -2,7 +2,8 @@ import React from 'react';
 import { findDOMNode } from 'react-dom';
 // import ChoroplethText from './_choropleth.md';
 var d3 = require('d3');
-// import './src/static/css/highlight.css';
+import PostPublished from '../../components/PostPublished';
+import HelmetBlock from '../../components/HelmetBlock';
 
 exports.data = {
     title: 'Choropleth on d3v4',
@@ -26,7 +27,6 @@ class choroplethBase extends React.Component {
         width: this.d3Node._groups[0][0].clientWidth,
         height: this.d3Node._groups[0][0].clientHeight
       }
-      console.log('hrrr', this.d3Node)
       let space = graph.setup(this.d3Node, measurements);
 
       /*
@@ -49,16 +49,13 @@ class choroplethBase extends React.Component {
     }
 
     render() {
-        // const {route, children} = this.props;
-        // const post = route
-console.log(this)
-// console.log(ChoroplethText)
-        // let layout, template
-
-        // layout = post.layout
+        let data = this.props.data.markdownRemark;
+        let html = data.html;
+        let frontmatter = this.props.data.jsFrontmatter.data;
 
         return (
             <div className=''>
+              <HelmetBlock {...frontmatter} />
               <div className='section'>
                 <div className='container'>
                   <div id='tooltip'></div>
@@ -67,16 +64,13 @@ console.log(this)
               </div>
               <div className='section'>
                 <div className='container'>
+                  <div dangerouslySetInnerHTML={{ __html: html }} />
                 </div>
               </div>
+              <PostPublished {...frontmatter} />
             </div>
         );
     }
-}
-
-choroplethBase.propTypes = {
-    post: React.PropTypes.object,
-    pages: React.PropTypes.array,
 }
 
 export default choroplethBase;
@@ -182,3 +176,23 @@ let mergeData = (d1, d1key, d2, d2key) => {
 
   return data;
 };
+
+export const pageQuery = graphql`
+query choroplethOnD3v4($slug: String!) {
+  markdownRemark(fields: { slug: { eq: "/2017-03-09-choropleth-on-d3v4/_choropleth/" }}) {
+    html
+  }
+	jsFrontmatter(fields: {slug: {eq: $slug}}) {
+		data {
+		  error
+		  layoutType
+		  path
+		  title
+		  written
+		  category
+		  description
+		  updated
+		}  
+  }
+}
+`

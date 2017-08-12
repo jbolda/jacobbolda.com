@@ -21,9 +21,4 @@ class ContactMe extends React.Component {
     }
 }
 
-ContactMe.propTypes = {
-    children: React.PropTypes.any,
-    location: React.PropTypes.object,
-}
-
 export default ContactMe;

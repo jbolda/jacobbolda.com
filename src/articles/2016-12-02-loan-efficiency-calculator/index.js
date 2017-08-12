@@ -1,8 +1,7 @@
 import React from 'react';
-// import ReadNext from '../../../components/ReadNext';
 var Big = require('big.js');
-// import './style.scss';
-// import 'static/css/highlight.css';
+import PostPublished from '../../components/PostPublished';
+import HelmetBlock from '../../components/HelmetBlock';
 
 exports.data = {
     title: 'Loan Efficiency Calculator',
@@ -91,12 +90,7 @@ class loanEfficiencyCalculator extends React.Component {
     }
 
     render() {
-        // const {route} = this.props;
-        // const post = route.page.data
-
-        // let layout, template
-
-        // layout = post.layout
+      let frontmatter = this.props.data.jsFrontmatter.data;
 
         const loanInputs = this.state.loans.map((loan, index) => {
           if (index === 0) {
@@ -234,7 +228,7 @@ class loanEfficiencyCalculator extends React.Component {
 
         return (
             <div className=''>
-
+<HelmetBlock {...frontmatter} />
               <div className='section'>
                 <div className='container content'>
                   <h2>Debt Payoff</h2>
@@ -312,15 +306,10 @@ class loanEfficiencyCalculator extends React.Component {
                   </button>
                 </div>
               </div>
-
+              <PostPublished {...frontmatter} />
             </div>
         );
     }
-}
-
-loanEfficiencyCalculator.propTypes = {
-    post: React.PropTypes.object,
-    pages: React.PropTypes.array,
 }
 
 export default loanEfficiencyCalculator;
@@ -395,3 +384,21 @@ let cleanNumbers = (loanGroup) => {
   })
   loanGroup.additionalPayment = loanGroup.payment.minus(loanGroup.totalMin);
 };
+
+
+export const pageQuery = graphql`
+query loanEfficiencyCalc($slug: String!) {
+	jsFrontmatter(fields: {slug: {eq: $slug}}) {
+		data {
+		  error
+		  layoutType
+		  path
+		  title
+		  written
+		  category
+		  description
+		  updated
+		}  
+  }
+}
+`

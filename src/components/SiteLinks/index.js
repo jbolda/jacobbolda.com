@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
-import siteMetadata from '../metadata.yaml';
 import '../../static/fonts/fontawesome/style.css';
 
 class SiteLinks extends React.Component {
@@ -18,7 +17,7 @@ class SiteLinks extends React.Component {
             <div className='blog-social'>
               <ul>
                 <li>
-                  <a href={ siteMetadata.siteEmailUrl }><i className='fa fa-envelope-o'></i> { siteMetadata.siteEmailPretty }</a>
+                  <a href={'mailto:'+siteMetadata.siteEmailUrl }><i className='fa fa-envelope-o'></i> { siteMetadata.siteEmailPretty }</a>
                 </li>
                 <li>
                   <a href={ siteMetadata.siteLinkedInUrl }><i className='fa fa-linkedin-square'></i> { siteMetadata.siteLinkedInPretty }</a>

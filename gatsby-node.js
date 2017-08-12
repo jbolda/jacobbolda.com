@@ -1,9 +1,13 @@
-const path = require('path')
+const path = require(`path`)
+const Promise = require(`bluebird`)
 
 exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
   const { createNodeField } = boundActionCreators
   let slug
-  if (node.internal.type === `MarkdownRemark` || node.internal.type === `JSFrontmatter`) {
+  if (
+    node.internal.type === `MarkdownRemark` ||
+    node.internal.type === `JSFrontmatter`
+  ) {
     const fileNode = getNode(node.parent)
     const parsedFilePath = path.parse(fileNode.relativePath)
     if (parsedFilePath.name !== `index` && parsedFilePath.dir !== ``) {
@@ -15,26 +19,41 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
     }
 
     // Add slug as a field on the node.
-    createNodeField({ node, fieldName: `slug`, fieldValue: slug })
+    createNodeField({ node, name: `slug`, value: slug })
   }
 }
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
+exports.onCreatePage = ({ page, boundActionCreators }) => {
+  const { createPage, deletePage } = boundActionCreators
 
   return new Promise((resolve, reject) => {
+    // Remove trailing slash
+    const oldPath = page.path
+    page.path = page.path === `/` ? page.path : page.path.replace(/\/$/, ``)
+    if (page.path !== oldPath) {
+      // Remove the old page
+      deletePage({ path: oldPath })
+
+      // Add the new page
+      createPage(page)
+    }
+
+    resolve()
+  })
+}
+
+exports.createPages = ({ graphql, boundActionCreators }) => {
+  const { createPage, createLayout } = boundActionCreators
+
+  return new Promise((resolve, reject) => {
+
     const pages = []
-    // const jsBlogPost = path.resolve("src/templates/js-blog-post.js")
-    // const markdownBlogPost = path.resolve("src/templates/markdown-blog-post.js")
-    // const jsInsetPage = path.resolve("src/templates/js-inset-page.js")
-    // const markdownInsetPage = path.resolve("src/templates/markdown-inset-page.js")
-    const markdownTemplate = path.resolve("src/templates/markdown.js")
-    const jsTemplate = path.resolve("src/templates/javascript.js")
+    const markdownTemplate = path.resolve(`src/templates/markdown.js`)
 
     // Query for all markdown "nodes" and for the slug we previously created.
     resolve(
       graphql(
-      `
+        `
         {
           allMarkdownRemark {
             edges {
@@ -72,44 +91,68 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           reject(result.errors)
         }
 
-        // Create blog posts pages.
-        result.data.allMarkdownRemark.edges.forEach(edge => {
-            let frontmatter = edge.node.frontmatter;
-            if (frontmatter.layoutType === 'post' ||
-                frontmatter.layoutType === 'page') {
-                createPage({
-                  path: frontmatter.path, // required
-                  component: markdownTemplate,
-                  context: {
-                    layoutType: frontmatter.layoutType,
-                    slug: edge.node.fields.slug,
-                  },
-                })
-            }
+
+        const layoutIndex = path.resolve(`src/layouts/index.js`)
+        createLayout({
+          id: `index`, // required
+          component: layoutIndex
         })
 
-        // Create blog posts pages.
+        // Create from markdown
+        result.data.allMarkdownRemark.edges.forEach(edge => {
+          let frontmatter = edge.node.frontmatter
+          // ideally we would want to use layoutType to
+          //  decide which (nested) layout to use, but
+          //  gatsby currently doesnt support this.
+          if (
+            frontmatter.layoutType === `post` ||
+            frontmatter.layoutType === `page`
+          ) {
+            createPage({
+              path: frontmatter.path, // required
+              component: markdownTemplate,
+              layout: `index`,
+              context: {
+                layoutType: frontmatter.layoutType,
+                slug: edge.node.fields.slug,
+              },
+            })
+          }
+        })
+
+        // Create pages from javascript
+        // Gatsby will, by default, createPages for javascript in the
+        //  /pages directory. We purposely don't have a folder with this name
+        //  so that we can go full manual mode.
         result.data.allJsFrontmatter.edges.forEach(edge => {
-            let frontmatter = edge.node.data;
-            if (frontmatter.layoutType === 'post' ||
-                frontmatter.layoutType === 'page') {
-                createPage({
-                  path: frontmatter.path, // required
-                  component: path.resolve(edge.node.fileAbsolutePath),
-                  context: {
-                    layoutType: frontmatter.layoutType,
-                    slug: edge.node.fields.slug,
-                  },
-                })
-              } else if (edge.node.fields.slug === '/index/') {
-                createPage({
-                  path: '/', // required
-                  component: path.resolve(edge.node.fileAbsolutePath),
-                  context: {
-                    slug: edge.node.fields.slug,
-                  },
-                })
-              }
+          let frontmatter = edge.node.data
+          // see above
+          if (
+            frontmatter.layoutType === `post` ||
+            frontmatter.layoutType === `page`
+          ) {
+            createPage({
+              path: frontmatter.path, // required
+              // Note, we can't have a template, but rather require the file directly.
+              //  Templates are for converting non-react into react. jsFrontmatter
+              //  picks up all of the javascript files. We have only written these in react.
+              component: path.resolve(edge.node.fileAbsolutePath),
+              layout: `index`,
+              context: {
+                layoutType: frontmatter.layoutType,
+                slug: edge.node.fields.slug,
+              },
+            })
+          } else if (edge.node.fields.slug === `/index/`) {
+            createPage({
+              path: `/`, // required, we don't have frontmatter for this page hence separate if()
+              component: path.resolve(edge.node.fileAbsolutePath),
+              layout: `index`,
+              context: {
+                slug: edge.node.fields.slug,
+              },
+            })
+          }
         })
 
         return
@@ -117,47 +160,3 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     )
   })
 }
-
-// var cssnext = require('postcss-cssnext');
-// var CopyWebpackPlugin = require('copy-webpack-plugin');
-
-// var extractTextWebpackPlugin = require('extract-text-webpack-plugin');
-
-// exports.modifyWebpackConfig = function(config, env) {
-//     config.merge({
-//         postcss: [
-//             cssnext({
-//                 browsers: ['>1%', 'last 2 versions']
-//             })
-//         ]
-//     })
-
-//     config.plugin(
-//             'CopyWebpackPlugin',
-//             CopyWebpackPlugin,
-//             [
-//                 [
-//                     { from: '../static/images/logo/favicon.ico', to: '' }
-//                 ],
-//                 {
-//                     ignore: [
-//                     'ignore.txt'
-//                     ],
-//                     debug: 'warning'
-//                 }
-//             ]
-//     )
-
-//     config.loader('svg', {
-//        test: /\.(svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-//        loader: 'file-loader',
-//     })
-
-
-//     config.loader('geojson', {
-//        test: /\.(geojson)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-//        loader: 'json-loader',
-//     })
-
-//     return config
-// };
