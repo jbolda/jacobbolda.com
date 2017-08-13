@@ -4,14 +4,6 @@ import './style.css';
 import '../../static/fonts/fontawesome/style.css';
 
 class SiteLinks extends React.Component {
-  static propTypes = {
-    data: PropTypes.shape({
-      site: PropTypes.shape({
-        siteMetadata: PropTypes.object.isRequired
-      })
-    })
-  }
-
   render() {
       const {siteMetadata} = this.props;
 
@@ -19,22 +11,22 @@ class SiteLinks extends React.Component {
           <div className='blog-social'>
             <ul>
               <li>
-                <a href={'mailto:'+siteMetadata.siteEmailUrl }><i className='fa fa-envelope-o'></i> { siteMetadata.siteEmailPretty }</a>
+                <a href={'mailto:'+siteMetadata.siteEmailUrl }><i className='fa fa-envelope-o' /> { siteMetadata.siteEmailPretty }</a>
               </li>
               <li>
-                <a href={ siteMetadata.siteLinkedInUrl }><i className='fa fa-linkedin-square'></i> { siteMetadata.siteLinkedInPretty }</a>
+                <a href={ siteMetadata.siteLinkedInUrl }><i className='fa fa-linkedin-square' /> { siteMetadata.siteLinkedInPretty }</a>
               </li>
               <li>
-                <a href={ siteMetadata.siteTwitterUrl }><i className='fa fa-twitter'></i> { siteMetadata.siteTwitterPretty }</a>
+                <a href={ siteMetadata.siteTwitterUrl }><i className='fa fa-twitter' /> { siteMetadata.siteTwitterPretty }</a>
               </li>
               <li>
-                <a href={ siteMetadata.siteGithubUrl }><i className='fa fa-github-alt'></i> { siteMetadata.siteGithubPretty }</a>
+                <a href={ siteMetadata.siteGithubUrl }><i className='fa fa-github-alt' /> { siteMetadata.siteGithubPretty }</a>
               </li>
               <li>
-                <a href={ siteMetadata.siteKeybaseUrl }><i className='fa fa-key'></i> { siteMetadata.siteKeybasePretty }</a>
+                <a href={ siteMetadata.siteKeybaseUrl }><i className='fa fa-key' /> { siteMetadata.siteKeybasePretty }</a>
               </li>
               <li>
-                <a href={ siteMetadata.sitePhotoUrl }><i className='fa fa-camera'></i> { siteMetadata.sitePhotoPretty }</a>
+                <a href={ siteMetadata.sitePhotoUrl }><i className='fa fa-camera' /> { siteMetadata.sitePhotoPretty }</a>
               </li>
             </ul>
           </div>
