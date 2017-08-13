@@ -22,7 +22,7 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
     createNodeField({ node, name: `slug`, value: slug })
   }
 }
-
+/*
 exports.onCreatePage = ({ page, boundActionCreators }) => {
   const { createPage, deletePage } = boundActionCreators
 
@@ -41,7 +41,7 @@ exports.onCreatePage = ({ page, boundActionCreators }) => {
     resolve()
   })
 }
-
+*/
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage, createLayout } = boundActionCreators
 
