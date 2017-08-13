@@ -6,3 +6,4 @@ pages/.manifest
 .idea
 gatsby-starter-lumen.iml
 *.sublime-workspace
+.vscode
