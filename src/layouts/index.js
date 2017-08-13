@@ -56,8 +56,16 @@ export const pageQuery = graphql`
             siteAuthor
             siteEmailUrl
             siteEmailPretty
+            siteLinkedInUrl
+            siteLinkedInPretty
             siteTwitterUrl
             siteTwitterPretty
+            siteGithubUrl
+            siteGithubPretty
+            siteKeybaseUrl
+            siteKeybasePretty
+            sitePhotoUrl
+            sitePhotoPretty
           }
         }
       }
