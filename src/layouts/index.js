@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import '../static/css/base.scss';
 
-import InsetPage from '"./inset-page'
+import InsetPage from './inset-page'
 import BlogPost from './blog-post'
 
 class MasterLayout extends React.Component {
