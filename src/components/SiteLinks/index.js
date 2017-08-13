@@ -12,31 +12,33 @@ class SiteLinks extends React.Component {
     })
   }
 
-  render() {  
-        return (
-            <div className='blog-social'>
-              <ul>
-                <li>
-                  <a href={'mailto:'+siteMetadata.siteEmailUrl }><i className='fa fa-envelope-o'></i> { siteMetadata.siteEmailPretty }</a>
-                </li>
-                <li>
-                  <a href={ siteMetadata.siteLinkedInUrl }><i className='fa fa-linkedin-square'></i> { siteMetadata.siteLinkedInPretty }</a>
-                </li>
-                <li>
-                  <a href={ siteMetadata.siteTwitterUrl }><i className='fa fa-twitter'></i> { siteMetadata.siteTwitterPretty }</a>
-                </li>
-                <li>
-                  <a href={ siteMetadata.siteGithubUrl }><i className='fa fa-github-alt'></i> { siteMetadata.siteGithubPretty }</a>
-                </li>
-                <li>
-                  <a href={ siteMetadata.siteKeybaseUrl }><i className='fa fa-key'></i> { siteMetadata.siteKeybasePretty }</a>
-                </li>
-                <li>
-                  <a href={ siteMetadata.sitePhotoUrl }><i className='fa fa-camera'></i> { siteMetadata.sitePhotoPretty }</a>
-                </li>
-              </ul>
-            </div>
-            );
+  render() {
+      const {siteMetadata} = this.props;
+
+      return (
+          <div className='blog-social'>
+            <ul>
+              <li>
+                <a href={'mailto:'+siteMetadata.siteEmailUrl }><i className='fa fa-envelope-o'></i> { siteMetadata.siteEmailPretty }</a>
+              </li>
+              <li>
+                <a href={ siteMetadata.siteLinkedInUrl }><i className='fa fa-linkedin-square'></i> { siteMetadata.siteLinkedInPretty }</a>
+              </li>
+              <li>
+                <a href={ siteMetadata.siteTwitterUrl }><i className='fa fa-twitter'></i> { siteMetadata.siteTwitterPretty }</a>
+              </li>
+              <li>
+                <a href={ siteMetadata.siteGithubUrl }><i className='fa fa-github-alt'></i> { siteMetadata.siteGithubPretty }</a>
+              </li>
+              <li>
+                <a href={ siteMetadata.siteKeybaseUrl }><i className='fa fa-key'></i> { siteMetadata.siteKeybasePretty }</a>
+              </li>
+              <li>
+                <a href={ siteMetadata.sitePhotoUrl }><i className='fa fa-camera'></i> { siteMetadata.sitePhotoPretty }</a>
+              </li>
+            </ul>
+          </div>
+          );
   }
 }
 
