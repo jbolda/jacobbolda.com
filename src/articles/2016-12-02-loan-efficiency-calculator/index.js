@@ -1,7 +1,6 @@
 import React from 'react';
 var Big = require('big.js');
-import PostPublished from '../../components/PostPublished';
-import HelmetBlock from '../../components/HelmetBlock';
+import BlogPostChrome from '../../components/BlogPostChrome';
 
 exports.data = {
     title: 'Loan Efficiency Calculator',
@@ -224,11 +223,10 @@ class loanEfficiencyCalculator extends React.Component {
               </div>
           );
         });
-                  // <h1>{ post.title }</h1>
+
 
         return (
-            <div className=''>
-<HelmetBlock {...frontmatter} />
+            <BlogPostChrome {...frontmatter}>
               <div className='section'>
                 <div className='container content'>
                   <h2>Debt Payoff</h2>
@@ -306,8 +304,7 @@ class loanEfficiencyCalculator extends React.Component {
                   </button>
                 </div>
               </div>
-              <PostPublished {...frontmatter} />
-            </div>
+            </BlogPostChrome>
         );
     }
 }
@@ -389,16 +386,7 @@ let cleanNumbers = (loanGroup) => {
 export const pageQuery = graphql`
 query loanEfficiencyCalc($slug: String!) {
 	jsFrontmatter(fields: {slug: {eq: $slug}}) {
-		data {
-		  error
-		  layoutType
-		  path
-		  title
-		  written
-		  category
-		  description
-		  updated
-		}  
+		...JSBlogPost_data
   }
 }
 `

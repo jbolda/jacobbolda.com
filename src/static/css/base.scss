@@ -21,4 +21,16 @@ $family-serif: 'Lora', serif; // Add a serif family
 // $family-primary: $family-serif; // Use the new serif family
 
 @import '~bulma';
-@import '~prismjs/themes/prism-coy';
+@import '~prismjs/themes/prism-twilight';
+
+.token.number {
+    background-color: inherit;
+    font-size: inherit;
+    display: inline-block;
+    height: inherit;
+    min-width: inherit;
+    margin-right: 0px;
+    padding: 0px;
+}
+
+

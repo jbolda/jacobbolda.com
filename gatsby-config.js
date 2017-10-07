@@ -21,13 +21,6 @@ module.exports = {
    {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `layouts`,
-        path: `${__dirname}/src/layouts/`,
-      },
-    },
-   {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `pages`,
         path: `${__dirname}/src/mainPages/`,
       },
@@ -40,7 +33,6 @@ module.exports = {
       },
     },
     `gatsby-transformer-javascript-static-exports`,
-    `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {

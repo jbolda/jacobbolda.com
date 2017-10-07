@@ -5,28 +5,19 @@ import '../../static/fonts/fontawesome/style.css';
 
 class SiteLinks extends React.Component {
   render() {
-      const siteMetadata = this.props.siteMetadata;
+      const {siteMetadata} = this.props.data.site
 
       return (
           <div className='blog-social'>
             <ul>
               <li>
-                <a href={`${siteMetadata.siteEmailUrl}`}>
-                  <i className='fa fa-envelope-o' /> siteEmailPretty
+                <a href={`mailto:` + siteMetadata.siteEmailUrl}>
+                  <i className='fa fa-envelope-o' /> {siteMetadata.siteEmailPretty}
                 </a>
               </li>
-            </ul>
-          </div>
-          );
-  }
-}
-
-export default SiteLinks;
-
-/*
               <li>
-                <a href={siteMetadata.siteEmailUrl}>
-                  <i className='fa fa-envelope-o' /> {siteMetadata.siteEmailPretty}
+                <a href={siteMetadata.siteTwitterUrl}>
+                  <i className="fa fa-twitter" /> {siteMetadata.siteTwitterPretty}
                 </a>
               </li>
               <li>
@@ -54,4 +45,10 @@ export default SiteLinks;
                   <i className='fa fa-camera' /> {siteMetadata.sitePhotoPretty}
                 </a>
               </li>
-*/
+            </ul>
+          </div>
+          );
+  }
+}
+
+export default SiteLinks;

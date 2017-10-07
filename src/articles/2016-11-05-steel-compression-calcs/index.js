@@ -1,6 +1,5 @@
 import React from 'react';
-import PostPublished from '../../components/PostPublished';
-import HelmetBlock from '../../components/HelmetBlock';
+import BlogPostChrome from '../../components/BlogPostChrome';
 
 exports.data = {
     title: 'Steel Compression Calculations',
@@ -22,20 +21,16 @@ class calculatorPost extends React.Component {
       let frontmatter = this.props.data.jsFrontmatter.data;
 
         return (
-            <div className='section'>
-              <HelmetBlock {...frontmatter} />
-              <div className='container content'>
+            <BlogPostChrome {...this.props.data.jsFrontmatter.data}>
               <h1>{ frontmatter.title }</h1>
-                <div className='postBody'>
-                  <p>
-                    These functions are written in javascript and embedded into the window.
-                    Press F12 (on windows in chrome) to get into the developer console.
-                    Click the console tab, and run c.list() in the console.
-                  </p>
-                </div>
+              <div className='postBody'>
+                <p>
+                  These functions are written in javascript and embedded into the window.
+                  Press F12 (on windows in chrome) to get into the developer console.
+                  Click the console tab, and run c.list() in the console.
+                </p>
               </div>
-              <PostPublished {...frontmatter} />
-            </div>
+            </BlogPostChrome>
         );
     }
 }
@@ -198,16 +193,7 @@ calculatorPost.defaultProps = {
 export const pageQuery = graphql`
 query steelCompressionCalcs($slug: String!) {
 	jsFrontmatter(fields: {slug: {eq: $slug}}) {
-		data {
-		  error
-		  layoutType
-		  path
-		  title
-		  written
-		  category
-		  description
-		  updated
-		}  
+		...JSBlogPost_data 
   }
 }
 `

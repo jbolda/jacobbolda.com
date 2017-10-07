@@ -2,8 +2,7 @@ import React from 'react';
 import { findDOMNode } from 'react-dom';
 // import ChoroplethText from './_choropleth.md';
 var d3 = require('d3');
-import PostPublished from '../../components/PostPublished';
-import HelmetBlock from '../../components/HelmetBlock';
+import BlogPostChrome from '../../components/BlogPostChrome';
 
 exports.data = {
     title: 'Choropleth on d3v4',
@@ -54,8 +53,7 @@ class choroplethBase extends React.Component {
         let frontmatter = this.props.data.jsFrontmatter.data;
 
         return (
-            <div className=''>
-              <HelmetBlock {...frontmatter} />
+            <BlogPostChrome {...frontmatter}>
               <div className='section'>
                 <div className='container'>
                   <div id='tooltip'></div>
@@ -67,8 +65,7 @@ class choroplethBase extends React.Component {
                   <div dangerouslySetInnerHTML={{ __html: html }} />
                 </div>
               </div>
-              <PostPublished {...frontmatter} />
-            </div>
+            </BlogPostChrome>
         );
     }
 }
@@ -183,16 +180,7 @@ query choroplethOnD3v4($slug: String!) {
     html
   }
 	jsFrontmatter(fields: {slug: {eq: $slug}}) {
-		data {
-		  error
-		  layoutType
-		  path
-		  title
-		  written
-		  category
-		  description
-		  updated
-		}  
+		...JSBlogPost_data
   }
 }
 `

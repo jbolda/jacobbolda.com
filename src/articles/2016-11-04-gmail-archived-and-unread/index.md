@@ -9,7 +9,7 @@ description: "Fix the OCD by marking archived emails from unread to read in Gmai
 
 I have been using gmail since the beta ages ago. (First email from the Gmail Team on October 17, 2004. Tweet at me if you can beat that!) I have a pretty good system with labels to manage my inbox striving for inbox zero. Recently Google came out with the Inbox app which works well to tirage messages on the go. You can mark messages done with a single swipe. Within Gmail, "done" is considered archived. What if those unread messages bother you? You are in luck. Go to [Google Scripts (scripts.google.com)](scripts.google.com), start a new project and name it appropriately. Copy and paste the code below into the window, and save it. Then click run and *createTrigger*. This will create a trigger to run these functions every hour. It will do up to 50 messages in one go. Just let it run, and clear out your backlog. Cheers.
 
-```
+```javascript
 // create trigger that processes 50 messages hourly
 function createTrigger() {
   ScriptApp.newTrigger('gmailMarkArchiveRead').timeBased().everyHours(1).create();

@@ -4,12 +4,11 @@
   "description": "personal site and blog",
   "main": "index.js",
   "scripts": {
-    "develop": "node_modules/.bin/gatsby develop",
+    "develop": "gatsby develop",
     "dev:hard": "npm run clean && npm run develop",
-    "build": "npm run clean & .\\node_modules\\.bin\\gatsby build",
-    "serve-build": "node_modules/.bin/gatsby serve-build",
+    "build": "npm run clean & gatsby build",
+    "serve-build": "gatsby serve-build",
     "clean": "rm -rf .cache && rm -rf public",
-    "copy": "npm run copy:files",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,7 +27,7 @@
   "homepage": "https://www.jacobbolda.com",
   "dependencies": {
     "big.js": "^3.1.3",
-    "bulma": "0.4.2",
+    "bulma": "^0.4.4",
     "d3": "4.9.1",
     "gatsby": "latest",
     "gatsby-link": "latest",
