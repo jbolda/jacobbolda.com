@@ -7,7 +7,7 @@
     "develop": "gatsby develop",
     "dev:hard": "npm run clean && npm run develop",
     "build": "npm run clean & gatsby build",
-    "serve-build": "gatsby serve-build",
+    "serve": "gatsby serve",
     "clean": "rm -rf .cache && rm -rf public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
