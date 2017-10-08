@@ -41,6 +41,11 @@ class SiteLinks extends React.Component {
                 </a>
               </li>
               <li>
+                <a href={ siteMetadata.siteAngelListUrl }>
+                  <i className='fa fa-angellist' /> {siteMetadata.siteAngelListPretty}
+                </a>
+              </li>
+              <li>
                 <a href={ siteMetadata.sitePhotoUrl }>
                   <i className='fa fa-camera' /> {siteMetadata.sitePhotoPretty}
                 </a>
