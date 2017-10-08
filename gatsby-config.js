@@ -12,7 +12,7 @@ module.exports = {
     siteTwitterPretty: "@jacob_bolda",
     siteGithubUrl: "https://github.com/jbolda",
     siteGithubPretty: "github.com/jbolda",
-    siteAngelList: "https://angel.co/jacobbolda",
+    siteAngelListUrl: "https://angel.co/jacobbolda",
     siteAngelListPretty: "angel.co/jacobbolda",
     siteKeybaseUrl: "https://keybase.io/jbolda",
     siteKeybasePretty: "keybase.io/jbolda",
