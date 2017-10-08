@@ -43,6 +43,8 @@ query InsetLayoutBySlug {
       siteLinkedInPretty
       siteGithubUrl
       siteGithubPretty
+      siteAngelListUrl
+      siteAngelListPretty
       siteKeybaseUrl
       siteKeybasePretty
       sitePhotoUrl
