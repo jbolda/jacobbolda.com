@@ -40,6 +40,8 @@ query ContactMe {
       siteGithubPretty
       siteKeybaseUrl
       siteKeybasePretty
+      siteAngelListUrl
+      siteAngelListPretty
       sitePhotoUrl
       sitePhotoPretty
     }
