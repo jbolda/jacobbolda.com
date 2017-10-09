@@ -34,6 +34,13 @@ module.exports = {
         path: `${__dirname}/src/articles/`,
       },
     },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `03uidnc7gnvb`,
+        accessToken: `2a7c69c0b96a65ec0f279d0842a0c89197c26e119fc92258551502c88e597d75`,
+      },
+    },
     `gatsby-transformer-javascript-static-exports`,
     {
       resolve: `gatsby-transformer-remark`,
