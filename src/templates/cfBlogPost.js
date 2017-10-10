@@ -3,13 +3,13 @@ import BlogPostChrome from "../components/BlogPostChrome"
 
 class cfBlogPost extends React.Component {
   render() {
-    const {html, frontmatter} = this.props.data.markdownRemark
+    const {content} = this.props.data.contentfulBlogPost
 
     return (
-      <BlogPostChrome {...frontmatter}>
+      <BlogPostChrome {...this.props.data.contentfulBlogPost}>
         <div className="container content">
           <h1>{frontmatter.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+          <div dangerouslySetInnerHTML={{ __html: content.content }} />
         </div>
       </BlogPostChrome>
     )
@@ -21,8 +21,7 @@ export default cfBlogPost
 export const pageQuery = graphql`
   query cfBlogPostByID($id: String!) {
     contentfulBlogPost(fields: { id: { eq: $id } }) {
-      html
-      ...MarkdownBlogPost_frontmatter
+      ...ContentfulBlogPost
     }
   }
 `
