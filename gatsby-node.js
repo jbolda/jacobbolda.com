@@ -71,6 +71,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             allContentfulBlogPost {
               edges {
                 node {
+                  id
                   path
                   layoutType
                 }
