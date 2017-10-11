@@ -12,6 +12,7 @@ class SiteIndex extends React.Component {
     let pageRaw = [
       ...this.props.data.allMarkdownRemark.edges,
       ...this.props.data.allJsFrontmatter.edges,
+      ...this.props.data.allContentfulBlogPost.edges,
     ]
     let pageArray = []
     pageRaw.forEach(page => {
@@ -133,6 +134,20 @@ export const pageQuery = graphql`
             description
           }
           timeToRead
+        }
+      }
+    }
+    allContentfulBlogPost {
+      edges {
+        node {
+           title
+            path
+            layoutType
+            parent
+            written
+            updated
+            category
+            description: description.description
         }
       }
     }
