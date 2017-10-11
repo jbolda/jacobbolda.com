@@ -1,9 +1,9 @@
 ---
-title: A Living Blog
+title: A Living Blog2
 written: "2016-10-22"
 updated: "2016-11-04"
 layoutType: post
-path: "/a-living-blog/"
+path: "/a-living-blog2/"
 category: "Beginnings"
 description: "A new beginning to delivering content and math."
 ---

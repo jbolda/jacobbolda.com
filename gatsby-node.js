@@ -7,18 +7,23 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
     node.internal.type === `MarkdownRemark` ||
     node.internal.type === `JSFrontmatter`
   ) {
-    const fileNode = getNode(node.parent)
-    const parsedFilePath = path.parse(fileNode.relativePath)
-    if (parsedFilePath.name !== `index` && parsedFilePath.dir !== ``) {
-      slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`
-    } else if (parsedFilePath.dir === ``) {
-      slug = `/${parsedFilePath.name}/`
-    } else {
-      slug = `/${parsedFilePath.dir}/`
+    try {
+      const fileNode = getNode(node.parent)
+      const parsedFilePath = path.parse(fileNode.relativePath)
+      if (parsedFilePath.name !== `index` && parsedFilePath.dir !== ``) {
+        slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`
+      } else if (parsedFilePath.dir === ``) {
+        slug = `/${parsedFilePath.name}/`
+      } else {
+        slug = `/${parsedFilePath.dir}/`
+      }
+  
+      // Add slug as a field on the node.
+      createNodeField({ node, name: `slug`, value: slug })
+    } catch (error) {
+      // nil
     }
 
-    // Add slug as a field on the node.
-    createNodeField({ node, name: `slug`, value: slug })
   }
 }
 
@@ -29,6 +34,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     const pages = []
     const mdInsetPage = path.resolve(`src/templates/mdInsetPage.js`)
     const mdBlogPost = path.resolve(`src/templates/mdBlogPost.js`)
+    const cfBlogPost = path.resolve(`src/templates/cfBlogPost.js`)
 
     // Query for all markdown "nodes" and for the slug we previously created.
     resolve(
@@ -62,6 +68,14 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                 }
               }
             }
+            allContentfulBlogPost {
+              edges {
+                node {
+                  path
+                  layoutType
+                }
+              }
+            }
           }
         `
       ).then(result => {
@@ -91,6 +105,19 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               context: {
                 slug: edge.node.fields.slug,
               },
+            })
+          }
+        })
+
+        // Create from markdown
+        result.data.allContentfulBlogPost.edges.forEach(edge => {
+          console.log(edge)
+          let frontmatter = edge.node
+          if (frontmatter.layoutType === `post`) {
+            createPage({
+              path: frontmatter.path, // required
+              layout: 'blogPost', // this matches the filename of src/layouts/blogPost.js, layout created automatically
+              component: cfBlogPost,
             })
           }
         })
@@ -134,6 +161,9 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             })
           }
         })
+
+
+
 
         return
       })
