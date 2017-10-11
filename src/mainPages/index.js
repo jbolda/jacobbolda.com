@@ -143,7 +143,6 @@ export const pageQuery = graphql`
            title
             path
             layoutType
-            parent
             written
             updated
             category
