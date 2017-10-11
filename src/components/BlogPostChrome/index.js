@@ -54,6 +54,6 @@ export const blogPostFragment = graphql`
       written
       updated
       category
-      description
+      ...description
   }
 `
