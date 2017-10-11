@@ -47,4 +47,13 @@ export const blogPostFragment = graphql`
       description
     }
   }
+  fragment cfBlogPost on contentfulBlogPost {
+      title
+      path
+      layoutType
+      written
+      updated
+      category
+      description
+  }
 `
