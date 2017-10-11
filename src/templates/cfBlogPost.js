@@ -8,12 +8,12 @@ class cfBlogPost extends React.Component {
     const {html} = frontmatter.content.childMarkdownRemark
 
     return (
-    //  <BlogPostChrome {...this.props.data.contentfulBlogPost}>
+      <BlogPostChrome {...this.props.data.contentfulBlogPost}>
         <div className="container content">
           <h1>{frontmatter.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </div>
-    //  </BlogPostChrome>
+      </BlogPostChrome>
     )
   }
 }
@@ -23,12 +23,13 @@ export default cfBlogPost
 export const pageQuery = graphql`
   query cfBlogPostByID($id: String!) {
     contentfulBlogPost(id: { eq: $id }) {
+      title
       content {
         childMarkdownRemark {
           html
         }
       }
-      title
+      ...cfBlogPost
     }
   }
 `
