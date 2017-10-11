@@ -147,7 +147,7 @@ export const pageQuery = graphql`
             written
             updated
             category
-            description: description.description
+            description: description {description}
         }
       }
     }
