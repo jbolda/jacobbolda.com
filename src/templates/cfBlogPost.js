@@ -3,7 +3,6 @@ import BlogPostChrome from "../components/BlogPostChrome"
 
 class cfBlogPost extends React.Component {
   render() {
-    console.log(this)
     const frontmatter = this.props.data.contentfulBlogPost
     const {html} = frontmatter.content.childMarkdownRemark
 
