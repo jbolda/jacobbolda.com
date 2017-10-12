@@ -12,8 +12,10 @@ class SiteIndex extends React.Component {
     let pageRaw = [
       ...this.props.data.allMarkdownRemark.edges,
       ...this.props.data.allJsFrontmatter.edges,
+      ...this.props.data.allContentfulBlogPost.edges,
     ]
     let pageArray = []
+
     pageRaw.forEach(page => {
       if (typeof page.node.frontmatter === `object`) {
         if (typeof page.node.frontmatter.written != `undefined`) {
@@ -26,6 +28,10 @@ class SiteIndex extends React.Component {
         ) {
           pageArray.push(page.node.data)
         }
+      } else {
+        let restrNode = page.node
+        restrNode.description = restrNode.description.description
+        pageArray.push(restrNode)
       }
     })
 
@@ -33,6 +39,7 @@ class SiteIndex extends React.Component {
       pageArray,
       page => page.updated || page.written
     ).reverse()
+    console.log(sortedPages)
     sortedPages.forEach(page => {
       let frontmatter = page
 
@@ -133,6 +140,19 @@ export const pageQuery = graphql`
             description
           }
           timeToRead
+        }
+      }
+    }
+    allContentfulBlogPost {
+      edges {
+        node {
+           title
+            path
+            layoutType
+            written
+            updated
+            category
+            description {description}
         }
       }
     }
