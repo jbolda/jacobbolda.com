@@ -28,8 +28,7 @@ class SiteIndex extends React.Component {
           pageArray.push(page.node.data)
         }
       } else {
-        let restrNode = page.node
-        restrNode.description = restrNode.description.description
+        let restrNode = {...page.node, ...page.node.description}
         pageArray.push(restrNode)
       }
     })
