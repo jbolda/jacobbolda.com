@@ -4,33 +4,26 @@ import Helmet from "react-helmet"
 class PostPublished extends React.Component {
   render() {
     console.log(this)
-    const frontmatter = this
+    const frontmatter = this.props
 
-    if (frontmatter.updated === null) {
+    if (frontmatter.updated == null) {
       var published = (
         <div className="date-published">
-          <p>
-            <em>
-              published {frontmatter.written}
-            </em>
-          </p>
+            <em>{`published ${frontmatter.written}`}</em>
         </div>
       )
     } else {
       var published = (
         <div className="date-published">
-          <p>
             <em>
-              originally published{` `}
-              {frontmatter.written} and updated{` `}
-              {frontmatter.updated}
+              {`originally published ${frontmatter.written}
+              and updated ${frontmatter.updated}`}
             </em>
-          </p>
         </div>
       )
     }
 
-    return <div className="container content">{published}</div>
+    return <div className="container section content">{published}</div>
   }
 }
 

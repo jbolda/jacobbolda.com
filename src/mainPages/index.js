@@ -2,7 +2,6 @@ import React from "react"
 import Link from "gatsby-link"
 import Helmet from "react-helmet"
 import sortBy from "lodash/sortBy"
-import moment from "moment"
 
 class SiteIndex extends React.Component {
   render() {
@@ -39,7 +38,6 @@ class SiteIndex extends React.Component {
       pageArray,
       page => page.updated || page.written
     ).reverse()
-    console.log(sortedPages)
     sortedPages.forEach(page => {
       let frontmatter = page
 
@@ -54,13 +52,9 @@ class SiteIndex extends React.Component {
                     <h4 className="level-left">
                       <time
                         className="subtitle"
-                        dateTime={moment(
-                          frontmatter.updated || frontmatter.written
-                        ).format(`MMMM D, YYYY`)}
+                        dateTime={frontmatter.updatedPretty || frontmatter.writtenPretty}
                       >
-                        {moment(
-                          frontmatter.updated || frontmatter.written
-                        ).format(`MMMM YYYY`)}
+                        {frontmatter.updatedPretty || frontmatter.writtenPretty}
                       </time>
                     </h4>
                     <h5 className="level-right">
@@ -114,10 +108,12 @@ export const pageQuery = graphql`
             path
             title
             written
+            writtenPretty: written(formatString: "MMMM D, YYYY")
+            updated
+            updatePretty: updated(formatString: "MMMM D, YYYY")
             layoutType
             category
             description
-            updated
           }
         }
       }
@@ -135,7 +131,9 @@ export const pageQuery = graphql`
             layoutType
             parent
             written
+            writtenPretty: written(formatString: "MMMM D, YYYY")
             updated
+            updatePretty: updated(formatString: "MMMM D, YYYY")
             category
             description
           }
@@ -150,7 +148,9 @@ export const pageQuery = graphql`
             path
             layoutType
             written
+            writtenPretty: written(formatString: "MMMM D, YYYY")
             updated
+            updatePretty: updated(formatString: "MMMM D, YYYY")
             category
             description {description}
         }
