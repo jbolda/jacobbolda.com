@@ -1,6 +1,7 @@
 ---
 title: Gmail Archive and Unread
 written: "2016-11-04"
+updated: "2016-11-05"
 layoutType: post
 path: "/gmail-archive-and-unread/"
 category: "productivity"

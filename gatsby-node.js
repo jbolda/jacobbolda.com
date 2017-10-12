@@ -112,7 +112,6 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
         // Create from markdown
         result.data.allContentfulBlogPost.edges.forEach(edge => {
-          console.log(edge)
           let frontmatter = edge.node
           if (frontmatter.layoutType === `post`) {
             createPage({
