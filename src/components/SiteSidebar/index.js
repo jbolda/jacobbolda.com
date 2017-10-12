@@ -51,7 +51,7 @@ class SiteSidebar extends React.Component {
               <p className="copyright">&copy; All rights reserved.</p>
               <p className="copyright">
                 Made with <i className="fa fa-heart" aria-hidden="true" /> by{` `}
-                <Link to={siteMetadata.siteTwitterUrl}>Jacob Bolda</Link>
+                <a href={siteMetadata.siteTwitterUrl}>Jacob Bolda</a>
               </p>
             </div>
           </footer>
