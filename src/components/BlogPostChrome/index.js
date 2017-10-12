@@ -30,8 +30,8 @@ export const blogPostFragment = graphql`
       title
       path
       layoutType
-      written
-      updated
+      written(formatString: "MMMM Do YYYY")
+      updated(formatString: "MMMM Do YYYY")
       category
       description
     }
@@ -41,8 +41,8 @@ export const blogPostFragment = graphql`
       title
       path
       layoutType
-      written
-      updated
+      written(formatString: "MMMM Do YYYY")
+      updated(formatString: "MMMM Do YYYY")
       category
       description
     }
@@ -51,8 +51,8 @@ export const blogPostFragment = graphql`
       title
       path
       layoutType
-      written
-      updated
+      written(formatString: "MMMM Do YYYY")
+      updated(formatString: "MMMM Do YYYY")
       category
       description {description}
   }
