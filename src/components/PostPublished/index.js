@@ -3,7 +3,6 @@ import Helmet from "react-helmet"
 
 class PostPublished extends React.Component {
   render() {
-    console.log(this)
     const frontmatter = this.props
 
     if (frontmatter.updated == null) {
