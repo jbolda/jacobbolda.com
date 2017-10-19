@@ -32,6 +32,7 @@
     "gatsby": "latest",
     "gatsby-link": "latest",
     "gatsby-plugin-manifest": "latest",
+    "gatsby-plugin-netlify": "latest",
     "gatsby-plugin-offline": "latest",
     "gatsby-plugin-postcss-sass": "latest",
     "gatsby-plugin-sharp": "latest",

@@ -76,5 +76,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
+    `gatsby-plugin-netlify`, // make sure to put at the end of the array
   ],
 }
