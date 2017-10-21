@@ -22,8 +22,8 @@ class calculatorPost extends React.Component {
 
         return (
             <BlogPostChrome {...this.props.data.jsFrontmatter.data}>
-              <h1>{ frontmatter.title }</h1>
-              <div className='postBody'>
+              <h1 className="title is-1">{ frontmatter.title }</h1>
+              <div className='content'>
                 <p>
                   These functions are written in javascript and embedded into the window.
                   Press F12 (on windows in chrome) to get into the developer console.

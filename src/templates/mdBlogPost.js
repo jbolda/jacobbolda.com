@@ -9,7 +9,7 @@ class mdBlogPost extends React.Component {
     return (
       <BlogPostChrome {...frontmatter}>
         <h1 className="title is-1">{frontmatter.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+        <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
       </BlogPostChrome>
     )
   }

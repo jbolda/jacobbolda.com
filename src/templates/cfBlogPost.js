@@ -9,7 +9,7 @@ class cfBlogPost extends React.Component {
     return (
       <BlogPostChrome {...this.props.data.contentfulBlogPost}>
         <h1 className="title is-1">{frontmatter.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+        <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
       </BlogPostChrome>
     )
   }
