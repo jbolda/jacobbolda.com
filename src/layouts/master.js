@@ -9,7 +9,7 @@ class MasterLayout extends React.Component {
     let location = this.props.location.pathname
 
     return (
-      <div className="MasterLayout">
+      <div className="MasterLayout is-light">
         <Helmet
           defaultTitle={siteMetadata.title}
           meta={[
@@ -18,6 +18,15 @@ class MasterLayout extends React.Component {
           ]}
         />
         {this.props.children}
+        <div className="footer">
+          <div className="container content has-text-centered">
+            <p className="copyright">&copy; All rights reserved.</p>
+            <p className="copyright">
+              Made with <i className="fa fa-heart" aria-hidden="true" /> by{` `}
+              <a href={siteMetadata.siteTwitterUrl}>Jacob Bolda</a>
+            </p>
+          </div>
+        </div>
       </div>
     )
   }

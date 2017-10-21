@@ -6,12 +6,12 @@ class SiteNav extends React.Component {
   render() {
     const { location } = this.props
     return (
-      <nav className="blog-nav">
+      <nav className="">
         <ul>
           <li>
             <Link
               to="/"
-              className={location.pathname === `/` ? `current` : null}
+              className={location.pathname === `/` ? `is-active` : null}
             >
               {` `}Articles
             </Link>
@@ -19,7 +19,7 @@ class SiteNav extends React.Component {
           <li>
             <Link
               to="/about/"
-              className={location.pathname === `/about/` ? `current` : null}
+              className={location.pathname === `/about/` ? `is-active` : null}
             >
               {` `}About
             </Link>
@@ -27,7 +27,7 @@ class SiteNav extends React.Component {
           <li>
             <Link
               to="/contact/"
-              className={location.pathname === `/contact/` ? `current` : null}
+              className={location.pathname === `/contact/` ? `is-active` : null}
             >
               {` `}Contact
             </Link>

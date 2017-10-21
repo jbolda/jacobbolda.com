@@ -10,26 +10,28 @@ class BlogPostLayout extends React.Component {
     let siteMetadata = this.props.data.site.siteMetadata
 
     const home = (
-      <div className="nav">
-        <div className="container">
-          <div className="nav-left">
-            <Link className="nav-item is-tab is-active" to={`/`}>
-              Home
-            </Link>
-          </div>
+      <div className="section">
+        <div className="tabs container">
+          <ul>
+            <li className="is-active">
+              <Link className="nav-item is-tab is-active" to={`/`}>
+                Home
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     )
 
     return (
-      <div>
-        <MasterLayout {...this.props}>
-          {home}
+      <MasterLayout {...this.props}>
+        {home}
+        <div className="container">
+          {this.props.children()}
+        </div>
+        <div className="section">
+          <hr />
           <div className="container">
-            {this.props.children()}
-          </div>
-          <div className="footer container">
-            <hr />
             <p>
               {siteMetadata.siteDescr}
               <a href={siteMetadata.siteTwitterUrl}>
@@ -37,8 +39,8 @@ class BlogPostLayout extends React.Component {
               </a>
             </p>
           </div>
-        </MasterLayout> 
-      </div>
+        </div>
+      </MasterLayout>
     )
   }
 }

@@ -8,20 +8,18 @@ class InsetPageLayout extends React.Component {
     const siteMetadata = this.props.data.site
 
     return (
-      <div className="PageTemplate">
-        <MasterLayout {...this.props}>
-          <div className="section">
-            <div className="columns">
-              <div className="column is-one-quarter">
-                <SiteSidebar {...this.props} />
-              </div>
-              <div className="column">
-                {this.props.children()}
-              </div>
+      <MasterLayout {...this.props}>
+        <div className="PageTemplate section container is-primary">
+          <div className="columns">
+            <div className="column is-one-quarter">
+              <SiteSidebar {...this.props} />
+            </div>
+            <div className="column">
+              {this.props.children()}
             </div>
           </div>
-        </MasterLayout>
-      </div>
+        </div>
+      </MasterLayout>
     )
   }
 }

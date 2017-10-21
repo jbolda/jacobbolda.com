@@ -7,16 +7,16 @@ class BlogPostChrome extends React.Component {
     const frontmatter = this.props
 
     return (
-      <div className="BlogPostChrome">
+      <div className="BlogPostChrome container">
         <HelmetBlock {...frontmatter} />
-        <div className="content">
-          <div className="section">
-            <div className="container content">
+        <div className="container">
+          <div className="content has-text-justified">
             {this.props.children}
-            </div>
           </div>
         </div>
-        <PostPublished {...frontmatter} />
+        <div className="container">
+          <PostPublished {...frontmatter} />
+        </div>
       </div>
     )
   }

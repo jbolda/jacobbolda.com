@@ -3,22 +3,24 @@
 // Override variables here
 // You can add new ones or update existing ones:
 
-$primary: #0041A4;
-$info: #0060F0;
-$success: #14A900;
-$warning: #F0B800;
-$danger: #E80000;
-$text: #5C5C5C;
-$body-background: #FFFFFF;
-$background: #FFFFFF;
+$P1: #000000;
+$P2: #192C3B;
+$P3: #52777D;
+$P4: #9EBBA9;
+$P5: #F4F4F4;
+
+$primary: $P1;
+$light: $P5;
+$dark: $P2;
+$link: $P2;
+$info: $P4;
+$background: $P5;
+$body-background-color: $P5;
+$footer-background-color: $P4;
 $family-sans-serif: 'Varela Round', sans-serif;
 $family-serif: 'Lora', serif; // Add a serif family
+$family-primary: $family-sans-serif;
 
-// Override generated variables here
-// For example, by default, the $danger color is $red and the font is sans-serif
-// You can change these values:
-
-// $family-primary: $family-serif; // Use the new serif family
 
 @import '~bulma';
 @import '~prismjs/themes/prism-twilight';

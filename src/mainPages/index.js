@@ -50,17 +50,17 @@ class SiteIndex extends React.Component {
                   <div className="level">
                     <h4 className="level-left">
                       <time
-                        className="subtitle"
+                        className="subtitle is-6"
                         dateTime={frontmatter.updatedPretty || frontmatter.writtenPretty}
                       >
                         {frontmatter.updatedPretty || frontmatter.writtenPretty}
                       </time>
                     </h4>
-                    <h5 className="level-right">
+                    <h5 className="subtitle is-6 level-right">
                       {frontmatter.category}
                     </h5>
                   </div>
-                  <h1 className="title is-marginless">
+                  <h1 className="title">
                     <Link to={frontmatter.path}>
                       {frontmatter.title}
                     </Link>
