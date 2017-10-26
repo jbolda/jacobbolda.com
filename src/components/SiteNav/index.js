@@ -1,18 +1,20 @@
 import React from "react";
 import Link from "gatsby-link";
-import Logo from "../../static/images/logo/Bolda-logo.png"
 
 class SiteNav extends React.Component {
   render() {
     const { location } = this.props
+
     return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <Link
             to="/"
-            className={`navbar-item ${location.pathname === '/' ? 'is-active' : null}`}
+            className={`navbar-item ${location.pathname === '/' ? 'is-active' : `null`}`}
             >
-            <img src={Logo} />
+            <span className={`title ${location.pathname === '/' ? 'is-active' : `copyright`}`}>
+              B
+            </span>
           </Link>
           <Link
             to="/"
