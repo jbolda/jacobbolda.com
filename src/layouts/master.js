@@ -2,6 +2,7 @@ import React from "react"
 import * as PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import "../static/css/base.scss"
+import SiteNav from '../components/SiteNav'
 
 class MasterLayout extends React.Component {
   render() {
@@ -9,7 +10,7 @@ class MasterLayout extends React.Component {
     let location = this.props.location.pathname
 
     return (
-      <div className="MasterLayout">
+      <div className="MasterLayout is-light">
         <Helmet
           defaultTitle={siteMetadata.title}
           meta={[
@@ -17,7 +18,17 @@ class MasterLayout extends React.Component {
             { name: `keywords`, content: `articles` },
           ]}
         />
+        < SiteNav {...this.props} />
         {this.props.children}
+        <div className="footer">
+          <div className="container content has-text-centered">
+            <p className="copyright">&copy; All rights reserved.</p>
+            <p className="copyright">
+              Made with <i className="fa fa-heart copyright" aria-hidden="true" /> by{` `}
+              <a className="copyright" href={siteMetadata.siteTwitterUrl}>Jacob Bolda</a>
+            </p>
+          </div>
+        </div>
       </div>
     )
   }

@@ -1597,9 +1597,9 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
 
-bulma@^0.4.4:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.4.4.tgz#182a3d9fb15026b4602aa8da3cf42140bfb9bb2c"
+bulma@0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.6.0.tgz#4f5c5de582810d11aa0cfb1f30aec8a792d0d92c"
 
 bundle-loader@^0.5.4:
   version "0.5.5"
@@ -3817,7 +3817,7 @@ gatsby-plugin-manifest@latest:
     babel-runtime "^6.26.0"
     bluebird "^3.5.0"
 
-gatsby-plugin-netlify@^1.0.6:
+gatsby-plugin-netlify@latest:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-netlify/-/gatsby-plugin-netlify-1.0.6.tgz#4894bc6152626b6972d307cb537c5e5d3c799038"
   dependencies:
@@ -3833,15 +3833,16 @@ gatsby-plugin-offline@latest:
     babel-runtime "^6.26.0"
     sw-precache "^5.0.0"
 
-gatsby-plugin-postcss-sass@latest:
+gatsby-plugin-sass@latest:
   version "1.0.12"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-postcss-sass/-/gatsby-plugin-postcss-sass-1.0.12.tgz#41ded69c0b57c34e6d1b9638745531bea715c4ac"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sass/-/gatsby-plugin-sass-1.0.12.tgz#d0c721a764740dc2f6196efcf6c8c026bea4d5c6"
   dependencies:
     babel-runtime "^6.26.0"
     extract-text-webpack-plugin "^1.0.1"
     gatsby-1-config-css-modules "^1.0.5"
     node-sass "^4.5.2"
     sass-loader "^4.1.1"
+    webpack "^1.13.3"
 
 gatsby-plugin-sharp@^1.6.8, gatsby-plugin-sharp@latest:
   version "1.6.8"

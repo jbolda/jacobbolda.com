@@ -1,6 +1,5 @@
 import React from "react"
 import Link from "gatsby-link"
-import SiteNav from "../SiteNav"
 import SiteLinks from "../SiteLinks"
 
 class SiteSidebar extends React.Component {
@@ -9,52 +8,34 @@ class SiteSidebar extends React.Component {
         const {siteMetadata} = this.props.data.site;
         // TODO, deal with image more nice like
 
-    let header = (
+    return (
       <div className="">
-        <div className="card-image">
+        <div className="box is-fullwidth" style={{padding: `0px`}}>
           <Link to={`/`}>
             <figure className="image">
               <img src="https://s.gravatar.com/avatar/c02111afdbe9776a53fb197c0f459fb4?s=256" />
             </figure>
           </Link>
+          <div className="card-content">
+            <p className="title">
+              <Link
+                style={{
+                  textDecoration: `none`,
+                  borderBottom: `none`,
+                  color: `inherit`,
+                }}
+                to={`/`}
+              >
+                {siteMetadata.siteTitle}
+              </Link>
+            </p>
+            <p style={{ fontStyle: `italic` }}>
+              {siteMetadata.siteDescr}
+            </p>
+          </div>
         </div>
-        <div className="card-content">
-          <p className="title">
-            <Link
-              style={{
-                textDecoration: `none`,
-                borderBottom: `none`,
-                color: `inherit`,
-              }}
-              to={`/`}
-            >
-              {siteMetadata.siteTitle}
-            </Link>
-          </p>
-          <p style={{ fontStyle: `italic` }}>
-            {siteMetadata.siteDescr}
-          </p>
-        </div>
-      </div>
-    )
-
-    return (
-      <div className="card is-fullwidth">
-        {header}
-        <div className="card-content">
-          <SiteNav {...this.props} />
-          <footer>
-            <div className="is-hidden-mobile">
-              <SiteLinks {...this.props} />
-            </div>
-            <div>
-              <p className="copyright">&copy; All rights reserved.</p>
-              <p className="copyright">
-                Made with <i className="fa fa-heart" aria-hidden="true" /> by{` `}
-                <a href={siteMetadata.siteTwitterUrl}>Jacob Bolda</a>
-              </p>
-            </div>
-          </footer>
+        <div className="is-hidden-mobile">
+          <SiteLinks {...this.props} />
         </div>
       </div>
     )

@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    siteTitle: `Blog by Jacob Bolda`,
+    siteTitle: `Jacob Bolda`,
     siteDescr: `Structural Engineer with a knack for creative solutions with computers, programming and snarky comments.`,
     siteAuthor: `Jacob Bolda`,
 
@@ -63,7 +63,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-postcss-sass`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
