@@ -16,7 +16,9 @@ $link: $P2;
 $info: $P4;
 $background: $P5;
 $body-background-color: $P5;
-$footer-background-color: $P4;
+$navbar-background-color: $P2;
+$navbar-item-color: $P5;
+$footer-background-color: $P2;
 $family-sans-serif: 'Varela Round', sans-serif;
 $family-serif: 'Lora', serif; // Add a serif family
 $family-primary: $family-sans-serif;
@@ -35,4 +37,7 @@ $family-primary: $family-sans-serif;
     padding: 0px;
 }
 
+.copyright {
+    color: $navbar-item-color
+}
 

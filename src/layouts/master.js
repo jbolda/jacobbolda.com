@@ -24,8 +24,8 @@ class MasterLayout extends React.Component {
           <div className="container content has-text-centered">
             <p className="copyright">&copy; All rights reserved.</p>
             <p className="copyright">
-              Made with <i className="fa fa-heart" aria-hidden="true" /> by{` `}
-              <a href={siteMetadata.siteTwitterUrl}>Jacob Bolda</a>
+              Made with <i className="fa fa-heart copyright" aria-hidden="true" /> by{` `}
+              <a className="copyright" href={siteMetadata.siteTwitterUrl}>Jacob Bolda</a>
             </p>
           </div>
         </div>
