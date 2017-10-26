@@ -1,6 +1,5 @@
 import React from "react"
 import Link from "gatsby-link"
-import SiteNav from "../SiteNav"
 import SiteLinks from "../SiteLinks"
 
 class SiteSidebar extends React.Component {
@@ -34,9 +33,6 @@ class SiteSidebar extends React.Component {
               {siteMetadata.siteDescr}
             </p>
           </div>
-        </div>
-        <div className="container is-fullwidth">
-          <SiteNav {...this.props} />
         </div>
         <div className="container is-fullwidth is-hidden-mobile">
           <SiteLinks {...this.props} />

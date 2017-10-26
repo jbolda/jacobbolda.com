@@ -9,23 +9,8 @@ class BlogPostLayout extends React.Component {
   render() {
     let siteMetadata = this.props.data.site.siteMetadata
 
-    const home = (
-      <div className="section">
-        <div className="tabs container">
-          <ul>
-            <li className="is-active">
-              <Link className="nav-item is-tab is-active" to={`/`}>
-                Home
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-    )
-
     return (
       <MasterLayout {...this.props}>
-        {home}
         <div className="section">
           {this.props.children()}
         </div>

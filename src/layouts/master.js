@@ -2,6 +2,7 @@ import React from "react"
 import * as PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import "../static/css/base.scss"
+import SiteNav from '../components/SiteNav'
 
 class MasterLayout extends React.Component {
   render() {
@@ -17,6 +18,7 @@ class MasterLayout extends React.Component {
             { name: `keywords`, content: `articles` },
           ]}
         />
+        < SiteNav {...this.props} />
         {this.props.children}
         <div className="footer">
           <div className="container content has-text-centered">
