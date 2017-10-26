@@ -34,7 +34,7 @@ class SiteSidebar extends React.Component {
             </p>
           </div>
         </div>
-        <div className="container is-fullwidth is-hidden-mobile">
+        <div className="is-hidden-mobile">
           <SiteLinks {...this.props} />
         </div>
       </div>
