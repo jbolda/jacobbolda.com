@@ -23,7 +23,6 @@ $family-sans-serif: 'Varela Round', sans-serif;
 $family-serif: 'Lora', serif; // Add a serif family
 $family-primary: $family-sans-serif;
 
-
 @import '~bulma';
 @import '~prismjs/themes/prism-twilight';
 
@@ -41,3 +40,10 @@ $family-primary: $family-sans-serif;
     color: $navbar-item-color
 }
 
+:export {
+    P1: $P1;
+    P2: $P2;
+    P3: $P3;
+    P4: $P4;
+    P5: $P5;
+}
