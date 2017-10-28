@@ -5,7 +5,7 @@ import {P5, P2} from "../../static/css/base.scss";
 class SiteNav extends React.Component {
   render() {
     const { location } = this.props
-
+    console.log(location)
     return (
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
