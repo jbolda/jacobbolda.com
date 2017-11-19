@@ -1,38 +1,47 @@
 import React from "react";
 import Link from "gatsby-link";
-import "./style.css";
+import styles from "../../static/css/palette.json";
 
 class SiteNav extends React.Component {
   render() {
-    const { location } = this.props
+
     return (
-      <nav className="blog-nav">
-        <ul>
-          <li>
-            <Link
-              to="/"
-              className={location.pathname === `/` ? `current` : null}
+      <nav className="navbar" role="navigation" aria-label="main navigation">
+        <div className="navbar-brand">
+          <Link
+            to="/"
+            className="navbar-item"
+            style={this.props.location.pathname == '/' ? {backgroundColor: styles.colors.P5} : {}}
             >
-              {` `}Articles
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/about/"
-              className={location.pathname === `/about/` ? `current` : null}
+            <span
+              className="title"
+              style={this.props.location.pathname == '/' ? {color: styles.colors.P2} : {color: styles.colors.P5}}
+              >
+              B
+            </span>
+          </Link>
+          <Link
+            to="/"
+            className="navbar-item"
+            style={this.props.location.pathname == '/' ? {backgroundColor: styles.colors.P5, color: styles.colors.P2} : {}}
             >
-              {` `}About
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/contact/"
-              className={location.pathname === `/contact/` ? `current` : null}
+            Articles
+          </Link>
+          <Link
+            to="/about/"
+            className="navbar-item"
+            style={this.props.location.pathname == '/about/' ? {backgroundColor: styles.colors.P5, color: styles.colors.P2} : {}}
             >
-              {` `}Contact
-            </Link>
-          </li>
-        </ul>
+            About
+          </Link>
+          <Link
+            to="/contact/"
+            className="navbar-item"
+            style={this.props.location.pathname == '/contact/' ? {backgroundColor: styles.colors.P5, color: styles.colors.P2} : {}}
+            >
+            Contact
+          </Link>
+        </div>
       </nav>
     )
   }

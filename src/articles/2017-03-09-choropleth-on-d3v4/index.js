@@ -62,7 +62,7 @@ class choroplethBase extends React.Component {
               </div>
               <div className='section'>
                 <div className='container'>
-                  <div dangerouslySetInnerHTML={{ __html: html }} />
+                  <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
                 </div>
               </div>
             </BlogPostChrome>

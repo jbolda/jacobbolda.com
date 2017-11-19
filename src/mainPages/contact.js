@@ -11,7 +11,7 @@ class ContactMe extends React.Component {
     render() {
 
         return (
-            <div className='box container content'>
+            <div className='box content'>
               <p>
                 I would love to hear from you!
               </p>

@@ -5,7 +5,7 @@ class mdInsetPage extends React.Component {
     const {html} = this.props.data.markdownRemark
 
     return (
-      <div className="box container content">
+      <div className="box content">
         <div dangerouslySetInnerHTML={{ __html: html }} />
       </div>
     )
