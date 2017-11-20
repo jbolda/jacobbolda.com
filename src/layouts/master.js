@@ -3,6 +3,7 @@ import * as PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import "../static/css/base.scss"
 import SiteNav from '../components/SiteNav'
+import heartData from '../static/assets/heart-white.svg'
 
 class MasterLayout extends React.Component {
   render() {
@@ -24,7 +25,7 @@ class MasterLayout extends React.Component {
           <div className="container content has-text-centered">
             <p className="copyright">&copy; All rights reserved.</p>
             <p className="copyright">
-              Made with <i className="fa fa-heart copyright" aria-hidden="true" /> by{` `}
+              Made with <Heart icon={heartData} alt="heart"/> by{` `}
               <a className="copyright" href={siteMetadata.siteTwitterUrl}>Jacob Bolda</a>
             </p>
           </div>
@@ -33,5 +34,16 @@ class MasterLayout extends React.Component {
     )
   }
 }
+
+const Heart = ({ icon, alt }) => (
+  <img
+  src={icon}
+  alt={alt}
+  style={{
+    height: `25px`,
+    marginBottom: `-7px`
+  }}
+  />
+)
 
 export default MasterLayout
