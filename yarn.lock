@@ -1381,7 +1381,7 @@ boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
 
-boom@2.x.x, boom@^2.0.0:
+boom@2.x.x:
   version "2.10.1"
   resolved "https://registry.yarnpkg.com/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
   dependencies:
@@ -2278,7 +2278,7 @@ crypt@~0.0.1:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/crypt/-/crypt-0.0.2.tgz#88d7ff7ec0dfb86f713dc87bbb42d044d3e6c41b"
 
-cryptiles@2.x.x, cryptiles@^2.0.0:
+cryptiles@2.x.x:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/cryptiles/-/cryptiles-2.0.5.tgz#3bdfecdc608147c1c67202fa291e7dca59eaa3b8"
   dependencies:
@@ -3895,16 +3895,6 @@ gatsby-plugin-offline@^1.0.10:
     babel-runtime "^6.26.0"
     sw-precache "^5.0.0"
 
-gatsby-plugin-postcss-sass@^1.0.13:
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-postcss-sass/-/gatsby-plugin-postcss-sass-1.0.13.tgz#5b930cfdec2a0f3eeb31b331eb39b9f47e985ae2"
-  dependencies:
-    babel-runtime "^6.26.0"
-    extract-text-webpack-plugin "^1.0.1"
-    gatsby-1-config-css-modules "^1.0.6"
-    node-sass "^4.5.2"
-    sass-loader "^4.1.1"
-
 gatsby-plugin-sass@^1.0.13:
   version "1.0.13"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sass/-/gatsby-plugin-sass-1.0.13.tgz#6526ec63c3de32bcd2dbc669c782a6c2673b24f6"
@@ -4753,7 +4743,7 @@ hmac-drbg@^1.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hoek@2.x.x, hoek@^2.0.0:
+hoek@2.x.x:
   version "2.16.3"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
 
@@ -9042,7 +9032,7 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^2.0.0"
 
-sntp@1.x.x, sntp@^1.0.0:
+sntp@1.x.x:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/sntp/-/sntp-1.0.9.tgz#6541184cc90aeea6c6e7b35e2659082443c66198"
   dependencies:
