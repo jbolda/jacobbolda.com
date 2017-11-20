@@ -64,7 +64,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-postcss-sass`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
