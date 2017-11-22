@@ -54,18 +54,10 @@ class choroplethBase extends React.Component {
 
         return (
             <BlogPostChrome {...this.props.data}>
-              <div className='section'>
-                <h1 className="title is-1">{ frontmatter.title }</h1>
-                <div className='container'>
-                  <div id='tooltip'></div>
-                  <div id='states'></div>
-                </div>
-              </div>
-              <div className='section'>
-                <div className='container'>
-                  <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
-                </div>
-              </div>
+              <h1 className="title is-1">{ frontmatter.title }</h1>
+              <div id='tooltip'></div>
+              <div id='states'></div>
+              <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
             </BlogPostChrome>
         );
     }
