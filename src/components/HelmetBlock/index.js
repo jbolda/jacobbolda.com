@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import moment from 'moment';
 
 class HelmetBlock extends React.Component {
-  render() {  
+  render() {
     const frontmatter = this.props;
     return (
         <div>

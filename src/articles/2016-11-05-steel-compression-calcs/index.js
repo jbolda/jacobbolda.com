@@ -14,14 +14,13 @@ class calculatorPost extends React.Component {
 
     componentDidMount() {
         window.c = {...this.props.c};
-        // console.log(this);
     }
 
     render() {
-      let frontmatter = this.props.data.jsFrontmatter.data;
+      let {frontmatter} = this.props.data.post;
 
         return (
-            <BlogPostChrome {...this.props.data.jsFrontmatter.data}>
+            <BlogPostChrome {...this.props.data}>
               <h1 className="title is-1">{ frontmatter.title }</h1>
               <div className='content'>
                 <p>
@@ -192,8 +191,8 @@ calculatorPost.defaultProps = {
 
 export const pageQuery = graphql`
 query steelCompressionCalcs($slug: String!) {
-	jsFrontmatter(fields: {slug: {eq: $slug}}) {
-		...JSBlogPost_data 
+	post: jsFrontmatter(fields: {slug: {eq: $slug}}) {
+		...JSBlogPost_data
   }
 }
 `

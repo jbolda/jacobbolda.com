@@ -1,22 +1,15 @@
 import React from "react"
 import BlogPostChrome from "../components/BlogPostChrome"
-import Img from 'gatsby-image'
 
 class cfBlogPost extends React.Component {
   render() {
-    console.log(this)
     const frontmatter = this.props.data.post
+    const {hero} = this.props.data
     const {html} = frontmatter.content.childMarkdownRemark
+    const p = {hero: hero, post: {frontmatter: frontmatter}}
 
     return (
-      <BlogPostChrome {...this.props.data.contentfulBlogPost}>
-        <section className="hero">
-          <div className="hero-body">
-            <div className="container">
-              <Img sizes={this.props.data.hero.childImageSharp.sizes} />
-            </div>
-          </div>
-        </section>
+      <BlogPostChrome {...p}>
         <h1 className="title is-1">{frontmatter.title}</h1>
         <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
       </BlogPostChrome>
@@ -27,7 +20,7 @@ class cfBlogPost extends React.Component {
 export default cfBlogPost
 
 export const pageQuery = graphql`
-  query cfBlogPostByID($id: String!) {
+  query cfBlogPostByID($id: String!, $heroImage: String!) {
     post: contentfulBlogPost(id: { eq: $id }) {
       title
       content {
@@ -37,11 +30,9 @@ export const pageQuery = graphql`
       }
       ...cfBlogPost
     }
-    hero: file(relativePath: {eq: "external/hero-images/on-las-vegas.jpg"}) {
+    hero: file(relativePath: {eq: $heroImage}) {
       childImageSharp {
-        # Specify the image processing steps right in the query
-        # Makes it trivial to update as your page's design changes.
-        sizes {
+        sizes(maxWidth: 1920) {
           ...GatsbyImageSharpSizes_tracedSVG
         }
       }

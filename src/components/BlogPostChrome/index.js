@@ -1,20 +1,40 @@
 import React from "react"
 import HelmetBlock from "../HelmetBlock"
 import PostPublished from "../PostPublished"
+import Img from 'gatsby-image'
 
 class BlogPostChrome extends React.Component {
   render() {
-    const frontmatter = this.props
+    const {frontmatter} = this.props.post
+    const HeroImage = (props) => {
+      if (props.hero) {
+        return (
+          <section className="hero is-medium">
+            <div className="container-fluid">
+             <Img className="image" sizes={props.hero.childImageSharp.sizes} />
+            </div>
+          </section>
+        )
+      } else {
+        return (<div/>)
+      }
+    }
+    const adjustPostStyle = (this.props.hero) ? {marginTop: "-8rem"} : {}
 
     return (
       <div className="BlogPostChrome">
-        <HelmetBlock {...frontmatter} />
-        <div className="container">
-            {this.props.children}
-        </div>
-        <div className="container">
+        <HeroImage {...this.props}/>
+        <section className="section">
+          <div className="container" style={adjustPostStyle}>
+            <div className="box">
+              {this.props.children}
+            </div>
+          </div>
+        </section>
+        <section className="section">
           <PostPublished {...frontmatter} />
-        </div>
+        </section>
+        <HelmetBlock {...frontmatter} />
       </div>
     )
   }
@@ -35,7 +55,7 @@ export const blogPostFragment = graphql`
     }
   }
   fragment JSBlogPost_data on JSFrontmatter {
-    data {
+    frontmatter: data {
       title
       path
       layoutType

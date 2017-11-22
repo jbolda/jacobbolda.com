@@ -50,11 +50,12 @@ class choroplethBase extends React.Component {
     render() {
         let data = this.props.data.markdownRemark;
         let html = data.html;
-        let frontmatter = this.props.data.jsFrontmatter.data;
+        let {frontmatter} = this.props.data.post;
 
         return (
-            <BlogPostChrome {...frontmatter}>
+            <BlogPostChrome {...this.props.data}>
               <div className='section'>
+                <h1 className="title is-1">{ frontmatter.title }</h1>
                 <div className='container'>
                   <div id='tooltip'></div>
                   <div id='states'></div>
@@ -179,7 +180,7 @@ query choroplethOnD3v4($slug: String!) {
   markdownRemark(fields: { slug: { eq: "/2017-03-09-choropleth-on-d3v4/_choropleth/" }}) {
     html
   }
-	jsFrontmatter(fields: {slug: {eq: $slug}}) {
+	post: jsFrontmatter(fields: {slug: {eq: $slug}}) {
 		...JSBlogPost_data
   }
 }
