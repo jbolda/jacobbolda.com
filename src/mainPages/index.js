@@ -90,7 +90,7 @@ class SiteIndex extends React.Component {
     return (
       <div>
         <Helmet
-          defaultTitle={siteMetadata.title}
+          title={siteMetadata.siteTitle}
           meta={[
             { name: `description`, content: siteMetadata.siteDescr },
             { name: `keywords`, content: `articles` },

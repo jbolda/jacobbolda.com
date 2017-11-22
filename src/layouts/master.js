@@ -13,7 +13,8 @@ class MasterLayout extends React.Component {
     return (
       <div className="MasterLayout is-light">
         <Helmet
-          defaultTitle={siteMetadata.title}
+          defaultTitle={siteMetadata.siteTitle}
+          title={siteMetadata.siteTitle}
           meta={[
             { name: `description`, content: siteMetadata.siteDescr },
             { name: `keywords`, content: `articles` },
