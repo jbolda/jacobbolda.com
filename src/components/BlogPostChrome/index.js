@@ -19,13 +19,32 @@ class BlogPostChrome extends React.Component {
         return (<div/>)
       }
     }
-    const adjustPostStyle = (this.props.hero) ? {marginTop: "-8rem"} : {}
+    const adjustTitleStyle = (this.props.hero) ? {
+                                      fontSize: "4rem",
+                                      // WebkitTextStroke: "1px black",
+                                      color: "white",
+                                      textShadow: [
+                                          "3px 3px 0 #000",
+                                        "-1px -1px 0 #000",  
+                                         "1px -1px 0 #000",
+                                         "-1px 1px 0 #000",
+                                          "1px 1px 0 #000",
+                                      ]
+                                      } : {}
+    const adjustPostStyle = (this.props.hero) ? {marginTop: "-20%", paddingBottom: "1rem"} : {}
 
     return (
       <div className="BlogPostChrome">
         <HeroImage {...this.props}/>
-        <section className="section">
-          <div className="container" style={adjustPostStyle}>
+        <section className="section" style={adjustPostStyle}>
+          <div className="container">
+            <h1 className="title is-1" style={adjustTitleStyle}>
+              {frontmatter.title}
+            </h1>
+          </div>
+        </section>
+        <section className="section" style={{paddingTop: "0px"}}>
+          <div className="container">
             <div className="box">
               {this.props.children}
             </div>

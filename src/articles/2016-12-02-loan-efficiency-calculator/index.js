@@ -240,7 +240,6 @@ class loanEfficiencyCalculator extends React.Component {
         return (
             <BlogPostChrome {...this.props.data}>
               <div className='content'>
-                  <h1 className="title is-1">{frontmatter.title}</h1>
                   <h2>Debt Payoff</h2>
                   <p>When tackling debt, there are plenty of pointers out there for the best method. The most efficient way to pay down the debt is with the highest interest first. Finances are highly emotional though. If they weren't, it would be simply that income has to be greater then expenses, and nobody would ever struggle.</p>
 
