@@ -36,10 +36,10 @@ class BlogPostChrome extends React.Component {
         <HeroImage {...this.props}/>
         <section className="section" style={adjustPostStyle}>
           <div className="container">
-            <h1 className="title is-1 is-flex-tablet" style={{fontSize: "5rem",...adjustTitleStyle}}>
+            <h1 className="title is-1 is-hidden-mobile" style={{fontSize: "5rem",...adjustTitleStyle}}>
               {frontmatter.title}
             </h1>
-            <h1 className="title is-flex-mobile" style={{fontSize: "2rem",...adjustTitleStyle}}>
+            <h1 className="title is-hidden-tablet" style={{fontSize: "2rem",...adjustTitleStyle}}>
               {frontmatter.title}
             </h1>
           </div>
