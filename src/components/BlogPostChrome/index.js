@@ -24,7 +24,7 @@ class BlogPostChrome extends React.Component {
                                       // WebkitTextStroke: "1px black",
                                       color: "white",
                                       textShadow: [
-                                          "3px 3px 0 #000",
+                                          "1px 1px 0 #000",
                                         "-1px -1px 0 #000",  
                                          "1px -1px 0 #000",
                                          "-1px 1px 0 #000",
