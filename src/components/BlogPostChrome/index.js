@@ -20,8 +20,6 @@ class BlogPostChrome extends React.Component {
       }
     }
     const adjustTitleStyle = (this.props.hero) ? {
-                                      fontSize: "4rem",
-                                      // WebkitTextStroke: "1px black",
                                       color: "white",
                                       textShadow: [
                                           "1px 1px 0 #000",
@@ -38,7 +36,10 @@ class BlogPostChrome extends React.Component {
         <HeroImage {...this.props}/>
         <section className="section" style={adjustPostStyle}>
           <div className="container">
-            <h1 className="title is-1" style={adjustTitleStyle}>
+            <h1 className="title is-1 is-flex-tablet" style={{fontSize: "5rem",...adjustTitleStyle}}>
+              {frontmatter.title}
+            </h1>
+            <h1 className="title is-flex-mobile" style={{fontSize: "2rem",...adjustTitleStyle}}>
               {frontmatter.title}
             </h1>
           </div>
