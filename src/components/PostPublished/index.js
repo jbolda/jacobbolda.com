@@ -22,7 +22,7 @@ class PostPublished extends React.Component {
       )
     }
 
-    return <div className="container section content">{published}</div>
+    return <div className="container content">{published}</div>
   }
 }
 

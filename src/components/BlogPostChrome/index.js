@@ -29,12 +29,12 @@ class BlogPostChrome extends React.Component {
                                           "1px 1px 0 #000",
                                       ]
                                       } : {}
-    const adjustPostStyle = (this.props.hero) ? {marginTop: "-20%", paddingBottom: "1rem"} : {}
+    const adjustPostStyle = (this.props.hero) ? {marginTop: "-30%"} : {}
 
     return (
       <div className="BlogPostChrome">
         <HeroImage {...this.props}/>
-        <section className="section" style={adjustPostStyle}>
+        <section className="section" style={{paddingBottom: "1rem", ...adjustPostStyle}}>
           <div className="container">
             <h1 className="title is-1 is-hidden-mobile" style={{fontSize: "5rem",...adjustTitleStyle}}>
               {frontmatter.title}
@@ -51,9 +51,7 @@ class BlogPostChrome extends React.Component {
             </div>
           </div>
         </section>
-        <section className="section">
-          <PostPublished {...frontmatter} />
-        </section>
+        <PostPublished {...frontmatter} />
         <HelmetBlock {...frontmatter} />
       </div>
     )
