@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './style.css';
 import Envelope from '../../static/assets/envelope-o.svg';
 import Twitter from '../../static/assets/twitter.svg';
 import LinkedIn from '../../static/assets/linkedin-square.svg';
@@ -14,8 +13,11 @@ class SiteLinks extends React.Component {
       const {siteMetadata} = this.props.data.site
 
       return (
-          <div className='blog-social'>
-            <ul>
+          <aside className="menu">
+            <p className="menu-label">
+              Contact Me
+            </p>
+            <ul className="menu-list">
               <li>
                 <a href={`mailto:` + siteMetadata.siteEmailUrl}>
                   <Icon icon={Envelope} alt='email' /> {siteMetadata.siteEmailPretty}
@@ -52,7 +54,7 @@ class SiteLinks extends React.Component {
                 </a>
               </li>
             </ul>
-          </div>
+          </aside>
           );
   }
 }
@@ -60,12 +62,10 @@ class SiteLinks extends React.Component {
 export default SiteLinks;
 
 const Icon = ({ icon, alt }) => (
-  <img
-  src={icon}
-  alt={alt}
-  style={{
-    height: `20px`,
-    marginBottom: `-4px`,
-  }}
-  />
+  <span className="icon is-small" style={{marginBottom: `-8px`}}>
+    <img
+    src={icon}
+    alt={alt}
+    />
+  </span>
 )
