@@ -49,5 +49,12 @@ query InsetLayoutBySlug {
       sitePhotoPretty
     }
   }
+  file(relativePath: {eq: "assets/profile.png"}) {
+    childImageSharp {
+      sizes(maxWidth: 256) {
+        ...GatsbyImageSharpSizes_tracedSVG
+      }
+    }
+  }
 }
 `
