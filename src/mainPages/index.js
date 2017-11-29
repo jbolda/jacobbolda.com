@@ -5,7 +5,7 @@ import sortBy from "lodash/sortBy"
 
 class SiteIndex extends React.Component {
   render() {
-
+    const {siteMetadata} = this.props.data.site
     const pageLinks = []
     let iteratorKey = 0
     let pageRaw = [
@@ -89,6 +89,13 @@ class SiteIndex extends React.Component {
 
     return (
       <div>
+        <Helmet
+          title={siteMetadata.siteTitle}
+          meta={[
+            { name: `description`, content: siteMetadata.siteDescr },
+            { name: `keywords`, content: `articles` },
+          ]}
+        />
         {pageLinks}
       </div>
     )
@@ -153,6 +160,12 @@ export const pageQuery = graphql`
             category
             description {description}
         }
+      }
+    }
+    site {
+      siteMetadata {
+        siteTitle
+        siteDescr
       }
     }
   }

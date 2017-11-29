@@ -13,7 +13,8 @@ class MasterLayout extends React.Component {
     return (
       <div className="MasterLayout is-light">
         <Helmet
-          defaultTitle={siteMetadata.title}
+          defaultTitle={siteMetadata.siteTitle}
+          title={siteMetadata.siteTitle}
           meta={[
             { name: `description`, content: siteMetadata.siteDescr },
             { name: `keywords`, content: `articles` },
@@ -21,7 +22,7 @@ class MasterLayout extends React.Component {
         />
         < SiteNav {...this.props} />
         {this.props.children}
-        <div className="footer">
+        <section className="footer">
           <div className="container content has-text-centered">
             <p className="copyright">&copy; All rights reserved.</p>
             <p className="copyright">
@@ -29,7 +30,7 @@ class MasterLayout extends React.Component {
               <a className="copyright" href={siteMetadata.siteTwitterUrl}>Jacob Bolda</a>
             </p>
           </div>
-        </div>
+        </section>
       </div>
     )
   }

@@ -89,7 +89,7 @@ class loanEfficiencyCalculator extends React.Component {
     }
 
     render() {
-      let frontmatter = this.props.data.jsFrontmatter.data;
+        const {frontmatter} = this.props.data.post;
 
         const loanInputs = this.state.loans.map((loan, index) => {
           if (index === 0) {
@@ -120,69 +120,81 @@ class loanEfficiencyCalculator extends React.Component {
                   </div>
                   <div className='tile is-parent is-12'>
                     <div className='tile is-child is-3'>
-                      <div className='container is-fluid'>
+                      <div className='field'>
                         <label className='label'>
                           Name
                         </label>
-                        <p className='control'>
+                        <div className='control is-expanded' style={{paddingRight: '0.5rem'}}>
                           <input
                             name='name'
                             type='text'
-                            className='input is-expanded'
+                            className='input'
                             value={loan.name}
                             onChange={this.handleChange.bind(this, index)}/>
-                        </p>
+                        </div>
                       </div>
                     </div>
                     <div className='tile is-child is-3'>
-                      <div className='container is-fluid'>
+                      <div className='field'>
                         <label className='label'>
                           Balance
                         </label>
-                        <p className='control has-addons'>
-                          <span className='control button is-disabled'>$</span>
-                          <input
-                            name='balance'
-                            type='number'
-                            className='input is-expanded'
-                            step='100'
-                            value={loan.balance.toFixed(2)}
-                            onChange={this.handleChange.bind(this, index)} />
-                        </p>
+                        <div className='field has-addons'>
+                          <p className='control'>
+                            <a className='button is-static'>$</a>
+                          </p>
+                          <p className='control is-expanded' style={{paddingRight: '0.5rem'}}>
+                            <input
+                              name='balance'
+                              type='number'
+                              className='input'
+                              step='100'
+                              value={loan.balance.toFixed(2)}
+                              onChange={this.handleChange.bind(this, index)} />
+                          </p>
+                        </div>
                       </div>
                     </div>
                     <div className='tile is-child is-3'>
-                      <div className='container is-fluid'>
+                      <div className='field'>
                         <label className='label'>
                           Interest Rate
                         </label>
-                        <p className='control has-addons'>
-                          <input
-                            name='intRate'
-                            type='number'
-                            className='input is-expanded'
-                            step='0.01'
-                            value={loan.intRate.toFixed(2)}
-                            onChange={this.handleChange.bind(this, index)} />
-                          <span className='control button is-disabled'>%</span>
-                        </p>
+                        <div className='field has-addons'>
+                          <p className='control is-expanded'>
+                            <input
+                              name='intRate'
+                              type='number'
+                              className='input'
+                              step='0.01'
+                              value={loan.intRate.toFixed(2)}
+                              onChange={this.handleChange.bind(this, index)} />
+                          </p>
+                          <p className='control' style={{paddingRight: '0.5rem'}}>
+                            <a className='button is-static'>%</a>
+                          </p>
+                        </div>
                       </div>
                     </div>
                     <div className='tile is-child is-3'>
-                      <div className='container is-fluid'>
+                      <div className='field'>
                         <label className='label'>
                           Minimum Payment
                         </label>
-                        <p className='control has-addons'>
-                          <span className='control button is-disabled'>$</span>
-                          <input
-                            name='payment'
-                            type='number'
-                            className='input is-expanded'
-                            step='5'
-                            value={loan.payment.toFixed(2)}
-                            onChange={this.handleChange.bind(this, index)} />
-                        </p>
+                        <div className='field has-addons'>
+                          <p className='control'>
+                            <a className='button is-static'>$</a>
+                          </p>
+                          <p className='control is-expanded'>
+                            <input
+                              name='payment'
+                              type='number'
+                              className='input'
+                              step='5'
+                              value={loan.payment.toFixed(2)}
+                              onChange={this.handleChange.bind(this, index)} />
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -226,9 +238,8 @@ class loanEfficiencyCalculator extends React.Component {
 
 
         return (
-            <BlogPostChrome {...frontmatter}>
-              <div className='section'>
-                <div className='container content'>
+            <BlogPostChrome {...this.props.data}>
+              <div className='content'>
                   <h2>Debt Payoff</h2>
                   <p>When tackling debt, there are plenty of pointers out there for the best method. The most efficient way to pay down the debt is with the highest interest first. Finances are highly emotional though. If they weren't, it would be simply that income has to be greater then expenses, and nobody would ever struggle.</p>
 
@@ -256,53 +267,58 @@ class loanEfficiencyCalculator extends React.Component {
                   <p>Lastly we have the total interest paid. Feel free to play around with the order of loan payment and see how it affects this number. Strike a good balance between minimizing this number and getting enough wins to keep you on the horse.</p>
 
                   <p>Good luck, and happy math!</p>
-                </div>
               </div>
 
               <div
-                className='section'
+                className='tile is-ancestor is-vertical'
                 style={{backgroundColor: 'hsl(0, 0%, 96%)'}}>
-                <div className='container'>
-                  <div className='box is-3'>
-                    Total Payment: 
-                    <input
-                      name='maxpayment'
-                      type='number'
-                      className='input'
-                      step='10'
-                      value={this.state.payment.toFixed(2)}
-                      onChange={this.handlePayment.bind(this)} />
+                  <div className='tile is-parent is-3'>
+                    <div className='tile is-child box'>
+                      Total Payment: 
+                      <input
+                        name='maxpayment'
+                        type='number'
+                        className='input'
+                        step='10'
+                        value={this.state.payment.toFixed(2)}
+                        onChange={this.handlePayment.bind(this)} />
+                    </div>
                   </div>
-                  <div className='tile is-ancestor is-vertical section' style={{backgroundColor: 'inherit'}}>
+                  <div className='tile is-parent is-vertical' style={{backgroundColor: 'inherit'}}>
                     { loanInputs }
-                    <div className='tile is-parent box'>
-                      <div className='tile is-child is-3'>Totals: </div>
-                      <div className='tile is-child is-3'>
-                        <span className=''>
-                          Total Balance:&nbsp;
-                        </span>
-                        {this.state.totalBalance.toFixed(2)}
-                      </div>
-                      <div className='tile is-child is-3'>
-                        <span className=''>
-                          Total Minimum Payment:&nbsp;
-                        </span>
-                        {this.state.totalMin.toFixed(2)}+{this.state.additionalPayment.toFixed(2)}
-                      </div>
-                      <div className='tile is-child is-3'>
-                        <span className=''>
-                          Total Interest Paid:&nbsp;
-                        </span>
-                        {this.state.interest.toFixed(2)}
+                    <div className='tile'>
+                      <div className='tile is-parent box'>
+                        <div className='tile is-child is-3'>Totals: </div>
+                        <div className='tile is-child is-3'>
+                          <span className=''>
+                            Total Balance:&nbsp;
+                          </span>
+                          {this.state.totalBalance.toFixed(2)}
+                        </div>
+                        <div className='tile is-child is-3'>
+                          <span className=''>
+                            Total Minimum Payment:&nbsp;
+                          </span>
+                          {this.state.totalMin.toFixed(2)}+{this.state.additionalPayment.toFixed(2)}
+                        </div>
+                        <div className='tile is-child is-3'>
+                          <span className=''>
+                            Total Interest Paid:&nbsp;
+                          </span>
+                          {this.state.interest.toFixed(2)}
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <button
-                    className='button is-success'
-                    onClick={this.addAnother.bind(this)}>
-                    add another
-                  </button>
-                </div>
+                  <div className='tile is-parent is-3'>
+                    <div className='tile is-child'>
+                      <button
+                        className='button is-success'
+                        onClick={this.addAnother.bind(this)}>
+                        add another
+                      </button>
+                    </div>
+                  </div>
               </div>
             </BlogPostChrome>
         );
@@ -385,7 +401,7 @@ let cleanNumbers = (loanGroup) => {
 
 export const pageQuery = graphql`
 query loanEfficiencyCalc($slug: String!) {
-	jsFrontmatter(fields: {slug: {eq: $slug}}) {
+	post: jsFrontmatter(fields: {slug: {eq: $slug}}) {
 		...JSBlogPost_data
   }
 }

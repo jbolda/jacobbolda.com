@@ -4,11 +4,10 @@ import BlogPostChrome from "../components/BlogPostChrome"
 
 class mdBlogPost extends React.Component {
   render() {
-    const {html, frontmatter} = this.props.data.markdownRemark
+    const {html, frontmatter} = this.props.data.post
 
     return (
-      <BlogPostChrome {...frontmatter}>
-        <h1 className="title is-1">{frontmatter.title}</h1>
+      <BlogPostChrome {...this.props.data}>
         <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
       </BlogPostChrome>
     )
@@ -19,7 +18,7 @@ export default mdBlogPost
 
 export const pageQuery = graphql`
   query mdBlogPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    post: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       ...MarkdownBlogPost_frontmatter
     }

@@ -11,10 +11,8 @@ class BlogPostLayout extends React.Component {
 
     return (
       <MasterLayout {...this.props}>
-        <div className="section">
-          {this.props.children()}
-        </div>
-        <div className="section">
+        {this.props.children()}
+        <section className="section">
           <hr />
           <div className="container">
             <p>
@@ -24,7 +22,7 @@ class BlogPostLayout extends React.Component {
               </a>
             </p>
           </div>
-        </div>
+        </section>
       </MasterLayout>
     )
   }

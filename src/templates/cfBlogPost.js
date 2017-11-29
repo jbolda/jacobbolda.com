@@ -3,12 +3,13 @@ import BlogPostChrome from "../components/BlogPostChrome"
 
 class cfBlogPost extends React.Component {
   render() {
-    const frontmatter = this.props.data.contentfulBlogPost
+    const frontmatter = this.props.data.post
+    const {hero} = this.props.data
     const {html} = frontmatter.content.childMarkdownRemark
+    const p = {hero: hero, post: {frontmatter: frontmatter}}
 
     return (
-      <BlogPostChrome {...this.props.data.contentfulBlogPost}>
-        <h1 className="title is-1">{frontmatter.title}</h1>
+      <BlogPostChrome {...p}>
         <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
       </BlogPostChrome>
     )
@@ -18,8 +19,8 @@ class cfBlogPost extends React.Component {
 export default cfBlogPost
 
 export const pageQuery = graphql`
-  query cfBlogPostByID($id: String!) {
-    contentfulBlogPost(id: { eq: $id }) {
+  query cfBlogPostByID($id: String!, $heroImage: String!) {
+    post: contentfulBlogPost(id: { eq: $id }) {
       title
       content {
         childMarkdownRemark {
@@ -27,6 +28,13 @@ export const pageQuery = graphql`
         }
       }
       ...cfBlogPost
+    }
+    hero: file(relativePath: {eq: $heroImage}) {
+      childImageSharp {
+        sizes(maxWidth: 1920) {
+          ...GatsbyImageSharpSizes_tracedSVG
+        }
+      }
     }
   }
 `

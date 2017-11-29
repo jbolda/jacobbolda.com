@@ -119,7 +119,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               layout: 'blogPost', // this matches the filename of src/layouts/blogPost.js, layout created automatically
               component: cfBlogPost,
               context: {
-                id: frontmatter.id
+                id: frontmatter.id,
+                heroImage: `external/hero-images/${frontmatter.path.substr(1, frontmatter.path.length - 2)}.jpg`,
               }
             })
           }
