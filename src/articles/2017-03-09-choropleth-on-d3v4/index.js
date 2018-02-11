@@ -44,8 +44,6 @@ class choroplethBase extends React.Component {
           } else {
             let states = results[0].states;
             let stats = results[1];
-            console.log(states)
-            console.log(stats)
             let mergedData = mergeData(states, 'abbrev', stats, 'Abbreviation')
             graph.draw(space, mergedData, measurements);
           }
@@ -161,8 +159,6 @@ function scale (scaleFactor,width,height) {
     }
 
 let mergeData = (d1, d1key, d2, d2key) => {
-  console.log(d1, d1key)
-  console.log(d2, d2key)
   let data = [];
   d1.forEach((s1) => {
     d2.forEach((s2) => {
