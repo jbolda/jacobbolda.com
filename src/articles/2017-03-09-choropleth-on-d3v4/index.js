@@ -4,6 +4,9 @@ import { findDOMNode } from 'react-dom';
 var d3 = require('d3');
 import BlogPostChrome from '../../components/BlogPostChrome';
 
+// import stateDataURL from "./states.json"
+// import statisticsDataURL from "./states_data.csv"
+
 exports.data = {
     title: 'Choropleth on d3v4',
     written: '2017-03-09',
@@ -33,13 +36,19 @@ class choroplethBase extends React.Component {
       */
 
       d3.queue()
-        .defer(d3.json, stateDataURL)
-        .defer(d3.csv,statisticsDataURL)
-        .awaitAll(function(error, results) {
-          let states = results[0].states;
-          let stats = results[1];
-          let mergedData = mergeData(states, 'abbrev', stats, 'Abbreviation')
-          graph.draw(space, mergedData, measurements);
+        .defer(d3.json, "/static/data/states.json")
+        .defer(d3.csv, "/static/data/states_data.csv")
+        .awaitAll((error, results) => {
+          if (error) {
+            console.dir(error)
+          } else {
+            let states = results[0].states;
+            let stats = results[1];
+            console.log(states)
+            console.log(stats)
+            let mergedData = mergeData(states, 'abbrev', stats, 'Abbreviation')
+            graph.draw(space, mergedData, measurements);
+          }
         });
     }
 
@@ -66,8 +75,6 @@ export default choroplethBase;
 
 var graph = {}; // we namespace our d3 graph into setup and draw
 
-var stateDataURL = 'https://gist.githubusercontent.com/jbolda/52cd5926e9241d26489ec82fa2bddf37/raw/f409b82e51072ea23746325eff7aa85b7ef4ebbd/states.json';
-var statisticsDataURL = 'https://gist.githubusercontent.com/jbolda/52cd5926e9241d26489ec82fa2bddf37/raw/f409b82e51072ea23746325eff7aa85b7ef4ebbd/stats.csv';
 
 graph.setup = (selection, measurements) => {
 // the path string is drawn expecting:
@@ -154,6 +161,8 @@ function scale (scaleFactor,width,height) {
     }
 
 let mergeData = (d1, d1key, d2, d2key) => {
+  console.log(d1, d1key)
+  console.log(d2, d2key)
   let data = [];
   d1.forEach((s1) => {
     d2.forEach((s2) => {
