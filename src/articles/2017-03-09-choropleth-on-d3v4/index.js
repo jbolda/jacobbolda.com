@@ -36,8 +36,8 @@ class choroplethBase extends React.Component {
       */
 
       d3.queue()
-        .defer(d3.json, "/static/data/states.json")
-        .defer(d3.csv, "/static/data/states_data.csv")
+        .defer(d3.json, this.props.data.stateshapes.edges[0].node.publicURL)
+        .defer(d3.csv, this.props.data.statedata.edges[0].node.publicURL)
         .awaitAll((error, results) => {
           if (error) {
             console.dir(error)
@@ -182,6 +182,20 @@ query choroplethOnD3v4($slug: String!) {
   }
 	post: jsFrontmatter(fields: {slug: {eq: $slug}}) {
 		...JSBlogPost_data
+  }
+  stateshapes: allFile(filter: {relativeDirectory: {eq: "2017-03-09-choropleth-on-d3v4"}, extension: {eq: "json"}}) {
+    edges {
+      node {
+        publicURL
+      }
+    }
+  }
+  statedata: allFile(filter: {relativeDirectory: {eq: "2017-03-09-choropleth-on-d3v4"}, extension: {eq: "csv"}}) {
+    edges {
+      node {
+        publicURL
+      }
+    }
   }
 }
 `
