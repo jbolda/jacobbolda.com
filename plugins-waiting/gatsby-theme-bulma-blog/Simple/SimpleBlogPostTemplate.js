@@ -22,5 +22,12 @@ export const pageQuery = graphql`
       html
       ...MarkdownBlogPost_frontmatter
     }
+    hero: file(relativePath: {eq: $heroImage}) {
+      childImageSharp {
+        sizes(maxWidth: 1920) {
+          ...GatsbyImageSharpSizes_tracedSVG
+        }
+      }
+    }
   }
 `
