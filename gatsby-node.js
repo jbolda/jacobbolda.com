@@ -33,7 +33,6 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   return new Promise((resolve, reject) => {
     const pages = []
     const mdInsetPage = path.resolve(`src/templates/mdInsetPage.js`)
-    const mdBlogPost = path.resolve(`src/templates/mdBlogPost.js`)
     const cfBlogPost = path.resolve(`src/templates/cfBlogPost.js`)
 
     // Query for all markdown "nodes" and for the slug we previously created.
@@ -89,16 +88,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         // Create from markdown
         result.data.allMarkdownRemark.edges.forEach(edge => {
           let frontmatter = edge.node.frontmatter
-          if (frontmatter.layoutType === `post`) {
-            createPage({
-              path: frontmatter.path, // required
-              layout: 'blogPost', // this matches the filename of src/layouts/blogPost.js, layout created automatically
-              component: mdBlogPost,
-              context: {
-                slug: edge.node.fields.slug,
-              },
-            })
-          } else if (frontmatter.layoutType === `page`) {
+          if (frontmatter.layoutType === `page`) {
             createPage({
               path: frontmatter.path, // required
               layout: 'insetPage', // this matches the filename of src/layouts/blogPost.js, layout created automatically

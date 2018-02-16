@@ -17,7 +17,7 @@ class SimpleBlogPostTemplate extends React.Component {
 export default SimpleBlogPostTemplate
 
 export const pageQuery = graphql`
-  query mdBlogPostBySlug($slug: String!) {
+  query SimpleBlogPostTemplatePostBySlug($slug: String!) {
     post: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       ...MarkdownBlogPost_frontmatter

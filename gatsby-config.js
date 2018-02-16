@@ -64,7 +64,8 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sass`,
+    `gatsby-plugin-sass`, // imported for gatsby-theme-bulma
+    `gatsby-theme-bulma-blog`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
