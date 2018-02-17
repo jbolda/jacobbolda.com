@@ -1,21 +1,21 @@
 import React from "react"
 import Link from "gatsby-link"
-import SimpleNav from "gatsby-theme-bulma-layout"
+import SimpleNav from "../../gatsby-theme-bulma-layout/Simple/SimpleNav"
 
 class SimpleBlogPostLayout extends React.Component {
   render() {
-    let siteMetadata = this.props.siteMetadata
+    let {sitemetadata} = this.props
 
     return (
-      <SimpleNav siteMetadata={...siteMetadata}>
+      <SimpleNav sitemetadata={sitemetadata} location={this.props.location}>
         {this.props.children}
         <section className="section">
           <hr />
           <div className="container">
             <p>
-              {siteMetadata.siteDescr}
-              <a href={siteMetadata.siteTwitterUrl}>
-                <br /> <strong>{siteMetadata.siteAuthor}</strong> on Twitter
+              {sitemetadata.siteDescr}
+              <a href={sitemetadata.siteTwitterUrl}>
+                <br /> <strong>{sitemetadata.siteAuthor}</strong> on Twitter
               </a>
             </p>
           </div>
@@ -27,10 +27,10 @@ class SimpleBlogPostLayout extends React.Component {
 
 export default SimpleBlogPostLayout
 
-// TODO, this needs to become a fragment
+/*
+can't seem to get the fragment to work here, not a location gatsby expects?
 export const pageQuery = graphql`
-query BlogPostLayoutBySlug {
-  site {
+fragment SimpleSiteMetadata on Site {
     siteMetadata {
       siteTitle
       siteDescr
@@ -40,6 +40,6 @@ query BlogPostLayoutBySlug {
       siteTwitterUrl
       siteTwitterPretty
     }
-  }
 }
 `
+*/

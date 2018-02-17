@@ -1,21 +1,21 @@
 import React from "react"
 import SimpleTopNav from './components/SimpleTopNav'
-import heartData from '../static/assets/heart-white.svg'
+import heartData from './assets/heart-white.svg'
 
 class SimpleLayout extends React.Component {
   render() {
-    let siteMetadata = this.props.siteMetadata
+    let {sitemetadata} = this.props
 
     return (
       <div id="SimpleLayout">
-        < SiteNav {...this.props} />
+        <SimpleTopNav sitemetadata={sitemetadata} location={this.props.location}/>
         {this.props.children}
         <section className="footer">
           <div className="container content has-text-centered">
             <p className="copyright">&copy; All rights reserved.</p>
             <p className="copyright">
               Made with <Heart icon={heartData} alt="heart"/> by{` `}
-              <a className="copyright" href={siteMetadata.siteTwitterUrl}>Jacob Bolda</a>
+              <a className="copyright" href={sitemetadata.siteTwitterUrl}>Jacob Bolda</a>
             </p>
           </div>
         </section>

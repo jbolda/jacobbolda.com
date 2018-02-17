@@ -4,7 +4,6 @@ import styles from "../../palette.json";
 
 class SimpleTopNav extends React.Component {
   render() {
-
     return (
       <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">

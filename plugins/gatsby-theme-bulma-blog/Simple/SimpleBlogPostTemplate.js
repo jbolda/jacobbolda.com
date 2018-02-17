@@ -7,7 +7,12 @@ class SimpleBlogPostTemplate extends React.Component {
     const {html, frontmatter} = this.props.data.post
 
     return (
-      <SimpleChrome {...this.props.data}>
+      <SimpleChrome
+        post={this.props.data.post}
+        hero={this.props.data.hero}
+        sitemetadata={this.props.data.site.siteMetadata}
+        location={this.props.location}
+        >
         <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
       </SimpleChrome>
     )
@@ -22,11 +27,22 @@ export const pageQuery = graphql`
       html
       ...MarkdownBlogPost_frontmatter
     }
-    hero: file(relativePath: {eq: $heroImage}) {
+    hero: file(relativePath: {eq: "hero.jpg"}) {
       childImageSharp {
         sizes(maxWidth: 1920) {
           ...GatsbyImageSharpSizes_tracedSVG
         }
+      }
+    }
+    site {
+      siteMetadata {
+        siteTitle
+        siteDescr
+        siteAuthor
+        siteEmailUrl
+        siteEmailPretty
+        siteTwitterUrl
+        siteTwitterPretty
       }
     }
   }

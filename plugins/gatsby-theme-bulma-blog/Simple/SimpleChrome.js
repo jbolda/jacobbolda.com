@@ -1,4 +1,5 @@
 import React from "react"
+import SimpleBlogPostLayout from './SimpleBlogPostLayout'
 import HelmetBlock from "./components/HelmetBlock"
 import PostPublished from "./components/PostPublished"
 import Img from 'gatsby-image'
@@ -19,6 +20,7 @@ class SimpleChrome extends React.Component {
         return (<div/>)
       }
     }
+
     const adjustTitleStyle = (this.props.hero) ? {
                                       color: "white",
                                       textShadow: [
@@ -32,8 +34,8 @@ class SimpleChrome extends React.Component {
     const adjustPostStyle = (this.props.hero) ? {marginTop: "-30%"} : {}
 
     return (
-      <div className="BlogPostChrome">
-        <HeroImage {...this.props}/>
+      <SimpleBlogPostLayout sitemetadata={this.props.sitemetadata} location={this.props.location}>
+        <HeroImage hero={this.props.hero}/>
         <section className="section" style={{paddingBottom: "1rem", ...adjustPostStyle}}>
           <div className="container">
             <h1 className="title is-1 is-hidden-mobile" style={{fontSize: "5rem",...adjustTitleStyle}}>
@@ -48,19 +50,18 @@ class SimpleChrome extends React.Component {
           <div className="container">
             <div className="box">
               {this.props.children}
-              <PostPublished {...frontmatter} />
+              <PostPublished frontmatter={frontmatter} />
             </div>
           </div>
         </section>
-        <HelmetBlock {...frontmatter} />
-      </div>
+        <HelmetBlock frontmatter = {frontmatter} />
+      </SimpleBlogPostLayout>
     )
   }
 }
 
 export default SimpleChrome
 
-// TODO, rip out these
 export const blogPostFragment = graphql`
   fragment MarkdownBlogPost_frontmatter on MarkdownRemark {
     frontmatter {
@@ -72,25 +73,5 @@ export const blogPostFragment = graphql`
       category
       description
     }
-  }
-  fragment JSBlogPost_data on JSFrontmatter {
-    frontmatter: data {
-      title
-      path
-      layoutType
-      written(formatString: "MMMM Do YYYY")
-      updated(formatString: "MMMM Do YYYY")
-      category
-      description
-    }
-  }
-  fragment cfBlogPost on ContentfulBlogPost {
-      title
-      path
-      layoutType
-      written(formatString: "MMMM Do YYYY")
-      updated(formatString: "MMMM Do YYYY")
-      category
-      description {description}
   }
 `

@@ -1,9 +1,8 @@
 import React from "react"
-import Helmet from "react-helmet"
 
 class PostPublished extends React.Component {
   render() {
-    const frontmatter = this.props
+    const {frontmatter} = this.props;
 
     if (frontmatter.updated == null) {
       var published = (
