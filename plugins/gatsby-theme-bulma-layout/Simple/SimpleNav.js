@@ -1,4 +1,5 @@
 import React from "react"
+import MasterLayout from '../../gatsby-theme-bulma/MasterLayout'
 import SimpleTopNav from './components/SimpleTopNav'
 import heartData from './assets/heart-white.svg'
 
@@ -7,7 +8,7 @@ class SimpleLayout extends React.Component {
     let {sitemetadata} = this.props
 
     return (
-      <div id="SimpleLayout">
+      <MasterLayout sitemetadata={sitemetadata} id="SimpleLayout">
         <SimpleTopNav sitemetadata={sitemetadata} location={this.props.location}/>
         {this.props.children}
         <section className="footer">
@@ -19,7 +20,7 @@ class SimpleLayout extends React.Component {
             </p>
           </div>
         </section>
-      </div>
+      </MasterLayout>
     )
   }
 }
