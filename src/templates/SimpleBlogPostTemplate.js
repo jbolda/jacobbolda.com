@@ -21,7 +21,7 @@ class SimpleBlogPostTemplate extends React.Component {
 export default SimpleBlogPostTemplate
 
 export const pageQuery = graphql`
-  query SimpleBlogPostTemplatePostBySlug($slug: String!) {
+  query SimpleBlogPostTemplatePostBySlug($slug: String!, $heroImage: String!) {
     post: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
@@ -34,7 +34,7 @@ export const pageQuery = graphql`
         description
       }
     }
-    hero: file(relativePath: {eq: "hero.jpg"}) {
+    hero: file(relativePath: {eq: $heroImage}) {
       childImageSharp {
         sizes(maxWidth: 1920) {
           ...GatsbyImageSharpSizes_tracedSVG

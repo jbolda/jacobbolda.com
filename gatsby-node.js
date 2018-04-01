@@ -94,7 +94,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               context: {
                 id: frontmatter.id,
                 slug: edge.node.fields.slug,
-                heroImage: `external/hero-images/${frontmatter.path.substr(1, frontmatter.path.length - 2)}.jpg`,
+                heroImage: `${edge.node.fields.slug.replace(/\//gi, "")}/hero.jpg`,
               }
             })
           }
