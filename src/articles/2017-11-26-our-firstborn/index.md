@@ -3,7 +3,7 @@ title: Our Firstborn
 written: "11-26-2017"
 updated: "01-27-2018"
 layoutType: post
-path: "/out-firstborn/"
+path: "/our-firstborn/"
 category: "life"
 description: "We had a beautiful baby girl! It gives you some perspective on life."
 ---
