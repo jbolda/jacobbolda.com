@@ -106,7 +106,7 @@ export default SiteIndex
 
 export const pageQuery = graphql`
   query allPosts {
-    allJsFrontmatter {
+    allJsFrontmatter(filter: {data: {layoutType: {eq: "post"}}}) {
       edges {
         node {
           fileAbsolutePath
@@ -124,7 +124,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark {
+    allMarkdownRemark(filter: {frontmatter: {layoutType: {eq: "post"}}}) {
       edges {
         node {
           id

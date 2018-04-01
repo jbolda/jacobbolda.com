@@ -4,6 +4,7 @@ import jsBlogPost from '../../components/jsBlogPost';
 exports.data = {
     title: 'Steel Compression Calculations',
     written: '2016-11-05',
+    updated: '2016-11-05',
     layoutType: 'post',
     path: '/steel-compression-calculations/',
     category: 'engineering',

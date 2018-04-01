@@ -5,6 +5,7 @@ import BlogPost from '../../components/jsBlogPost';
 exports.data = {
     title: 'Loan Efficiency Calculator',
     written: '2017-01-22',
+    update: '2017-01-22',
     layoutType: 'post',
     path: '/loan-efficiency-calculator/',
     category: 'finance',
