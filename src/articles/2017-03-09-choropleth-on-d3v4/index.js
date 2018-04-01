@@ -36,8 +36,8 @@ class choroplethBase extends React.Component {
       */
 
       d3.queue()
-        .defer(d3.json, `https://www.jacobbolda.com${this.props.data.stateshapes.publicURL}`)
-        .defer(d3.csv, `https://www.jacobbolda.com${this.props.data.statedata.publicURL}`)
+        .defer(d3.json, `${this.props.data.stateshapes.publicURL}`)
+        .defer(d3.csv, `${this.props.data.statedata.publicURL}`)
         .awaitAll((error, results) => {
           if (error) {
             console.dir(error)
@@ -178,8 +178,8 @@ query choroplethOnD3v4($slug: String!) {
   markdownRemark(fields: { slug: { eq: "/2017-03-09-choropleth-on-d3v4/_choropleth/" }}) {
     html
   }
-	post: jsFrontmatter(fields: {slug: {eq: $slug}}) {
-		...JSBlogPost_data
+  post: jsFrontmatter(fields: {slug: {eq: $slug}}) {
+    ...JSBlogPost_data
   }
   site {
     ...metadata
@@ -187,7 +187,7 @@ query choroplethOnD3v4($slug: String!) {
   stateshapes: file(relativePath: {eq: "2017-03-09-choropleth-on-d3v4/states.json"}) {
     publicURL
   }
-statedata: file(relativePath: {eq: "2017-03-09-choropleth-on-d3v4/states_data.csv"}) {
+  statedata: file(relativePath: {eq: "2017-03-09-choropleth-on-d3v4/states_data.csv"}) {
     publicURL
   }
 }
