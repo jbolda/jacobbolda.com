@@ -1,6 +1,6 @@
 import React from 'react';
 var Big = require('big.js');
-import jsBlogPost from '../../components/jsBlogPost';
+import BlogPost from '../../components/jsBlogPost';
 
 exports.data = {
     title: 'Loan Efficiency Calculator',
@@ -89,6 +89,7 @@ class loanEfficiencyCalculator extends React.Component {
     }
 
     render() {
+        console.log(this)
         const {frontmatter} = this.props.data.post;
 
         const loanInputs = this.state.loans.map((loan, index) => {
@@ -238,7 +239,7 @@ class loanEfficiencyCalculator extends React.Component {
 
 
         return (
-            <jsBlogPost {...this.props.data}>
+            <BlogPost {...this.props}>
               <div className='content'>
                   <h2>Debt Payoff</h2>
                   <p>When tackling debt, there are plenty of pointers out there for the best method. The most efficient way to pay down the debt is with the highest interest first. Finances are highly emotional though. If they weren't, it would be simply that income has to be greater then expenses, and nobody would ever struggle.</p>
@@ -320,7 +321,7 @@ class loanEfficiencyCalculator extends React.Component {
                     </div>
                   </div>
               </div>
-            </jsBlogPost>
+            </BlogPost>
         );
     }
 }

@@ -190,7 +190,7 @@ calculatorPost.defaultProps = {
 
 export const pageQuery = graphql`
 query steelCompressionCalcs($slug: String!) {
-	post: jsFrontmatter(fields: {slug: {eq: $slug}}) {
+	jsFrontmatter(fields: {slug: {eq: $slug}}) {
 		...JSBlogPost_data
   }
 }

@@ -3,6 +3,7 @@ import SimpleChrome from "../../plugins/gatsby-theme-bulma-blog/Simple/SimpleChr
 
 class jsBlogPost extends React.Component {
   render() {
+    console.log(this)
     return (
       <SimpleChrome
       post={this.props.data.post}
