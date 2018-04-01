@@ -1,5 +1,5 @@
 import React from 'react';
-import jsBlogPost from '../../components/jsBlogPost';
+import BlogPost from '../../components/jsBlogPost';
 
 exports.data = {
     title: 'Steel Compression Calculations',
@@ -21,7 +21,7 @@ class calculatorPost extends React.Component {
       let {frontmatter} = this.props.data.post;
 
         return (
-            <BlogPost {...this.props.data}>
+            <BlogPost {...this.props}>
               <div className='content'>
                 <p>
                   These functions are written in javascript and embedded into the window.
@@ -191,8 +191,11 @@ calculatorPost.defaultProps = {
 
 export const pageQuery = graphql`
 query steelCompressionCalcs($slug: String!) {
-	jsFrontmatter(fields: {slug: {eq: $slug}}) {
+	post: jsFrontmatter(fields: {slug: {eq: $slug}}) {
 		...JSBlogPost_data
+  }
+  site {
+    ...metadata
   }
 }
 `

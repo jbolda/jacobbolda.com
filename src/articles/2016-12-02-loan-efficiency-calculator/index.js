@@ -90,7 +90,6 @@ class loanEfficiencyCalculator extends React.Component {
     }
 
     render() {
-        console.log(this)
         const {frontmatter} = this.props.data.post;
 
         const loanInputs = this.state.loans.map((loan, index) => {
@@ -405,6 +404,9 @@ export const pageQuery = graphql`
 query loanEfficiencyCalc($slug: String!) {
 	post: jsFrontmatter(fields: {slug: {eq: $slug}}) {
 		...JSBlogPost_data
+  }
+  site {
+    ...metadata
   }
 }
 `

@@ -3,7 +3,6 @@ import SimpleChrome from "../../plugins/gatsby-theme-bulma-blog/Simple/SimpleChr
 
 class jsBlogPost extends React.Component {
   render() {
-    console.log(this)
     return (
       <SimpleChrome
       post={this.props.data.post}
@@ -29,6 +28,17 @@ export const blogPostFragment = graphql`
       updated(formatString: "MMMM Do YYYY")
       category
       description
+    }
+  }
+  fragment metadata on Site {
+    siteMetadata {
+      siteTitle
+      siteDescr
+      siteAuthor
+      siteEmailUrl
+      siteEmailPretty
+      siteTwitterUrl
+      siteTwitterPretty
     }
   }
 `

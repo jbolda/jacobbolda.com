@@ -55,12 +55,13 @@ class choroplethBase extends React.Component {
     }
 
     render() {
+        console.log(this)
         let data = this.props.data.markdownRemark;
         let html = data.html;
         let {frontmatter} = this.props.data.post;
 
         return (
-            <BlogPost {...this.props.data}>
+            <BlogPost {...this.props}>
               <div id='tooltip'></div>
               <div id='states'></div>
               <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
@@ -178,6 +179,9 @@ query choroplethOnD3v4($slug: String!) {
   }
 	post: jsFrontmatter(fields: {slug: {eq: $slug}}) {
 		...JSBlogPost_data
+  }
+  site {
+    ...metadata
   }
   stateshapes: allFile(filter: {relativeDirectory: {eq: "2017-03-09-choropleth-on-d3v4"}, extension: {eq: "json"}}) {
     edges {
