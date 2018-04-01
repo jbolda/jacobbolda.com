@@ -36,12 +36,13 @@ class choroplethBase extends React.Component {
       */
 
       d3.queue()
-        .defer(d3.json, `https://www.jacobbolda.com${this.props.data.stateshapes.edges[0].node.publicURL}`)
-        .defer(d3.csv, `https://www.jacobbolda.com${this.props.data.statedata.edges[0].node.publicURL}`)
+        .defer(d3.json, `https://www.jacobbolda.com${this.props.data.stateshapes.publicURL}`)
+        .defer(d3.csv, `https://www.jacobbolda.com${this.props.data.statedata.publicURL}`)
         .awaitAll((error, results) => {
           if (error) {
             console.dir(error)
           } else {
+            console.log(results)
             let states = results[0].states;
             let stats = results[1];
             let mergedData = mergeData(states, 'abbrev', stats, 'Abbreviation')
@@ -183,19 +184,11 @@ query choroplethOnD3v4($slug: String!) {
   site {
     ...metadata
   }
-  stateshapes: allFile(filter: {relativeDirectory: {eq: "2017-03-09-choropleth-on-d3v4"}, extension: {eq: "json"}}) {
-    edges {
-      node {
-        publicURL
-      }
-    }
+  stateshapes: file(relativePath: {eq: "2017-03-09-choropleth-on-d3v4/states.json"}) {
+    publicURL
   }
-  statedata: allFile(filter: {relativeDirectory: {eq: "2017-03-09-choropleth-on-d3v4"}, extension: {eq: "csv"}}) {
-    edges {
-      node {
-        publicURL
-      }
-    }
+statedata: file(relativePath: {eq: "2017-03-09-choropleth-on-d3v4/states_data.csv"}) {
+    publicURL
   }
 }
 `
