@@ -1,5 +1,5 @@
 import React from 'react';
-import BlogPostChrome from '../../components/BlogPostChrome';
+import jsBlogPost from '../../components/jsBlogPost';
 
 exports.data = {
     title: 'Steel Compression Calculations',
@@ -20,7 +20,7 @@ class calculatorPost extends React.Component {
       let {frontmatter} = this.props.data.post;
 
         return (
-            <BlogPostChrome {...this.props.data}>
+            <jsBlogPost {...this.props.data}>
               <div className='content'>
                 <p>
                   These functions are written in javascript and embedded into the window.
@@ -28,7 +28,7 @@ class calculatorPost extends React.Component {
                   Click the console tab, and run c.list() in the console.
                 </p>
               </div>
-            </BlogPostChrome>
+            </jsBlogPost>
         );
     }
 }
