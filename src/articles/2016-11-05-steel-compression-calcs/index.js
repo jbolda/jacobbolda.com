@@ -20,7 +20,7 @@ class calculatorPost extends React.Component {
       let {frontmatter} = this.props.data.post;
 
         return (
-            <jsBlogPost {...this.props.data}>
+            <BlogPost {...this.props.data}>
               <div className='content'>
                 <p>
                   These functions are written in javascript and embedded into the window.
@@ -28,7 +28,7 @@ class calculatorPost extends React.Component {
                   Click the console tab, and run c.list() in the console.
                 </p>
               </div>
-            </jsBlogPost>
+            </BlogPost>
         );
     }
 }

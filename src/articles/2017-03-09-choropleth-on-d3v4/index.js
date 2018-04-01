@@ -2,7 +2,7 @@ import React from 'react';
 import { findDOMNode } from 'react-dom';
 // import ChoroplethText from './_choropleth.md';
 var d3 = require('d3');
-import jsBlogPost from '../../components/jsBlogPost';
+import BlogPost from '../../components/jsBlogPost';
 
 // import stateDataURL from "./states.json"
 // import statisticsDataURL from "./states_data.csv"
@@ -60,11 +60,11 @@ class choroplethBase extends React.Component {
         let {frontmatter} = this.props.data.post;
 
         return (
-            <jsBlogPost {...this.props.data}>
+            <BlogPost {...this.props.data}>
               <div id='tooltip'></div>
               <div id='states'></div>
               <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
-            </jsBlogPost>
+            </BlogPost>
         );
     }
 }
