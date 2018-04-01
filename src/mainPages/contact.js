@@ -1,6 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import SiteLinks from '../components/SiteLinks';
+import InsetLayout from '../../plugins/gatsby-theme-bulma-homepage/Inset/InsetLayout'
 
 exports.data = {
   layoutType: 'page',
@@ -11,13 +12,15 @@ class ContactMe extends React.Component {
     render() {
 
         return (
+          <InsetLayout {...this.props}>
             <div className='box content'>
               <p>
                 I would love to hear from you!
               </p>
               <SiteLinks {...this.props}/>
             </div>
-            );
+          </InsetLayout>
+          );
     }
 }
 
@@ -44,6 +47,13 @@ query ContactMe {
       siteAngelListPretty
       sitePhotoUrl
       sitePhotoPretty
+    }
+  }
+  file(relativePath: {eq: "assets/profile.png"}) {
+    childImageSharp {
+      sizes(maxWidth: 256) {
+        ...GatsbyImageSharpSizes_tracedSVG
+      }
     }
   }
 }

@@ -2,6 +2,7 @@ import React from "react"
 import Link from "gatsby-link"
 import Helmet from "react-helmet"
 import sortBy from "lodash/sortBy"
+import InsetLayout from '../../plugins/gatsby-theme-bulma-homepage/Inset/InsetLayout'
 
 class SiteIndex extends React.Component {
   render() {
@@ -11,7 +12,6 @@ class SiteIndex extends React.Component {
     let pageRaw = [
       ...this.props.data.allMarkdownRemark.edges,
       ...this.props.data.allJsFrontmatter.edges,
-      ...this.props.data.allContentfulBlogPost.edges,
     ]
     let pageArray = []
 
@@ -88,7 +88,7 @@ class SiteIndex extends React.Component {
     })
 
     return (
-      <div>
+      <InsetLayout {...this.props}>
         <Helmet
           title={siteMetadata.siteTitle}
           meta={[
@@ -97,7 +97,7 @@ class SiteIndex extends React.Component {
           ]}
         />
         {pageLinks}
-      </div>
+      </InsetLayout>
     )
   }
 }
@@ -147,25 +147,32 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulBlogPost {
-      edges {
-        node {
-           title
-            path
-            layoutType
-            written
-            writtenPretty: written(formatString: "MMMM D, YYYY")
-            updated
-            updatePretty: updated(formatString: "MMMM D, YYYY")
-            category
-            description {description}
-        }
-      }
-    }
     site {
       siteMetadata {
         siteTitle
         siteDescr
+        siteAuthor
+        siteEmailUrl
+        siteEmailPretty
+        siteTwitterUrl
+        siteTwitterPretty
+        siteLinkedInUrl
+        siteLinkedInPretty
+        siteGithubUrl
+        siteGithubPretty
+        siteKeybaseUrl
+        siteKeybasePretty
+        siteAngelListUrl
+        siteAngelListPretty
+        sitePhotoUrl
+        sitePhotoPretty
+      }
+    }
+    file(relativePath: {eq: "assets/profile.png"}) {
+      childImageSharp {
+        sizes(maxWidth: 256) {
+          ...GatsbyImageSharpSizes_tracedSVG
+        }
       }
     }
   }
