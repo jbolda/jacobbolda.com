@@ -36,15 +36,16 @@ class choroplethBase extends React.Component {
       */
 
       d3.queue()
-        .defer(d3.json, `${this.props.data.stateshapes.publicURL}`)
-        .defer(d3.csv, `${this.props.data.statedata.publicURL}`)
+        .defer(d3.csv, this.props.data.statedata.publicURL)
+        .defer(d3.json, this.props.data.stateshapes.publicURL)
         .awaitAll((error, results) => {
           if (error) {
+            console.log(this.props.data.statedata.publicURL, this.props.data.stateshapes.publicURL)
             console.dir(error)
           } else {
             console.log(results)
-            let states = results[0].states;
-            let stats = results[1];
+            let states = results[1].states;
+            let stats = results[0];
             let mergedData = mergeData(states, 'abbrev', stats, 'Abbreviation')
             graph.draw(space, mergedData, measurements);
           }
@@ -56,7 +57,6 @@ class choroplethBase extends React.Component {
     }
 
     render() {
-        console.log(this)
         let data = this.props.data.markdownRemark;
         let html = data.html;
         let {frontmatter} = this.props.data.post;
