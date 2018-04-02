@@ -36,11 +36,12 @@ class choroplethBase extends React.Component {
       */
 
       d3.queue()
-        .defer(d3.csv, this.props.data.statedata.publicURL)
-        .defer(d3.json, this.props.data.stateshapes.publicURL)
+        .defer(d3.csv, `${window.location.protocol}//${window.location.host}${this.props.data.statedata.publicURL}`)
+        .defer(d3.json, `${window.location.protocol}//${window.location.host}${this.props.data.stateshapes.publicURL}`)
         .awaitAll((error, results) => {
           if (error) {
-            console.log(this.props.data.statedata.publicURL, this.props.data.stateshapes.publicURL)
+            console.log(this.props.data.statedata.publicURL)
+            console.log(this.props.data.stateshapes.publicURL)
             console.dir(error)
           } else {
             console.log(results)
