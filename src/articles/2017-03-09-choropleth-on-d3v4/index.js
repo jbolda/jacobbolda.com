@@ -2,7 +2,7 @@ import React from 'react';
 import { findDOMNode } from 'react-dom';
 // import ChoroplethText from './_choropleth.md';
 var d3 = require('d3');
-import BlogPostChrome from '../../components/BlogPostChrome';
+import BlogPost from '../../components/jsBlogPost';
 
 // import stateDataURL from "./states.json"
 // import statisticsDataURL from "./states_data.csv"
@@ -36,14 +36,17 @@ class choroplethBase extends React.Component {
       */
 
       d3.queue()
-        .defer(d3.json, `https://www.jacobbolda.com${this.props.data.stateshapes.edges[0].node.publicURL}`)
-        .defer(d3.csv, `https://www.jacobbolda.com${this.props.data.statedata.edges[0].node.publicURL}`)
+        .defer(d3.csv, `${window.location.protocol}//${window.location.host}${this.props.data.statedata.publicURL}`)
+        .defer(d3.json, `${window.location.protocol}//${window.location.host}${this.props.data.stateshapes.publicURL}`)
         .awaitAll((error, results) => {
           if (error) {
+            console.log(this.props.data.statedata.publicURL)
+            console.log(this.props.data.stateshapes.publicURL)
             console.dir(error)
           } else {
-            let states = results[0].states;
-            let stats = results[1];
+            console.log(results)
+            let states = results[1].states;
+            let stats = results[0];
             let mergedData = mergeData(states, 'abbrev', stats, 'Abbreviation')
             graph.draw(space, mergedData, measurements);
           }
@@ -60,11 +63,11 @@ class choroplethBase extends React.Component {
         let {frontmatter} = this.props.data.post;
 
         return (
-            <BlogPostChrome {...this.props.data}>
+            <BlogPost {...this.props}>
               <div id='tooltip'></div>
               <div id='states'></div>
               <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
-            </BlogPostChrome>
+            </BlogPost>
         );
     }
 }
@@ -176,22 +179,17 @@ query choroplethOnD3v4($slug: String!) {
   markdownRemark(fields: { slug: { eq: "/2017-03-09-choropleth-on-d3v4/_choropleth/" }}) {
     html
   }
-	post: jsFrontmatter(fields: {slug: {eq: $slug}}) {
-		...JSBlogPost_data
+  post: jsFrontmatter(fields: {slug: {eq: $slug}}) {
+    ...JSBlogPost_data
   }
-  stateshapes: allFile(filter: {relativeDirectory: {eq: "2017-03-09-choropleth-on-d3v4"}, extension: {eq: "json"}}) {
-    edges {
-      node {
-        publicURL
-      }
-    }
+  site {
+    ...metadata
   }
-  statedata: allFile(filter: {relativeDirectory: {eq: "2017-03-09-choropleth-on-d3v4"}, extension: {eq: "csv"}}) {
-    edges {
-      node {
-        publicURL
-      }
-    }
+  stateshapes: file(relativePath: {eq: "2017-03-09-choropleth-on-d3v4/states.json"}) {
+    publicURL
+  }
+  statedata: file(relativePath: {eq: "2017-03-09-choropleth-on-d3v4/states_data.csv"}) {
+    publicURL
   }
 }
 `

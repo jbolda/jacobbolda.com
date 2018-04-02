@@ -1,9 +1,10 @@
 import React from 'react';
-import BlogPostChrome from '../../components/BlogPostChrome';
+import BlogPost from '../../components/jsBlogPost';
 
 exports.data = {
     title: 'Steel Compression Calculations',
     written: '2016-11-05',
+    updated: '2016-11-05',
     layoutType: 'post',
     path: '/steel-compression-calculations/',
     category: 'engineering',
@@ -20,7 +21,7 @@ class calculatorPost extends React.Component {
       let {frontmatter} = this.props.data.post;
 
         return (
-            <BlogPostChrome {...this.props.data}>
+            <BlogPost {...this.props}>
               <div className='content'>
                 <p>
                   These functions are written in javascript and embedded into the window.
@@ -28,7 +29,7 @@ class calculatorPost extends React.Component {
                   Click the console tab, and run c.list() in the console.
                 </p>
               </div>
-            </BlogPostChrome>
+            </BlogPost>
         );
     }
 }
@@ -192,6 +193,9 @@ export const pageQuery = graphql`
 query steelCompressionCalcs($slug: String!) {
 	post: jsFrontmatter(fields: {slug: {eq: $slug}}) {
 		...JSBlogPost_data
+  }
+  site {
+    ...metadata
   }
 }
 `

@@ -1,9 +1,6 @@
 node_modules/
 public
+.cache
 
-.gatsby-context.js
-pages/.manifest
-.idea
-gatsby-starter-lumen.iml
-*.sublime-workspace
 .vscode
+*.log
