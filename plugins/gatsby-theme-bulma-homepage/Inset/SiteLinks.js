@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Envelope from '../../static/assets/envelope-o.svg';
-import Twitter from '../../static/assets/twitter.svg';
-import LinkedIn from '../../static/assets/linkedin-square.svg';
-import Github from '../../static/assets/github.svg';
-import Keybase from '../../static/assets/key.svg';
-import Angellist from '../../static/assets/angellist.svg';
-import Camera from '../../static/assets/camera.svg';
+import Envelope from '../../../src/static/assets/envelope-o.svg';
+import Twitter from '../../../src/static/assets/twitter.svg';
+import LinkedIn from '../../../src/static/assets/linkedin-square.svg';
+import Github from '../../../src/static/assets/github.svg';
+import Keybase from '../../../src/static/assets/key.svg';
+import Angellist from '../../../src/static/assets/angellist.svg';
+import Camera from '../../../src/static/assets/camera.svg';
 
 class SiteLinks extends React.Component {
   render() {
