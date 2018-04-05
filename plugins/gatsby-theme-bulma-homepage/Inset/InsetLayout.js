@@ -1,5 +1,5 @@
 import React from "react"
-import SiteSidebar from "../../../src/components/SiteSidebar"
+import SiteSidebar from "./SiteSidebar"
 import SimpleNav from "../../gatsby-theme-bulma-layout/Simple/SimpleNav"
 
 class InsetLayout extends React.Component {

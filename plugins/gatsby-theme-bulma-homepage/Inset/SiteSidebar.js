@@ -1,6 +1,6 @@
 import React from "react"
 import Link from "gatsby-link"
-import SiteLinks from "../SiteLinks"
+import SiteLinks from "./SiteLinks"
 import Img from 'gatsby-image'
 
 class SiteSidebar extends React.Component {
