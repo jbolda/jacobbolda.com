@@ -2,7 +2,7 @@ import React from "react"
 import Link from "gatsby-link"
 import Helmet from "react-helmet"
 import sortBy from "lodash/sortBy"
-import InsetLayout from '../../plugins/gatsby-theme-bulma-homepage/Inset/InsetLayout'
+import HeroLayout from '../../plugins/gatsby-theme-bulma-homepage/Hero/HeroLayout'
 
 class SiteIndex extends React.Component {
   render() {
@@ -43,8 +43,8 @@ class SiteIndex extends React.Component {
       if (frontmatter.layoutType == `post`) {
         iteratorKey += 1
         pageLinks.push(
-          <div className="box" key={iteratorKey}>
-            <article className="media">
+          <div className="column is-one-third" key={iteratorKey}>
+            <article className="media box">
               <div className="media-content">
                 <div className="heading">
                   <div className="level">
@@ -88,7 +88,7 @@ class SiteIndex extends React.Component {
     })
 
     return (
-      <InsetLayout {...this.props}>
+      <HeroLayout {...this.props}>
         <Helmet
           title={siteMetadata.siteTitle}
           meta={[
@@ -96,8 +96,10 @@ class SiteIndex extends React.Component {
             { name: `keywords`, content: `articles` },
           ]}
         />
-        {pageLinks}
-      </InsetLayout>
+        <div className="columns is-multiline">
+          {pageLinks}
+        </div>
+      </HeroLayout>
     )
   }
 }
