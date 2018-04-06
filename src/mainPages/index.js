@@ -56,7 +56,7 @@ class SiteIndex extends React.Component {
                         {frontmatter.updatedPretty || frontmatter.writtenPretty}
                       </time>
                     </h4>
-                    <h5 className="subtitle is-6 level-right">
+                    <h5 className="tag is-secondary is-6 level-right">
                       {frontmatter.category}
                     </h5>
                   </div>
@@ -96,6 +96,7 @@ class SiteIndex extends React.Component {
             { name: `keywords`, content: `articles` },
           ]}
         />
+        <h1 className="title">Articles</h1>
         <div className="columns is-multiline">
           {pageLinks}
         </div>
@@ -172,8 +173,8 @@ export const pageQuery = graphql`
     }
     file(relativePath: {eq: "assets/profile.png"}) {
       childImageSharp {
-        sizes(maxWidth: 256) {
-          ...GatsbyImageSharpSizes_tracedSVG
+        resolutions(width: 350, height: 350) {
+          ...GatsbyImageSharpResolutions_withWebp_tracedSVG
         }
       }
     }
