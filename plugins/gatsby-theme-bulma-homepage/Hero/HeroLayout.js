@@ -44,10 +44,10 @@ class InsetLayout extends React.Component {
                   </p>
                   <h3>Noteables</h3>
                   <p>
-                    [The Occasional Excel Wizardry](http://stackoverflow.com/questions/14614923/excel-formula-identifying-number-of-date-ranges-within-a-range/14616697#14616697)
+                    <a src="http://stackoverflow.com/questions/14614923/excel-formula-identifying-number-of-date-ranges-within-a-range/14616697#14616697">The Occasional Excel Wizardry</a>
                   </p>
                   <p>
-                    [Preliminary Designs for Mitchell Street Market Lofts](http://www.impactseven.org/portfolio-items/mitchell-street-market-lofts/)
+                    <a src="http://www.impactseven.org/portfolio-items/mitchell-street-market-lofts/">Preliminary Designs for Mitchell Street Market Lofts</a>
                   </p>
                 </div>
               </div>
