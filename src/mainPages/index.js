@@ -44,8 +44,10 @@ class SiteIndex extends React.Component {
         iteratorKey += 1
         pageLinks.push(
           <div className="column is-one-third" key={iteratorKey}>
-            <article className="media box">
-              <div className="media-content">
+            <div className="card">
+              <div className="card-image">
+              </div>
+              <div className="card-content">
                 <div className="heading">
                   <div className="level">
                     <h4 className="level-left">
@@ -81,7 +83,7 @@ class SiteIndex extends React.Component {
                   </div>
                 </nav>
               </div>
-            </article>
+            </div>
           </div>
         )
       }
@@ -97,6 +99,8 @@ class SiteIndex extends React.Component {
           ]}
         />
         <h1 className="title">Articles</h1>
+        <h2 className="subtitle">Sometimes I write, the most recent</h2>
+        <hr/>
         <div className="columns is-multiline">
           {pageLinks}
         </div>
