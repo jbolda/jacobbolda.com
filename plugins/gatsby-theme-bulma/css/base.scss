@@ -29,16 +29,23 @@ $secondary: $P2;
 $secondary-invert: findColorInvert($secondary);
 $thirdary: $P3;
 $thirdary-invert: findColorInvert($thirdary);
+$fourthary: $P4;
+$fourthary-invert: findColorInvert($fourthary);
+$fifthary: $P5;
+$fifthary-invert: findColorInvert($fifthary);
 
 
 @import '~bulma/sass/utilities/derived-variables.sass';
 $addColors: (
   "secondary":($secondary, $secondary-invert),
-  "thirdary":($thirdary, $thirdary-invert)
+  "thirdary":($thirdary, $thirdary-invert),
+  "fourthary":($fourthary, $fourthary-invert),
+  "fifthary":($fifthary, $fifthary-invert)
 );
 $colors: map-merge($colors, $addColors);
 
 @import '~bulma';
+@import '~prismjs/themes/prism-twilight';
 
 .token.number {
     background-color: inherit;
