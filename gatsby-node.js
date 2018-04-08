@@ -28,7 +28,7 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
 }
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
+  const { createPage, createRedirect } = boundActionCreators
 
   return new Promise((resolve, reject) => {
     const pages = []
@@ -134,7 +134,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           }
         })
 
-
+        createRedirect({ fromPath: '/contact/', toPath: '/', isPermanent: true })
+        createRedirect({ fromPath: '/about/', toPath: '/', isPermanent: true })
 
 
         return
