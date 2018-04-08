@@ -71,7 +71,7 @@ class SiteIndex extends React.Component {
                         {frontmatter.updatedPretty || frontmatter.writtenPretty}
                       </time>
                     </h4>
-                    <h5 className="tag is-secondary is-6 level-right">
+                    <h5 className="tag is-thirdary is-6 level-right">
                       {frontmatter.category}
                     </h5>
                   </div>
