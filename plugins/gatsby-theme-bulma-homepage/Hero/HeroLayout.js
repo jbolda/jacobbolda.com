@@ -10,7 +10,7 @@ class InsetLayout extends React.Component {
 
     return (
       <SimpleNav sitemetadata={siteMetadata} location={this.props.location}>
-        <section className="hero is-medium is-secondary is-bold">
+        <section className="hero is-medium is-secondary">
           <div className="hero-body">
             <div className="columns is-centered is-vcentered has-text-centered">
               <div className="column is-one-third">
