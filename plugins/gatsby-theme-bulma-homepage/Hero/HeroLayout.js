@@ -32,7 +32,7 @@ class InsetLayout extends React.Component {
             </div>
           </div>
         </section>
-        <section className="hero is-thirdary is-medium">
+        <section className="hero is-fourthary is-medium">
           <div className="hero-body">
             <div className="columns">
               <div className="column is-one-quarter">
