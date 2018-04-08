@@ -19,27 +19,6 @@ class SimpleTopNav extends React.Component {
               B
             </span>
           </Link>
-          <Link
-            to="/"
-            className="navbar-item"
-            style={this.props.location.pathname == '/' ? {backgroundColor: styles.colors.P5, color: styles.colors.P2} : {}}
-            >
-            Articles
-          </Link>
-          <Link
-            to="/about/"
-            className="navbar-item"
-            style={this.props.location.pathname == '/about/' ? {backgroundColor: styles.colors.P5, color: styles.colors.P2} : {}}
-            >
-            About
-          </Link>
-          <Link
-            to="/contact/"
-            className="navbar-item"
-            style={this.props.location.pathname == '/contact/' ? {backgroundColor: styles.colors.P5, color: styles.colors.P2} : {}}
-            >
-            Contact
-          </Link>
         </div>
       </nav>
     )
