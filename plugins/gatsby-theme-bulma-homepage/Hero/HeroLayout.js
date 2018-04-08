@@ -10,9 +10,9 @@ class InsetLayout extends React.Component {
 
     return (
       <SimpleNav sitemetadata={siteMetadata} location={this.props.location}>
-        <section className="hero is-large is-secondary is-bold">
+        <section className="hero is-medium is-secondary is-bold">
           <div className="hero-body">
-            <div className="columns">
+            <div className="columns is-centered is-vcentered has-text-centered">
               <div className="column is-one-third">
                 <Img className="image box" Tag="figure" sizes={this.props.data.file.childImageSharp.sizes} />
               </div> 
