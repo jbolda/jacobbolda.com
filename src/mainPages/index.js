@@ -3,8 +3,20 @@ import Link from "gatsby-link"
 import Helmet from "react-helmet"
 import sortBy from "lodash/sortBy"
 import HeroLayout from '../../plugins/gatsby-theme-bulma-homepage/Hero/HeroLayout'
+import Img from 'gatsby-image'
 
 class SiteIndex extends React.Component {
+  findPhoto(slug) {
+    let retPhoto
+    this.props.data.allHero.edges.forEach(edge => {
+      if (slug === `/${edge.node.relativeDirectory}/`) {
+        console.log(edge.node)
+        retPhoto = <Img className="image" Tag="figure" sizes={edge.node.childImageSharp.sizes} />
+      }
+    })
+    return retPhoto
+  }
+
   render() {
     const {siteMetadata} = this.props.data.site
     const pageLinks = []
@@ -18,14 +30,14 @@ class SiteIndex extends React.Component {
     pageRaw.forEach(page => {
       if (typeof page.node.frontmatter === `object`) {
         if (typeof page.node.frontmatter.written != `undefined`) {
-          pageArray.push(page.node.frontmatter)
+          pageArray.push({...page.node.frontmatter, ...page.node.fields})
         }
       } else if (typeof page.node.data === `object`) {
         if (
           typeof page.node.data.written != `undefined` &&
           page.node.data.written != ``
         ) {
-          pageArray.push(page.node.data)
+          pageArray.push({...page.node.data, ...page.node.fields})
         }
       } else {
         let restrNode = {...page.node, ...page.node.description}
@@ -46,6 +58,7 @@ class SiteIndex extends React.Component {
           <div className="column is-one-third" key={iteratorKey}>
             <div className="card">
               <div className="card-image">
+                {this.findPhoto(page.slug)}
               </div>
               <div className="card-content">
                 <div className="heading">
@@ -116,7 +129,9 @@ export const pageQuery = graphql`
     allJsFrontmatter(filter: {data: {layoutType: {eq: "post"}}}) {
       edges {
         node {
-          fileAbsolutePath
+          fields {
+            slug
+          }
           data {
             path
             title
@@ -179,6 +194,18 @@ export const pageQuery = graphql`
       childImageSharp {
         sizes(maxWidth: 500, maxHeight:500, quality: 90) {
           ...GatsbyImageSharpSizes_tracedSVG
+        }
+      }
+    }
+    allHero: allFile(filter: {sourceInstanceName: {eq: "articles"}, name: {eq: "hero"}}) {
+      edges {
+        node {
+          relativeDirectory
+          childImageSharp {
+            sizes(maxWidth: 500, maxHeight:200, quality: 90) {
+              ...GatsbyImageSharpSizes_tracedSVG
+            }
+          }
         }
       }
     }
