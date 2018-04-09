@@ -14,7 +14,7 @@ class InsetLayout extends React.Component {
           <div className="hero-body">
             <div className="columns is-centered is-vcentered has-text-centered">
               <div className="column is-one-third">
-                <Img className="image box" Tag="figure" sizes={this.props.data.file.childImageSharp.sizes} />
+                <Img className="image" Tag="figure" sizes={this.props.data.file.childImageSharp.sizes} />
               </div> 
               <div className="column">
                 <h3 className="subtitle">

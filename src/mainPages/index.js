@@ -192,8 +192,15 @@ export const pageQuery = graphql`
     }
     file(relativePath: {eq: "assets/profile.png"}) {
       childImageSharp {
-        sizes(maxWidth: 500, maxHeight:500, quality: 90) {
-          ...GatsbyImageSharpSizes_tracedSVG
+        sizes(
+          maxWidth: 500,
+          maxHeight:500,
+          quality: 90,
+          duotone: {
+            highlight: "#bdc4bf",
+            shadow: "#192C3B"
+          }) {
+          ...GatsbyImageSharpSizes
         }
       }
     }
