@@ -1,16 +1,16 @@
 import React from "react"
-import InsetLayout from '../../plugins/gatsby-theme-bulma-homepage/Inset/InsetLayout'
+import SimpleNav from '../../plugins/gatsby-theme-bulma-layout/Simple/SimpleNav'
 
 class mdInsetPage extends React.Component {
   render() {
     const {html} = this.props.data.markdownRemark
 
     return (
-      <InsetLayout {...this.props}>
+      <SimpleNav {...this.props}>
         <div className="box content">
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </div>
-      </InsetLayout>
+      </SimpleNav>
     )
   }
 }
