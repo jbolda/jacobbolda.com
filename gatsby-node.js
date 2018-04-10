@@ -32,7 +32,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
   return new Promise((resolve, reject) => {
     const pages = []
-    const mdInsetPage = path.resolve(`src/templates/mdInsetPage.js`)
+    const mdSimplePage = path.resolve(`src/templates/mdSimplePage.js`)
     const mdBlogPost = path.resolve(`src/templates/SimpleBlogPostTemplate.js`)
 
     // Query for all markdown "nodes" and for the slug we previously created.
@@ -82,7 +82,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           if (frontmatter.layoutType === `page`) {
             createPage({
               path: frontmatter.path, // required
-              component: mdInsetPage,
+              component: mdSimplePage,
               context: {
                 slug: edge.node.fields.slug,
               },

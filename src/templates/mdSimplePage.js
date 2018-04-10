@@ -6,7 +6,7 @@ class mdInsetPage extends React.Component {
     const {html} = this.props.data.markdownRemark
 
     return (
-      <SimpleNav {...this.props}>
+      <SimpleNav  sitemetadata={this.props.data.site.siteMetadata} location={this.props.location}>
         <div className="box content">
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </div>
