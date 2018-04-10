@@ -92,7 +92,6 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               path: frontmatter.path, // required
               component: mdBlogPost,
               context: {
-                id: frontmatter.id,
                 slug: edge.node.fields.slug,
                 heroImage: `${edge.node.fields.slug.replace(/\//gi, "")}/hero.jpg`,
               }
