@@ -10,7 +10,6 @@ class SiteIndex extends React.Component {
     let retPhoto
     this.props.data.allHero.edges.forEach(edge => {
       if (slug === `/${edge.node.relativeDirectory}/`) {
-        console.log(edge.node)
         retPhoto = <Img className="image" Tag="figure" sizes={edge.node.childImageSharp.sizes} />
       }
     })
@@ -214,6 +213,11 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+    }
+    about: file(relativePath: {eq: "_about.md"}) {
+      childMarkdownRemark {
+        html
       }
     }
   }
