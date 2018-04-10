@@ -6,7 +6,6 @@ import SiteLinks from "../shared-components/SiteLinks"
 
 class HeroLayout extends React.Component {
   render() {
-    console.log(this)
     const {siteMetadata} = this.props.data.site
 
     return (
