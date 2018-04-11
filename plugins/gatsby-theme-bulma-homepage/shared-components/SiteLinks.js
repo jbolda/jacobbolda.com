@@ -13,7 +13,7 @@ class SiteLinks extends React.Component {
       const {siteMetadata} = this.props.data.site
 
       return (
-          <aside className="menu box">
+          <aside className="menu">
             <p className="menu-label">
               Contact Me
             </p>

@@ -32,7 +32,7 @@ class HeroLayout extends React.Component {
             </div>
           </div>
         </section>
-        <section className="hero is-fourthary is-medium">
+        <section className="hero is-medium">
           <div className="hero-body">
             <div className="columns">
               <div className="column is-one-quarter">
@@ -44,8 +44,8 @@ class HeroLayout extends React.Component {
             </div>
           </div>
         </section>
-        <section className="section is-thirdary">
-          {this.props.children}
+        <section className="section is-fourthary">
+            {this.props.children}
         </section>
       </SimpleNav>
     )

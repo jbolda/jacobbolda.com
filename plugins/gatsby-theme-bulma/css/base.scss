@@ -44,6 +44,26 @@ $addColors: (
 );
 $colors: map-merge($colors, $addColors);
 
+section[class*="section is-primary"] {
+    background-color: $P1;
+}
+
+section[class*="section is-secondary"] {
+    background-color: $P2;
+}
+
+section[class*="section is-thirdary"] {
+    background-color: $P3;
+}
+
+section[class*="section is-fourthary"] {
+    background-color: $P4;
+}
+
+section[class*="section is-fifthary"] {
+    background-color: $P5;
+}
+
 @import '~bulma';
 @import '~prismjs/themes/prism-twilight';
 
