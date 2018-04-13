@@ -62,6 +62,12 @@ module.exports = {
     // `gatsby-theme-bulma-layout`,
     // `gatsby-theme-bulma-blog`,
     {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `JacobBolda.com`,
