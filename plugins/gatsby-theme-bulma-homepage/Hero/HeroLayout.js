@@ -15,7 +15,7 @@ class HeroLayout extends React.Component {
             <div className="columns is-centered is-vcentered has-text-centered">
               <div className="column is-one-third">
                 <Img className="image" Tag="figure" sizes={this.props.data.file.childImageSharp.sizes} />
-              </div> 
+              </div>
               <div className="column">
                 <h3 className="subtitle">
                   Hi, I am
@@ -28,6 +28,17 @@ class HeroLayout extends React.Component {
                 <h2 className="subtitle">
                   Structural Engineer
                 </h2>
+                <p>
+                  Focusing on the intersection of tech and Structural Engineering.
+                </p><p>
+                  Masters degree in Structural Engineering from the Milwaukee School of Engineering,
+                </p><p>
+                  undergrad in Architectural Engineering with a minor in Management,
+                </p><p>
+                  and a deep understanding of software and programming.
+                </p><p>
+                  Marrying that experience with problem solving and systematizing is powerful.
+                </p>
               </div>
             </div>
           </div>
