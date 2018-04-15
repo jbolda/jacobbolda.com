@@ -1,13 +1,15 @@
 ---
 title: "About me"
 ---
-## Nostaglia Feels Good
-I spent my formative years in small town Minnesota before moving to small town Wisconsin. I made my way through high school doing well but never feeling satisfactorily engaged. I want a challenge! I made the leap to college at Milwaukee School of Engineer (MSOE) in ***big city*** Milwaukee, Wisconsin earning my Master's in Structural Engineer, Bachelor's in Architectural Engineering and a minor in management. From there I began to exponentially expand my horizons through learning and travel, both domestic and abroad.
+## This Is Me
 
-## Stepping Up The Stairs
-I was never directly introduced to Entrepreneurship as a life pursuit. The climb began when I read *Rich Dad, Poor Dad*. My neighbor handed me the book, and I never would have guessed the influence on my life path. This little ember started in my high school days. I was hooked. My viewpoint was pretty strictly traditional finance though. The "you can't make money without money" mentality. I spent loads of time learning and understanding what I would need to do after I have money.
+I spent my early years in small town Minnesota before moving to small town Wisconsin. At Milwaukee School of Engineering (MSOE), my alma mater, I earned my Bachelor's and Master's degrees. It was really much more than that though. Between my sophomore and junior year, I had the opportunity to do the Research Experience for Undergraduates (REU) program. This evolved my interest in BIM, 3D modeling and 3D printing. It was through the Rapid Prototyping Center (RPC) of which was behind the effort to run the first 3D print in space. But easily the best experience I had was with Engineers Without Borders (EWB). It is an amazing group. They create a much bigger impact in these places because it isn't a problem that you can just throw money at. Many of the more rural areas don't see any attention from even local engineers. We designed a bridge, and went down to Guatemala and built it. Not only do you see a project through from start to finish, but, most importantly, you see how much you can affect and improve someone's life.
+
+The first ~five years out of college, I worked with a company inspecting preparing capital replacement plans for buildings. I was able to travel all throughout the US as well as internationally: Canada, France, Spain, and Italy. I had picked up the travel bug from EWB, and all this travel really scratched that itch. Between these travels, I met the love of my life, Amy. I pulled her along on some of the excursions, but more on that in a minute. In the remaining free time I had, I taught myself programming. I had experimented with this in the past, and touched on it while using Excel. Writing, solving problems and standing up a software setup shares many of the same neurons as structural engineering. I primarily worked with Python and have, more recently, moved into JavaScript. Nearing the end of those five years, greater and greater clarity emerged. As much as I enjoyed this, it was time for the next chapter in life. I wanted to get back into the more technical engineering. I still enjoy software and programming, and these two seemed a great fit together. I would miss the travel, but Amy and I had gotten married and it was time to settle down. We still traveling, just more often together, and moreso just for the pleasure.
+
+In the current chapter of my life, I am working with CSD Structural Engineers. I primarily work in specialty engineering; generally using cold-rolled steel and aluminum, but also some hot-rolled steel and wood design. Most interestingly, I get to flex the programming muscles. I make good use of my CAD/BIM expertise, and help in marketing. As a company, we tend towards the industrial sector.
 
 
-### Noteables
-- [The Occasional Excel Wizardry](http://stackoverflow.com/questions/14614923/excel-formula-identifying-number-of-date-ranges-within-a-range/14616697#14616697)
-- [Preliminary Designs for Mitchell Street Market Lofts](http://www.impactseven.org/portfolio-items/mitchell-street-market-lofts/)
+## The Family
+
+I would be remiss if I didn't mention my support structure. Amy and I dated for a few years, and proclaimed our vows soon before I began with my current employer. Life is certainly a whirlwind, and the most recent forecast is our beautiful baby girl, all full of smiles and giggles. The two loves of my life.
