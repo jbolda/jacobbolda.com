@@ -10,7 +10,7 @@ class HeroLayout extends React.Component {
 
     return (
       <SimpleNav sitemetadata={siteMetadata} location={this.props.location}>
-        <section className="hero is-medium is-secondary">
+        <section className="hero is-small is-secondary edge--bottom">
           <div className="hero-body">
             <div className="columns is-centered is-vcentered has-text-centered">
               <div className="column is-one-third">
@@ -21,9 +21,7 @@ class HeroLayout extends React.Component {
                   Hi, I am
                 </h3>
                 <h1 className="title">
-                  <Link to={`/`}>
                     Jacob Bolda
-                  </Link>
                 </h1>
                 <h2 className="subtitle">
                   Structural Engineer
@@ -55,7 +53,7 @@ class HeroLayout extends React.Component {
             </div>
           </div>
         </section>
-        <section className="section is-fourthary">
+        <section className="section is-fourthary edge--top">
             {this.props.children}
         </section>
       </SimpleNav>
