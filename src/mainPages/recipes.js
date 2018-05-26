@@ -17,27 +17,56 @@ class SimpleRecipes extends React.Component {
         <div className="section">
           <div className="columns is-multiline">
             {recipes.map(recipe =>
-              <div className="column is-half" key={recipe.node.id}>
+              <div className="column is-one-third" key={recipe.node.id}>
                 <div className="card">
                   {recipe.node.data.Attachments ?
                   <div className="card-image">
                     <figure className="image">
-                      <img src={recipe.node.data.Attachments[0].thumbnails.large.url} height={recipe.node.data.Attachments[0].thumbnails.large.height} />
+                      <img src={recipe.node.data.Attachments[0].thumbnails.large.url} />
                     </figure>
                   </div>
-                   : ""}
+                  : 
+                  <div className="card-image">
+                    <figure className="image is-3by2">
+                      <img src={this.props.data.placeholder.publicURL} />
+                    </figure>
+                  </div>
+                  }
                   <div className="card-content">
-                    <h2 className="title">{recipe.node.data.Name}</h2>
+                    <h2 className="title has-text-centered">{recipe.node.data.Name}</h2>
+                    <div className="level">
+                      <div className="level-item has-text-centered">
+                        <div>
+                        <p className="heading">Rating</p>
+                        <p className="">{recipe.node.data.Rating ? recipe.node.data.Rating : `--`}</p>
+                        </div>
+                      </div>
+                      <div className="level-item has-text-centered">
+                        <div>
+                        <p className="heading">Cooking / Prep / Total Time</p>
+                        <p className="">{recipe.node.data.Cook_Prep_Total_Time ? recipe.node.data.Cook_Prep_Total_Time : `--`}</p>
+                        </div>
+                      </div>
+                      <div className="level-item has-text-centered">
+                        <div>
+                        <p className="heading">Last Made</p>
+                        <p className="">{recipe.node.data.Last_Made ? recipe.node.data.Last_Made : `--`}</p>
+                        </div>
+                      </div>
+                    </div>
                     <div className="content">
-                      <p>{recipe.node.data.Ingredients}</p>
-                      <p>{recipe.node.data.Directions}</p>
+                      <p>
+                        <ul>{recipe.node.data.Ingredients.split(`\n`).map(
+                        ingredient => <li>{ingredient}</li>
+                        )}</ul>
+                      </p>
                     </div>
                   </div>
                   {recipe.node.data.URL ? 
                   <footer className="card-footer">
                     <a href={recipe.node.data.URL} className="card-footer-item" target="_blank">Recipe Link</a>
                   </footer>
-                  : ""}
+                  : null}
                 </div>
               </div>
             )}
@@ -104,6 +133,9 @@ export const pageQuery = graphql`
           ...GatsbyImageSharpSizes_tracedSVG
         }
       }
+    }
+    placeholder: file(relativePath: {eq: "images/placeholder.png"}) {
+      publicURL
     }
   }
 `
