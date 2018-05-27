@@ -1,4 +1,5 @@
 import React from "react"
+import Link from "gatsby-link"
 import SimpleNav from '../../plugins/gatsby-theme-bulma-layout/Simple/SimpleNav'
 
 exports.data = {
@@ -9,7 +10,6 @@ exports.data = {
 
 class SimpleRecipes extends React.Component {
   render() {
-    console.log(this)
     let recipes = this.props.data.allAirtableLinked.edges
 
     return (
@@ -33,7 +33,9 @@ class SimpleRecipes extends React.Component {
                   </div>
                   }
                   <div className="card-content">
-                    <h2 className="title has-text-centered">{recipe.node.data.Name}</h2>
+                    <Link to={recipe.node.fields.slug}>
+                      <h2 className="title has-text-centered">{recipe.node.data.Name}</h2>
+                    </Link>
                     <div className="level">
                       <div className="level-item has-text-centered">
                         <div>
@@ -103,7 +105,6 @@ export const pageQuery = graphql`
             Name
             Directions
             URL
-            Cook_Prep_Total_Time
             Cooking_Time
             Preparation_Time
             Total_Time
@@ -119,6 +120,9 @@ export const pageQuery = graphql`
                 }
               }
             }
+          }
+          fields {
+            slug
           }
         }
       }

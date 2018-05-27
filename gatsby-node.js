@@ -23,8 +23,18 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
     } catch (error) {
       // nil
     }
-
   }
+
+  if (
+    node.internal.type === `AirtableLinked` &&
+    node.table === `Recipes`
+  ) {
+    slug = `/${node.data.Name.replace(/ /g, '-').replace(/[,&]/g, '').toLowerCase()}/`
+
+    // Add slug as a field on the node.
+    createNodeField({ node, name: `slug`, value: slug })
+  }
+
 }
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
@@ -34,6 +44,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     const pages = []
     const mdSimplePage = path.resolve(`src/templates/mdSimplePage.js`)
     const mdBlogPost = path.resolve(`src/templates/SimpleBlogPostTemplate.js`)
+    const atRecipes = path.resolve(`src/templates/SimpleRecipeTemplate.js`)
 
     // Query for all markdown "nodes" and for the slug we previously created.
     resolve(
@@ -60,6 +71,19 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                   data {
                     layoutType
                     path
+                  }
+                  fields {
+                    slug
+                  }
+                }
+              }
+            }
+            allAirtableLinked(filter: {table: {eq: "Recipes"}}) {
+              edges {
+                node {
+                  id
+                  data {
+                    Name
                   }
                   fields {
                     slug
@@ -133,9 +157,18 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           }
         })
 
+        result.data.allAirtableLinked.edges.forEach(edge => {
+          createPage({
+            path: edge.node.fields.slug, // required, we don't have frontmatter for this page hence separate if()
+            component: atRecipes,
+            context: {
+              name: edge.node.data.Name,
+            },
+          })
+        })
+
         createRedirect({ fromPath: '/contact/', toPath: '/', isPermanent: true })
         createRedirect({ fromPath: '/about/', toPath: '/', isPermanent: true })
-
 
         return
       })
