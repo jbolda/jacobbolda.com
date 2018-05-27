@@ -38,19 +38,33 @@ class SimpleRecipes extends React.Component {
                       <div className="level-item has-text-centered">
                         <div>
                         <p className="heading">Rating</p>
-                        <p className="">{recipe.node.data.Rating ? recipe.node.data.Rating : `--`}</p>
-                        </div>
-                      </div>
-                      <div className="level-item has-text-centered">
-                        <div>
-                        <p className="heading">Cooking / Prep / Total Time</p>
-                        <p className="">{recipe.node.data.Cook_Prep_Total_Time ? recipe.node.data.Cook_Prep_Total_Time : `--`}</p>
+                        <p className="">{checkBlank(recipe.node.data.Rating)}{`\u2606`}/10</p>
                         </div>
                       </div>
                       <div className="level-item has-text-centered">
                         <div>
                         <p className="heading">Last Made</p>
-                        <p className="">{recipe.node.data.Last_Made ? recipe.node.data.Last_Made : `--`}</p>
+                        <p className="">{checkBlank(recipe.node.data.Last_Made)}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="level">
+                      <div className="level-item has-text-centered">
+                        <div>
+                        <p className="heading">Prep Time</p>
+                        <p className="">{`Prep: ${checkBlankTime(recipe.node.data.Preparation_Time)}`}</p>
+                        </div>
+                      </div>
+                      <div className="level-item has-text-centered">
+                        <div>
+                        <p className="heading">Cook Time</p>
+                        <p className="">{`Cooking: ${checkBlankTime(recipe.node.data.Cooking_Time)}`}</p>
+                        </div>
+                      </div>
+                      <div className="level-item has-text-centered">
+                        <div>
+                        <p className="heading">Total Time</p>
+                        <p className="">{`Total: ${checkBlankTime(recipe.node.data.Total_Time)}`}</p>
                         </div>
                       </div>
                     </div>
@@ -90,6 +104,9 @@ export const pageQuery = graphql`
             Directions
             URL
             Cook_Prep_Total_Time
+            Cooking_Time
+            Preparation_Time
+            Total_Time
             Last_Made
             Rating
             Ingredients
@@ -139,3 +156,6 @@ export const pageQuery = graphql`
     }
   }
 `
+
+let checkBlank = (value) => value ? value : `--`
+let checkBlankTime = (value) => value ? `${value}m` : `--`
