@@ -14,6 +14,22 @@ class SimpleRecipes extends React.Component {
 
     return (
       <SimpleNav  sitemetadata={this.props.data.site.siteMetadata} location={this.props.location}>
+        <div className="hero is-small is-thirdary edge--bottom--reverse">
+          <div className="hero-body">
+            <p className="title">Our Recipes</p>
+            <div className="columns">
+              <div className="column is-one-third content">
+              <p>
+                We enjoy cooking (and certainly do our best to do it in a healthy manner).
+                These are the "approved" recipes that we love and plan to eat multiple times.
+                They are actually stored on <a href="https://www.airtable.com/?ref=www.jacobbolda.com" target="_blank">Airtable.com</a>
+                {' '}and pulled into the website using a <Link to="/gatsby-and-contributing-to-open-source/">Gatsbyjs plugin</Link> that I wrote.
+                You can see the Airtable (and copy it for yourself) at <a href="http://recipes.amyandjacob.com" target="_blank">recipes.amyandjacob.com</a>.
+              </p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="section">
           <div className="columns is-multiline">
             {recipes.map(recipe =>
