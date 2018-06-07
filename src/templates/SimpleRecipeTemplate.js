@@ -1,4 +1,5 @@
 import React from "react"
+import Link from "gatsby-link"
 import SimpleNav from '../../plugins/gatsby-theme-bulma-layout/Simple/SimpleNav'
 
 class SimpleRecipe extends React.Component {
@@ -10,6 +11,13 @@ class SimpleRecipe extends React.Component {
         <div className="section">
           <div className="columns is-centered">
             <div className="column is-half">
+              <nav className="breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                  <li><Link to="/">Home</Link></li>
+                  <li><Link to="/recipes/">Recipes</Link></li>
+                  <li className="is-active"><a href="#" aria-current="page">{recipe.data.Name}</a></li>
+                </ul>
+              </nav>
               <div className="card">
                 {recipe.data.Attachments ?
                 <div className="card-image">
