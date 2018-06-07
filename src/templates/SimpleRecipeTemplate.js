@@ -3,11 +3,10 @@ import SimpleNav from '../../plugins/gatsby-theme-bulma-layout/Simple/SimpleNav'
 
 class SimpleRecipe extends React.Component {
   render() {
-    console.log(this)
     let recipe = this.props.data.airtableLinked
 
     return (
-      <SimpleNav  sitemetadata={this.props.data.site.siteMetadata} location={this.props.location}>
+      <SimpleNav sitemetadata={this.props.data.site.siteMetadata} location={this.props.location}>
         <div className="section">
           <div className="columns is-centered">
             <div className="column is-half">
@@ -15,7 +14,7 @@ class SimpleRecipe extends React.Component {
                 {recipe.data.Attachments ?
                 <div className="card-image">
                   <figure className="image">
-                    <img src={recipe.data.Attachments[0].thumbnails.large.url} />
+                    <img src={recipe.data.Attachments[0].thumbnails.large.url}/>
                   </figure>
                 </div>
                 : 
@@ -63,14 +62,14 @@ class SimpleRecipe extends React.Component {
                   </div>
                   <div className="content">
                     <h2 className="title">Ingredients</h2>
-                    <p>
+                    <div>
                       <ul>{recipe.data.Ingredients.split(`\n`).map(
-                      ingredient => <li>{ingredient}</li>
+                      (ingredient, index) => <li key={index}>{ingredient}</li>
                       )}</ul>
-                    </p>
+                    </div>
                     <h2 className="title">Directions</h2>
                     {recipe.data.Directions.split(`\n`).map(
-                    direction => <p>{direction}</p>
+                    (direction, index) => <p key={index}>{direction}</p>
                     )}
                   </div>
                 </div>

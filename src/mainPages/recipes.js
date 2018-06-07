@@ -22,7 +22,7 @@ class SimpleRecipes extends React.Component {
                   {recipe.node.data.Attachments ?
                   <div className="card-image">
                     <figure className="image">
-                      <img src={recipe.node.data.Attachments[0].thumbnails.large.url} />
+                      <img src={recipe.node.data.Attachments[0].thumbnails.large.url} style={{objectFit: "cover", height: "350px"}}/>
                     </figure>
                   </div>
                   : 

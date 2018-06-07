@@ -53,50 +53,7 @@ class HeroLayout extends React.Component {
             </div>
           </div>
         </section>
-        <section className="section is-fourthary edge--top">
-            {this.props.children}
-        </section>
-        <section className="section is-thirdary edge--top--reverse">
-            <h1 className="title">Hobbies</h1>
-            <h2 className="subtitle">Just a sampling</h2>
-            <hr/>
-            <div className="columns">
-              <div className="column is-one-third">
-                <div className="card">
-                  <div className="card-content">
-                    <div className="content">
-                      <h2 className="title">Photography</h2>
-                        <p>
-                          Whenever we travel, I enjoy taking pictures.
-                        </p>
-                    </div>
-                  </div>
-                  <footer className="card-footer">
-                    <p className="card-footer-item">
-                      <a href="http://www.jbolda.com/photo">Check out my photography</a>
-                    </p>
-                  </footer>
-                </div>
-              </div>
-              <div className="column is-one-third">
-                <div className="card">
-                  <div className="card-content">
-                    <div className="content">
-                      <h2 className="title">Cooking</h2>
-                        <p>
-                          I enjoy cooking.
-                        </p>
-                    </div>
-                  </div>
-                  <footer className="card-footer">
-                    <p className="card-footer-item">
-                      <Link to="/recipes/">Check out our recipes.</Link>
-                    </p>
-                  </footer>
-                </div>
-              </div>
-            </div>
-        </section>
+        {this.props.children}
       </SimpleNav>
     )
   }
