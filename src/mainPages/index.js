@@ -101,6 +101,70 @@ class SiteIndex extends React.Component {
       }
     })
 
+    const recipeList = recipes => recipes.map(recipe => {return (
+        <div className="column is-one-third" key={recipe.node.id}>
+          <div className="card">
+            {recipe.node.data.Attachments ?
+            <div className="card-image">
+              <figure className="image">
+                <img src={recipe.node.data.Attachments[0].thumbnails.large.url} style={{objectFit: "cover", height: "200px"}}/>
+              </figure>
+            </div>
+            : 
+            <div className="card-image">
+              <figure className="image is-3by2">
+                <img src={this.props.data.placeholder.publicURL} />
+              </figure>
+            </div>
+            }
+            <div className="card-content">
+              <Link to={recipe.node.fields.slug}>
+                <h2 className="title has-text-centered">{recipe.node.data.Name}</h2>
+              </Link>
+              <div className="level">
+                <div className="level-item has-text-centered">
+                  <div>
+                  <p className="heading">Rating</p>
+                  <p className="">{checkBlank(recipe.node.data.Rating)}{`\u2606`}/10</p>
+                  </div>
+                </div>
+                <div className="level-item has-text-centered">
+                  <div>
+                  <p className="heading">Last Made</p>
+                  <p className="">{checkBlank(recipe.node.data.Last_Made)}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="level">
+                <div className="level-item has-text-centered">
+                  <div>
+                  <p className="heading">Prep Time</p>
+                  <p className="">{`Prep: ${checkBlankTime(recipe.node.data.Preparation_Time)}`}</p>
+                  </div>
+                </div>
+                <div className="level-item has-text-centered">
+                  <div>
+                  <p className="heading">Cook Time</p>
+                  <p className="">{`Cooking: ${checkBlankTime(recipe.node.data.Cooking_Time)}`}</p>
+                  </div>
+                </div>
+                <div className="level-item has-text-centered">
+                  <div>
+                  <p className="heading">Total Time</p>
+                  <p className="">{`Total: ${checkBlankTime(recipe.node.data.Total_Time)}`}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {recipe.node.data.URL ? 
+            <footer className="card-footer">
+              <a href={recipe.node.data.URL} className="card-footer-item" target="_blank">Recipe Link</a>
+            </footer>
+            : null}
+          </div>
+        </div>
+    )})
+
     return (
       <HeroLayout {...this.props}>
         <Helmet
@@ -110,12 +174,27 @@ class SiteIndex extends React.Component {
             { name: `keywords`, content: `articles` },
           ]}
         />
-        <h1 className="title">Articles</h1>
-        <h2 className="subtitle">Sometimes I write, the most recent</h2>
-        <hr/>
-        <div className="columns is-multiline">
-          {pageLinks}
-        </div>
+
+        <section className="section is-fourthary edge--top">
+          <h1 className="title">Articles</h1>
+          <h2 className="subtitle">Sometimes I write, the most recent</h2>
+          <hr/>
+          <div className="columns is-multiline">
+            {pageLinks}
+          </div>
+        </section>
+        <section className="section is-thirdary edge--top--reverse">
+            <h1 className="title">
+              <Link to="/recipes/">
+                Recipes
+              </Link>
+            </h1>
+            <h2 className="subtitle">We enjoy cooking. These are a few of our favorites eaten recently.</h2>
+            <hr/>
+            <div className="columns is-multiline">
+              {recipeList(this.props.data.allAirtableLinked.edges)}
+            </div>
+        </section>
       </HeroLayout>
     )
   }
@@ -165,6 +244,36 @@ export const pageQuery = graphql`
             description
           }
           timeToRead
+        }
+      }
+    }
+    allAirtableLinked(filter: {table: {eq: "Recipes"}, data: {Last_Made: {ne: null}}}, sort: {fields: [data___Last_Made], order: DESC}, limit: 3) {
+      edges {
+        node {
+          id
+          data {
+            Name
+            Directions
+            URL
+            Cooking_Time
+            Preparation_Time
+            Total_Time
+            Last_Made
+            Rating
+            Ingredients
+            Attachments {
+              thumbnails {
+                large {
+                  url
+                  width
+                  height
+                }
+              }
+            }
+          }
+          fields {
+            slug
+          }
         }
       }
     }
@@ -220,5 +329,12 @@ export const pageQuery = graphql`
         html
       }
     }
+    placeholder: file(relativePath: {eq: "images/placeholder.png"}) {
+      publicURL
+    }
   }
 `
+
+
+let checkBlank = (value) => value ? value : `--`
+let checkBlankTime = (value) => value ? `${value}m` : `--`

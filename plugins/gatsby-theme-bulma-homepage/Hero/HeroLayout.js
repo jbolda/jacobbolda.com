@@ -53,9 +53,7 @@ class HeroLayout extends React.Component {
             </div>
           </div>
         </section>
-        <section className="section is-fourthary edge--top">
-            {this.props.children}
-        </section>
+        {this.props.children}
       </SimpleNav>
     )
   }
