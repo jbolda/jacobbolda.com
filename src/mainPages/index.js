@@ -101,6 +101,54 @@ class SiteIndex extends React.Component {
       }
     })
 
+    const professionalEngagements = () => (
+      <div className="tile is-ancestor">
+        <div className="tile is-vertical is-8">
+          <div className="tile">
+            <div className="tile is-parent is-vertical">
+              <article className="tile is-child notification is-thirdary">
+                <p className="title is-4">Vertical...</p>
+                <p className="subtitle">Top tile</p>
+              </article>
+              <article className="tile is-child notification is-thirdary">
+                <p className="title">...tiles</p>
+                <p className="subtitle">Bottom tile</p>
+              </article>
+            </div>
+            <div className="tile is-parent">
+              <article className="tile is-child notification is-thirdary">
+                <p className="title is-4">Middle tile</p>
+                <p className="subtitle">With an image</p>
+                <figure className="image is-4by3">
+                  <img src="https://bulma.io/images/placeholders/640x480.png" />
+                </figure>
+              </article>
+            </div>
+          </div>
+          <div className="tile is-parent">
+            <article className="tile is-child notification is-thirdary">
+              <p className="title is-4">Wide tile</p>
+              <p className="subtitle">Aligned with the right tile</p>
+              <div className="content">
+                {/* Content */}
+              </div>
+            </article>
+          </div>
+        </div>
+        <div className="tile is-parent">
+          <article className="tile is-child notification is-thirdary">
+            <div className="content">
+              <p className="title is-4">Tall tile</p>
+              <p className="subtitle">With even more content</p>
+              <div className="content">
+                {/* Content */}
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    )
+
     const recipeList = recipes => recipes.map(recipe => {return (
         <div className="column is-one-third" key={recipe.node.id}>
           <div className="card">
@@ -174,8 +222,15 @@ class SiteIndex extends React.Component {
             { name: `keywords`, content: `articles` },
           ]}
         />
-
         <section className="section is-fourthary edge--top">
+          <h1 className="title">Professional Engagements</h1>
+          <h2 className="subtitle">In View of the Public</h2>
+          <hr/>
+          <div className="columns is-multiline">
+            {professionalEngagements()}
+          </div>
+        </section>
+        <section className="section is-fifthary edge--top--reverse">
           <h1 className="title">Articles</h1>
           <h2 className="subtitle">Sometimes I write, the most recent</h2>
           <hr/>
@@ -183,7 +238,7 @@ class SiteIndex extends React.Component {
             {pageLinks}
           </div>
         </section>
-        <section className="section is-thirdary edge--top--reverse">
+        <section className="section is-fourthary edge--top">
             <h1 className="title">
               <Link to="/recipes/">
                 Recipes
