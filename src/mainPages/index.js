@@ -101,118 +101,6 @@ class SiteIndex extends React.Component {
       }
     })
 
-    const professionalEngagements = () => (
-      <div className="tile is-ancestor">
-        <div className="tile is-vertical is-8">
-          <div className="tile">
-            <div className="tile is-parent is-vertical">
-              <article className="tile is-child notification is-thirdary">
-                <p className="title is-4">Vertical...</p>
-                <p className="subtitle">Top tile</p>
-              </article>
-              <article className="tile is-child notification is-thirdary">
-                <p className="title">...tiles</p>
-                <p className="subtitle">Bottom tile</p>
-              </article>
-            </div>
-            <div className="tile is-parent">
-              <article className="tile is-child notification is-thirdary">
-                <p className="title is-4">Middle tile</p>
-                <p className="subtitle">With an image</p>
-                <figure className="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/640x480.png" />
-                </figure>
-              </article>
-            </div>
-          </div>
-          <div className="tile is-parent">
-            <article className="tile is-child notification is-thirdary">
-              <p className="title is-4">Wide tile</p>
-              <p className="subtitle">Aligned with the right tile</p>
-              <div className="content">
-                {/* Content */}
-              </div>
-            </article>
-          </div>
-        </div>
-        <div className="tile is-parent">
-          <article className="tile is-child notification is-thirdary">
-            <div className="content">
-              <p className="title is-4">Tall tile</p>
-              <p className="subtitle">With even more content</p>
-              <div className="content">
-                {/* Content */}
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    )
-
-    const recipeList = recipes => recipes.map(recipe => {return (
-        <div className="column is-one-third" key={recipe.node.id}>
-          <div className="card">
-            {recipe.node.data.Attachments ?
-            <div className="card-image">
-              <figure className="image">
-                <img src={recipe.node.data.Attachments[0].thumbnails.large.url} style={{objectFit: "cover", height: "200px"}}/>
-              </figure>
-            </div>
-            : 
-            <div className="card-image">
-              <figure className="image is-3by2">
-                <img src={this.props.data.placeholder.publicURL} />
-              </figure>
-            </div>
-            }
-            <div className="card-content">
-              <Link to={recipe.node.fields.slug}>
-                <h2 className="title has-text-centered">{recipe.node.data.Name}</h2>
-              </Link>
-              <div className="level">
-                <div className="level-item has-text-centered">
-                  <div>
-                  <p className="heading">Rating</p>
-                  <p className="">{checkBlank(recipe.node.data.Rating)}{`\u2606`}/10</p>
-                  </div>
-                </div>
-                <div className="level-item has-text-centered">
-                  <div>
-                  <p className="heading">Last Made</p>
-                  <p className="">{checkBlank(recipe.node.data.Last_Made)}</p>
-                  </div>
-                </div>
-              </div>
-              <div className="level">
-                <div className="level-item has-text-centered">
-                  <div>
-                  <p className="heading">Prep Time</p>
-                  <p className="">{`Prep: ${checkBlankTime(recipe.node.data.Preparation_Time)}`}</p>
-                  </div>
-                </div>
-                <div className="level-item has-text-centered">
-                  <div>
-                  <p className="heading">Cook Time</p>
-                  <p className="">{`Cooking: ${checkBlankTime(recipe.node.data.Cooking_Time)}`}</p>
-                  </div>
-                </div>
-                <div className="level-item has-text-centered">
-                  <div>
-                  <p className="heading">Total Time</p>
-                  <p className="">{`Total: ${checkBlankTime(recipe.node.data.Total_Time)}`}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {recipe.node.data.URL ? 
-            <footer className="card-footer">
-              <a href={recipe.node.data.URL} className="card-footer-item" target="_blank">Recipe Link</a>
-            </footer>
-            : null}
-          </div>
-        </div>
-    )})
-
     return (
       <HeroLayout {...this.props}>
         <Helmet
@@ -256,6 +144,111 @@ class SiteIndex extends React.Component {
 }
 
 export default SiteIndex
+
+const professionalEngagements = () =>
+  <div className="tile is-ancestor">
+    <div className="tile is-vertical is-8">
+      <div className="tile">
+        <div className="tile is-parent is-vertical">
+          <ChildTile Child={PodcastTile} />
+          <ChildTile Child={PodcastTile} />
+        </div>
+        <div className="tile is-parent">
+          <ChildTile Child={MitchellLofts} />
+        </div>
+      </div>
+      <div className="tile is-parent">
+        <ChildTile Child={PodcastTile} />
+      </div>
+    </div>
+    <div className="tile is-parent">
+      <ChildTile Child={PodcastTile} />
+    </div>
+  </div>
+
+const ChildTile = ({props, Child}) =>
+  <article className="tile is-child notification is-thirdary">
+    <Child />
+  </article>
+
+const PodcastTile = props =>
+  <div>
+    <p className="title is-4">Vertical...</p>
+    <p className="subtitle">Top tile</p>
+  </div>
+
+const MitchellLofts = props =>
+  <div>
+    <p className="title is-4">Middle tile</p>
+    <p className="subtitle">With an image</p>
+    <figure className="image is-4by3">
+      <img src="https://bulma.io/images/placeholders/640x480.png" />
+    </figure>
+  </div>
+
+const recipeList = recipes => recipes.map(recipe => 
+  <div className="column is-one-third" key={recipe.node.id}>
+    <div className="card">
+      {recipe.node.data.Attachments ?
+      <div className="card-image">
+        <figure className="image">
+          <img src={recipe.node.data.Attachments[0].thumbnails.large.url} style={{objectFit: "cover", height: "200px"}}/>
+        </figure>
+      </div>
+      : 
+      <div className="card-image">
+        <figure className="image is-3by2">
+          <img src={this.props.data.placeholder.publicURL} />
+        </figure>
+      </div>
+      }
+      <div className="card-content">
+        <Link to={recipe.node.fields.slug}>
+          <h2 className="title has-text-centered">{recipe.node.data.Name}</h2>
+        </Link>
+        <div className="level">
+          <div className="level-item has-text-centered">
+            <div>
+            <p className="heading">Rating</p>
+            <p className="">{checkBlank(recipe.node.data.Rating)}{`\u2606`}/10</p>
+            </div>
+          </div>
+          <div className="level-item has-text-centered">
+            <div>
+            <p className="heading">Last Made</p>
+            <p className="">{checkBlank(recipe.node.data.Last_Made)}</p>
+            </div>
+          </div>
+        </div>
+        <div className="level">
+          <div className="level-item has-text-centered">
+            <div>
+            <p className="heading">Prep Time</p>
+            <p className="">{`Prep: ${checkBlankTime(recipe.node.data.Preparation_Time)}`}</p>
+            </div>
+          </div>
+          <div className="level-item has-text-centered">
+            <div>
+            <p className="heading">Cook Time</p>
+            <p className="">{`Cooking: ${checkBlankTime(recipe.node.data.Cooking_Time)}`}</p>
+            </div>
+          </div>
+          <div className="level-item has-text-centered">
+            <div>
+            <p className="heading">Total Time</p>
+            <p className="">{`Total: ${checkBlankTime(recipe.node.data.Total_Time)}`}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {recipe.node.data.URL ? 
+      <footer className="card-footer">
+        <a href={recipe.node.data.URL} className="card-footer-item" target="_blank">Recipe Link</a>
+      </footer>
+      : null}
+    </div>
+  </div>
+)
 
 export const pageQuery = graphql`
   query allPosts {
