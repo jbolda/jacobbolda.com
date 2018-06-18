@@ -192,7 +192,7 @@ const MitchellLofts = props =>
       url="http://www.impactseven.org/portfolio-items/mitchell-street-market-lofts/"
       />
     <TileSub text="new construction affordable housing development" />
-    <figure className="image is-4by3">
+    <figure className="image">
       <img src="http://www.impactseven.org/wp-content/uploads/2015/11/WEB-35-320x202.jpg" />
     </figure>
     <p>
@@ -214,7 +214,7 @@ const TileLink = ({url, text}) =>
 
 const TileSub = ({text}) =>
   <p className="subtitle">
-    {children}
+    {text}
   </p>
 
 const recipeList = recipes => recipes.map(recipe => 
