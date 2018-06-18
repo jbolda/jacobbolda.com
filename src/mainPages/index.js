@@ -173,18 +173,41 @@ const ChildTile = ({props, Child}) =>
 
 const PodcastTile = props =>
   <div>
-    <p className="title is-4">Vertical...</p>
-    <p className="subtitle">Top tile</p>
+    <TileTitle text="Middle tile" />
+    <TileSub text="With an image" />
   </div>
 
 const MitchellLofts = props =>
   <div>
-    <p className="title is-4">Middle tile</p>
-    <p className="subtitle">With an image</p>
+    <TileTitle
+      text="Mitchell Street Market Lofts"
+      url="http://www.impactseven.org/portfolio-items/mitchell-street-market-lofts/"
+      />
+    <TileSub text="With an image" />
     <figure className="image is-4by3">
-      <img src="https://bulma.io/images/placeholders/640x480.png" />
+      <img src="http://www.impactseven.org/wp-content/uploads/2015/11/WEB-35-320x202.jpg" />
     </figure>
+    <p>
+      Located in the Muskego Way neighborhood and built on what was once a city-owned vacant brownfield lot,
+      {' '}Mitchell Street Market Lofts is a new construction affordable housing development. I created the
+      {' '}original design of these lofts during Senior Design. We pitched the design to the eventual developers.
+      {' '}After a few small tweaks, we passed off the preliminary design to the Architects and it lead to
+      {' '}what you can see now.
+    </p>
   </div>
+
+const TileTitle = ({text, url}) =>
+  <p className="title is-4">
+    {url ? <TileLink url={url} text={text} /> : text}
+  </p>
+
+const TileLink = ({url, text}) =>
+  <a href={url} target="_blank">{text}</a>
+
+const TileSub = ({text}) =>
+  <p className="subtitle">
+    {children}
+  </p>
 
 const recipeList = recipes => recipes.map(recipe => 
   <div className="column is-one-third" key={recipe.node.id}>
