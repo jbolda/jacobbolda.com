@@ -173,8 +173,16 @@ const ChildTile = ({props, Child}) =>
 
 const PodcastTile = props =>
   <div>
-    <TileTitle text="Middle tile" />
-    <TileSub text="With an image" />
+    <TileTitle
+      text="STEM on Fire Guest"
+      url="https://stemonfire.com/43-architectural-and-structural-engineer-jacob-bolda/"
+      />
+    <TileSub text="Guest #43 Representing the AEC Industry" />
+    <p>
+      The podcast hosts practicing professionals, college professors and college students.
+      {' '}The focus will be to provide insights into STEM professions, what is required to get
+      {' '}through the curriculum and additional strategies to guide you towards a successful career.
+    </p>
   </div>
 
 const MitchellLofts = props =>
@@ -183,7 +191,7 @@ const MitchellLofts = props =>
       text="Mitchell Street Market Lofts"
       url="http://www.impactseven.org/portfolio-items/mitchell-street-market-lofts/"
       />
-    <TileSub text="With an image" />
+    <TileSub text="new construction affordable housing development" />
     <figure className="image is-4by3">
       <img src="http://www.impactseven.org/wp-content/uploads/2015/11/WEB-35-320x202.jpg" />
     </figure>
