@@ -151,7 +151,7 @@ const professionalEngagements = () =>
       <div className="tile">
         <div className="tile is-parent is-vertical">
           <ChildTile Child={PodcastTile} />
-          <ChildTile Child={PodcastTile} />
+          <ChildTile Child={REUTile} />
         </div>
         <div className="tile is-parent">
           <ChildTile Child={MitchellLofts} />
@@ -235,6 +235,21 @@ const EngineersWithoutBorders = props =>
       </p>
       <p>
         Special thanks to Doug Stahl, Mike Paddock, Max Schmiege, Rob Merkel, Steve Berg, Brian Sides, Heather Cleveland, Scott Solverson, and Carrie Bristol-Groll for their contributions as professional mentors for this project. We would also like to thank (again) our in-country contact, Mike Shawcross, for providing the link between us and the community of Tres Cruces.
+      </p>
+    </div>
+  </div>
+
+const REUTile = props =>
+  <div>
+    <TileTitle
+      text="Rapid Prototyping: A Sustainable Design Aid"
+      url="https://www.nsf.gov/awardsearch/showAward?AWD_ID=0648845"
+      />
+    <TileSub text="3D Printing Research Back in 2009" />
+    <div className="content">
+      <p>
+        I research the applicability of creating a Revit model, running daylighting
+        analyses and exporting the colored model to be 3D printed in color.
       </p>
     </div>
   </div>
