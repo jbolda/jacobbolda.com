@@ -180,9 +180,12 @@ const PodcastTile = props =>
     <TileSub text="Guest #43 Representing the AEC Industry" />
     <p>
       The podcast hosts practicing professionals, college professors and college students.
-      {' '}The focus will be to provide insights into STEM professions, what is required to get
-      {' '}through the curriculum and additional strategies to guide you towards a successful career.
+      {' '}The focus is providing insights into STEM professions, what is required to get
+      {' '}through the curriculum and additional strategies to guide students towards a successful career.
     </p>
+    <p>
+      I talk about how the AEC Industry is all connected, and how Structural Engineering fits in.
+    <p/>
   </div>
 
 const MitchellLofts = props =>
