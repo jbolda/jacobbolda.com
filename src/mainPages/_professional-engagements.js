@@ -1,4 +1,5 @@
 import React from "react"
+import EcotectPhoto from '../static/assets/Ecotect Example.png'
 
 const professionalEngagements = props =>
   <div className="tile is-ancestor">
@@ -6,14 +7,11 @@ const professionalEngagements = props =>
       <div className="tile">
         <div className="tile is-parent is-vertical">
           <ChildTile Child={PodcastTile} />
-          <ChildTile Child={REUTile} />
-        </div>
-        <div className="tile is-parent">
           <ChildTile Child={MitchellLofts} />
         </div>
-      </div>
-      <div className="tile is-parent">
-        <ChildTile Child={PodcastTile} />
+        <div className="tile is-parent">
+          <ChildTile Child={REUTile} />
+        </div>
       </div>
     </div>
     <div className="tile is-parent">
@@ -34,7 +32,7 @@ const PodcastTile = props =>
       text="STEM on Fire Guest"
       url="https://stemonfire.com/43-architectural-and-structural-engineer-jacob-bolda/"
       />
-    <TileSub text="Guest #43 Representing the AEC Industry" />
+    <TileSub text="Guest Representing the AEC Industry" />
     <div className="content">
       <p>
         The podcast hosts practicing professionals, college professors and college students.
@@ -53,7 +51,7 @@ const MitchellLofts = props =>
       text="Mitchell Street Market Lofts"
       url="http://www.impactseven.org/portfolio-items/mitchell-street-market-lofts/"
       />
-    <TileSub text="new construction affordable housing development" />
+    <TileSub text="New Construction Affordable Housing Development" />
     <figure className="image">
       <img src="http://www.impactseven.org/wp-content/uploads/2015/11/WEB-35-320x202.jpg" />
     </figure>
@@ -103,10 +101,16 @@ const REUTile = props =>
       url="https://www.nsf.gov/awardsearch/showAward?AWD_ID=0648845"
       />
     <TileSub text="3D Printing Research Back in 2009" />
+    <figure className="image">
+      <img src={EcotectPhoto} />
+    </figure>
     <div className="content">
       <p>
         I research the applicability of creating a Revit model, running daylighting
         analyses and exporting the colored model to be 3D printed in color.
+      </p>
+      <p>
+        The purpose of this research is to explore the feasibility of performing energy analyses early in the design stage of building. Currently, energy analyses are not performed on a building until 80%-90% of the design decisions have been finalized. Once this point has been reached, passive solutions are hard to incorporate and designers depend on active measures to correct deficiencies in design. If energy modeling becomes a higher priority in designing a building, passive design solutions might easily be incorporated. Utilizing computer programs simplifies and expedites the energy modeling process. Energy modeling was examined to determine the ease of use and feasibility of using such a device to help designers understand the priorities behind passive design. This research focuses primarily on illumination with respect to solar energy uses. Values obtained from an energy model making use of daylighting and solar energy to help illuminate the room can then be compared to the same room using primarily electric illumination. A visual, as well as a textual, analysis can be performed and used to help educate not only designers but the client. Using rapid prototyping, a striking visual model can be created to help convey the energy efficiencies as well as the architectural highlights of the building.
       </p>
     </div>
   </div>
