@@ -1,4 +1,5 @@
 import React from "react"
+import Link from "gatsby-link"
 import EcotectPhoto from '../static/assets/Ecotect Example.png'
 
 const professionalEngagements = props =>
@@ -12,6 +13,7 @@ const professionalEngagements = props =>
         <div className="tile is-parent is-vertical">
           <ChildTile Child={MastersThesis} />
           <ChildTile Child={MitchellLofts} />
+          <ChildTile Child={ProgrammingKnowledge} />
         </div>
       </div>
     </div>
@@ -71,12 +73,27 @@ const MastersThesis = props =>
   <div>
     <TileTitle
       text="Masters in Structural Engineering"
-      url="http://www.ewbmsoe.com/?ref=www.jacobbolda.com"
+      url="/masters-in-structural-engineering-thesis/"
       />
     <TileSub text="Thesis Circa 2011" />
     <div className="content">
       <p>
         The purpose of this capstone design project report is to discuss the behavior of a hooked bar in concrete carrying a tension force. The cover and bonded length are varied to observe the effect on the load distribution between the hook portion and the bonded length portion of a hooked bar. Each specimen had 1 or 2 inches of cover. Each specimen had a bonded length of 8, 12, or 16 inches. Straight rebar was also tested to provide a control and comparison to the hooked bars with similar cover and bond length variables.
+      </p>
+    </div>
+  </div>
+
+const ProgrammingKnowledge = props =>
+  <div>
+    <TileTitle
+      text="Programming, Code and Excel"
+      url="/gatsby-and-contributing-to-open-source/"
+      />
+    <TileSub text="Since the '90s" />
+    <div className="content">
+      <p>
+        I have been known to sling some code. My experience crosses a unique set of languages, but all with the common goal of solving a specific problem. Programming and code are tools that have great power when wielded effectively. More recently my interest has been in JavaScript, and I had worked on some open source code (linked).
+        I am also an expert in Excel and have crafted some <a href="https://stackoverflow.com/questions/14614923/excel-formula-identifying-number-of-date-ranges-within-a-range/14616697#14616697" target="_blank">involved formulas and code under unique constraints</a>.
       </p>
     </div>
   </div>
@@ -92,9 +109,8 @@ const EngineersWithoutBorders = props =>
       <iframe
         src="https://www.youtube.com/embed/rtTc8N6SGns"
         style={{position: "absolute", top: 0, left: 0, paddingBottom: "10px", width: "100%", height: "100%"}}
-        frameborder="0"
-        allow="autoplay; encrypted-media"
-        allowfullscreen></iframe>
+        frameBorder="0"
+        allowFullScreen></iframe>
     </figure>
     <div className="content">
       <p>
@@ -135,9 +151,14 @@ const TileTitle = ({text, url}) =>
     {url ? <TileLink url={url} text={text} /> : text}
   </p>
 
-const TileLink = ({url, text}) =>
-  <a href={url} target="_blank">{text}</a>
-
+const TileLink = ({url, text}) => {
+  if (url.charAt(0) === `/`) {
+    return <Link to={url}>{text}</Link>
+  } else {
+    return <a href={url} target="_blank">{text}</a>
+  }
+}
+  
 const TileSub = ({text}) =>
   <p className="subtitle">
     {text}
