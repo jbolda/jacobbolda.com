@@ -3,6 +3,7 @@ import Link from "gatsby-link"
 import Helmet from "react-helmet"
 import sortBy from "lodash/sortBy"
 import HeroLayout from '../../plugins/gatsby-theme-bulma-homepage/Hero/HeroLayout'
+import ProfessionalEngagements from './_professional-engagements'
 import Img from 'gatsby-image'
 
 class SiteIndex extends React.Component {
@@ -115,7 +116,7 @@ class SiteIndex extends React.Component {
           <h2 className="subtitle">In View of the Public</h2>
           <hr/>
           <div className="columns is-multiline">
-            {professionalEngagements()}
+            <ProfessionalEngagements />
           </div>
         </section>
         <section className="section is-fifthary edge--top--reverse">
@@ -144,128 +145,6 @@ class SiteIndex extends React.Component {
 }
 
 export default SiteIndex
-
-const professionalEngagements = () =>
-  <div className="tile is-ancestor">
-    <div className="tile is-vertical is-8">
-      <div className="tile">
-        <div className="tile is-parent is-vertical">
-          <ChildTile Child={PodcastTile} />
-          <ChildTile Child={REUTile} />
-        </div>
-        <div className="tile is-parent">
-          <ChildTile Child={MitchellLofts} />
-        </div>
-      </div>
-      <div className="tile is-parent">
-        <ChildTile Child={PodcastTile} />
-      </div>
-    </div>
-    <div className="tile is-parent">
-      <ChildTile Child={EngineersWithoutBorders} />
-    </div>
-  </div>
-
-const ChildTile = ({props, Child}) =>
-  <article className="tile is-child notification is-thirdary">
-    <Child />
-  </article>
-
-const PodcastTile = props =>
-  <div>
-    <TileTitle
-      text="STEM on Fire Guest"
-      url="https://stemonfire.com/43-architectural-and-structural-engineer-jacob-bolda/"
-      />
-    <TileSub text="Guest #43 Representing the AEC Industry" />
-    <div className="content">
-      <p>
-        The podcast hosts practicing professionals, college professors and college students.
-        {' '}The focus is providing insights into STEM professions, what is required to get
-        {' '}through the curriculum and additional strategies to guide students towards a successful career.
-      </p>
-      <p>
-        I talk about how the AEC Industry is all connected, and how Structural Engineering fits in.
-      </p>
-    </div>
-  </div>
-
-const MitchellLofts = props =>
-  <div>
-    <TileTitle
-      text="Mitchell Street Market Lofts"
-      url="http://www.impactseven.org/portfolio-items/mitchell-street-market-lofts/"
-      />
-    <TileSub text="new construction affordable housing development" />
-    <figure className="image">
-      <img src="http://www.impactseven.org/wp-content/uploads/2015/11/WEB-35-320x202.jpg" />
-    </figure>
-    <div className="content">
-      <p>
-        Located in the Muskego Way neighborhood and built on what was once a city-owned vacant brownfield lot,
-        {' '}Mitchell Street Market Lofts is a new construction affordable housing development. I created the
-        {' '}original design of these lofts during Senior Design. We pitched the design to the eventual developers.
-        {' '}After a few small tweaks, we passed off the preliminary design to the Architects and it lead to
-        {' '}what you can see now.
-      </p>
-    </div>
-  </div>
-
-const EngineersWithoutBorders = props =>
-  <div>
-    <TileTitle
-      text="Engineers Without Borders"
-      url="http://www.ewbmsoe.com/?ref=www.jacobbolda.com"
-      />
-    <TileSub text="MSOE Student Chapter" />
-    <figure className="image is-3by2">
-      <iframe
-        src="https://www.youtube.com/embed/rtTc8N6SGns"
-        style={{position: "absolute", top: 0, left: 0, paddingBottom: "10px", width: "100%", height: "100%"}}
-        frameborder="0"
-        allow="autoplay; encrypted-media"
-        allowfullscreen></iframe>
-    </figure>
-    <div className="content">
-      <p>
-        In March 2010, a team of EWB-MSOE students and professionals completed a vehicular bridge in the rural village of Tres Cruces, Guatemala. Similar to our other bridges in Joyabaj, this one provides reliable year-round access for about 4,000 people in Tres Cruces and the surrounding countryside to reach the central town of Joyabaj for education, commerce, and healthcare. It should also open the doorway to further development of Tres Cruces and the surrounding region.
-      </p>
-      <p>
-        This project required two implementation trips. The professional partners on the first trip, conducted in January 2010, excavated and poured the bridge foundations and abutments. The second trip, composed of students and professional/faculty mentors, then completed the superstructure and retaining walls on the sides of the bridge. In preparation for these implementation trips, the professionals and students worked over the summer and fall of 2009 to produce a technical design for the bridge and a plan for constructing it with the close help of the municipal government of Joyabaj and the community leadership of Tres Cruces. The members of the local community, having an eagerness to invest in this improvement to their lives, willingly provided much of the labor for both implementation trips, along with on-site housing for EWB personnell. 
-      </p>
-      <p>
-        Special thanks to Doug Stahl, Mike Paddock, Max Schmiege, Rob Merkel, Steve Berg, Brian Sides, Heather Cleveland, Scott Solverson, and Carrie Bristol-Groll for their contributions as professional mentors for this project. We would also like to thank (again) our in-country contact, Mike Shawcross, for providing the link between us and the community of Tres Cruces.
-      </p>
-    </div>
-  </div>
-
-const REUTile = props =>
-  <div>
-    <TileTitle
-      text="Rapid Prototyping: A Sustainable Design Aid"
-      url="https://www.nsf.gov/awardsearch/showAward?AWD_ID=0648845"
-      />
-    <TileSub text="3D Printing Research Back in 2009" />
-    <div className="content">
-      <p>
-        I research the applicability of creating a Revit model, running daylighting
-        analyses and exporting the colored model to be 3D printed in color.
-      </p>
-    </div>
-  </div>
-
-const TileTitle = ({text, url}) =>
-  <p className="title is-4">
-    {url ? <TileLink url={url} text={text} /> : text}
-  </p>
-
-const TileLink = ({url, text}) =>
-  <a href={url} target="_blank">{text}</a>
-
-const TileSub = ({text}) =>
-  <p className="subtitle">
-    {text}
-  </p>
 
 const recipeList = recipes => recipes.map(recipe => 
   <div className="column is-one-third" key={recipe.node.id}>
