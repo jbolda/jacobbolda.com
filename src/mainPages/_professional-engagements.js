@@ -1,6 +1,6 @@
 import React from "react"
 import Link from "gatsby-link"
-import EcotectPhoto from '../static/assets/Ecotect Example.png'
+import EcotectPhoto from '../static/assets/EcotectExample.png'
 
 const professionalEngagements = props =>
   <div className="tile is-ancestor">
