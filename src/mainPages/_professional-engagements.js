@@ -7,10 +7,11 @@ const professionalEngagements = props =>
       <div className="tile">
         <div className="tile is-parent is-vertical">
           <ChildTile Child={PodcastTile} />
-          <ChildTile Child={MitchellLofts} />
-        </div>
-        <div className="tile is-parent">
           <ChildTile Child={REUTile} />
+        </div>
+        <div className="tile is-parent is-vertical">
+          <ChildTile Child={MastersThesis} />
+          <ChildTile Child={MitchellLofts} />
         </div>
       </div>
     </div>
@@ -62,6 +63,20 @@ const MitchellLofts = props =>
         {' '}original design of these lofts during Senior Design. We pitched the design to the eventual developers.
         {' '}After a few small tweaks, we passed off the preliminary design to the Architects and it lead to
         {' '}what you can see now.
+      </p>
+    </div>
+  </div>
+
+const MastersThesis = props =>
+  <div>
+    <TileTitle
+      text="Masters in Structural Engineering"
+      url="http://www.ewbmsoe.com/?ref=www.jacobbolda.com"
+      />
+    <TileSub text="Thesis Circa 2011" />
+    <div className="content">
+      <p>
+        The purpose of this capstone design project report is to discuss the behavior of a hooked bar in concrete carrying a tension force. The cover and bonded length are varied to observe the effect on the load distribution between the hook portion and the bonded length portion of a hooked bar. Each specimen had 1 or 2 inches of cover. Each specimen had a bonded length of 8, 12, or 16 inches. Straight rebar was also tested to provide a control and comparison to the hooked bars with similar cover and bond length variables.
       </p>
     </div>
   </div>
