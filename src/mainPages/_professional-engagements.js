@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "gatsby-link";
 import EcotectPhoto from "../static/assets/EcotectExample.png";
+import MitchellLoftsPhoto from "../static/assets/mitchell-lofts-WEB-35.jpg";
 
 const professionalEngagements = props => (
   <div className="tile is-ancestor">
@@ -89,18 +90,18 @@ const MitchellLofts = props => (
       url="http://www.impactseven.org/portfolio-items/mitchell-street-market-lofts/"
     />
     <TileSub text="New Construction Affordable Housing Development" />
-    <figure className="image">
-      <img src="http://www.impactseven.org/wp-content/uploads/2015/11/WEB-35-320x202.jpg" />
+    <figure className="image is-3by2">
+      <img src={MitchellLoftsPhoto} />
     </figure>
     <div className="content">
       <p>
-        Located in the Muskego Way neighborhood and built on what was once a
-        city-owned vacant brownfield lot, Mitchell Street Market Lofts is a new
-        construction affordable housing development. I created the original
-        design of these lofts during Senior Design. We pitched the design to the
-        eventual developers. After a few small tweaks, we passed off the
-        preliminary design to the Architects and it lead to what you can see
-        now.
+        Located in the Muskego Way neighborhood in Milwaukee, WI and built on
+        what was once a city-owned vacant brownfield lot, Mitchell Street Market
+        Lofts is a new construction affordable housing development. I created
+        the original design of these lofts during Senior Design. We pitched the
+        design to the eventual developers. After a few small tweaks, we passed
+        off the preliminary design to the Architects and it lead to what you can
+        see now.
       </p>
     </div>
   </div>
