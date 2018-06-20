@@ -1,9 +1,9 @@
-import React from "react"
-import SimpleChrome from "../../plugins/gatsby-theme-bulma-blog/Simple/SimpleChrome"
+import React from "react";
+import SimpleChrome from "../../plugins/gatsby-theme-bulma-blog/Simple/SimpleChrome";
 
 class SimpleBlogPostTemplate extends React.Component {
   render() {
-    const {html, frontmatter} = this.props.data.post
+    const { html, frontmatter } = this.props.data.post;
 
     return (
       <SimpleChrome
@@ -11,14 +11,14 @@ class SimpleBlogPostTemplate extends React.Component {
         hero={this.props.data.hero}
         sitemetadata={this.props.data.site.siteMetadata}
         location={this.props.location}
-        >
+      >
         <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
       </SimpleChrome>
-    )
+    );
   }
 }
 
-export default SimpleBlogPostTemplate
+export default SimpleBlogPostTemplate;
 
 export const pageQuery = graphql`
   query SimpleBlogPostTemplatePostBySlug($slug: String!, $heroImage: String!) {
@@ -34,7 +34,7 @@ export const pageQuery = graphql`
         description
       }
     }
-    hero: file(relativePath: {eq: $heroImage}) {
+    hero: file(relativePath: { eq: $heroImage }) {
       childImageSharp {
         sizes(maxWidth: 1920) {
           ...GatsbyImageSharpSizes_tracedSVG
@@ -53,4 +53,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

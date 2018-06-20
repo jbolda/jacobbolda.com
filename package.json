@@ -9,7 +9,8 @@
     "build": "npm run clean & gatsby build",
     "serve": "gatsby serve",
     "clean": "rm -rf .cache && rm -rf public",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pretty": "prettier --write \"{src,plugins,__{tests,mocks}__}/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -55,5 +56,8 @@
     "react-helmet": "^5.2.0",
     "typography": "^0.16.6",
     "typography-theme-lawton": "^0.15.10"
+  },
+  "devDependencies": {
+    "prettier": "1.13.5"
   }
 }

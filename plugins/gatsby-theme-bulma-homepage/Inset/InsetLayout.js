@@ -1,10 +1,10 @@
-import React from "react"
-import SiteSidebar from "./SiteSidebar"
-import SimpleNav from "../../gatsby-theme-bulma-layout/Simple/SimpleNav"
+import React from "react";
+import SiteSidebar from "./SiteSidebar";
+import SimpleNav from "../../gatsby-theme-bulma-layout/Simple/SimpleNav";
 
 class InsetLayout extends React.Component {
   render() {
-    const {siteMetadata} = this.props.data.site
+    const { siteMetadata } = this.props.data.site;
 
     return (
       <SimpleNav sitemetadata={siteMetadata} location={this.props.location}>
@@ -13,14 +13,12 @@ class InsetLayout extends React.Component {
             <div className="column is-one-quarter">
               <SiteSidebar {...this.props} />
             </div>
-            <div className="column">
-              {this.props.children}
-            </div>
+            <div className="column">{this.props.children}</div>
           </div>
         </div>
       </SimpleNav>
-    )
+    );
   }
 }
 
-export default InsetLayout
+export default InsetLayout;
