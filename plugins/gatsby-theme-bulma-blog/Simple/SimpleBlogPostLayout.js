@@ -1,10 +1,10 @@
-import React from "react"
-import Link from "gatsby-link"
-import SimpleNav from "../../gatsby-theme-bulma-layout/Simple/SimpleNav"
+import React from "react";
+import Link from "gatsby-link";
+import SimpleNav from "../../gatsby-theme-bulma-layout/Simple/SimpleNav";
 
 class SimpleBlogPostLayout extends React.Component {
   render() {
-    let {sitemetadata} = this.props
+    let { sitemetadata } = this.props;
 
     return (
       <SimpleNav sitemetadata={sitemetadata} location={this.props.location}>
@@ -21,11 +21,11 @@ class SimpleBlogPostLayout extends React.Component {
           </div>
         </section>
       </SimpleNav>
-    )
+    );
   }
 }
 
-export default SimpleBlogPostLayout
+export default SimpleBlogPostLayout;
 
 /*
 can't seem to get the fragment to work here, not a location gatsby expects?
