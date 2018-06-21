@@ -72,7 +72,7 @@ const AECCollective = props => (
     <TileSub text="A Community Serving the Architectural, Engineering and Construction Industry" />
     <p>
       I run a community called the AEC Collective. The AEC Collective is a
-      community for the Architecture, Engineering, and Construction. It is uses
+      community for the Architecture, Engineering, and Construction. It uses
       the Discord program which is a free voice, video and text chat app that
       you can access via PC, browser, or mobile phone. We look to help mentor
       those just starting in the industry, and provide a great place for
