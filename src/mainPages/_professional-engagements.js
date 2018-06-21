@@ -145,8 +145,8 @@ const ProgrammingKnowledge = props => (
         languages JavaScript, Python and VBA (see Excel), but I have
         additionally worked with Go, QBASIC, Fortran, LISP, SQL,
         Bash/Shell/Powershell, PHP, HTML, CSS, and more. More recently my
-        interest has been in JavaScript, and I have working on open source code
-        expounded upon in the linked article. My overall focus has been in data,
+        interest has been in JavaScript, and I have been working on open source code
+        as expounded upon in the linked article. My overall focus has been in data,
         manipulating it, and then visualizing it (see the love for JavaScript
         and Python). I am also an expert in Excel and have crafted some{" "}
         <a
