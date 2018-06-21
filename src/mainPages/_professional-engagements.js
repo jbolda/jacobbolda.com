@@ -40,7 +40,7 @@ const PodcastSTEMonFire = props => (
       url="https://stemonfire.com/43-architectural-and-structural-engineer-jacob-bolda/"
     />
     <TileSub text="Guest Representing the AEC Industry" />
-    <div className="content">
+    <TileContent>
       <p>
         The podcast hosts practicing professionals, college professors and
         college students. The focus is providing insights into STEM professions,
@@ -62,7 +62,7 @@ const PodcastSTEMonFire = props => (
         I recommended Asana for a to-do list and the book “Never Split the
         Difference” by Chris Voss.
       </p>
-    </div>
+    </TileContent>
   </div>
 );
 
@@ -70,16 +70,18 @@ const AECCollective = props => (
   <div>
     <TileTitle text="AEC Collective" url="https://www.aeccollective.com/" />
     <TileSub text="A Community Serving the Architectural, Engineering and Construction Industry" />
-    <p>
-      I run a community called the AEC Collective. The AEC Collective is a
-      community for the Architecture, Engineering, and Construction. It uses
-      the Discord program which is a free voice, video and text chat app that
-      you can access via PC, browser, or mobile phone. We look to help mentor
-      those just starting in the industry, and provide a great place for
-      networking with your peers around the world. We can all benefit from
-      understanding each related niche better, but also understanding our own
-      niche outside of our geographic region.
-    </p>
+    <TileContent>
+      <p>
+        I run a community called the AEC Collective. The AEC Collective is a
+        community for the Architecture, Engineering, and Construction. It uses
+        the Discord program which is a free voice, video and text chat app that
+        you can access via PC, browser, or mobile phone. We look to help mentor
+        those just starting in the industry, and provide a great place for
+        networking with your peers around the world. We can all benefit from
+        understanding each related niche better, but also understanding our own
+        niche outside of our geographic region.
+      </p>
+    </TileContent>
   </div>
 );
 
@@ -93,7 +95,7 @@ const MitchellLofts = props => (
     <figure className="image is-3by2">
       <img src={MitchellLoftsPhoto} />
     </figure>
-    <div className="content">
+    <TileContent>
       <p>
         Located in the Muskego Way neighborhood in Milwaukee, WI and built on
         what was once a city-owned vacant brownfield lot, Mitchell Street Market
@@ -103,7 +105,7 @@ const MitchellLofts = props => (
         off the preliminary design to the Architects and it lead to what you can
         see now.
       </p>
-    </div>
+    </TileContent>
   </div>
 );
 
@@ -114,7 +116,7 @@ const MastersThesis = props => (
       url="/masters-in-structural-engineering-thesis/"
     />
     <TileSub text="Thesis Circa 2011" />
-    <div className="content">
+    <TileContent>
       <p>
         The purpose of my capstone design project report was to discuss the
         behavior of a hooked bar in concrete carrying a tension force. The cover
@@ -126,7 +128,7 @@ const MastersThesis = props => (
         cover and bond length variables. The abstract and full text can be
         accessed by clicking the header.
       </p>
-    </div>
+    </TileContent>
   </div>
 );
 
@@ -137,7 +139,7 @@ const ProgrammingKnowledge = props => (
       url="/gatsby-and-contributing-to-open-source/"
     />
     <TileSub text="Since the '90s" />
-    <div className="content">
+    <TileContent>
       <p>
         My experience crosses a unique set of languages, but all with the common
         goal of solving a specific problem. Programming and code are tools that
@@ -145,10 +147,11 @@ const ProgrammingKnowledge = props => (
         languages JavaScript, Python and VBA (see Excel), but I have
         additionally worked with Go, QBASIC, Fortran, LISP, SQL,
         Bash/Shell/Powershell, PHP, HTML, CSS, and more. More recently my
-        interest has been in JavaScript, and I have been working on open source code
-        as expounded upon in the linked article. My overall focus has been in data,
-        manipulating it, and then visualizing it (see the love for JavaScript
-        and Python). I am also an expert in Excel and have crafted some{" "}
+        interest has been in JavaScript, and I have been working on open source
+        code as expounded upon in the linked article. My overall focus has been
+        in data, manipulating it, and then visualizing it (see the love for
+        JavaScript and Python). I am also an expert in Excel and have crafted
+        some{" "}
         <a
           href="https://stackoverflow.com/questions/14614923/excel-formula-identifying-number-of-date-ranges-within-a-range/14616697#14616697"
           target="_blank"
@@ -158,7 +161,7 @@ const ProgrammingKnowledge = props => (
         as well as many template spreadsheets still in use at past and present
         professional engagements.
       </p>
-    </div>
+    </TileContent>
   </div>
 );
 
@@ -184,7 +187,7 @@ const EngineersWithoutBorders = props => (
         allowFullScreen
       />
     </figure>
-    <div className="content">
+    <TileContent>
       <p>
         In March 2010, our team of EWB-MSOE students and professionals completed
         a vehicular bridge in the rural village of Tres Cruces, Guatemala.
@@ -214,7 +217,7 @@ const EngineersWithoutBorders = props => (
         superstructure and wing walls as seen in the embeded video that I
         created.
       </p>
-    </div>
+    </TileContent>
   </div>
 );
 
@@ -228,7 +231,7 @@ const REUTile = props => (
     <figure className="image">
       <img src={EcotectPhoto} />
     </figure>
-    <div className="content">
+    <TileContent>
       <p>
         I researched the applicability of creating a Revit model, running
         daylighting analyses and exporting the colored model to be 3D printed in
@@ -247,7 +250,7 @@ const REUTile = props => (
         energy efficiencies as well as the architectural highlights of the
         building.
       </p>
-    </div>
+    </TileContent>
   </div>
 );
 
@@ -271,4 +274,10 @@ const TileLink = ({ url, text }) => {
 
 const TileSub = ({ text }) => (
   <p className="subtitle is-6 has-text-centered">{text}</p>
+);
+
+const TileContent = ({ children }) => (
+  <div className="content" style={{ textAlign: "justify" }}>
+    {children}
+  </div>
 );
