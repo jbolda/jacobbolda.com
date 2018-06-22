@@ -12,7 +12,7 @@ class HeroLayout extends React.Component {
       <SimpleNav sitemetadata={siteMetadata} location={this.props.location}>
         <section className="hero is-small is-secondary edge--bottom">
           <div className="hero-body">
-            <div className="columns is-centered is-vcentered has-text-centered">
+            <div className="columns is-centered is-vcentered">
               <div className="column is-one-third">
                 <Img
                   className="image"
@@ -26,7 +26,7 @@ class HeroLayout extends React.Component {
                     <h3 className="subtitle">Hi, I am</h3>
                     <h1 className="title">Jacob Bolda</h1>
                     <h2 className="subtitle">Structural Engineer</h2>
-                    <div className="" style={{ textAlign: "justify" }}>
+                    <div className="">
                       <p>
                         Focusing on the intersection of tech and Structural
                         Engineering. Masters degree in Structural Engineering
