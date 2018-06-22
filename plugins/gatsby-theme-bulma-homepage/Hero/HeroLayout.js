@@ -21,26 +21,24 @@ class HeroLayout extends React.Component {
                 />
               </div>
               <div className="column">
-                <h3 className="subtitle">Hi, I am</h3>
-                <h1 className="title">Jacob Bolda</h1>
-                <h2 className="subtitle">Structural Engineer</h2>
-                <p>
-                  Focusing on the intersection of tech and Structural
-                  Engineering.
-                </p>
-                <p>
-                  Masters degree in Structural Engineering from the Milwaukee
-                  School of Engineering,
-                </p>
-                <p>
-                  undergrad in Architectural Engineering with a minor in
-                  Management,
-                </p>
-                <p>and a deep understanding of software and programming.</p>
-                <p>
-                  Marrying that experience with problem solving and
-                  systematizing is powerful.
-                </p>
+                <div className="columns is-centered">
+                  <div className="column is-half">
+                    <h3 className="subtitle">Hi, I am</h3>
+                    <h1 className="title">Jacob Bolda</h1>
+                    <h2 className="subtitle">Structural Engineer</h2>
+                    <div className="" style={{ textAlign: "justify" }}>
+                      <p>
+                        Focusing on the intersection of tech and Structural
+                        Engineering. Masters degree in Structural Engineering
+                        from the Milwaukee School of Engineering, undergrad in
+                        Architectural Engineering with a minor in Management,
+                        and a deep understanding of software and programming.
+                        Marrying that experience with problem solving and
+                        systematizing is powerful.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
