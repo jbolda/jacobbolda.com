@@ -629,7 +629,7 @@
     "@babel/plugin-transform-react-jsx-self" "7.0.0-beta.51"
     "@babel/plugin-transform-react-jsx-source" "7.0.0-beta.51"
 
-"@babel/runtime@7.0.0-beta.51":
+"@babel/runtime@7.0.0-beta.51", "@babel/runtime@^7.0.0-beta.40":
   version "7.0.0-beta.51"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-beta.51.tgz#48b8ed18307034c6620f643514650ca2ccc0165a"
   dependencies:
@@ -669,7 +669,7 @@
     invariant "^2.2.0"
     lodash "^4.2.0"
 
-"@babel/traverse@7.0.0-beta.51":
+"@babel/traverse@7.0.0-beta.51", "@babel/traverse@^7.0.0-beta.40":
   version "7.0.0-beta.51"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.0.0-beta.51.tgz#981daf2cec347a6231d3aa1d9e1803b03aaaa4a8"
   dependencies:
@@ -1748,7 +1748,7 @@ babylon@^6.18.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.18.0.tgz#af2f3b88fa6f5c1e4c634d1a0f8eac4f55b395e3"
 
-babylon@^7.0.0-beta:
+babylon@^7.0.0-beta, babylon@^7.0.0-beta.40:
   version "7.0.0-beta.47"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-7.0.0-beta.47.tgz#6d1fa44f0abec41ab7c780481e62fd9aafbdea80"
 
@@ -5060,13 +5060,13 @@ gatsby-source-filesystem@next:
     valid-url "^1.0.9"
     xstate "^3.1.0"
 
-gatsby-transformer-javascript-static-exports@next:
-  version "2.1.1-beta.2"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-javascript-static-exports/-/gatsby-transformer-javascript-static-exports-2.1.1-beta.2.tgz#8c45cf5a45256760814a4880b3d9d8864757330a"
+gatsby-transformer-javascript-frontmatter@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-javascript-frontmatter/-/gatsby-transformer-javascript-frontmatter-1.0.10.tgz#58b3a4cfc48fce771d53a7b3b372da1950a55a1f"
   dependencies:
-    "@babel/parser" "7.0.0-beta.51"
-    "@babel/runtime" "7.0.0-beta.51"
-    "@babel/traverse" "7.0.0-beta.51"
+    "@babel/runtime" "^7.0.0-beta.40"
+    "@babel/traverse" "^7.0.0-beta.40"
+    babylon "^7.0.0-beta.40"
     bluebird "^3.5.0"
 
 gatsby-transformer-json@next:
