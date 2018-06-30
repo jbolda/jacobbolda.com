@@ -1,4 +1,5 @@
 import React from "react";
+import { graphql } from "gatsby";
 var Big = require("big.js");
 import BlogPost from "../../components/jsBlogPost";
 

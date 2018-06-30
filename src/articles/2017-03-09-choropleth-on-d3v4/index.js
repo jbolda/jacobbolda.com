@@ -1,4 +1,5 @@
 import React from "react";
+import { graphql } from "gatsby";
 import { findDOMNode } from "react-dom";
 // import ChoroplethText from './_choropleth.md';
 var d3 = require("d3");

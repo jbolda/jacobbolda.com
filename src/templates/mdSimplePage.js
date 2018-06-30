@@ -1,4 +1,5 @@
 import React from "react";
+import { graphql } from "gatsby";
 import SimpleNav from "../../plugins/gatsby-theme-bulma-layout/Simple/SimpleNav";
 
 class mdInsetPage extends React.Component {

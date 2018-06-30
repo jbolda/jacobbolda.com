@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "gatsby-link";
+import { Link } from "gatsby";
 import SimpleNav from "../../gatsby-theme-bulma-layout/Simple/SimpleNav";
 
 class SimpleBlogPostLayout extends React.Component {

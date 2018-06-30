@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "gatsby-link";
+import { Link, graphql } from "gatsby";
 import Helmet from "react-helmet";
 import sortBy from "lodash/sortBy";
 import HeroLayout from "../../plugins/gatsby-theme-bulma-homepage/Hero/HeroLayout";
@@ -15,7 +15,7 @@ class SiteIndex extends React.Component {
           <Img
             className="image"
             Tag="figure"
-            sizes={edge.node.childImageSharp.sizes}
+            fluid={edge.node.childImageSharp.fluid}
           />
         );
       }

@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "gatsby-link";
 import Img from "gatsby-image";
 import SimpleNav from "../../gatsby-theme-bulma-layout/Simple/SimpleNav";
 import SiteLinks from "../shared-components/SiteLinks";
@@ -17,7 +16,7 @@ class HeroLayout extends React.Component {
                 <Img
                   className="image"
                   Tag="figure"
-                  sizes={this.props.data.file.childImageSharp.sizes}
+                  fluid={this.props.data.file.childImageSharp.fluid}
                 />
               </div>
               <div className="column">

@@ -1,4 +1,5 @@
 import React from "react";
+import { graphql } from "gatsby";
 import BlogPost from "../../components/jsBlogPost";
 
 exports.data = {

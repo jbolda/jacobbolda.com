@@ -12,7 +12,7 @@ class SimpleChrome extends React.Component {
         return (
           <section className="hero is-medium">
             <div className="container-fluid">
-              <Img className="image" sizes={props.hero.childImageSharp.sizes} />
+              <Img className="image" fluid={props.hero.childImageSharp.fluid} />
             </div>
           </section>
         );

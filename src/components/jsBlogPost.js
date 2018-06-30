@@ -1,4 +1,5 @@
 import React from "react";
+import { graphql } from "gatsby";
 import SimpleChrome from "../../plugins/gatsby-theme-bulma-blog/Simple/SimpleChrome";
 
 class jsBlogPost extends React.Component {

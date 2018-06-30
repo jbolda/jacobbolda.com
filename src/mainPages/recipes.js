@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "gatsby-link";
+import { Link, graphql } from "gatsby";
 import SimpleNav from "../../plugins/gatsby-theme-bulma-layout/Simple/SimpleNav";
 
 exports.data = {
