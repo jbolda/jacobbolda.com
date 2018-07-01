@@ -216,9 +216,6 @@ export const pageQuery = graphql`
     post: javascriptFrontmatter(fields: { slug: { eq: $slug } }) {
       ...JSBlogPost
     }
-    site {
-      ...metadata
-    }
     stateshapes: file(
       relativePath: { eq: "2017-03-09-choropleth-on-d3v4/states.json" }
     ) {

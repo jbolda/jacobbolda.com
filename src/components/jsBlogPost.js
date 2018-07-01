@@ -1,19 +1,38 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { StaticQuery } from "gatsby";
 import SimpleChrome from "../../plugins/gatsby-theme-bulma-blog/Simple/SimpleChrome";
 
-const jsBlogPost = ({ props }) => (
+const JSBlogPost = ({ site, data, location, children }) => (
   <SimpleChrome
-    post={props.data.post}
-    hero={props.data.hero}
-    sitemetadata={props.data.site.siteMetadata}
-    location={props.location}
+    post={data.post}
+    hero={data.hero}
+    sitemetadata={site.siteMetadata}
+    location={location}
   >
-    {props.children}
+    {children}
   </SimpleChrome>
 );
 
-export default jsBlogPost;
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query NavMetadata {
+        site {
+          siteMetadata {
+            siteTitle
+            siteDescr
+            siteAuthor
+            siteEmailUrl
+            siteEmailPretty
+            siteTwitterUrl
+            siteTwitterPretty
+          }
+        }
+      }
+    `}
+    render={data => <JSBlogPost site={data.site} {...props} />}
+  />
+);
 
 export const blogPostFragment = graphql`
   fragment JSBlogPost on JavascriptFrontmatter {
@@ -25,17 +44,6 @@ export const blogPostFragment = graphql`
       updated(formatString: "MMMM Do YYYY")
       category
       description
-    }
-  }
-  fragment metadata on Site {
-    siteMetadata {
-      siteTitle
-      siteDescr
-      siteAuthor
-      siteEmailUrl
-      siteEmailPretty
-      siteTwitterUrl
-      siteTwitterPretty
     }
   }
 `;

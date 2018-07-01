@@ -202,8 +202,5 @@ export const pageQuery = graphql`
     post: javascriptFrontmatter(fields: { slug: { eq: $slug } }) {
       ...JSBlogPost
     }
-    site {
-      ...metadata
-    }
   }
 `;
