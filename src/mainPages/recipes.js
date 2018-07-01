@@ -121,13 +121,13 @@ class SimpleRecipes extends React.Component {
                       </div>
                     </div>
                     <div className="content">
-                      <p>
-                        <ul>
-                          {recipe.node.data.Ingredients.split(`\n`).map(
-                            ingredient => <li>{ingredient}</li>
-                          )}
-                        </ul>
-                      </p>
+                      <ul>
+                        {recipe.node.data.Ingredients.split(`\n`).map(
+                          (ingredient, index) => (
+                            <li key={index}>{ingredient}</li>
+                          )
+                        )}
+                      </ul>
                     </div>
                   </div>
                   {recipe.node.data.URL ? (
