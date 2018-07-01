@@ -7,7 +7,7 @@ class SimpleBlogPostLayout extends React.Component {
     let { sitemetadata } = this.props;
 
     return (
-      <SimpleNav sitemetadata={sitemetadata} location={this.props.location}>
+      <SimpleNav site={{ siteMetadata: sitemetadata }} {...this.props}>
         {this.props.children}
         <section className="section">
           <hr />

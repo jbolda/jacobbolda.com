@@ -8,7 +8,7 @@ class HeroLayout extends React.Component {
     const { siteMetadata } = this.props.data.site;
 
     return (
-      <SimpleNav sitemetadata={siteMetadata} location={this.props.location}>
+      <SimpleNav site={this.props.data.site} {...this.props}>
         <section className="hero is-small is-secondary edge--bottom">
           <div className="hero-body">
             <div className="columns is-centered is-vcentered">

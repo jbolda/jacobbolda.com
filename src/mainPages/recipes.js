@@ -13,10 +13,7 @@ class SimpleRecipes extends React.Component {
     let recipes = this.props.data.allAirtableLinked.edges;
 
     return (
-      <SimpleNav
-        sitemetadata={this.props.data.site.siteMetadata}
-        location={this.props.location}
-      >
+      <SimpleNav site={this.props.data.site} {...this.props}>
         <div className="hero is-small is-thirdary edge--bottom--reverse">
           <div className="hero-body">
             <div className="columns is-centered is-vcentered">

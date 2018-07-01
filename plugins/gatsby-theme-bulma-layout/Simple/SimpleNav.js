@@ -1,33 +1,31 @@
 import React from "react";
+// import { StaticQuery } from "gatsby";
 import MasterLayout from "../../gatsby-theme-bulma/MasterLayout";
 import SimpleTopNav from "./components/SimpleTopNav";
 import heartData from "./assets/heart-white.svg";
 
-class SimpleLayout extends React.Component {
-  render() {
-    let { sitemetadata } = this.props;
+import styles from "./palette.json";
 
-    return (
-      <MasterLayout sitemetadata={sitemetadata} id="SimpleLayout">
-        <SimpleTopNav
-          sitemetadata={sitemetadata}
-          location={this.props.location}
-        />
-        {this.props.children}
-        <section className="footer">
-          <div className="container content has-text-centered">
-            <p className="copyright">
-              Made with <Heart icon={heartData} alt="heart" /> by{` `}
-              <a className="copyright" href={sitemetadata.siteTwitterUrl}>
-                Jacob Bolda
-              </a>
-            </p>
-          </div>
-        </section>
-      </MasterLayout>
-    );
-  }
-}
+const SimpleNav = ({ location, site, children }) => (
+  <MasterLayout sitemetadata={site.siteMetadata} id="SimpleLayout">
+    <SimpleTopNav
+      sitemetadata={site.siteMetadata}
+      location={location}
+      textColor={styles.colors.P5}
+    />
+    {children}
+    <section className="footer">
+      <div className="container content has-text-centered">
+        <p className="copyright">
+          Made with <Heart icon={heartData} alt="heart" /> by{` `}
+          <a className="copyright" href={site.siteMetadata.siteTwitterUrl}>
+            Jacob Bolda
+          </a>
+        </p>
+      </div>
+    </section>
+  </MasterLayout>
+);
 
 const Heart = ({ icon, alt }) => (
   <img
@@ -40,4 +38,23 @@ const Heart = ({ icon, alt }) => (
   />
 );
 
-export default SimpleLayout;
+export default SimpleNav;
+/*
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query NavQuery {
+        site {
+          siteMetadata {
+            siteTitle
+            siteDescr
+            siteAuthor
+            siteTwitterUrl
+          }
+        }
+      }
+    `}
+    render={data => <SimpleLayout data={data} {...props} />}
+  />
+);
+*/
