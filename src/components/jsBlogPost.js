@@ -20,8 +20,8 @@ class jsBlogPost extends React.Component {
 export default jsBlogPost;
 
 export const blogPostFragment = graphql`
-  fragment JSBlogPost_data on JSFrontmatter {
-    frontmatter: data {
+  fragment JSBlogPost on JavascriptFrontmatter {
+    frontmatter {
       title
       path
       layoutType

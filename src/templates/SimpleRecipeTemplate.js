@@ -179,8 +179,8 @@ export const pageQuery = graphql`
     }
     file(relativePath: { eq: "assets/profile.png" }) {
       childImageSharp {
-        sizes(maxWidth: 256) {
-          ...GatsbyImageSharpSizes_tracedSVG
+        fluid(maxWidth: 256) {
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }

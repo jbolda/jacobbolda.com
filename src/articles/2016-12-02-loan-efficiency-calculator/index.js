@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 var Big = require("big.js");
 import BlogPost from "../../components/jsBlogPost";
 
-exports.data = {
+export const frontmatter = {
   title: "Loan Efficiency Calculator",
   written: "2017-01-22",
   update: "2017-01-22",
@@ -464,8 +464,8 @@ let cleanNumbers = loanGroup => {
 
 export const pageQuery = graphql`
   query loanEfficiencyCalc($slug: String!) {
-    post: jsFrontmatter(fields: { slug: { eq: $slug } }) {
-      ...JSBlogPost_data
+    post: javascriptFrontmatter(fields: { slug: { eq: $slug } }) {
+      ...JSBlogPost
     }
     site {
       ...metadata

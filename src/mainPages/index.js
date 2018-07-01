@@ -6,6 +6,8 @@ import HeroLayout from "../../plugins/gatsby-theme-bulma-homepage/Hero/HeroLayou
 import ProfessionalEngagements from "./_professional-engagements";
 import Img from "gatsby-image";
 
+export const frontmatter = { path: "/" };
+
 class SiteIndex extends React.Component {
   findPhoto(slug) {
     let retPhoto;
@@ -29,7 +31,7 @@ class SiteIndex extends React.Component {
     let iteratorKey = 0;
     let pageRaw = [
       ...this.props.data.allMarkdownRemark.edges,
-      ...this.props.data.allJsFrontmatter.edges
+      ...this.props.data.allJavascriptFrontmatter.edges
     ];
     let pageArray = [];
 
@@ -233,13 +235,15 @@ const recipeList = recipes =>
 
 export const pageQuery = graphql`
   query allPosts {
-    allJsFrontmatter(filter: { data: { layoutType: { eq: "post" } } }) {
+    allJavascriptFrontmatter(
+      filter: { frontmatter: { layoutType: { eq: "post" } } }
+    ) {
       edges {
         node {
           fields {
             slug
           }
-          data {
+          frontmatter {
             path
             title
             written
@@ -264,7 +268,6 @@ export const pageQuery = graphql`
             title
             path
             layoutType
-            parent
             written
             writtenPretty: written(formatString: "MMMM D, YYYY")
             updated
@@ -333,13 +336,13 @@ export const pageQuery = graphql`
     }
     file(relativePath: { eq: "assets/profile.png" }) {
       childImageSharp {
-        sizes(
+        fluid(
           maxWidth: 500
           maxHeight: 500
           quality: 90
           duotone: { highlight: "#bdc4bf", shadow: "#192C3B" }
         ) {
-          ...GatsbyImageSharpSizes
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -350,8 +353,8 @@ export const pageQuery = graphql`
         node {
           relativeDirectory
           childImageSharp {
-            sizes(maxWidth: 500, maxHeight: 200, quality: 90) {
-              ...GatsbyImageSharpSizes_tracedSVG
+            fluid(maxWidth: 500, maxHeight: 200, quality: 90) {
+              ...GatsbyImageSharpFluid_tracedSVG
             }
           }
         }

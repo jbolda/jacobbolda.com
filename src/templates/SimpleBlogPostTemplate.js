@@ -37,8 +37,8 @@ export const pageQuery = graphql`
     }
     hero: file(relativePath: { eq: $heroImage }) {
       childImageSharp {
-        sizes(maxWidth: 1920) {
-          ...GatsbyImageSharpSizes_tracedSVG
+        fluid(maxWidth: 1920) {
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }

@@ -5,7 +5,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   let slug;
   if (
     node.internal.type === `MarkdownRemark` ||
-    node.internal.type === `JSFrontmatter`
+    node.internal.type === `JavascriptFrontmatter`
   ) {
     try {
       const fileNode = getNode(node.parent);
@@ -62,11 +62,11 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
-            allJsFrontmatter {
+            allJavascriptFrontmatter {
               edges {
                 node {
                   fileAbsolutePath
-                  data {
+                  frontmatter {
                     layoutType
                     path
                   }
@@ -93,8 +93,10 @@ exports.createPages = ({ graphql, actions }) => {
         `
       ).then(result => {
         if (result.errors) {
-          console.log(result.errors);
-          console.log(result);
+          result.errors.forEach(error => {
+            console.log(error);
+          });
+
           reject(result.errors);
         }
 
@@ -128,8 +130,8 @@ exports.createPages = ({ graphql, actions }) => {
         // Gatsby will, by default, createPages for javascript in the
         //  /pages directory. We purposely don't have a folder with this name
         //  so that we can go full manual mode.
-        result.data.allJsFrontmatter.edges.forEach(edge => {
-          let frontmatter = edge.node.data;
+        result.data.allJavascriptFrontmatter.edges.forEach(edge => {
+          let frontmatter = edge.node.frontmatter;
           // see above
           if (frontmatter.layoutType === `post`) {
             createPage({
@@ -180,11 +182,11 @@ exports.createPages = ({ graphql, actions }) => {
     );
   });
 };
-
-exports.modifyWebpackConfig = ({ config, stage }) => {
+/*
+exports.onCreateWebpackConfig = ({ config, stage }) => {
   config.merge({
     node: { fs: "empty", child_process: "empty" }
   });
 
   return config;
-};
+};*/

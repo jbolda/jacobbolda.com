@@ -2,7 +2,7 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 import SimpleNav from "../../plugins/gatsby-theme-bulma-layout/Simple/SimpleNav";
 
-exports.data = {
+export const frontmatter = {
   title: "Recipes",
   layoutType: "page",
   path: "/recipes/"
@@ -208,8 +208,8 @@ export const pageQuery = graphql`
     }
     file(relativePath: { eq: "assets/profile.png" }) {
       childImageSharp {
-        sizes(maxWidth: 256) {
-          ...GatsbyImageSharpSizes_tracedSVG
+        fluid(maxWidth: 256) {
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }

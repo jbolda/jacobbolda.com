@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import BlogPost from "../../components/jsBlogPost";
 
-exports.data = {
+export const frontmatter = {
   title: "Steel Compression Calculations",
   written: "2016-11-05",
   updated: "2016-11-05",
@@ -199,8 +199,8 @@ calculatorPost.defaultProps = {
 
 export const pageQuery = graphql`
   query steelCompressionCalcs($slug: String!) {
-    post: jsFrontmatter(fields: { slug: { eq: $slug } }) {
-      ...JSBlogPost_data
+    post: javascriptFrontmatter(fields: { slug: { eq: $slug } }) {
+      ...JSBlogPost
     }
     site {
       ...metadata

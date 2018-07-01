@@ -44,7 +44,7 @@
     "gatsby-remark-smartypants": "next",
     "gatsby-source-airtable-linked": "1.0.0",
     "gatsby-source-filesystem": "next",
-    "gatsby-transformer-javascript-frontmatter": "^1.0.10",
+    "gatsby-transformer-javascript-frontmatter": "next",
     "gatsby-transformer-json": "next",
     "gatsby-transformer-remark": "next",
     "gatsby-transformer-sharp": "next",
