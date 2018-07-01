@@ -19,9 +19,9 @@ class SimpleRecipes extends React.Component {
       >
         <div className="hero is-small is-thirdary edge--bottom--reverse">
           <div className="hero-body">
-            <p className="title">Our Recipes</p>
-            <div className="columns">
+            <div className="columns is-centered is-vcentered">
               <div className="column is-one-third content">
+                <p className="title">Our Recipes</p>
                 <p>
                   We enjoy cooking (and certainly do our best to do it in a
                   healthy manner). These are the "approved" recipes that we love

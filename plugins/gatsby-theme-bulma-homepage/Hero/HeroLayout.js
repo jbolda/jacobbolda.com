@@ -6,7 +6,7 @@ import SiteLinks from "../shared-components/SiteLinks";
 class HeroLayout extends React.Component {
   render() {
     const { siteMetadata } = this.props.data.site;
-    console.log(this);
+
     return (
       <SimpleNav sitemetadata={siteMetadata} location={this.props.location}>
         <section className="hero is-small is-secondary edge--bottom">

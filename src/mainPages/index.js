@@ -174,7 +174,7 @@ const recipeList = recipes =>
           <Link to={recipe.node.fields.slug}>
             <h2 className="title has-text-centered">{recipe.node.data.Name}</h2>
           </Link>
-          <div className="level">
+          <div className="level is-mobile">
             <div className="level-item has-text-centered">
               <div>
                 <p className="heading">Rating</p>
