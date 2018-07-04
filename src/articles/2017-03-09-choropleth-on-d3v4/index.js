@@ -54,7 +54,7 @@ class choroplethBase extends React.Component {
           console.log(this.props.data.stateshapes.publicURL);
           console.dir(error);
         } else {
-          console.log(results);
+          // console.log(results);
           let states = results[1].states;
           let stats = results[0];
           let mergedData = mergeData(states, "abbrev", stats, "Abbreviation");

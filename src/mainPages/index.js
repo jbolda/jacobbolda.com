@@ -1,8 +1,7 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import Helmet from "react-helmet";
 import sortBy from "lodash/sortBy";
-import HeroLayout from "../../plugins/gatsby-theme-bulma-homepage/Hero/HeroLayout";
+import HeroLayoutBridge from "../utils/HeroLayoutBridge";
 import ProfessionalEngagements from "./_professional-engagements";
 import Img from "gatsby-image";
 
@@ -109,7 +108,7 @@ class SiteIndex extends React.Component {
     });
 
     return (
-      <HeroLayout {...this.props}>
+      <HeroLayoutBridge {...this.props}>
         <section className="section is-fourthary edge--top">
           <h1 className="title">Professional Engagements</h1>
           <h2 className="subtitle">In View of the Public</h2>
@@ -136,7 +135,7 @@ class SiteIndex extends React.Component {
             {recipeList(this.props.data.allAirtableLinked.edges)}
           </div>
         </section>
-      </HeroLayout>
+      </HeroLayoutBridge>
     );
   }
 }

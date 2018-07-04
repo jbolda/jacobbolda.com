@@ -38,7 +38,7 @@ class SimpleChrome extends React.Component {
 
     return (
       <SimpleBlogPostLayout
-        siteMetadata={this.props.sitemetadata}
+        siteMetadata={this.props.siteMetadata}
         location={this.props.location}
       >
         <HeroImage hero={this.props.hero} />

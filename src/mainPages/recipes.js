@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import SimpleNav from "../../plugins/gatsby-theme-bulma-layout/Simple/SimpleNav";
+import SimpleNavBridge from "../utils/SimpleNavBridge";
 
 export const frontmatter = {
   title: "Recipes",
@@ -13,7 +13,7 @@ class SimpleRecipes extends React.Component {
     let recipes = this.props.data.allAirtableLinked.edges;
 
     return (
-      <SimpleNav site={this.props.data.site} {...this.props}>
+      <SimpleNavBridge {...this.props}>
         <div className="hero is-small is-thirdary edge--bottom--reverse">
           <div className="hero-body">
             <div className="columns is-centered is-vcentered">
@@ -143,7 +143,7 @@ class SimpleRecipes extends React.Component {
             ))}
           </div>
         </div>
-      </SimpleNav>
+      </SimpleNavBridge>
     );
   }
 }
