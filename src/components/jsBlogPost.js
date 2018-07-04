@@ -1,4 +1,5 @@
 import React from "react";
+import { graphql } from "gatsby";
 import SimpleChromeBridge from "../utils/SimpleChromeBridge";
 
 const JSBlogPost = ({ data, location, children }) => (
