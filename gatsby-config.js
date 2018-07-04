@@ -95,6 +95,7 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`
       }
     },
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
