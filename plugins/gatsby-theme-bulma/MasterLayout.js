@@ -1,19 +1,20 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import "./css/base.scss";
 
 class MasterLayout extends React.Component {
   render() {
-    let { sitemetadata } = this.props;
+    let { siteMetadata } = this.props;
 
     return (
       <div className="MasterLayout is-light">
         <Helmet
-          defaultTitle={sitemetadata.siteTitle}
-          title={sitemetadata.siteTitle}
+          defaultTitle={siteMetadata.siteTitle}
+          title={siteMetadata.siteTitle}
           meta={[
-            { name: `description`, content: sitemetadata.siteDescr },
-            { name: `keywords`, content: `community` }
+            { name: `description`, content: siteMetadata.siteDescription },
+            { name: `keywords`, content: `articles` }
           ]}
         />
         {this.props.children}
@@ -23,3 +24,10 @@ class MasterLayout extends React.Component {
 }
 
 export default MasterLayout;
+
+MasterLayout.propTypes = {
+  siteMetadata: PropTypes.shape({
+    siteTitle: PropTypes.string.isRequired,
+    siteDescription: PropTypes.string.isRequired
+  }).isRequired
+};

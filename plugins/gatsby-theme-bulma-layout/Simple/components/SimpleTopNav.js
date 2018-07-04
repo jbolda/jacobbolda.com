@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
 const SimpleTopNav = ({ textColor }) => (
@@ -18,3 +19,7 @@ const SimpleTopNav = ({ textColor }) => (
 );
 
 export default SimpleTopNav;
+
+SimpleTopNav.propTypes = {
+  textColor: PropTypes.string.isRequired
+};

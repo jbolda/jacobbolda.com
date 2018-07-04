@@ -1,21 +1,22 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class PostPublished extends React.Component {
   render() {
     const { frontmatter } = this.props;
 
-    if (frontmatter.updated == null) {
+    if (frontmatter.updatedPretty == null) {
       var published = (
         <div className="date-published">
-          <em>{`published ${frontmatter.written}`}</em>
+          <em>{`published ${frontmatter.writtenPretty}`}</em>
         </div>
       );
     } else {
       var published = (
         <div className="date-published">
           <em>
-            {`originally published ${frontmatter.written}
-              and updated ${frontmatter.updated}`}
+            {`originally published ${frontmatter.writtenPretty}
+              and updated ${frontmatter.updatedPretty}`}
           </em>
         </div>
       );
@@ -26,3 +27,10 @@ class PostPublished extends React.Component {
 }
 
 export default PostPublished;
+
+PostPublished.propTypes = {
+  frontmatter: PropTypes.shape({
+    writtenPretty: PropTypes.string.isRequired,
+    updatedPretty: PropTypes.string
+  }).isRequired
+};

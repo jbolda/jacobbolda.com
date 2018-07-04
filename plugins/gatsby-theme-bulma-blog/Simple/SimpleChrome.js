@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import SimpleBlogPostLayout from "./SimpleBlogPostLayout";
 import HelmetBlock from "./components/HelmetBlock";
 import PostPublished from "./components/PostPublished";
@@ -17,7 +18,7 @@ class SimpleChrome extends React.Component {
           </section>
         );
       } else {
-        return <div />;
+        return null;
       }
     };
 
@@ -37,7 +38,7 @@ class SimpleChrome extends React.Component {
 
     return (
       <SimpleBlogPostLayout
-        sitemetadata={this.props.sitemetadata}
+        siteMetadata={this.props.sitemetadata}
         location={this.props.location}
       >
         <HeroImage hero={this.props.hero} />
@@ -75,3 +76,17 @@ class SimpleChrome extends React.Component {
 }
 
 export default SimpleChrome;
+
+SimpleChrome.propTypes = {
+  post: PropTypes.shape({
+    frontmatter: PropTypes.shape({
+      title: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired,
+  hero: PropTypes.shape({
+    childImageSharp: PropTypes.shape({
+      fluid: PropTypes.object
+    })
+  }),
+  children: PropTypes.any.isRequired
+};

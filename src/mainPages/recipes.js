@@ -185,7 +185,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         siteTitle
-        siteDescr
+        siteDescription
         siteAuthor
         siteEmailUrl
         siteEmailPretty

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Img from "gatsby-image";
 import SimpleNav from "../../gatsby-theme-bulma-layout/Simple/SimpleNav";
 import SiteLinks from "../shared-components/SiteLinks";
@@ -66,3 +67,19 @@ class HeroLayout extends React.Component {
 }
 
 export default HeroLayout;
+
+HeroLayout.propTypes = {
+  children: PropTypes.array.isRequired,
+  data: PropTypes.shape({
+    file: PropTypes.shape({
+      childImageSharp: PropTypes.shape({
+        fluid: PropTypes.object.isRequired
+      })
+    }).isRequired,
+    about: PropTypes.shape({
+      childMarkdownRemark: PropTypes.shape({
+        html: PropTypes.string.isRequired
+      }).isRequired
+    }).isRequired
+  }).isRequired
+};

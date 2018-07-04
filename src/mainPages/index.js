@@ -110,13 +110,6 @@ class SiteIndex extends React.Component {
 
     return (
       <HeroLayout {...this.props}>
-        <Helmet
-          title={siteMetadata.siteTitle}
-          meta={[
-            { name: `description`, content: siteMetadata.siteDescr },
-            { name: `keywords`, content: `articles` }
-          ]}
-        />
         <section className="section is-fourthary edge--top">
           <h1 className="title">Professional Engagements</h1>
           <h2 className="subtitle">In View of the Public</h2>
@@ -316,7 +309,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         siteTitle
-        siteDescr
+        siteDescription
         siteAuthor
         siteEmailUrl
         siteEmailPretty

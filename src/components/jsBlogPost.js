@@ -20,7 +20,7 @@ export default props => (
         site {
           siteMetadata {
             siteTitle
-            siteDescr
+            siteDescription
             siteAuthor
             siteEmailUrl
             siteEmailPretty

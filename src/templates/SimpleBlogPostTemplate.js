@@ -29,8 +29,10 @@ export const pageQuery = graphql`
         title
         path
         layoutType
-        written(formatString: "MMMM Do YYYY")
-        updated(formatString: "MMMM Do YYYY")
+        writtenPretty: written(formatString: "MMMM Do YYYY")
+        updatedPretty: updated(formatString: "MMMM Do YYYY")
+        written
+        updated
         category
         description
       }
@@ -45,7 +47,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         siteTitle
-        siteDescr
+        siteDescription
         siteAuthor
         siteEmailUrl
         siteEmailPretty

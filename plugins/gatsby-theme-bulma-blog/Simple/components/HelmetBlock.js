@@ -1,6 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
-import moment from "moment";
 
 class HelmetBlock extends React.Component {
   render() {
@@ -20,17 +20,17 @@ class HelmetBlock extends React.Component {
             { property: "og:article:author", content: "Jacob Bolda" },
             {
               property: "og:article:published_time",
-              content: moment(frontmatter.written, "YYYY-MM-DD")
+              content: frontmatter.written
             },
             {
               property: "og:article:modified_time",
-              content: moment(frontmatter.updated, "YYYY-MM-DD")
+              content: frontmatter.updated
             },
             { property: "og:article:tag", content: frontmatter.category },
             { name: "twitter:label1", content: "Category" },
             { name: "twitter:data1", content: frontmatter.category },
             { name: "twitter:label2", content: "Written" },
-            { name: "twitter:data2", content: frontmatter.written }
+            { name: "twitter:data2", content: frontmatter.writtenPretty }
           ]}
         />
       </div>
@@ -39,3 +39,14 @@ class HelmetBlock extends React.Component {
 }
 
 export default HelmetBlock;
+
+HelmetBlock.propTypes = {
+  frontmatter: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    writtenPretty: PropTypes.string.isRequired,
+    updatedPretty: PropTypes.string
+  }).isRequired
+};
