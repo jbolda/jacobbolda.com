@@ -1,8 +1,8 @@
 import React from "react";
-import Link from "gatsby-link";
-import SimpleNav from "../../plugins/gatsby-theme-bulma-layout/Simple/SimpleNav";
+import { Link, graphql } from "gatsby";
+import SimpleNavBridge from "../utils/SimpleNavBridge";
 
-exports.data = {
+export const frontmatter = {
   title: "Recipes",
   layoutType: "page",
   path: "/recipes/"
@@ -13,15 +13,12 @@ class SimpleRecipes extends React.Component {
     let recipes = this.props.data.allAirtableLinked.edges;
 
     return (
-      <SimpleNav
-        sitemetadata={this.props.data.site.siteMetadata}
-        location={this.props.location}
-      >
+      <SimpleNavBridge {...this.props}>
         <div className="hero is-small is-thirdary edge--bottom--reverse">
           <div className="hero-body">
-            <p className="title">Our Recipes</p>
-            <div className="columns">
+            <div className="columns is-centered is-vcentered">
               <div className="column is-one-third content">
+                <p className="title">Our Recipes</p>
                 <p>
                   We enjoy cooking (and certainly do our best to do it in a
                   healthy manner). These are the "approved" recipes that we love
@@ -121,13 +118,13 @@ class SimpleRecipes extends React.Component {
                       </div>
                     </div>
                     <div className="content">
-                      <p>
-                        <ul>
-                          {recipe.node.data.Ingredients.split(`\n`).map(
-                            ingredient => <li>{ingredient}</li>
-                          )}
-                        </ul>
-                      </p>
+                      <ul>
+                        {recipe.node.data.Ingredients.split(`\n`).map(
+                          (ingredient, index) => (
+                            <li key={index}>{ingredient}</li>
+                          )
+                        )}
+                      </ul>
                     </div>
                   </div>
                   {recipe.node.data.URL ? (
@@ -146,7 +143,7 @@ class SimpleRecipes extends React.Component {
             ))}
           </div>
         </div>
-      </SimpleNav>
+      </SimpleNavBridge>
     );
   }
 }
@@ -188,7 +185,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         siteTitle
-        siteDescr
+        siteDescription
         siteAuthor
         siteEmailUrl
         siteEmailPretty
@@ -208,8 +205,8 @@ export const pageQuery = graphql`
     }
     file(relativePath: { eq: "assets/profile.png" }) {
       childImageSharp {
-        sizes(maxWidth: 256) {
-          ...GatsbyImageSharpSizes_tracedSVG
+        fluid(maxWidth: 256) {
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }

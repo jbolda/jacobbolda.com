@@ -1,19 +1,17 @@
 import React from "react";
-import SimpleNav from "../../plugins/gatsby-theme-bulma-layout/Simple/SimpleNav";
+import { graphql } from "gatsby";
+import SimpleNavBridge from "../utils/SimpleNavBridge";
 
 class mdInsetPage extends React.Component {
   render() {
     const { html } = this.props.data.markdownRemark;
 
     return (
-      <SimpleNav
-        sitemetadata={this.props.data.site.siteMetadata}
-        location={this.props.location}
-      >
+      <SimpleNavBridge {...this.props}>
         <div className="box content">
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </div>
-      </SimpleNav>
+      </SimpleNavBridge>
     );
   }
 }
@@ -25,10 +23,21 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
     }
+    file(relativePath: { eq: "assets/profile.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 256) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+  }
+`;
+
+/*
     site {
       siteMetadata {
         siteTitle
-        siteDescr
+        siteDescription
         siteAuthor
         siteEmailUrl
         siteEmailPretty
@@ -46,12 +55,4 @@ export const pageQuery = graphql`
         sitePhotoPretty
       }
     }
-    file(relativePath: { eq: "assets/profile.png" }) {
-      childImageSharp {
-        sizes(maxWidth: 256) {
-          ...GatsbyImageSharpSizes_tracedSVG
-        }
-      }
-    }
-  }
-`;
+*/

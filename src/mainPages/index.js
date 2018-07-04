@@ -1,10 +1,11 @@
 import React from "react";
-import Link from "gatsby-link";
-import Helmet from "react-helmet";
+import { Link, graphql } from "gatsby";
 import sortBy from "lodash/sortBy";
-import HeroLayout from "../../plugins/gatsby-theme-bulma-homepage/Hero/HeroLayout";
+import HeroLayoutBridge from "../utils/HeroLayoutBridge";
 import ProfessionalEngagements from "./_professional-engagements";
 import Img from "gatsby-image";
+
+export const frontmatter = { path: "/" };
 
 class SiteIndex extends React.Component {
   findPhoto(slug) {
@@ -15,7 +16,7 @@ class SiteIndex extends React.Component {
           <Img
             className="image"
             Tag="figure"
-            sizes={edge.node.childImageSharp.sizes}
+            fluid={edge.node.childImageSharp.fluid}
           />
         );
       }
@@ -29,7 +30,7 @@ class SiteIndex extends React.Component {
     let iteratorKey = 0;
     let pageRaw = [
       ...this.props.data.allMarkdownRemark.edges,
-      ...this.props.data.allJsFrontmatter.edges
+      ...this.props.data.allJavascriptFrontmatter.edges
     ];
     let pageArray = [];
 
@@ -107,14 +108,7 @@ class SiteIndex extends React.Component {
     });
 
     return (
-      <HeroLayout {...this.props}>
-        <Helmet
-          title={siteMetadata.siteTitle}
-          meta={[
-            { name: `description`, content: siteMetadata.siteDescr },
-            { name: `keywords`, content: `articles` }
-          ]}
-        />
+      <HeroLayoutBridge {...this.props}>
         <section className="section is-fourthary edge--top">
           <h1 className="title">Professional Engagements</h1>
           <h2 className="subtitle">In View of the Public</h2>
@@ -141,7 +135,7 @@ class SiteIndex extends React.Component {
             {recipeList(this.props.data.allAirtableLinked.edges)}
           </div>
         </section>
-      </HeroLayout>
+      </HeroLayoutBridge>
     );
   }
 }
@@ -172,7 +166,7 @@ const recipeList = recipes =>
           <Link to={recipe.node.fields.slug}>
             <h2 className="title has-text-centered">{recipe.node.data.Name}</h2>
           </Link>
-          <div className="level">
+          <div className="level is-mobile">
             <div className="level-item has-text-centered">
               <div>
                 <p className="heading">Rating</p>
@@ -233,13 +227,15 @@ const recipeList = recipes =>
 
 export const pageQuery = graphql`
   query allPosts {
-    allJsFrontmatter(filter: { data: { layoutType: { eq: "post" } } }) {
+    allJavascriptFrontmatter(
+      filter: { frontmatter: { layoutType: { eq: "post" } } }
+    ) {
       edges {
         node {
           fields {
             slug
           }
-          data {
+          frontmatter {
             path
             title
             written
@@ -264,7 +260,6 @@ export const pageQuery = graphql`
             title
             path
             layoutType
-            parent
             written
             writtenPretty: written(formatString: "MMMM D, YYYY")
             updated
@@ -313,7 +308,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         siteTitle
-        siteDescr
+        siteDescription
         siteAuthor
         siteEmailUrl
         siteEmailPretty
@@ -333,13 +328,13 @@ export const pageQuery = graphql`
     }
     file(relativePath: { eq: "assets/profile.png" }) {
       childImageSharp {
-        sizes(
+        fluid(
           maxWidth: 500
           maxHeight: 500
           quality: 90
           duotone: { highlight: "#bdc4bf", shadow: "#192C3B" }
         ) {
-          ...GatsbyImageSharpSizes
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -350,8 +345,8 @@ export const pageQuery = graphql`
         node {
           relativeDirectory
           childImageSharp {
-            sizes(maxWidth: 500, maxHeight: 200, quality: 90) {
-              ...GatsbyImageSharpSizes_tracedSVG
+            fluid(maxWidth: 500, maxHeight: 200, quality: 90) {
+              ...GatsbyImageSharpFluid_tracedSVG
             }
           }
         }

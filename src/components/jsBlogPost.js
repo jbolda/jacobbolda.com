@@ -1,44 +1,27 @@
 import React from "react";
-import SimpleChrome from "../../plugins/gatsby-theme-bulma-blog/Simple/SimpleChrome";
+import { graphql } from "gatsby";
+import SimpleChromeBridge from "../utils/SimpleChromeBridge";
 
-class jsBlogPost extends React.Component {
-  render() {
-    return (
-      <SimpleChrome
-        post={this.props.data.post}
-        hero={this.props.data.hero}
-        sitemetadata={this.props.data.site.siteMetadata}
-        location={this.props.location}
-      >
-        {this.props.children}
-      </SimpleChrome>
-    );
-  }
-}
-
-export default jsBlogPost;
+const JSBlogPost = ({ data, location, children }) => (
+  <SimpleChromeBridge post={data.post} hero={data.hero} location={location}>
+    {children}
+  </SimpleChromeBridge>
+);
 
 export const blogPostFragment = graphql`
-  fragment JSBlogPost_data on JSFrontmatter {
-    frontmatter: data {
+  fragment JSBlogPost on JavascriptFrontmatter {
+    frontmatter {
       title
       path
       layoutType
-      written(formatString: "MMMM Do YYYY")
-      updated(formatString: "MMMM Do YYYY")
+      writtenPretty: written(formatString: "MMMM Do YYYY")
+      updatedPretty: updated(formatString: "MMMM Do YYYY")
+      written
+      updated
       category
       description
     }
   }
-  fragment metadata on Site {
-    siteMetadata {
-      siteTitle
-      siteDescr
-      siteAuthor
-      siteEmailUrl
-      siteEmailPretty
-      siteTwitterUrl
-      siteTwitterPretty
-    }
-  }
 `;
+
+export default JSBlogPost;

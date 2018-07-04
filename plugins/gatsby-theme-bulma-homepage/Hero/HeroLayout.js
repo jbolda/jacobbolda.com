@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "gatsby-link";
+import PropTypes from "prop-types";
 import Img from "gatsby-image";
 import SimpleNav from "../../gatsby-theme-bulma-layout/Simple/SimpleNav";
 import SiteLinks from "../shared-components/SiteLinks";
@@ -9,7 +9,7 @@ class HeroLayout extends React.Component {
     const { siteMetadata } = this.props.data.site;
 
     return (
-      <SimpleNav sitemetadata={siteMetadata} location={this.props.location}>
+      <SimpleNav site={this.props.data.site} {...this.props}>
         <section className="hero is-small is-secondary edge--bottom">
           <div className="hero-body">
             <div className="columns is-centered is-vcentered">
@@ -17,7 +17,7 @@ class HeroLayout extends React.Component {
                 <Img
                   className="image"
                   Tag="figure"
-                  sizes={this.props.data.file.childImageSharp.sizes}
+                  fluid={this.props.data.file.childImageSharp.fluid}
                 />
               </div>
               <div className="column">
@@ -67,3 +67,19 @@ class HeroLayout extends React.Component {
 }
 
 export default HeroLayout;
+
+HeroLayout.propTypes = {
+  children: PropTypes.array.isRequired,
+  data: PropTypes.shape({
+    file: PropTypes.shape({
+      childImageSharp: PropTypes.shape({
+        fluid: PropTypes.object.isRequired
+      })
+    }).isRequired,
+    about: PropTypes.shape({
+      childMarkdownRemark: PropTypes.shape({
+        html: PropTypes.string.isRequired
+      }).isRequired
+    }).isRequired
+  }).isRequired
+};

@@ -65,6 +65,29 @@ class SiteLinks extends React.Component {
 
 export default SiteLinks;
 
+SiteLinks.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        siteEmailUrl: PropTypes.string.isRequired,
+        siteEmailPretty: PropTypes.string.isRequired,
+        siteLinkedInUrl: PropTypes.string.isRequired,
+        siteLinkedInPretty: PropTypes.string.isRequired,
+        siteTwitterUrl: PropTypes.string.isRequired,
+        siteTwitterPretty: PropTypes.string.isRequired,
+        siteGithubUrl: PropTypes.string.isRequired,
+        siteGithubPretty: PropTypes.string.isRequired,
+        siteAngelListUrl: PropTypes.string.isRequired,
+        siteAngelListPretty: PropTypes.string.isRequired,
+        siteKeybaseUrl: PropTypes.string.isRequired,
+        siteKeybasePretty: PropTypes.string.isRequired,
+        sitePhotoUrl: PropTypes.string.isRequired,
+        sitePhotoPretty: PropTypes.string.isRequired
+      }).isRequired
+    }).isRequired
+  }).isRequired
+};
+
 const Icon = ({ icon, alt }) => (
   <span className="icon is-small" style={{ marginBottom: `-8px` }}>
     <img src={icon} alt={alt} />

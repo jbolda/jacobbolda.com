@@ -1,13 +1,14 @@
 import React from "react";
+import { graphql } from "gatsby";
 import { findDOMNode } from "react-dom";
 // import ChoroplethText from './_choropleth.md';
-var d3 = require("d3");
+import * as d3 from "d3";
 import BlogPost from "../../components/jsBlogPost";
 
 // import stateDataURL from "./states.json"
 // import statisticsDataURL from "./states_data.csv"
 
-exports.data = {
+export const frontmatter = {
   title: "Choropleth on d3v4",
   written: "2017-03-09",
   updated: "2017-04-28",
@@ -53,7 +54,7 @@ class choroplethBase extends React.Component {
           console.log(this.props.data.stateshapes.publicURL);
           console.dir(error);
         } else {
-          console.log(results);
+          // console.log(results);
           let states = results[1].states;
           let stats = results[0];
           let mergedData = mergeData(states, "abbrev", stats, "Abbreviation");
@@ -212,11 +213,8 @@ export const pageQuery = graphql`
     ) {
       html
     }
-    post: jsFrontmatter(fields: { slug: { eq: $slug } }) {
-      ...JSBlogPost_data
-    }
-    site {
-      ...metadata
+    post: javascriptFrontmatter(fields: { slug: { eq: $slug } }) {
+      ...JSBlogPost
     }
     stateshapes: file(
       relativePath: { eq: "2017-03-09-choropleth-on-d3v4/states.json" }

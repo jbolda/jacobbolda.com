@@ -1,71 +1,86 @@
-import React from "react";
-import { stripIndent } from "common-tags";
+"use strict";
 
-let stylesStr;
-if (process.env.NODE_ENV === `production`) {
-  try {
-    stylesStr = require(`!raw-loader!../public/styles.css`);
-  } catch (e) {
-    console.log(e);
-  }
-}
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-module.exports = class HTML extends React.Component {
-  render() {
-    let css;
-    if (process.env.NODE_ENV === `production`) {
-      css = (
-        <style
-          id="gatsby-inlined-css"
-          dangerouslySetInnerHTML={{ __html: stylesStr }}
-        />
-      );
+exports.__esModule = true;
+exports.default = void 0;
+
+var _inheritsLoose2 = _interopRequireDefault(
+  require("@babel/runtime/helpers/inheritsLoose")
+);
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var HTML =
+  /*#__PURE__*/
+  (function(_React$Component) {
+    (0, _inheritsLoose2.default)(HTML, _React$Component);
+
+    function HTML() {
+      return _React$Component.apply(this, arguments) || this;
     }
-    return (
-      <html className="has-navbar-fixed-top">
-        <head>
-          <meta charSet="utf-8" />
-          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-          <script
-            key="plugin-google-tagmanager"
-            dangerouslySetInnerHTML={{
-              __html: stripIndent`
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer', 'GTM-5BSQFD');`
-            }}
-          />
-          {this.props.headComponents}
-          {css}
-        </head>
-        <body>
-          <noscript
-            key="google-tagmanager"
-            dangerouslySetInnerHTML={{
-              __html: stripIndent`
-                  <iframe
-                    src="https://www.googletagmanager.com/ns.html?id=GTM-5BSQFD"
-                    height="0"
-                    width="0"
-                    style="display: none; visibility: hidden"
-                  />`
-            }}
-          />
-          {this.props.preBodyComponents}
-          <div
-            key={`body`}
-            id="___gatsby"
-            dangerouslySetInnerHTML={{ __html: this.props.body }}
-          />
-          {this.props.postBodyComponents}
-        </body>
-      </html>
-    );
-  }
+
+    var _proto = HTML.prototype;
+
+    _proto.render = function render() {
+      return _react.default.createElement(
+        "html",
+        { ...this.props.htmlAttributes, className: "has-navbar-fixed-top" },
+        _react.default.createElement(
+          "head",
+          null,
+          _react.default.createElement("meta", {
+            charSet: "utf-8"
+          }),
+          _react.default.createElement("meta", {
+            httpEquiv: "x-ua-compatible",
+            content: "ie=edge"
+          }),
+          _react.default.createElement("meta", {
+            name: "viewport",
+            content: "width=device-width, initial-scale=1, shrink-to-fit=no"
+          }),
+          _react.default.createElement("script", {
+            key: "plugin-google-tagmanager",
+            dangerouslySetInnerHTML: {
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer', 'GTM-5BSQFD');`
+            }
+          }),
+          this.props.headComponents
+        ),
+        _react.default.createElement(
+          "body",
+          this.props.bodyAttributes,
+          _react.default.createElement("noscript", {
+            key: "google-tagmanager",
+            dangerouslySetInnerHTML: {
+              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BSQFD" height="0" width="0" style="display: none; visibility: hidden" />`
+            }
+          }),
+          this.props.preBodyComponents,
+          _react.default.createElement("div", {
+            key: "body",
+            id: "___gatsby",
+            dangerouslySetInnerHTML: {
+              __html: this.props.body
+            }
+          }),
+          this.props.postBodyComponents
+        )
+      );
+    };
+
+    return HTML;
+  })(_react.default.Component);
+
+exports.default = HTML;
+HTML.propTypes = {
+  htmlAttributes: _propTypes.default.object,
+  headComponents: _propTypes.default.array,
+  bodyAttributes: _propTypes.default.object,
+  preBodyComponents: _propTypes.default.array,
+  body: _propTypes.default.string,
+  postBodyComponents: _propTypes.default.array
 };

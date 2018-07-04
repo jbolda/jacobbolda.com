@@ -1,21 +1,21 @@
 import React from "react";
-import Link from "gatsby-link";
+import PropTypes from "prop-types";
 import SimpleNav from "../../gatsby-theme-bulma-layout/Simple/SimpleNav";
 
 class SimpleBlogPostLayout extends React.Component {
   render() {
-    let { sitemetadata } = this.props;
+    let { siteMetadata } = this.props;
 
     return (
-      <SimpleNav sitemetadata={sitemetadata} location={this.props.location}>
+      <SimpleNav site={{ siteMetadata: siteMetadata }} {...this.props}>
         {this.props.children}
         <section className="section">
           <hr />
           <div className="container">
             <p>
-              {sitemetadata.siteDescr}
-              <a href={sitemetadata.siteTwitterUrl}>
-                <br /> <strong>{sitemetadata.siteAuthor}</strong> on Twitter
+              {siteMetadata.siteDescription}
+              <a href={siteMetadata.siteTwitterUrl}>
+                <br /> <strong>{siteMetadata.siteAuthor}</strong> on Twitter
               </a>
             </p>
           </div>
@@ -27,19 +27,11 @@ class SimpleBlogPostLayout extends React.Component {
 
 export default SimpleBlogPostLayout;
 
-/*
-can't seem to get the fragment to work here, not a location gatsby expects?
-export const pageQuery = graphql`
-fragment SimpleSiteMetadata on Site {
-    siteMetadata {
-      siteTitle
-      siteDescr
-      siteAuthor
-      siteEmailUrl
-      siteEmailPretty
-      siteTwitterUrl
-      siteTwitterPretty
-    }
-}
-`
-*/
+SimpleBlogPostLayout.propTypes = {
+  siteMetadata: PropTypes.shape({
+    siteAuthor: PropTypes.string.isRequired,
+    siteDescription: PropTypes.string.isRequired,
+    siteTwitterUrl: PropTypes.string.isRequired
+  }).isRequired,
+  children: PropTypes.any.isRequired
+};

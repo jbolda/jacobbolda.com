@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "gatsby-link";
+import { Link } from "gatsby";
 import SiteLinks from "../shared-components/SiteLinks";
 import Img from "gatsby-image";
 
@@ -15,7 +15,7 @@ class SiteSidebar extends React.Component {
             <figure className="image">
               <Img
                 className="image"
-                sizes={this.props.data.file.childImageSharp.sizes}
+                fluid={this.props.data.file.childImageSharp.fluid}
               />
             </figure>
           </Link>

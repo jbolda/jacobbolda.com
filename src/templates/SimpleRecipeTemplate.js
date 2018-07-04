@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "gatsby-link";
+import { Link, graphql } from "gatsby";
 import SimpleNav from "../../plugins/gatsby-theme-bulma-layout/Simple/SimpleNav";
 
 class SimpleRecipe extends React.Component {
@@ -7,10 +7,7 @@ class SimpleRecipe extends React.Component {
     let recipe = this.props.data.airtableLinked;
 
     return (
-      <SimpleNav
-        sitemetadata={this.props.data.site.siteMetadata}
-        location={this.props.location}
-      >
+      <SimpleNav site={this.props.data.site} {...this.props}>
         <div className="section">
           <div className="columns is-centered">
             <div className="column is-half">
@@ -159,7 +156,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         siteTitle
-        siteDescr
+        siteDescription
         siteAuthor
         siteEmailUrl
         siteEmailPretty
@@ -179,8 +176,8 @@ export const pageQuery = graphql`
     }
     file(relativePath: { eq: "assets/profile.png" }) {
       childImageSharp {
-        sizes(maxWidth: 256) {
-          ...GatsbyImageSharpSizes_tracedSVG
+        fluid(maxWidth: 256) {
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }

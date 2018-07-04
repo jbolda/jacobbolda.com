@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     siteTitle: `Jacob Bolda`,
-    siteDescr: `Structural Engineer with a knack for creative solutions with computers, programming and snarky comments.`,
+    siteDescription: `Structural Engineer with a knack for creative solutions using code and ingenuity.`,
     siteAuthor: `Jacob Bolda`,
 
     siteEmailUrl: "me@jacobbolda.com",
@@ -17,31 +17,31 @@ module.exports = {
     siteKeybaseUrl: "https://keybase.io/jbolda",
     siteKeybasePretty: "keybase.io/jbolda",
     sitePhotoUrl: "http://www.jbolda.com/photo",
-    sitePhotoPretty: "My Photographs",
+    sitePhotoPretty: "My Photographs"
   },
   plugins: [
-   {
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
-        path: `${__dirname}/src/mainPages/`,
-      },
+        path: `${__dirname}/src/mainPages/`
+      }
     },
-   {
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `articles`,
-        path: `${__dirname}/src/articles/`,
-      },
+        path: `${__dirname}/src/articles/`
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `static`,
-        path: `${__dirname}/src/static/`,
-      },
+        path: `${__dirname}/src/static/`
+      }
     },
-    `gatsby-transformer-javascript-static-exports`,
+    `gatsby-transformer-javascript-frontmatter`,
     {
       resolve: `gatsby-source-airtable-linked`,
       options: {
@@ -76,13 +76,13 @@ module.exports = {
         plugins: [
           {
             resolve: `gatsby-remark-responsive-iframe`,
-            options: {},
+            options: {}
           },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
-        ],
-      },
+          `gatsby-remark-smartypants`
+        ]
+      }
     },
     `gatsby-transformer-sharp`,
     // `gatsby-theme-bulma`,
@@ -92,9 +92,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
+        pathToConfigModule: `src/utils/typography`
+      }
     },
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -103,10 +104,10 @@ module.exports = {
         start_url: `/`,
         background_color: `#f7f7f7`,
         theme_color: `#191919`,
-        display: `minimal-ui`,
-      },
+        display: `minimal-ui`
+      }
     },
     `gatsby-plugin-offline`,
-    `gatsby-plugin-netlify`, // make sure to put at the end of the array
-  ],
-}
+    `gatsby-plugin-netlify` // make sure to put at the end of the array
+  ]
+};
