@@ -113,7 +113,8 @@ module.exports = {
         start_url: `/`,
         background_color: `#f7f7f7`,
         theme_color: `#191919`,
-        display: `minimal-ui`
+        display: `minimal-ui`,
+        icon: "src/static/assets/profile.png"
       }
     },
     `gatsby-plugin-offline`,
