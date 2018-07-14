@@ -32,6 +32,7 @@
     "d3": "4.13.0",
     "gatsby": "next",
     "gatsby-image": "next",
+    "gatsby-plugin-google-tagmanager": "next",
     "gatsby-plugin-manifest": "next",
     "gatsby-plugin-netlify": "next",
     "gatsby-plugin-offline": "next",

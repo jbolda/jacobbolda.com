@@ -97,6 +97,15 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: {
+        id: "GTM-5BSQFD",
+        includeInDevelopment: false
+        // gtmAuth: "YOUR_GOOGLE_TAGMANAGER_ENVIROMENT_AUTH_STRING",
+        // gtmPreview: "YOUR_GOOGLE_TAGMANAGER_ENVIROMENT_PREVIEW_NAME",
+      }
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `JacobBolda.com`,

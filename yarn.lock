@@ -4917,6 +4917,12 @@ gatsby-link@^2.0.0-beta.4:
     react-lifecycles-compat "^3.0.2"
     ric "^1.3.0"
 
+gatsby-plugin-google-tagmanager@next:
+  version "2.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-2.0.0-beta.2.tgz#52fe671f0052c8c2d28c287981eb0d2d1d02da3f"
+  dependencies:
+    "@babel/runtime" "7.0.0-beta.51"
+
 gatsby-plugin-manifest@next:
   version "2.0.2-beta.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.0.2-beta.2.tgz#118fd00b22aa6abd64ccaf9a99c1205e5be9c15f"

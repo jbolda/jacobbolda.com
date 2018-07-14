@@ -3,5 +3,5 @@ import lawtonTheme from "typography-theme-lawton";
 
 const typography = new Typography(lawtonTheme);
 
-const { rhythm, scale } = typography;
-export { rhythm, scale, typography as default };
+export const { rhythm, scale } = typography;
+export default typography;
