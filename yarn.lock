@@ -3077,8 +3077,8 @@ cssnano-util-same-parent@^4.0.0:
   resolved "https://registry.yarnpkg.com/cssnano-util-same-parent/-/cssnano-util-same-parent-4.0.0.tgz#d2a3de1039aa98bc4ec25001fa050330c2a16dac"
 
 cssnano@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-4.0.2.tgz#0e79a1829afb6583744ba705fd62516fbfd4fda7"
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-4.0.3.tgz#b694d626906bf1844f573465ecc166b2240b8699"
   dependencies:
     cosmiconfig "^5.0.0"
     cssnano-preset-default "^4.0.0"
@@ -5154,8 +5154,8 @@ gatsby-transformer-remark@next:
     unist-util-visit "^1.3.0"
 
 gatsby-transformer-sharp@next:
-  version "2.1.1-beta.4"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-2.1.1-beta.4.tgz#ac441a5807b64b5d8b6744033a181f3f818a7cc3"
+  version "2.1.1-beta.5"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-2.1.1-beta.5.tgz#b13133a7bfc52e202008d3f509a0851ac9da5580"
   dependencies:
     "@babel/runtime" "7.0.0-beta.51"
     bluebird "^3.5.0"
@@ -5172,8 +5172,8 @@ gatsby-transformer-yaml@next:
     unist-util-select "^1.5.0"
 
 gatsby@next:
-  version "2.0.0-beta.42"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.0-beta.42.tgz#c76c47867a7f2b10cbc23c9a2918e668efcbb178"
+  version "2.0.0-beta.45"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.0.0-beta.45.tgz#cf9f9d24228cad78e981e2ed135ad3766291f050"
   dependencies:
     "@babel/code-frame" "7.0.0-beta.51"
     "@babel/core" "7.0.0-beta.51"
@@ -7545,7 +7545,7 @@ miller-rabin@^4.0.0:
     bn.js "^4.0.0"
     brorand "^1.0.1"
 
-"mime-db@>= 1.34.0 < 2":
+"mime-db@>= 1.34.0 < 2", mime-db@~1.35.0:
   version "1.35.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.35.0.tgz#0569d657466491283709663ad379a99b90d9ab47"
 
@@ -7557,11 +7557,17 @@ mime-db@~1.33.0:
   version "1.33.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.33.0.tgz#a3492050a5cb9b63450541e39d9788d2272783db"
 
-mime-types@2.1.18, mime-types@^2.1.12, mime-types@~2.1.17, mime-types@~2.1.18, mime-types@~2.1.7:
+mime-types@2.1.18, mime-types@~2.1.7:
   version "2.1.18"
   resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.18.tgz#6f323f60a83d11146f831ff11fd66e2fe5503bb8"
   dependencies:
     mime-db "~1.33.0"
+
+mime-types@^2.1.12, mime-types@~2.1.17, mime-types@~2.1.18:
+  version "2.1.19"
+  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.19.tgz#71e464537a7ef81c15f2db9d97e913fc0ff606f0"
+  dependencies:
+    mime-db "~1.35.0"
 
 mime@1.4.1:
   version "1.4.1"
@@ -8673,8 +8679,8 @@ postcss-loader@^2.1.3:
     schema-utils "^0.4.0"
 
 postcss-merge-longhand@^4.0.0:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/postcss-merge-longhand/-/postcss-merge-longhand-4.0.1.tgz#98cdebda7cc1bada4ae03c76ed1c44c97a574019"
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/postcss-merge-longhand/-/postcss-merge-longhand-4.0.2.tgz#a2bcd7b0f9dca41ee84ba0cee23a5e6cb465ec3a"
   dependencies:
     postcss "^6.0.0"
     postcss-value-parser "^3.0.0"
@@ -9375,8 +9381,8 @@ reduce-css-calc@^2.0.0:
     postcss-value-parser "^3.3.0"
 
 redux-devtools-instrument@^1.3.3:
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/redux-devtools-instrument/-/redux-devtools-instrument-1.8.3.tgz#c510d67ab4e5e4525acd6e410c25ab46b85aca7c"
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/redux-devtools-instrument/-/redux-devtools-instrument-1.9.0.tgz#2faed9ac3292c783284b21843edfaa0567764a0c"
   dependencies:
     lodash "^4.2.0"
     symbol-observable "^1.0.2"
