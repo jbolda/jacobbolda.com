@@ -42,6 +42,7 @@ module.exports = {
       }
     },
     `gatsby-transformer-javascript-frontmatter`,
+    `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-airtable-linked`,
       options: {
@@ -105,6 +106,7 @@ module.exports = {
         // gtmPreview: "YOUR_GOOGLE_TAGMANAGER_ENVIROMENT_PREVIEW_NAME",
       }
     },
+    `gatsby-transformer-screenshot`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

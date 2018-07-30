@@ -21,6 +21,21 @@ class SiteIndex extends React.Component {
         );
       }
     });
+    if (!retPhoto) {
+      this.props.data.allScreenshots.edges.forEach(edge => {
+        if (slug === edge.node.slug) {
+          retPhoto = (
+            <Img
+              className="image"
+              Tag="figure"
+              fluid={
+                edge.node.childScreenshot.screenshotFile.childImageSharp.fluid
+              }
+            />
+          );
+        }
+      });
+    }
     return retPhoto;
   }
 
@@ -347,6 +362,22 @@ export const pageQuery = graphql`
           childImageSharp {
             fluid(maxWidth: 500, maxHeight: 200, quality: 90) {
               ...GatsbyImageSharpFluid_tracedSVG
+            }
+          }
+        }
+      }
+    }
+    allScreenshots: allSitesYaml {
+      edges {
+        node {
+          slug
+          childScreenshot {
+            screenshotFile {
+              childImageSharp {
+                fluid(maxWidth: 500, maxHeight: 200, quality: 90) {
+                  ...GatsbyImageSharpFluid_tracedSVG
+                }
+              }
             }
           }
         }
