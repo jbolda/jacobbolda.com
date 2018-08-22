@@ -119,7 +119,6 @@ module.exports = {
         icon: "src/static/assets/avatar.png"
       }
     },
-    `gatsby-plugin-offline`,
     `gatsby-plugin-netlify` // make sure to put at the end of the array
   ]
 };
