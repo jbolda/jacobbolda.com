@@ -16,7 +16,9 @@ class MasterLayout extends React.Component {
             { name: `description`, content: siteMetadata.siteDescription },
             { name: `keywords`, content: `articles` }
           ]}
-        />
+        >
+          <html className="has-navbar-fixed-top" lang="en" />
+        </Helmet>
         {this.props.children}
       </div>
     );
