@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 import SimpleNavBridge from "../utils/SimpleNavBridge";
+import Img from "gatsby-image";
 
 export const frontmatter = {
   title: "Recipes",
@@ -48,14 +49,15 @@ class SimpleRecipes extends React.Component {
             {recipes.map(recipe => (
               <div className="column is-one-third" key={recipe.node.id}>
                 <div className="card">
-                  {recipe.node.data.Attachments ? (
+                  {recipe.node.data.Attachments &&
+                  recipe.node.data.Attachments.localFiles != 0 ? (
                     <div className="card-image">
                       <figure className="image">
-                        <img
-                          src={
-                            recipe.node.data.Attachments[0].thumbnails.large.url
+                        <Img
+                          fluid={
+                            recipe.node.data.Attachments.localFiles[0]
+                              .childImageSharp.fluid
                           }
-                          style={{ objectFit: "cover", height: "350px" }}
                         />
                       </figure>
                     </div>
@@ -167,11 +169,11 @@ export const pageQuery = graphql`
             Rating
             Ingredients
             Attachments {
-              thumbnails {
-                large {
-                  url
-                  width
-                  height
+              localFiles {
+                childImageSharp {
+                  fluid(maxWidth: 256) {
+                    ...GatsbyImageSharpFluid_tracedSVG
+                  }
                 }
               }
             }

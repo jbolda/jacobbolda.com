@@ -52,6 +52,7 @@ module.exports = {
             tableName: `Recipes`,
             tableView: `List`,
             queryName: `Recipes`,
+            mapping: { Attachments: `fileNode` },
             tableLinks: [`Cooking Method`, `Style`]
           },
           {

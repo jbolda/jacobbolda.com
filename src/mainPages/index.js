@@ -161,12 +161,15 @@ const recipeList = recipes =>
   recipes.map(recipe => (
     <div className="column is-one-third" key={recipe.node.id}>
       <div className="card">
-        {recipe.node.data.Attachments ? (
+        {recipe.node.data.Attachments &&
+        recipe.node.data.Attachments.localFiles != 0 ? (
           <div className="card-image">
             <figure className="image">
-              <img
-                src={recipe.node.data.Attachments[0].thumbnails.large.url}
-                style={{ objectFit: "cover", height: "200px" }}
+              <Img
+                fluid={
+                  recipe.node.data.Attachments.localFiles[0].childImageSharp
+                    .fluid
+                }
               />
             </figure>
           </div>
@@ -305,11 +308,11 @@ export const pageQuery = graphql`
             Rating
             Ingredients
             Attachments {
-              thumbnails {
-                large {
-                  url
-                  width
-                  height
+              localFiles {
+                childImageSharp {
+                  fluid(maxWidth: 256) {
+                    ...GatsbyImageSharpFluid_tracedSVG
+                  }
                 }
               }
             }

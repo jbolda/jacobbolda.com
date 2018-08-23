@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 import SimpleNav from "../../plugins/gatsby-theme-bulma-layout/Simple/SimpleNav";
+import Img from "gatsby-image";
 
 class SimpleRecipe extends React.Component {
   render() {
@@ -27,11 +28,15 @@ class SimpleRecipe extends React.Component {
                 </ul>
               </nav>
               <div className="card">
-                {recipe.data.Attachments ? (
+                {recipe.data.Attachments &&
+                recipe.data.Attachments.localFiles != 0 ? (
                   <div className="card-image">
                     <figure className="image">
-                      <img
-                        src={recipe.data.Attachments[0].thumbnails.large.url}
+                      <Img
+                        fluid={
+                          recipe.data.Attachments.localFiles[0].childImageSharp
+                            .fluid
+                        }
                       />
                     </figure>
                   </div>
@@ -143,11 +148,11 @@ export const pageQuery = graphql`
         Rating
         Ingredients
         Attachments {
-          thumbnails {
-            large {
-              url
-              width
-              height
+          localFiles {
+            childImageSharp {
+              fluid(maxWidth: 256) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
             }
           }
         }
