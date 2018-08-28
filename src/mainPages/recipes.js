@@ -11,7 +11,7 @@ export const frontmatter = {
 
 class SimpleRecipes extends React.Component {
   render() {
-    let recipes = this.props.data.allAirtableLinked.edges;
+    let recipes = this.props.data.allAirtable.edges;
 
     return (
       <SimpleNavBridge {...this.props}>
@@ -154,7 +154,7 @@ export default SimpleRecipes;
 
 export const pageQuery = graphql`
   query SimpleRecipes {
-    allAirtableLinked(filter: { table: { eq: "Recipes" } }) {
+    allAirtable(filter: { table: { eq: "Recipes" } }) {
       edges {
         node {
           id

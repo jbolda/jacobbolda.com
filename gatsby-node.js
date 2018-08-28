@@ -25,7 +25,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     }
   }
 
-  if (node.internal.type === `AirtableLinked` && node.table === `Recipes`) {
+  if (node.internal.type === `Airtable` && node.table === `Recipes`) {
     slug = `/${node.data.Name.replace(/ /g, "-")
       .replace(/[,&]/g, "")
       .toLowerCase()}/`;
@@ -76,7 +76,7 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
-            allAirtableLinked(filter: { table: { eq: "Recipes" } }) {
+            allAirtable(filter: { table: { eq: "Recipes" } }) {
               edges {
                 node {
                   id
@@ -160,7 +160,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
         });
 
-        result.data.allAirtableLinked.edges.forEach(edge => {
+        result.data.allAirtable.edges.forEach(edge => {
           createPage({
             path: edge.node.fields.slug, // required, we don't have frontmatter for this page hence separate if()
             component: atRecipes,

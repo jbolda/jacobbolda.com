@@ -44,7 +44,7 @@ module.exports = {
     `gatsby-transformer-javascript-frontmatter`,
     `gatsby-transformer-yaml`,
     {
-      resolve: `gatsby-source-airtable-linked`,
+      resolve: `gatsby-source-airtable`,
       options: {
         tables: [
           {

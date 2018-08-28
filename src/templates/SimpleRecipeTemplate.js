@@ -5,7 +5,7 @@ import Img from "gatsby-image";
 
 class SimpleRecipe extends React.Component {
   render() {
-    let recipe = this.props.data.airtableLinked;
+    let recipe = this.props.data.airtable;
 
     return (
       <SimpleNav site={this.props.data.site} {...this.props}>
@@ -135,7 +135,7 @@ export default SimpleRecipe;
 
 export const pageQuery = graphql`
   query SimpleRecipeBySlug($name: String!) {
-    airtableLinked(table: { eq: "Recipes" }, data: { Name: { eq: $name } }) {
+    airtable(table: { eq: "Recipes" }, data: { Name: { eq: $name } }) {
       id
       data {
         Name

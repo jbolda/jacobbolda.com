@@ -943,12 +943,12 @@ after@0.8.2:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/after/-/after-0.8.2.tgz#fedb394f9f0e02aa9768e702bda23b505fae7e1f"
 
-airtable@^0.5.4:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/airtable/-/airtable-0.5.4.tgz#a9476036786ca2d3ec3ac7445a39aac6bfb02d16"
+airtable@^0.5.6:
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/airtable/-/airtable-0.5.6.tgz#7f1a3cc038f77c9734c89deacdad500e25ad6fb1"
   dependencies:
     async "1.5.2"
-    lodash "2.4.1"
+    lodash "4.17.10"
     request "2.85.0"
     xhr "2.3.3"
 
@@ -5004,11 +5004,11 @@ gatsby-remark-smartypants@^2.0.0-rc.0:
     retext-smartypants "^3.0.0"
     unist-util-visit "^1.3.0"
 
-gatsby-source-airtable-linked@^2.0.0-beta.0:
+gatsby-source-airtable@^2.0.0-beta.0:
   version "2.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/gatsby-source-airtable-linked/-/gatsby-source-airtable-linked-2.0.0-beta.0.tgz#cbf740f7c8bcd5ae7fb0472d25932ef91e7b8f84"
+  resolved "https://registry.yarnpkg.com/gatsby-source-airtable/-/gatsby-source-airtable-2.0.0-beta.0.tgz#f574cf96f6191b51d3d78ed298bb9595352d8d32"
   dependencies:
-    airtable "^0.5.4"
+    airtable "^0.5.6"
 
 gatsby-source-filesystem@^2.0.1-rc.0:
   version "2.0.1-rc.0"
@@ -7099,11 +7099,7 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-lodash@2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-2.4.1.tgz#5b7723034dda4d262e5a46fb2c58d7cc22f71420"
-
-lodash@^4.0.0, lodash@^4.11.1, lodash@^4.13.1, lodash@^4.15.0, lodash@^4.16.4, lodash@^4.17.10, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@~4.17.10:
+lodash@4.17.10, lodash@^4.0.0, lodash@^4.11.1, lodash@^4.13.1, lodash@^4.15.0, lodash@^4.16.4, lodash@^4.17.10, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@~4.17.10:
   version "4.17.10"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 

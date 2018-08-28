@@ -147,7 +147,7 @@ class SiteIndex extends React.Component {
           </h2>
           <hr />
           <div className="columns is-multiline">
-            {recipeList(this.props.data.allAirtableLinked.edges)}
+            {recipeList(this.props.data.allAirtable.edges)}
           </div>
         </section>
       </HeroLayoutBridge>
@@ -289,7 +289,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allAirtableLinked(
+    allAirtable(
       filter: { table: { eq: "Recipes" }, data: { Last_Made: { ne: null } } }
       sort: { fields: [data___Last_Made], order: DESC }
       limit: 3
