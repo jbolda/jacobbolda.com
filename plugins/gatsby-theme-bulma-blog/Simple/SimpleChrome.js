@@ -34,7 +34,7 @@ class SimpleChrome extends React.Component {
           ]
         }
       : {};
-    const adjustPostStyle = this.props.hero ? { marginTop: "-30%" } : {};
+    const adjustPostStyle = this.props.hero ? { marginTop: "-20%" } : {};
 
     return (
       <SimpleBlogPostLayout
@@ -47,25 +47,23 @@ class SimpleChrome extends React.Component {
           style={{ paddingBottom: "1rem", ...adjustPostStyle }}
         >
           <div className="container">
-            <h1
-              className="title is-1 is-hidden-mobile"
-              style={{ fontSize: "5rem", ...adjustTitleStyle }}
-            >
-              {frontmatter.title}
-            </h1>
-            <h1
-              className="title is-hidden-tablet"
-              style={{ fontSize: "2rem", ...adjustTitleStyle }}
-            >
-              {frontmatter.title}
-            </h1>
-          </div>
-        </section>
-        <section className="section" style={{ paddingTop: "0px" }}>
-          <div className="container">
-            <div className="box">
-              {this.props.children}
-              <PostPublished frontmatter={frontmatter} />
+            <div className="columns is-centered">
+              <div className="column is-half">
+                <h1
+                  className="title is-1"
+                  style={{
+                    paddingLeft: 24,
+                    paddingRight: 40,
+                    ...adjustTitleStyle
+                  }}
+                >
+                  {frontmatter.title}
+                </h1>
+                <div className="notification">
+                  {this.props.children}
+                  <PostPublished frontmatter={frontmatter} />
+                </div>
+              </div>
             </div>
           </div>
         </section>
