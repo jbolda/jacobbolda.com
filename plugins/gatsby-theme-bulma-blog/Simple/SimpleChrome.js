@@ -22,32 +22,6 @@ class SimpleChrome extends React.Component {
       : {};
     const adjustPostStyle = this.props.hero ? { marginTop: "-20%" } : {};
 
-    const BlogSection = children => (
-      <section
-        className="section"
-        style={{ paddingBottom: "1rem", ...adjustPostStyle }}
-      >
-        <div className="container">
-          <ColumnContainer>
-            <h1
-              className="title is-1"
-              style={{
-                paddingLeft: 24,
-                paddingRight: 40,
-                ...adjustTitleStyle
-              }}
-            >
-              {frontmatter.title}
-            </h1>
-            <div className="notification">
-              {children}
-              <PostPublished frontmatter={frontmatter} />
-            </div>
-          </ColumnContainer>
-        </div>
-      </section>
-    );
-
     const HeroImage = props => {
       if (props.hero) {
         return (
@@ -68,7 +42,31 @@ class SimpleChrome extends React.Component {
         location={this.props.location}
       >
         <HeroImage hero={this.props.hero} />
-        <BlogSection>{this.props.children}</BlogSection>
+        <section
+          className="section"
+          style={{ paddingBottom: "1rem", ...adjustPostStyle }}
+        >
+          <div className="container">
+            <div className="columns is-centered">
+              <div className="column is-half">
+                <h1
+                  className="title is-1"
+                  style={{
+                    paddingLeft: 24,
+                    paddingRight: 40,
+                    ...adjustTitleStyle
+                  }}
+                >
+                  {frontmatter.title}
+                </h1>
+                <div className="notification">
+                  {this.props.children}
+                  <PostPublished frontmatter={frontmatter} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <HelmetBlock frontmatter={frontmatter} />
       </SimpleBlogPostLayout>
     );
@@ -76,55 +74,6 @@ class SimpleChrome extends React.Component {
 }
 
 export default SimpleChrome;
-
-/*
-    if (this.props.componentOverride) {
-      return this.props.componentOverride;
-    } else if (this.props.componentBlocks) {
-      return (
-        <section
-          className="section"
-          style={{ paddingBottom: "1rem", ...adjustPostStyle }}
-        >
-          <ColumnContainer>
-            <h1
-              className="title is-1"
-              style={{
-                paddingLeft: 24,
-                paddingRight: 40,
-                ...adjustTitleStyle
-              }}
-            >
-              {frontmatter.title}
-            </h1>
-          </ColumnContainer>
-          {this.props.componentBlocks.map(block => {
-            if (block.wrapper === "break-out") {
-              return (
-                <div key={block.wrapper} className="container">
-                  {block.renderComponent()}
-                </div>
-              );
-            } else {
-              return (
-                <ColumnContainer key={block.wrapper}>
-                  {block.renderComponent()}
-                </ColumnContainer>
-              );
-            }
-          })}
-          <ColumnContainer>
-            <div className="notification">
-              <PostPublished frontmatter={frontmatter} />
-            </div>
-          </ColumnContainer>
-        </section>
-      );
-          } else {
-
-
-          }
-*/
 
 SimpleChrome.propTypes = {
   post: PropTypes.shape({
@@ -139,9 +88,3 @@ SimpleChrome.propTypes = {
   }),
   children: PropTypes.any
 };
-
-const ColumnContainer = ({ children }) => (
-  <div className="columns is-centered">
-    <div className="column is-half">{children}</div>
-  </div>
-);

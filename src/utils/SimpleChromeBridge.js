@@ -9,7 +9,9 @@ const SimpleChromeBridge = props => (
     siteMetadata={props.site.siteMetadata}
     location={props.location}
     {...props}
-  />
+  >
+    {props.children}
+  </SimpleChrome>
 );
 
 export default props => (
