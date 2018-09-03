@@ -382,6 +382,10 @@ class loanEfficiencyCalculator extends React.Component {
           {
             wrapper: "column",
             renderComponent: this.renderExplainText
+          },
+          {
+            wrapper: "break-out",
+            renderComponent: this.renderCalculator.bind(this)
           }
         ]}
       />
@@ -390,14 +394,6 @@ class loanEfficiencyCalculator extends React.Component {
 }
 
 export default loanEfficiencyCalculator;
-
-/*
-,
-          {
-            wrapper: "break-out",
-            renderComponent: this.renderCalculator
-          }
-*/
 
 let processLoans = loanGroup => {
   let newLoanGroup = { ...loanGroup };
