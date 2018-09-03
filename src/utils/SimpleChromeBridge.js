@@ -2,15 +2,14 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import SimpleChrome from "../../plugins/gatsby-theme-bulma-blog/Simple/SimpleChrome";
 
-const SimpleChromeBridge = ({ site, post, hero, location, children }) => (
+const SimpleChromeBridge = props => (
   <SimpleChrome
-    post={post}
-    hero={hero}
-    siteMetadata={site.siteMetadata}
-    location={location}
-  >
-    {children}
-  </SimpleChrome>
+    post={props.post}
+    hero={props.hero}
+    siteMetadata={props.site.siteMetadata}
+    location={props.location}
+    {...props}
+  />
 );
 
 export default props => (

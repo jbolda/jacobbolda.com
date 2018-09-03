@@ -1,11 +1,15 @@
 import React from "react";
 import { graphql } from "gatsby";
 import SimpleChromeBridge from "../utils/SimpleChromeBridge";
+import { render } from "react-testing-library";
 
-const JSBlogPost = ({ data, location, children }) => (
-  <SimpleChromeBridge post={data.post} hero={data.hero} location={location}>
-    {children}
-  </SimpleChromeBridge>
+const JSBlogPost = props => (
+  <SimpleChromeBridge
+    post={props.data.post}
+    hero={props.data.hero}
+    location={props.location}
+    {...props}
+  />
 );
 
 export const blogPostFragment = graphql`
