@@ -66,7 +66,14 @@ SimpleChrome.propTypes = {
       fluid: PropTypes.object
     })
   }),
-  children: PropTypes.any
+  children: PropTypes.any,
+  componentOverride: PropTypes.func,
+  componentBlocks: PropTypes.arrayOf(
+    PropTypes.shape({
+      wrapper: PropTypes.string.isRequired,
+      renderComponent: PropTypes.func.isRequired
+    })
+  )
 };
 
 const BlogSection = ({ props, adjustTitleStyle, adjustPostStyle }) => {
