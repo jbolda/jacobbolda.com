@@ -42,31 +42,11 @@ class SimpleChrome extends React.Component {
         location={this.props.location}
       >
         <HeroImage hero={this.props.hero} />
-        <section
-          className="section"
-          style={{ paddingBottom: "1rem", ...adjustPostStyle }}
-        >
-          <div className="container">
-            <div className="columns is-centered">
-              <div className="column is-half">
-                <h1
-                  className="title is-1"
-                  style={{
-                    paddingLeft: 24,
-                    paddingRight: 40,
-                    ...adjustTitleStyle
-                  }}
-                >
-                  {frontmatter.title}
-                </h1>
-                <div className="notification">
-                  {this.props.children}
-                  <PostPublished frontmatter={frontmatter} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <BlogSection
+          props={this.props}
+          adjustTitleStyle={adjustTitleStyle}
+          adjustPostStyle={adjustPostStyle}
+        />
         <HelmetBlock frontmatter={frontmatter} />
       </SimpleBlogPostLayout>
     );
@@ -88,3 +68,41 @@ SimpleChrome.propTypes = {
   }),
   children: PropTypes.any
 };
+
+const BlogSection = ({ props, adjustTitleStyle, adjustPostStyle }) => {
+  if (props.componentOverride) {
+    return props.componentOverride();
+  } else {
+    return (
+      <section
+        className="section"
+        style={{ paddingBottom: "1rem", ...adjustPostStyle }}
+      >
+        <div className="container">
+          <ColumnContainer>
+            <h1
+              className="title is-1"
+              style={{
+                paddingLeft: 24,
+                paddingRight: 40,
+                ...adjustTitleStyle
+              }}
+            >
+              {props.post.frontmatter.title}
+            </h1>
+            <div className="notification">
+              {props.children}
+              <PostPublished frontmatter={props.post.frontmatter} />
+            </div>
+          </ColumnContainer>
+        </div>
+      </section>
+    );
+  }
+};
+
+const ColumnContainer = ({ children }) => (
+  <div className="columns is-centered">
+    <div className="column is-half">{children}</div>
+  </div>
+);
