@@ -381,10 +381,12 @@ class loanEfficiencyCalculator extends React.Component {
         componentBlocks={[
           {
             wrapper: "column",
+            uniqueKey: "explainText",
             renderComponent: this.renderExplainText
           },
           {
             wrapper: "break-out",
+            uniqueKey: "calculator",
             renderComponent: this.renderCalculator.bind(this)
           }
         ]}

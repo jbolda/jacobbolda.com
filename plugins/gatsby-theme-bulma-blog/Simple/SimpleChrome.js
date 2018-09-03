@@ -71,6 +71,7 @@ SimpleChrome.propTypes = {
   componentBlocks: PropTypes.arrayOf(
     PropTypes.shape({
       wrapper: PropTypes.string.isRequired,
+      uniqueKey: PropTypes.string.isRequired,
       renderComponent: PropTypes.func.isRequired
     })
   )
@@ -100,13 +101,13 @@ const BlogSection = ({ props, adjustTitleStyle, adjustPostStyle }) => {
         {props.componentBlocks.map(block => {
           if (block.wrapper === "break-out") {
             return (
-              <div key={block.wrapper} className="container">
+              <div key={block.uniqueKey} className="container">
                 {block.renderComponent()}
               </div>
             );
           } else {
             return (
-              <ColumnContainer key={block.wrapper}>
+              <ColumnContainer key={block.uniqueKey}>
                 {block.renderComponent()}
               </ColumnContainer>
             );

@@ -67,17 +67,39 @@ class choroplethBase extends React.Component {
     d3.select("svg").remove();
   }
 
-  render() {
-    let data = this.props.data.markdownRemark;
-    let html = data.html;
-    let { frontmatter } = this.props.data.post;
-
+  renderText() {
     return (
-      <BlogPost {...this.props}>
-        <div id="tooltip" />
-        <div id="states" />
-        <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
-      </BlogPost>
+      <div
+        className="content"
+        dangerouslySetInnerHTML={{
+          __html: this.props.data.markdownRemark.html
+        }}
+      />
+    );
+  }
+
+  render() {
+    return (
+      <BlogPost
+        componentBlocks={[
+          {
+            wrapper: "break-out",
+            uniqueKey: "states",
+            renderComponent: () => <div id="states" />
+          },
+          {
+            wrapper: "break-out",
+            uniqueKey: "tooltip",
+            renderComponent: () => <div id="tooltip" />
+          },
+          {
+            wrapper: "column",
+            uniqueKey: "text-column",
+            renderComponent: this.renderText.bind(this)
+          }
+        ]}
+        {...this.props}
+      />
     );
   }
 }
