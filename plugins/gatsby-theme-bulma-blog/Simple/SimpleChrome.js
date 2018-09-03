@@ -72,6 +72,46 @@ SimpleChrome.propTypes = {
 const BlogSection = ({ props, adjustTitleStyle, adjustPostStyle }) => {
   if (props.componentOverride) {
     return props.componentOverride();
+  } else if (props.componentBlocks) {
+    return (
+      <section
+        className="section"
+        style={{ paddingBottom: "1rem", ...adjustPostStyle }}
+      >
+        <ColumnContainer>
+          <h1
+            className="title is-1"
+            style={{
+              paddingLeft: 24,
+              paddingRight: 40,
+              ...adjustTitleStyle
+            }}
+          >
+            {props.post.frontmatter.title}
+          </h1>
+        </ColumnContainer>
+        {props.componentBlocks.map(block => {
+          if (block.wrapper === "break-out") {
+            return (
+              <div key={block.wrapper} className="container">
+                {block.renderComponent()}
+              </div>
+            );
+          } else {
+            return (
+              <ColumnContainer key={block.wrapper}>
+                {block.renderComponent()}
+              </ColumnContainer>
+            );
+          }
+        })}
+        <ColumnContainer>
+          <div className="notification">
+            <PostPublished frontmatter={props.post.frontmatter} />
+          </div>
+        </ColumnContainer>
+      </section>
+    );
   } else {
     return (
       <section
