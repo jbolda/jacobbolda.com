@@ -64,7 +64,7 @@ class SimpleRecipes extends React.Component {
                     </div>
                   ) : (
                     <div className="card-image">
-                      <figure className="image is-3by2">
+                      <figure className="image is-5by4">
                         <img src={this.props.data.placeholder.publicURL} />
                       </figure>
                     </div>
@@ -174,7 +174,12 @@ export const pageQuery = graphql`
             Attachments {
               localFiles {
                 childImageSharp {
-                  fluid(maxWidth: 256) {
+                  fluid(
+                    maxWidth: 600
+                    maxHeight: 480
+                    quality: 100
+                    cropFocus: ENTROPY
+                  ) {
                     ...GatsbyImageSharpFluid_tracedSVG
                   }
                 }

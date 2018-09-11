@@ -153,7 +153,7 @@ export const pageQuery = graphql`
         Attachments {
           localFiles {
             childImageSharp {
-              fluid(maxWidth: 256, quality: 95) {
+              fluid(quality: 100) {
                 ...GatsbyImageSharpFluid_tracedSVG
               }
             }

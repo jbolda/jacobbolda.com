@@ -175,7 +175,7 @@ const recipeList = recipes =>
           </div>
         ) : (
           <div className="card-image">
-            <figure className="image is-3by2">
+            <figure className="image is-5by4">
               <img src={this.props.data.placeholder.publicURL} />
             </figure>
           </div>
@@ -311,7 +311,12 @@ export const pageQuery = graphql`
             Attachments {
               localFiles {
                 childImageSharp {
-                  fluid(maxWidth: 256, quality: 95) {
+                  fluid(
+                    maxWidth: 600
+                    maxHeight: 480
+                    quality: 100
+                    cropFocus: ENTROPY
+                  ) {
                     ...GatsbyImageSharpFluid_tracedSVG
                   }
                 }
@@ -364,7 +369,12 @@ export const pageQuery = graphql`
         node {
           relativeDirectory
           childImageSharp {
-            fluid(maxWidth: 500, maxHeight: 200, quality: 90) {
+            fluid(
+              maxWidth: 600
+              maxHeight: 350
+              quality: 100
+              cropFocus: ATTENTION
+            ) {
               ...GatsbyImageSharpFluid_tracedSVG
             }
           }
@@ -378,7 +388,12 @@ export const pageQuery = graphql`
           childScreenshot {
             screenshotFile {
               childImageSharp {
-                fluid(maxWidth: 500, maxHeight: 200, quality: 90) {
+                fluid(
+                  maxWidth: 600
+                  maxHeight: 350
+                  quality: 100
+                  cropFocus: NORTH
+                ) {
                   ...GatsbyImageSharpFluid_tracedSVG
                 }
               }
