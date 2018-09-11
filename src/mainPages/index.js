@@ -190,7 +190,8 @@ const recipeList = recipes =>
                 <p className="heading">Rating</p>
                 <p className="">
                   {checkBlank(recipe.node.data.Rating)}
-                  {`\u2606`}/10
+                  {`\u2606`}
+                  /10
                 </p>
               </div>
             </div>
@@ -344,7 +345,7 @@ export const pageQuery = graphql`
         sitePhotoPretty
       }
     }
-    file(relativePath: { eq: "assets/profile.png" }) {
+    file(relativePath: { eq: "profile.png" }) {
       childImageSharp {
         fluid(
           maxWidth: 500
@@ -391,7 +392,7 @@ export const pageQuery = graphql`
         html
       }
     }
-    placeholder: file(relativePath: { eq: "images/placeholder.png" }) {
+    placeholder: file(relativePath: { eq: "placeholder.png" }) {
       publicURL
     }
   }

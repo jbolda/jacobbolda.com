@@ -215,7 +215,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    placeholder: file(relativePath: { eq: "images/placeholder.png" }) {
+    placeholder: file(relativePath: { eq: "placeholder.png" }) {
       publicURL
     }
   }

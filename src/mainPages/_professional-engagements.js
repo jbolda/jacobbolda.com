@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
-import EcotectPhoto from "../static/assets/EcotectExample.png";
-import MitchellLoftsPhoto from "../static/assets/mitchell-lofts-WEB-35.jpg";
+import EcotectPhoto from "../assets/professional-engagements/EcotectExample.png";
+import MitchellLoftsPhoto from "../assets/professional-engagements/mitchell-lofts-WEB-35.jpg";
 
 const professionalEngagements = props => (
   <div className="tile is-ancestor">

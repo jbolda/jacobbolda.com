@@ -37,8 +37,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `static`,
-        path: `${__dirname}/src/static/`
+        name: `assets`,
+        path: `${__dirname}/src/assets/`
       }
     },
     `gatsby-transformer-javascript-frontmatter`,
@@ -117,7 +117,7 @@ module.exports = {
         background_color: `#f7f7f7`,
         theme_color: `#191919`,
         display: `minimal-ui`,
-        icon: "src/static/assets/avatar.png"
+        icon: "src/assets/avatar.png"
       }
     },
     `gatsby-plugin-offline`,

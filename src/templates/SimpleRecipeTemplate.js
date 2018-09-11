@@ -57,7 +57,8 @@ class SimpleRecipe extends React.Component {
                         <p className="heading">Rating</p>
                         <p className="">
                           {checkBlank(recipe.data.Rating)}
-                          {`\u2606`}/10
+                          {`\u2606`}
+                          /10
                         </p>
                       </div>
                     </div>
@@ -107,7 +108,9 @@ class SimpleRecipe extends React.Component {
                     </div>
                     <h2 className="title">Directions</h2>
                     {recipe.data.Directions.split(`\n`).map(
-                      (direction, index) => <p key={index}>{direction}</p>
+                      (direction, index) => (
+                        <p key={index}>{direction}</p>
+                      )
                     )}
                   </div>
                 </div>
@@ -186,7 +189,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    placeholder: file(relativePath: { eq: "images/placeholder.png" }) {
+    placeholder: file(relativePath: { eq: "placeholder.png" }) {
       publicURL
     }
   }

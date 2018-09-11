@@ -16,7 +16,8 @@ const SimpleNav = ({ location, site, children }) => (
     <section className="footer">
       <div className="container content has-text-centered">
         <p className="copyright">
-          Made with <Heart style={{ marginBottom: `-7px` }} /> by{` `}
+          Made with <Heart style={{ marginBottom: `-7px` }} /> by
+          {` `}
           <a className="copyright" href={site.siteMetadata.siteTwitterUrl}>
             Jacob Bolda
           </a>
