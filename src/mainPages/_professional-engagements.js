@@ -93,7 +93,7 @@ const MitchellLofts = props => (
     />
     <TileSub text="New Construction Affordable Housing Development" />
     <figure className="image is-3by2">
-      <img src={MitchellLoftsPhoto} />
+      <img src={MitchellLoftsPhoto} alt="Mitchell Market Lofts Elevation" />
     </figure>
     <TileContent>
       <p>
@@ -174,6 +174,7 @@ const EngineersWithoutBorders = props => (
     <TileSub text="MSOE Student Chapter" />
     <figure className="image is-3by2">
       <iframe
+        title="Tres Cruces Time Lapse"
         src="https://www.youtube.com/embed/rtTc8N6SGns"
         style={{
           position: "absolute",
@@ -229,7 +230,7 @@ const REUTile = props => (
     />
     <TileSub text="3D Printing Research Back in 2009" />
     <figure className="image">
-      <img src={EcotectPhoto} />
+      <img src={EcotectPhoto} alt="Ecotect Daylighting Analysis" />
     </figure>
     <TileContent>
       <p>
