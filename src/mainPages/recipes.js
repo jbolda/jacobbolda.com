@@ -38,7 +38,8 @@ class SimpleRecipes extends React.Component {
                   yourself) at{" "}
                   <a href="http://recipes.amyandjacob.com" target="_blank">
                     recipes.amyandjacob.com
-                  </a>.
+                  </a>
+                  .
                 </p>
               </div>
             </div>
@@ -80,7 +81,8 @@ class SimpleRecipes extends React.Component {
                           <p className="heading">Rating</p>
                           <p className="">
                             {checkBlank(recipe.node.data.Rating)}
-                            {`\u2606`}/10
+                            {`\u2606`}
+                            /10
                           </p>
                         </div>
                       </div>
@@ -135,6 +137,7 @@ class SimpleRecipes extends React.Component {
                         href={recipe.node.data.URL}
                         className="card-footer-item"
                         target="_blank"
+                        rel="noopener"
                       >
                         Recipe Link
                       </a>

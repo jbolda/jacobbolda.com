@@ -265,7 +265,7 @@ const TileLink = ({ url, text }) => {
     return <Link to={url}>{text}</Link>;
   } else {
     return (
-      <a href={url} target="_blank">
+      <a href={url} target="_blank" rel="noopener">
         {text}
       </a>
     );
