@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-var Big = require("big.js");
+import Big from "big.js";
 import BlogPost from "../../components/jsBlogPost";
 
 export const frontmatter = {
