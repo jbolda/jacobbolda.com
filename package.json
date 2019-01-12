@@ -47,6 +47,8 @@
     "gatsby-remark-smartypants": "^2.0.7",
     "gatsby-source-airtable": "^2.0.2",
     "gatsby-source-filesystem": "2.0.11",
+    "gatsby-theme-bulma-core": "^2.0.0-alpha.23",
+    "gatsby-theme-bulma-layout": "^2.0.0-alpha.18",
     "gatsby-transformer-javascript-frontmatter": "^2.0.5",
     "gatsby-transformer-json": "^2.1.6",
     "gatsby-transformer-remark": "^2.1.17",

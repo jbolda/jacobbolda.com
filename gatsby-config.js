@@ -17,8 +17,34 @@ module.exports = {
     siteKeybaseUrl: "https://keybase.io/jbolda",
     siteKeybasePretty: "keybase.io/jbolda",
     sitePhotoUrl: "http://www.jbolda.com/photo",
-    sitePhotoPretty: "My Photographs"
+    sitePhotoPretty: "My Photographs",
+    navLinks: [
+      {url: '/recipes/', text: 'Our Recipes'}
+    ]
   },
+  __experimentalThemes: [
+    {
+      resolve: `gatsby-theme-bulma-core`,
+      options: {
+        root: __dirname,
+        palette: {
+          colors: {
+            P1: "#000000",
+            P2: "#192C3B",
+            P3: "#52777D",
+            P4: "#9EBBA9",
+            P5: "#F4F4F4"
+          }
+        }
+      }
+    },
+    {
+      resolve: `gatsby-theme-bulma-layout`,
+      options: {
+        root: __dirname
+      }
+    }
+  ],
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
