@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SimpleNav from "../../gatsby-theme-bulma-layout/Simple/SimpleNav";
+import SimpleNav from "gatsby-theme-bulma-layout/src/components/Simple/SimpleNav";
 
 class SimpleBlogPostLayout extends React.Component {
   render() {

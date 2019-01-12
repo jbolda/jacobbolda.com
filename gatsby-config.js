@@ -113,10 +113,6 @@ module.exports = {
       }
     },
     `gatsby-transformer-sharp`,
-    // `gatsby-theme-bulma`,
-    `gatsby-plugin-sass`, // imported for gatsby-theme-bulma
-    // `gatsby-theme-bulma-layout`,
-    // `gatsby-theme-bulma-blog`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {

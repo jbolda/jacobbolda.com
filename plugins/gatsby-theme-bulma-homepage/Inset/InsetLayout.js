@@ -1,6 +1,6 @@
 import React from "react";
 import SiteSidebar from "./SiteSidebar";
-import SimpleNav from "../../gatsby-theme-bulma-layout/Simple/SimpleNav";
+import SimpleNav from "../../gatsby-theme-bulma-layout/src/components/Simple/SimpleNav";
 
 class InsetLayout extends React.Component {
   render() {

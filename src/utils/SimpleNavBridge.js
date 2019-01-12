@@ -1,6 +1,6 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import SimpleNav from "../../plugins/gatsby-theme-bulma-layout/Simple/SimpleNav";
+import SimpleNav from "gatsby-theme-bulma-layout/src/components/Simple/SimpleNav";
 
 const SimpleNavBridge = props => (
   <SimpleNav {...props}>{props.children}</SimpleNav>

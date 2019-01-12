@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Img from "gatsby-image";
-import SimpleNav from "../../gatsby-theme-bulma-layout/Simple/SimpleNav";
+import SimpleNav from "../../gatsby-theme-bulma-layout/src/components/Simple/SimpleNav";
 import SiteLinks from "../shared-components/SiteLinks";
 
 class HeroLayout extends React.Component {
