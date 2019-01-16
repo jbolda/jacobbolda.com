@@ -41,7 +41,6 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     const pages = [];
     const mdSimplePage = path.resolve(`src/templates/mdSimplePage.js`);
-    const mdBlogPost = path.resolve(`src/templates/SimpleBlogPostTemplate.js`);
     const atRecipes = path.resolve(`src/templates/SimpleRecipeTemplate.js`);
 
     // Query for all markdown "nodes" and for the slug we previously created.
@@ -109,18 +108,6 @@ exports.createPages = ({ graphql, actions }) => {
               component: mdSimplePage,
               context: {
                 slug: edge.node.fields.slug
-              }
-            });
-          } else if (frontmatter.layoutType === `post`) {
-            createPage({
-              path: frontmatter.path, // required
-              component: mdBlogPost,
-              context: {
-                slug: edge.node.fields.slug,
-                heroImage: `${edge.node.fields.slug.replace(
-                  /\//gi,
-                  ""
-                )}/hero.jpg`
               }
             });
           }

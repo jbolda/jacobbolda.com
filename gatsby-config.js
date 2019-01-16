@@ -43,6 +43,12 @@ module.exports = {
       options: {
         root: __dirname
       }
+    },
+    {
+      resolve: `gatsby-theme-bulma-blog`,
+      options: {
+        root: __dirname
+      }
     }
   ],
   plugins: [
