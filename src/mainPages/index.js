@@ -334,20 +334,13 @@ export const pageQuery = graphql`
         siteTitle
         siteDescription
         siteAuthor
-        siteEmailUrl
-        siteEmailPretty
-        siteTwitterUrl
-        siteTwitterPretty
-        siteLinkedInUrl
-        siteLinkedInPretty
-        siteGithubUrl
-        siteGithubPretty
-        siteKeybaseUrl
-        siteKeybasePretty
-        siteAngelListUrl
-        siteAngelListPretty
-        sitePhotoUrl
-        sitePhotoPretty
+        siteAuthorIdentity
+        siteLanding
+        contactLinks {
+          url
+          text
+          icon
+        }
       }
     }
     file(relativePath: { eq: "profile.png" }) {

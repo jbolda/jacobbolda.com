@@ -192,27 +192,6 @@ export const pageQuery = graphql`
         }
       }
     }
-    site {
-      siteMetadata {
-        siteTitle
-        siteDescription
-        siteAuthor
-        siteEmailUrl
-        siteEmailPretty
-        siteTwitterUrl
-        siteTwitterPretty
-        siteLinkedInUrl
-        siteLinkedInPretty
-        siteGithubUrl
-        siteGithubPretty
-        siteAngelListUrl
-        siteAngelListPretty
-        siteKeybaseUrl
-        siteKeybasePretty
-        sitePhotoUrl
-        sitePhotoPretty
-      }
-    }
     file(relativePath: { eq: "assets/profile.png" }) {
       childImageSharp {
         fluid(maxWidth: 256) {

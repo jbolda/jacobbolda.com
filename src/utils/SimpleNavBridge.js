@@ -6,19 +6,4 @@ const SimpleNavBridge = props => (
   <SimpleNav {...props}>{props.children}</SimpleNav>
 );
 
-export default props => (
-  <StaticQuery
-    query={graphql`
-      query NavMetadataSimpleNavBridge {
-        site {
-          siteMetadata {
-            siteTitle
-            siteDescription
-            siteTwitterUrl
-          }
-        }
-      }
-    `}
-    render={queryData => <SimpleNavBridge site={queryData.site} {...props} />}
-  />
-);
+export default SimpleNavBridge

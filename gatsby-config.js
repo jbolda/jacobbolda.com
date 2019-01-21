@@ -3,21 +3,26 @@ module.exports = {
     siteTitle: `Jacob Bolda`,
     siteDescription: `Structural Engineer with a knack for creative solutions using code and ingenuity.`,
     siteAuthor: `Jacob Bolda`,
-
-    siteEmailUrl: "me@jacobbolda.com",
-    siteEmailPretty: "me@jacobbolda.com",
-    siteLinkedInUrl: "https://linkedin.com/in/bolda",
-    siteLinkedInPretty: "linkedin.com/in/bolda",
-    siteTwitterUrl: "https://twitter.com/jacobbolda",
-    siteTwitterPretty: "@jacobbolda",
-    siteGithubUrl: "https://github.com/jbolda",
-    siteGithubPretty: "github.com/jbolda",
-    siteAngelListUrl: "https://angel.co/jacobbolda",
-    siteAngelListPretty: "angel.co/jacobbolda",
-    siteKeybaseUrl: "https://keybase.io/jbolda",
-    siteKeybasePretty: "keybase.io/jbolda",
-    sitePhotoUrl: "http://www.jbolda.com/photo",
-    sitePhotoPretty: "My Photographs",
+    siteAuthorIdentity: `Structural Engineer`,
+    siteLanding: `
+      Focusing on the intersection of tech and Structural
+      Engineering. Masters degree in Structural Engineering
+      from the Milwaukee School of Engineering, undergrad in
+      Architectural Engineering with a minor in Management,
+      and a deep understanding of software and programming.
+      Marrying that experience with problem solving and
+      systematizing is powerful.
+    `,
+    siteContact: "https://twitter.com/jacobbolda",
+    contactLinks: [
+      { url: "mailto:me@jacobbolda.com", text: "me@jacobbolda.com", icon: ["far", "envelope"] },
+      { url: "https://twitter.com/jacobbolda", text: "@jacobbolda", icon: ["fab", "twitter"] },
+      { url: "https://linkedin.com/in/bolda", text: "linkedin.com/in/bolda", icon: ["fab","linkedin"] },
+      { url: "https://github.com/jbolda", text: "github.com/jbolda", icon: ["fab", "github"] },
+      { url: "https://keybase.io/jbolda", text: "keybase.io/jbolda", icon: ["fab", "keybase"] },
+      { url: "https://angel.co/jacobbolda", text: "angel.co/jacobbolda", icon: ["fab", "angellist"] },
+      { url: "http://www.jbolda.com/photo", text: "My Photographs", icon: ["fas", "camera"] }
+    ],
     navLinks: [
       {url: '/recipes/', text: 'Our Recipes'}
     ]
@@ -40,6 +45,12 @@ module.exports = {
     },
     {
       resolve: `gatsby-theme-bulma-layout`,
+      options: {
+        root: __dirname
+      }
+    },
+    {
+      resolve: `gatsby-theme-bulma-homepage`,
       options: {
         root: __dirname
       }
