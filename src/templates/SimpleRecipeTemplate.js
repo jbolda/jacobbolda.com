@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import SimpleNav from "gatsby-theme-bulma-layout/src/components/Simple/SimpleNav";
+import SimpleNav from "gatsby-theme-bulma-layout/src/Simple/SimpleNav";
 import Img from "gatsby-image";
 
 class SimpleRecipe extends React.Component {

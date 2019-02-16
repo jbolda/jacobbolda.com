@@ -1,5 +1,5 @@
 import React from "react";
-import SimpleChrome from "gatsby-theme-bulma-blog/src/components/Simple/SimpleChrome";
+import SimpleChrome from "gatsby-theme-bulma-blog/src/Simple/SimpleChrome";
 
 const SimpleChromeBridge = props => (
   <SimpleChrome
