@@ -5345,9 +5345,9 @@ gatsby-theme-bulma-core@^2.0.0-alpha.34:
     typography-theme-lawton "^0.16.18"
 
 gatsby-theme-bulma-homepage@^2.0.0-alpha.9:
-  version "2.0.0-alpha.13"
-  resolved "https://registry.yarnpkg.com/gatsby-theme-bulma-homepage/-/gatsby-theme-bulma-homepage-2.0.0-alpha.13.tgz#e2631dd173966b7962cd2ef2737c920be5a1b275"
-  integrity sha512-KbfBG3W9rsxSgHbDHyK6rHET8pa+HbbPKiGVfgi7jtB6ZMwirYEc5J63kIVCbh2JAWPs1DqD3F0ZoAqv91NU2Q==
+  version "2.0.0-alpha.16"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-bulma-homepage/-/gatsby-theme-bulma-homepage-2.0.0-alpha.16.tgz#555f08e66598c2d1d65a08d6a2b801ffcd17b6e6"
+  integrity sha512-AF7lO1a9K/R+zUBTKMWL9aOdzw5icg5bChvRmSYrxA/yFefN4W+Xsb4bcmLN7BCevCFpVq74Mr703W3dQFUuyw==
 
 gatsby-theme-bulma-layout@^2.0.0-alpha.30:
   version "2.0.0-alpha.34"

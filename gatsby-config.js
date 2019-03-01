@@ -49,7 +49,8 @@ module.exports = {
     {
       resolve: `gatsby-theme-bulma-blog`,
       options: {
-        root: __dirname
+        root: __dirname,
+        showArticlesOnHomepage: false
       }
     }
   ],

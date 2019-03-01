@@ -4,13 +4,14 @@ import SimpleNav from "gatsby-theme-bulma-layout/src/Simple/SimpleNav";
 import HeroLanding from "gatsby-theme-bulma-homepage/src/Hero/components/HeroLanding";
 import HeroAbout from "gatsby-theme-bulma-homepage/src/Hero/components/HeroAbout";
 import ProfessionalEngagements from "../../../components/professionalEngagements";
+import HeroArticles from "gatsby-theme-bulma-homepage/src/Hero/components/HeroArticles";
 import RecipeList from "../../../components/recipeList";
 
 export const frontmatter = { path: "/" };
 
 const SiteIndex = props => (
   <SimpleNav location={props.location}>
-    <HeroLanding />
+    <HeroLanding textColor=' ' />
     <HeroAbout />
     <section className="section is-fourthary edge--top">
       <h1 className="title">Professional Engagements</h1>
@@ -20,6 +21,7 @@ const SiteIndex = props => (
         <ProfessionalEngagements />
       </div>
     </section>
+    <HeroArticles swatch='secondary' edge='edge--top--reverse' />
     {props.children}
     <section className="section is-fourthary edge--top">
       <h1 className="title">
