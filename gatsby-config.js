@@ -31,16 +31,7 @@ module.exports = {
     {
       resolve: `gatsby-theme-bulma-core`,
       options: {
-        root: __dirname,
-        palette: {
-          colors: {
-            P1: "#000000",
-            P2: "#192C3B",
-            P3: "#52777D",
-            P4: "#9EBBA9",
-            P5: "#F4F4F4"
-          }
-        }
+        root: __dirname
       }
     },
     {
@@ -66,15 +57,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `pages`,
-        path: `${__dirname}/src/mainPages/`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `articles`,
-        path: `${__dirname}/src/articles/`
+        name: `main`,
+        path: `${__dirname}/src/main/`
       }
     },
     {
@@ -82,6 +66,13 @@ module.exports = {
       options: {
         name: `assets`,
         path: `${__dirname}/src/assets/`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `articles`,
+        path: `${__dirname}/src/articles/`
       }
     },
     `gatsby-transformer-javascript-frontmatter`,
@@ -96,7 +87,7 @@ module.exports = {
             tableView: `List`,
             queryName: `Recipes`,
             mapping: { Attachments: `fileNode` },
-            tableLinks: [`Cooking Method`, `Style`]
+            tableLinks: [`Cooking_Method`, `Style`]
           },
           {
             baseId: `appcL6Jdj7ZrhTg4q`,
