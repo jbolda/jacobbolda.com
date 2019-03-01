@@ -6,4 +6,4 @@ const HeroLayoutBridge = props => (
   <HeroLayout {...props}>{props.children}</HeroLayout>
 );
 
-export default HeroLayoutBridge
+export default HeroLayoutBridge;

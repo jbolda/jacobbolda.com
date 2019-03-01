@@ -12,4 +12,4 @@ const SimpleChromeBridge = props => (
   </SimpleChrome>
 );
 
-export default SimpleChromeBridge
+export default SimpleChromeBridge;

@@ -6,4 +6,4 @@ const SimpleNavBridge = props => (
   <SimpleNav {...props}>{props.children}</SimpleNav>
 );
 
-export default SimpleNavBridge
+export default SimpleNavBridge;

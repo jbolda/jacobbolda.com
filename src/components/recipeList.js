@@ -1,13 +1,16 @@
-import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import { Link, useStaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 
 const RecipeList = () => {
   const { recipes } = useStaticQuery(
     graphql`
-    query RecipeList {
+      query RecipeList {
         recipes: allAirtable(
-          filter: { table: { eq: "Recipes" }, data: { Last_Made: { ne: null } } }
+          filter: {
+            table: { eq: "Recipes" }
+            data: { Last_Made: { ne: null } }
+          }
           sort: { fields: [data___Last_Made], order: DESC }
           limit: 3
         ) {
@@ -47,12 +50,12 @@ const RecipeList = () => {
         }
       }
     `
-  )
+  );
 
-  return recipeList(recipes.edges)
-}
+  return recipeList(recipes.edges);
+};
 
-export default RecipeList
+export default RecipeList;
 
 const recipeList = recipes =>
   recipes.map(recipe => (
