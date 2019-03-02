@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import Big from "big.js";
 import BlogPost from "../../components/jsBlogPost";
 
+// eslint-disable-line-next-line
 export const frontmatter = {
   title: "Loan Efficiency Calculator",
   written: "2017-01-22",
@@ -233,10 +234,11 @@ class loanEfficiencyCalculator extends React.Component {
 
   loanInputs() {
     return this.state.loans.map((loan, index) => {
+      let upArrow
       if (index === 0) {
-        var upArrow = <span />;
+        upArrow = <span />;
       } else {
-        var upArrow = (
+        upArrow = (
           <button
             className="button is-info"
             onClick={this.handleShift.bind(this, index)}
@@ -281,7 +283,7 @@ class loanEfficiencyCalculator extends React.Component {
                 <label className="label">Balance</label>
                 <div className="field has-addons">
                   <p className="control">
-                    <a className="button is-static">$</a>
+                    <button className="button is-static">$</button>
                   </p>
                   <p
                     className="control is-expanded"
@@ -314,7 +316,7 @@ class loanEfficiencyCalculator extends React.Component {
                     />
                   </p>
                   <p className="control" style={{ paddingRight: "0.5rem" }}>
-                    <a className="button is-static">%</a>
+                    <button className="button is-static">%</button>
                   </p>
                 </div>
               </div>
@@ -324,7 +326,7 @@ class loanEfficiencyCalculator extends React.Component {
                 <label className="label">Minimum Payment</label>
                 <div className="field has-addons">
                   <p className="control">
-                    <a className="button is-static">$</a>
+                    <button className="button is-static">$</button>
                   </p>
                   <p className="control is-expanded">
                     <input
@@ -372,8 +374,6 @@ class loanEfficiencyCalculator extends React.Component {
   }
 
   render() {
-    const { frontmatter } = this.props.data.post;
-
     return (
       <BlogPost
         {...this.props}

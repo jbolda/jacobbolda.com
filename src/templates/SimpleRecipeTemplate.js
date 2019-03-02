@@ -21,7 +21,7 @@ class SimpleRecipe extends React.Component {
                     <Link to="/recipes/">Recipes</Link>
                   </li>
                   <li className="is-active">
-                    <a href="#" aria-current="page">
+                    <a href={`/${recipe.fields.slug}`} aria-current="page">
                       {recipe.data.Name}
                     </a>
                   </li>
@@ -29,7 +29,7 @@ class SimpleRecipe extends React.Component {
               </nav>
               <div className="card">
                 {recipe.data.Attachments &&
-                recipe.data.Attachments.localFiles != 0 ? (
+                recipe.data.Attachments.localFiles !== 0 ? (
                   <div className="card-image">
                     <figure className="image">
                       <Img
@@ -37,13 +37,14 @@ class SimpleRecipe extends React.Component {
                           recipe.data.Attachments.localFiles[0].childImageSharp
                             .fluid
                         }
+                        alt={recipe.data.Name}
                       />
                     </figure>
                   </div>
                 ) : (
                   <div className="card-image">
                     <figure className="image is-3by2">
-                      <img src={this.props.data.placeholder.publicURL} />
+                      <img src={this.props.data.placeholder.publicURL} alt='recipe placeholder' />
                     </figure>
                   </div>
                 )}
@@ -120,6 +121,7 @@ class SimpleRecipe extends React.Component {
                       href={recipe.data.URL}
                       className="card-footer-item"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Recipe Link
                     </a>
@@ -159,6 +161,9 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+      fields {
+        slug
       }
     }
     file(relativePath: { eq: "assets/profile.png" }) {

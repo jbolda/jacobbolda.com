@@ -155,6 +155,7 @@ const ProgrammingKnowledge = props => (
         <a
           href="https://stackoverflow.com/questions/14614923/excel-formula-identifying-number-of-date-ranges-within-a-range/14616697#14616697"
           target="_blank"
+          rel="noopener noreferrer"
         >
           involved formulas and code under unique constraints
         </a>{" "}
@@ -266,7 +267,7 @@ const TileLink = ({ url, text }) => {
     return <Link to={url}>{text}</Link>;
   } else {
     return (
-      <a href={url} target="_blank" rel="noopener">
+      <a href={url} target="_blank" rel="noopener noreferrer">
         {text}
       </a>
     );

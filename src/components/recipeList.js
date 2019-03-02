@@ -62,7 +62,7 @@ const recipeList = recipes =>
     <div className="column is-one-third" key={recipe.node.id}>
       <div className="card">
         {recipe.node.data.Attachments &&
-        recipe.node.data.Attachments.localFiles != 0 ? (
+        recipe.node.data.Attachments.localFiles !== 0 ? (
           <div className="card-image">
             <figure className="image">
               <Img
@@ -76,7 +76,7 @@ const recipeList = recipes =>
         ) : (
           <div className="card-image">
             <figure className="image is-5by4">
-              <img src={this.props.data.placeholder.publicURL} />
+              <img src={this.props.data.placeholder.publicURL} alt="placeholder recipe" />
             </figure>
           </div>
         )}
@@ -135,6 +135,7 @@ const recipeList = recipes =>
               href={recipe.node.data.URL}
               className="card-footer-item"
               target="_blank"
+              rel="noopener noreferrer"
             >
               Recipe Link
             </a>

@@ -2,6 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import BlogPost from "../../components/jsBlogPost";
 
+// eslint-disable-line-next-line
 export const frontmatter = {
   title: "Steel Compression Calculations",
   written: "2016-11-05",
@@ -19,8 +20,6 @@ class calculatorPost extends React.Component {
   }
 
   render() {
-    let { frontmatter } = this.props.data.post;
-
     return (
       <BlogPost {...this.props}>
         <div className="content">

@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby";
 import SimpleNavBridge from "../utils/SimpleNavBridge";
 import Img from "gatsby-image";
 
+// eslint-disable-next-line
 export const frontmatter = {
   title: "Recipes",
   layoutType: "page",
@@ -27,6 +28,7 @@ class SimpleRecipes extends React.Component {
                   <a
                     href="https://www.airtable.com/?ref=www.jacobbolda.com"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Airtable.com
                   </a>{" "}
@@ -36,7 +38,10 @@ class SimpleRecipes extends React.Component {
                   </Link>{" "}
                   that I wrote. You can see the Airtable (and copy it for
                   yourself) at{" "}
-                  <a href="http://recipes.amyandjacob.com" target="_blank">
+                  <a 
+                    href="http://recipes.amyandjacob.com"
+                    target="_blank" 
+                    rel="noopener noreferrer">
                     recipes.amyandjacob.com
                   </a>
                   .
@@ -51,7 +56,7 @@ class SimpleRecipes extends React.Component {
               <div className="column is-one-third" key={recipe.node.id}>
                 <div className="card">
                   {recipe.node.data.Attachments &&
-                  recipe.node.data.Attachments.localFiles != 0 ? (
+                  recipe.node.data.Attachments.localFiles !== 0 ? (
                     <div className="card-image">
                       <figure className="image">
                         <Img
@@ -59,13 +64,14 @@ class SimpleRecipes extends React.Component {
                             recipe.node.data.Attachments.localFiles[0]
                               .childImageSharp.fluid
                           }
+                          alt={recipe.data.Name}
                         />
                       </figure>
                     </div>
                   ) : (
                     <div className="card-image">
                       <figure className="image is-5by4">
-                        <img src={this.props.data.placeholder.publicURL} />
+                        <img src={this.props.data.placeholder.publicURL} alt='placeholder recipe' />
                       </figure>
                     </div>
                   )}
@@ -137,7 +143,7 @@ class SimpleRecipes extends React.Component {
                         href={recipe.node.data.URL}
                         className="card-footer-item"
                         target="_blank"
-                        rel="noopener"
+                        rel="noopener noreferrer"
                       >
                         Recipe Link
                       </a>

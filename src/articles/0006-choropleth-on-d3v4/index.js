@@ -1,6 +1,5 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { findDOMNode } from "react-dom";
 // import ChoroplethText from './_choropleth.md';
 import * as d3 from "d3";
 import BlogPost from "../../components/jsBlogPost";
@@ -19,10 +18,6 @@ export const frontmatter = {
 };
 
 class choroplethBase extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.d3Node = d3.select("div#states");
     let measurements = {
@@ -155,7 +150,7 @@ average: tooltip, path fill
 
   let states = svg.selectAll("path.states").data(data);
 
-  let drawStates = states
+  states
     .enter()
     .append("path")
     .attr("class", "state")
@@ -204,6 +199,7 @@ let mouseOut = () => {
     .style("opacity", 0);
 };
 
+// eslint-disable-next-line
 function scale(scaleFactor, width, height) {
   return d3.geoTransform({
     point: function(x, y) {
