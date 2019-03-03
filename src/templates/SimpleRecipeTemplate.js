@@ -8,7 +8,7 @@ class SimpleRecipe extends React.Component {
     let recipe = this.props.data.airtable;
 
     return (
-      <SimpleNav site={this.props.data.site} {...this.props}>
+      <SimpleNav {...this.props}>
         <div className="section">
           <div className="columns is-centered">
             <div className="column is-half">

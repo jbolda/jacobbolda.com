@@ -5316,9 +5316,9 @@ gatsby-source-filesystem@2.0.23:
     xstate "^3.1.0"
 
 gatsby-theme-bulma-blog@^2.0.0-alpha.30:
-  version "2.0.0-alpha.35"
-  resolved "https://registry.yarnpkg.com/gatsby-theme-bulma-blog/-/gatsby-theme-bulma-blog-2.0.0-alpha.35.tgz#057ca524ef21c302f365e57755160b2588e0e406"
-  integrity sha512-f+jLZt91s6e/FHKp9H8MFvVy17Ds4Umif9c6OV6KMm/bbMGq8tXGi1v+BIWVAQ/QcfZ1UZviFAwRUIpRU6kZxw==
+  version "2.0.0-alpha.38"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-bulma-blog/-/gatsby-theme-bulma-blog-2.0.0-alpha.38.tgz#33dce94dd4479eebe32189a00f032d099e137b95"
+  integrity sha512-Zhqo4mJz4tywAeCAzzRb6EFUYjvXPFYl9SSH8ql+5a+gaLP0AI/0XULOpFdmWbuzxIqo7uYwcoyXMRv31JznBg==
 
 gatsby-theme-bulma-core@^2.0.0-alpha.34:
   version "2.0.0-alpha.37"

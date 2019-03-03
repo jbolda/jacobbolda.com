@@ -65,7 +65,7 @@ class choroplethBase extends React.Component {
   renderText() {
     return (
       <div
-        className="content"
+        className="content has-text-grey-darker"
         dangerouslySetInnerHTML={{
           __html: this.props.data.markdownRemark.html
         }}
@@ -227,7 +227,7 @@ let mergeData = (d1, d1key, d2, d2key) => {
 export const pageQuery = graphql`
   query choroplethOnD3v4($slug: String!) {
     markdownRemark(
-      fields: { slug: { eq: "/2017-03-09-choropleth-on-d3v4/_choropleth/" } }
+      fields: { slug: { eq: "/0006-choropleth-on-d3v4/_choropleth/" } }
     ) {
       html
     }
@@ -235,12 +235,12 @@ export const pageQuery = graphql`
       ...JSBlogPost
     }
     stateshapes: file(
-      relativePath: { eq: "2017-03-09-choropleth-on-d3v4/states.json" }
+      relativePath: { eq: "0006-choropleth-on-d3v4/states.json" }
     ) {
       publicURL
     }
     statedata: file(
-      relativePath: { eq: "2017-03-09-choropleth-on-d3v4/states_data.csv" }
+      relativePath: { eq: "0006-choropleth-on-d3v4/states_data.csv" }
     ) {
       publicURL
     }

@@ -64,7 +64,7 @@ class SimpleRecipes extends React.Component {
                             recipe.node.data.Attachments.localFiles[0]
                               .childImageSharp.fluid
                           }
-                          alt={recipe.data.Name}
+                          alt={recipe.node.data.Name}
                         />
                       </figure>
                     </div>
