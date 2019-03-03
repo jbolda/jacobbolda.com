@@ -1,14 +1,15 @@
 const path = require(`path`);
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions;
+exports.onCreateNode = ({ node, actions, getNode, createNodeId }) => {
+  const { createNodeField, createNode } = actions;
+  const fileNode = getNode(node.parent);
+
   let slug;
   if (
     node.internal.type === `MarkdownRemark` ||
     node.internal.type === `JavascriptFrontmatter`
   ) {
     try {
-      const fileNode = getNode(node.parent);
       const parsedFilePath = path.parse(fileNode.relativePath);
       if (parsedFilePath.name !== `index` && parsedFilePath.dir !== ``) {
         slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
