@@ -184,6 +184,8 @@ let tooltipHtml = d => {
 let mouseOver = d => {
   let tooltip = d3
     .select("#tooltip")
+  
+  tooltip
     .html(tooltipHtml(d))
     .style("opacity", 0.9)
     .style("left", d3.event.pageX + "px")

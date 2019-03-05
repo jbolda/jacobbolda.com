@@ -5312,9 +5312,9 @@ gatsby-source-filesystem@2.0.23:
     xstate "^3.1.0"
 
 gatsby-theme-bulma-blog@^2.0.0-alpha.30:
-  version "2.0.0-alpha.41"
-  resolved "https://registry.yarnpkg.com/gatsby-theme-bulma-blog/-/gatsby-theme-bulma-blog-2.0.0-alpha.41.tgz#84400975914b47e18bfc92c3dff38eea329b3087"
-  integrity sha512-zTh2eR2PiEDI1+timgmKfa6Y7i9z9SXbUPkw+UR1zPq3anVjzkeg98ixEiKHGY19gDP/ik+ImYyPcvghhaseNg==
+  version "2.0.0-alpha.42"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-bulma-blog/-/gatsby-theme-bulma-blog-2.0.0-alpha.42.tgz#b2e50ca71162850eff10b71286c1528417c3a5d7"
+  integrity sha512-HyE+j8ibJI0CoSb0Hj6AzB/A2VQRD6lMRgbS/n/Uak8VoLIBKANPogx0uXsOWFNIxe5Jxj94AuoR5uuDusrE3Q==
 
 gatsby-theme-bulma-core@^2.0.0-alpha.34:
   version "2.0.0-alpha.40"
@@ -5340,9 +5340,9 @@ gatsby-theme-bulma-core@^2.0.0-alpha.34:
     typography-theme-lawton "^0.16.18"
 
 gatsby-theme-bulma-homepage@^2.0.0-alpha.9:
-  version "2.0.0-alpha.20"
-  resolved "https://registry.yarnpkg.com/gatsby-theme-bulma-homepage/-/gatsby-theme-bulma-homepage-2.0.0-alpha.20.tgz#b2f3aa1c9474a9bab0d1313b5616539467cf1623"
-  integrity sha512-k9O8JFsPxE1uQ94soqDb27mUbX9Fj+ZdaeQKkLK/dS48xEj26kdm7mQnFGpBNMzPYmjjDgcPv8rqYQUhIOqfYw==
+  version "2.0.0-alpha.21"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-bulma-homepage/-/gatsby-theme-bulma-homepage-2.0.0-alpha.21.tgz#57c1d5b35799aaecfd84a2182b46f0db294148bf"
+  integrity sha512-IoYYJZ8m2HjMx9nn1TP3Fc87YeTNzCZzyvhBEXM7LJxBz5hrvl6k/9EuoSvaS6heBXLQ0pOtRdGoIKzevYvMjw==
 
 gatsby-theme-bulma-layout@^2.0.0-alpha.30:
   version "2.0.0-alpha.34"
