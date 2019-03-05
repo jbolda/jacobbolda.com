@@ -5317,9 +5317,9 @@ gatsby-theme-bulma-blog@^2.0.0-alpha.30:
   integrity sha512-zTh2eR2PiEDI1+timgmKfa6Y7i9z9SXbUPkw+UR1zPq3anVjzkeg98ixEiKHGY19gDP/ik+ImYyPcvghhaseNg==
 
 gatsby-theme-bulma-core@^2.0.0-alpha.34:
-  version "2.0.0-alpha.38"
-  resolved "https://registry.yarnpkg.com/gatsby-theme-bulma-core/-/gatsby-theme-bulma-core-2.0.0-alpha.38.tgz#5c330da2e3e3741f0627e4d499de46ff6fca8cd1"
-  integrity sha512-S9orPYiaHqZI2wOyRaHcHUOdLVJ4PBVafHmZZ0t3mNXoSQ+eFez8K1Q4ayg7AKWWYhHuvIF+49WVgurm4co7dQ==
+  version "2.0.0-alpha.40"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-bulma-core/-/gatsby-theme-bulma-core-2.0.0-alpha.40.tgz#b9f57959a0f218cd9614107001838cd37b91409e"
+  integrity sha512-da8DGjov4Pp+jwllidTK+rgzC6SR2MaSVbQ2JSTyhNIXF2JJKNSnDFXZ1WpIPmgyzFjh5LiViOc/NeL2ybXf2Q==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.15"
     "@fortawesome/free-brands-svg-icons" "^5.7.2"
@@ -5333,7 +5333,6 @@ gatsby-theme-bulma-core@^2.0.0-alpha.34:
     gatsby-plugin-typography "^2.2.7"
     gatsby-theme "^0.0.1"
     node-sass "^4.11.0"
-    normalize.css "^8.0.1"
     prismjs "^1.15.0"
     react-helmet "^5.2.0"
     react-typography "^0.16.18"
@@ -8357,11 +8356,6 @@ normalize-url@^3.0.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
   integrity sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
-
-normalize.css@^8.0.1:
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-8.0.1.tgz#9b98a208738b9cc2634caacbc42d131c97487bf3"
-  integrity sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==
 
 npm-bundled@^1.0.1:
   version "1.0.6"
