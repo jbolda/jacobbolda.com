@@ -80,6 +80,7 @@ module.exports = {
     `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-airtable`,
+      apiKey: process.env.AIRTABLE_API_KEY,
       options: {
         tables: [
           {
