@@ -1,0 +1,45 @@
+---
+title: Converting Out of Evernote
+written: "2019-07-26"
+layoutType: post
+path: "/converting-out-of-evernote/"
+category: "files"
+description: "I have been using Evernote for some time and when I first started using it it seemed to be the easiest way to scan documents and have them searchable. It runs a process called OCR or optical character recognition on the images that it stores with the note. This is handy because then rather than just relying on the name of a note or some tags, I can more easily get back to a document just based off of a search. After some "structural" changes at Evernote, it seemed like it might be worth entertaining the idea of finding a different platform to store my documents. Well unfortunately, there doesn't really seem to be anything for my use case."
+---
+## Conversion off of Evernote
+
+I have been using Evernote for some time and when I first started using it it seemed to be the easiest way to scan documents and have them searchable. It runs a process called OCR or optical character recognition on the images that it stores with the note. This is handy because then rather than just relying on the name of a note or some tags, I can more easily get back to a document just based off of a search. After some "structural" changes at Evernote, it seemed like it might be worth entertaining the idea of finding a different platform to store my documents. Well unfortunately, there doesn't really seem to be anything for my use case. 
+
+I'm mostly looking to put financial and health type of documents in a safe repository. I am not using the actual note taking  which it seems Evernote is really built around. Having looked at other systems though and looking into what I would need to do to switch off of Evernote, it was rather apparent that they were using the OCR and searchability of the files as a way to keep you locked into the system. The OCR wasn't stored with the file itself in any ways. This actually encouraged me more to get off of Evernote even if it meant I had to not use an online system. I did still want to make it easily accessible to my wife, and I wanted to be able to access these files and search them not only on them my desktop / laptop, but also on mobile.
+
+## Deciding How to Store Documents
+
+After spending some time looking at different possibilities, the PDF was probably the safest way to go for my use case. Especially since the industries where these documents originated were rather comfortable using PDFs already. Unfortunately, printing out of Evernote is rather poor and it's doesn't deal well with scanned images. It would not rotate images or it would cut them off. On top of that, I had on the order of 250 notes or so that I needed to export. There isn't a batch option for printing. That would be no small effort even if the printing came out decent. I looked into a couple open source apps that use the Evernote API. It didn't seem that any of them had a batch export feature that I was looking for either.
+
+## Exporting The Notes
+
+After months on and off looking, I stumbled upon a little library that uses the Evernote backup files, parse those then dump them out to markdown. I am rather familiar with markdown having used it on this website and another places, so it seemed a natural path to pursue. It is pretty simply called [evernote-dump](https://github.com/exomut/evernote-dump) written by [exomut](https://github.com/exomut). To get the `.enex` files for this code to operate on, I used the [export feature](https://help.evernote.com/hc/en-us/articles/208313528-How-to-back-up-and-restore-your-data-in-Evernote-for-Windows) in the Evernote desktop app.
+
+## Processing The Notes
+
+I knew my next step from there, a library called Pandoc. I had actually tested using it to print off from an HTML export out of Evernote prior to this point. It probably doesn't need to be said that that path didn't work out. Pandoc can take in markdown and output PDFs. As I am tackling this in Windows and rather familiar with using python, I wrote a quick python script to batch PDF all of be markdown files in a folder. You can see the script below. I placed it in a file called `evernote-to-markdown.py`.
+
+```python
+import glob, os, subprocess
+
+for file in glob.glob('./*.md'):
+    filename, ext = os.path.splitext(file)
+    print('PDFing ' + filename[:2])
+    subprocess.call(['pandoc', file, '-s', '-V', 'geometry:margin=0.15in', '-o', '.'.join([filename, 'pdf']), '-f', 'commonmark', '--pdf-engine=C:/texlive/2019/bin/win32/pdflatex.exe'])
+
+```
+
+When you run this script, it will output a PDF for every one of your notes in the folder the command was run from. I used the terminal the change directory, `cd FolderName`, to the location in question then run `python evernote-to-markdown.py` (assuming you have the script file in this folder as well). I used the texlive PDF engine, which I believe is a Windows specific LaTeX implementation. I found installation instructions between the Pandoc docs and LaTeX docs for all of this.
+
+The `evernote-dump` names all of your markdown files based on the name of your related notes. The Pandoc conversion respects those names and will name the PDF files the same. The output PDF also included some of the metadata information at the bottom of the file including the note tags. The PDF layout that came out was "squished", and I had to decrease the margin so I could see more of the picture. Despite it's functional layout, it's sufficient for my use case. All I need is a document that I likely wouldn't go back to view ever, but if I need to I have it. It is also needed for documentation / legal type purposes. Now this export is just making a PDF with these pictures which is not searchable so that was a whole other issue that I needed to look into. At least I have PDF that I could use, and I was heading down the path to break my dependency on Evernote.
+
+## In The Future
+
+This process just deals with all my past documents, but I had found a separate app to do all my scans in the future. The phone app is called [scanbot.io](https://scanbot.io/). Scanbot is a rather nice app that also does OCR on locally on your device so I don't need to deal with those considerations in the future. All of my pain was migrating over my past documents. The value of having PDFs that are OCRed is that I can drop these in Google Drive, I can use that to search both on desktop and on mobile. If I ever end up using a document management system then all that searching functionality should come through there as well. Having documents OCRed through Scanbot checked all my boxes on the list of requirements for for all future use cases. This `.enex` dump got me part of the way there to migrating over all of my old documents.
+
+You can see my next (upcoming) post about how I used another library to add the searchable text to these newly created PDFs.
