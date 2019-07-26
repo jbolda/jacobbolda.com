@@ -4,8 +4,9 @@ written: "2019-07-26"
 layoutType: post
 path: "/converting-out-of-evernote/"
 category: "files"
-description: "I have been using Evernote for some time and when I first started using it it seemed to be the easiest way to scan documents and have them searchable. It runs a process called OCR or optical character recognition on the images that it stores with the note. This is handy because then rather than just relying on the name of a note or some tags, I can more easily get back to a document just based off of a search. After some "structural" changes at Evernote, it seemed like it might be worth entertaining the idea of finding a different platform to store my documents. Well unfortunately, there doesn't really seem to be anything for my use case."
+description: 'I have been using Evernote for some time and when I first started using it it seemed to be the easiest way to scan documents and have them searchable. It runs a process called OCR or optical character recognition on the images that it stores with the note. This is handy because then rather than just relying on the name of a note or some tags, I can more easily get back to a document just based off of a search. After some "structural" changes at Evernote, it seemed like it might be worth entertaining the idea of finding a different platform to store my documents. Well unfortunately, there doesn't really seem to be anything for my use case.'
 ---
+
 ## Conversion off of Evernote
 
 I have been using Evernote for some time and when I first started using it it seemed to be the easiest way to scan documents and have them searchable. It runs a process called OCR or optical character recognition on the images that it stores with the note. This is handy because then rather than just relying on the name of a note or some tags, I can more easily get back to a document just based off of a search. After some "structural" changes at Evernote, it seemed like it might be worth entertaining the idea of finding a different platform to store my documents. Well unfortunately, there doesn't really seem to be anything for my use case. 
@@ -31,7 +32,6 @@ for file in glob.glob('./*.md'):
     filename, ext = os.path.splitext(file)
     print('PDFing ' + filename[:2])
     subprocess.call(['pandoc', file, '-s', '-V', 'geometry:margin=0.15in', '-o', '.'.join([filename, 'pdf']), '-f', 'commonmark', '--pdf-engine=C:/texlive/2019/bin/win32/pdflatex.exe'])
-
 ```
 
 When you run this script, it will output a PDF for every one of your notes in the folder the command was run from. I used the terminal the change directory, `cd FolderName`, to the location in question then run `python evernote-to-markdown.py` (assuming you have the script file in this folder as well). I used the texlive PDF engine, which I believe is a Windows specific LaTeX implementation. I found installation instructions between the Pandoc docs and LaTeX docs for all of this.
