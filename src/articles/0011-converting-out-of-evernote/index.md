@@ -4,7 +4,7 @@ written: "2019-07-26"
 layoutType: post
 path: "/converting-out-of-evernote/"
 category: "files"
-description: 'I have been using Evernote for some time and when I first started using it it seemed to be the easiest way to scan documents and have them searchable. It runs a process called OCR or optical character recognition on the images that it stores with the note. This is handy because then rather than just relying on the name of a note or some tags, I can more easily get back to a document just based off of a search. After some "structural" changes at Evernote, it seemed like it might be worth entertaining the idea of finding a different platform to store my documents. Well unfortunately, there doesn't really seem to be anything for my use case.'
+description: "I have been using Evernote for some time and when I first started using it it seemed to be the easiest way to scan documents and have them searchable. It runs a process called OCR or optical character recognition on the images that it stores with the note. With changes at Evernote, it seemed like it might be worth entertaining the idea of finding a different platform to store my documents."
 ---
 
 ## Conversion off of Evernote
