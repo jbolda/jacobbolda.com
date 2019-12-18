@@ -41,7 +41,10 @@ module.exports = {
         icon: ["fas", "camera"]
       }
     ],
-    navLinks: [{ url: "/recipes/", text: "Our Recipes" }]
+    navLinks: [
+      { url: "/articles/", text: "Articles" },
+      { url: "/recipes/", text: "Recipes" }
+    ]
   },
   plugins: [
     {
@@ -100,8 +103,20 @@ module.exports = {
         ]
       }
     },
-    "gatsby-plugin-theme-ui",
-    `gatsby-plugin-mdx`,
+    `gatsby-plugin-theme-ui`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590
+            }
+          }
+        ]
+      }
+    },
     {
       resolve: `@jbolda/gatsby-theme-homepage`,
       options: { showArticlesOnHomepage: true }
@@ -113,6 +128,7 @@ module.exports = {
     {
       resolve: `gatsby-theme-recipes`,
       options: {
+        siteUrl: "https://www.jacobolda.com/",
         sources: ["Airtable"],
         rootBase: "/recipes/"
       }
