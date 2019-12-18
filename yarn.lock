@@ -1080,10 +1080,10 @@
     gatsby-plugin-compile-es6-packages "2.1.0"
     isolated-theme-ui "1.0.1"
 
-"@jbolda/gatsby-theme-homepage@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-homepage/-/gatsby-theme-homepage-0.0.6.tgz#83e06b24582d20fed19b0a06a6c9931e0500f370"
-  integrity sha512-3iYQkfppPK9RISJtPFW8/yfgiO0rPUlEeqYsxxXtTNXYyKNa0gsrOh3KCalJsqQwTrJzl/1RHbUzcMnggdOu1A==
+"@jbolda/gatsby-theme-homepage@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-homepage/-/gatsby-theme-homepage-0.0.7.tgz#8809345100f0073435a6a0773076147b136a7f52"
+  integrity sha512-geMPE44JmbQBZk1SWt3jaARvrGhRQ+U6Z7AvLYM/YsLJ5E9Th4pcITZbgz+A3dTcdtks4v090P6/5P7AshBS5A==
   dependencies:
     "@jbolda/isolated-theme-ui-components" "^0.0.4"
     gatsby-plugin-compile-es6-packages "^2.1.0"
