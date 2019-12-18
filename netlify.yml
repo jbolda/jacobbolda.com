@@ -1,0 +1,7 @@
+build:
+  publish: public/
+  lifecycle:
+    build: gatsby build
+
+plugins:
+  - type: netlify-plugin-gatsby-cache
