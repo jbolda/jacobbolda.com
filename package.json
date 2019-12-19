@@ -26,6 +26,9 @@
     "url": "https://github.com/jbolda/jbolda.github.io/issues"
   },
   "homepage": "https://www.jacobbolda.com",
+  "engines": {
+    "node": ">=10.*"
+  },
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@jbolda/gatsby-theme-articles": "^0.0.6",
