@@ -1,40 +1,12 @@
 import React from "react";
-import { graphql } from "gatsby";
-import BlogPost from "../../components/jsBlogPost";
 
-// eslint-disable-line-next-line
-export const frontmatter = {
-  title: "Steel Compression Calculations",
-  written: "2016-11-05",
-  updated: "2016-11-05",
-  layoutType: "post",
-  path: "/steel-compression-calculations/",
-  category: "engineering",
-  description:
-    "Putting together some functions to run the compression calculations from the steel manual."
+export default () => {
+  // componentDidMount() {
+  //   window.c = { ...this.props.c };
+  // }
+
+  return <div>Test</div>;
 };
-
-class calculatorPost extends React.Component {
-  componentDidMount() {
-    window.c = { ...this.props.c };
-  }
-
-  render() {
-    return (
-      <BlogPost {...this.props}>
-        <div className="content">
-          <p>
-            These functions are written in javascript and embedded into the
-            window. Press F12 (on windows in chrome) to get into the developer
-            console. Click the console tab, and run c.list() in the console.
-          </p>
-        </div>
-      </BlogPost>
-    );
-  }
-}
-
-export default calculatorPost;
 
 let calculator = {};
 calculator.E = 29000;
@@ -191,15 +163,3 @@ calculator.list = () => {
 calculator.inDegrees = Math.PI / 180;
 
 calculator.inRadians = 180 / Math.PI;
-
-calculatorPost.defaultProps = {
-  c: calculator
-};
-
-export const pageQuery = graphql`
-  query steelCompressionCalcs($slug: String!) {
-    post: javascriptFrontmatter(fields: { slug: { eq: $slug } }) {
-      ...JSBlogPost
-    }
-  }
-`;

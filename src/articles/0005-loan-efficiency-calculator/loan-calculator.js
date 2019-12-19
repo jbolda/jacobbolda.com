@@ -1,19 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Big from "big.js";
-import BlogPost from "../../components/jsBlogPost";
-
-// eslint-disable-line-next-line
-export const frontmatter = {
-  title: "Loan Efficiency Calculator",
-  written: "2017-01-22",
-  update: "2017-01-22",
-  layoutType: "post",
-  path: "/loan-efficiency-calculator/",
-  category: "finance",
-  description:
-    "This calculator assists in running the numbers on loan overpayment and how that affects your interest paid and time to final payment."
-};
 
 class loanEfficiencyCalculator extends React.Component {
   constructor(props) {
@@ -96,83 +83,6 @@ class loanEfficiencyCalculator extends React.Component {
 
   componentDidMount() {}
 
-  renderExplainText() {
-    return (
-      <React.Fragment>
-        <div className="content">
-          <h2>Debt Payoff</h2>
-          <p>
-            When tackling debt, there are plenty of pointers out there for the
-            best method. The most efficient way to pay down the debt is with the
-            highest interest first. Finances are highly emotional though. If
-            they weren't, it would be simply that income has to be greater then
-            expenses, and nobody would ever struggle.
-          </p>
-          <p>Yes, they are clearly emotional.</p>
-          <p>
-            So how do we best approach things then? Well, paying off the loan
-            with the smallest balance first is the answer. Depending on your
-            loan situation though, this can be very fiscally inefficient. If you
-            are anything like me, you hate paying interest and fees.
-          </p>
-          <p>Perhaps hate is too strong a word.</p>
-          <p>
-            There has to be a solution to this, right? Well, it seems to best to
-            have a mix of both of these methods. Only you know you. Start off
-            with a quick win, and then tackle that high interest debt. Or hit
-            the high interest head first.
-          </p>
-          <p>
-            Most importantly though, know what effects these choices create,
-            emotional highs paying off loans or fiscal wins paying less
-            interest. Secondly make the plan consistent by paying the same
-            amount every month. As loans pay off, you will be making greater and
-            greater additional payments as that payment "snowball" or creates an
-            "avalanche" effect.
-          </p>
-          <p>
-            The best part? I created a calculator below to help you run the
-            numbers. Feel free to shoot me an email or tweet me with any
-            feedback or questions!
-          </p>
-          <h2>Calculator Breakdown</h2>
-          <p>
-            Firstly, we enter the total payment. This is the amount you pay
-            month over month, consistently, even as you pay off loans.
-          </p>
-          <p>
-            Next, we add all of our loans. The name is just a label to keep you
-            sane. The balance is how much you owe on the loan; the amount of
-            money that interest accrues upon. The interest rate is entered as a
-            percent. It is the APY, not APR. The minimum payment is the smallest
-            you owe monthly to not go into default.
-          </p>
-          <p>
-            Continuing, each loan will show the interest paid as well as the
-            time it took to pay off this loan. There is a max loan of 60 years
-            to prevent errors, but hopefully that is not a limit you will need
-            to consider.
-          </p>
-          <p>
-            As loans are paid off, the additional payment amount increases by
-            the minimum payment of each loan that is paid off. At the bottom,
-            you can view the total numbers. The total balance is how much debt
-            you have right now. The minimum payment represents the (total
-            minimum payment) + (the additional payment) = (total payment), where
-            the total payment is the first number that we entered.
-          </p>
-          <p>
-            Lastly we have the total interest paid. Feel free to play around
-            with the order of loan payment and see how it affects this number.
-            Strike a good balance between minimizing this number and getting
-            enough wins to keep you on the horse.
-          </p>
-          <p>Good luck, and happy math!</p>
-        </div>
-      </React.Fragment>
-    );
-  }
-
   renderCalculator() {
     return (
       <React.Fragment>
@@ -234,7 +144,7 @@ class loanEfficiencyCalculator extends React.Component {
 
   loanInputs() {
     return this.state.loans.map((loan, index) => {
-      let upArrow
+      let upArrow;
       if (index === 0) {
         upArrow = <span />;
       } else {
@@ -374,23 +284,7 @@ class loanEfficiencyCalculator extends React.Component {
   }
 
   render() {
-    return (
-      <BlogPost
-        {...this.props}
-        componentBlocks={[
-          {
-            wrapper: "column",
-            uniqueKey: "explainText",
-            renderComponent: this.renderExplainText
-          },
-          {
-            wrapper: "break-out",
-            uniqueKey: "calculator",
-            renderComponent: this.renderCalculator.bind(this)
-          }
-        ]}
-      />
-    );
+    return this.renderCalculator;
   }
 }
 
@@ -475,11 +369,3 @@ let cleanNumbers = loanGroup => {
   });
   loanGroup.additionalPayment = loanGroup.payment.minus(loanGroup.totalMin);
 };
-
-export const pageQuery = graphql`
-  query loanEfficiencyCalc($slug: String!) {
-    post: javascriptFrontmatter(fields: { slug: { eq: $slug } }) {
-      ...JSBlogPost
-    }
-  }
-`;
