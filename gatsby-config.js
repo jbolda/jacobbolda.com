@@ -113,7 +113,8 @@ module.exports = {
             options: {
               maxWidth: 590
             }
-          }
+          },
+          `gatsby-remark-responsive-iframe`
         ]
       }
     },
