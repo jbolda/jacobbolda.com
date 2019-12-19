@@ -3,3 +3,5 @@ build:
   lifecycle:
     onBuild: gatsby build
 
+plugins:
+  - type: netlify-plugin-gatsby-cache
