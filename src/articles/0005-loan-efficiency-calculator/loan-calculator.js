@@ -1,5 +1,4 @@
 import React from "react";
-import { graphql } from "gatsby";
 import Big from "big.js";
 
 class loanEfficiencyCalculator extends React.Component {

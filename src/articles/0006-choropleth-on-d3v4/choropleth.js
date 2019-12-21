@@ -1,21 +1,8 @@
 import React from "react";
-import { graphql } from "gatsby";
-// import ChoroplethText from './_choropleth.md';
 import * as d3 from "d3";
-import BlogPost from "../../components/jsBlogPost";
 
-// import stateDataURL from "./states.json"
-// import statisticsDataURL from "./states_data.csv"
-
-export const frontmatter = {
-  title: "Choropleth on d3v4",
-  written: "2017-03-09",
-  updated: "2017-04-28",
-  layoutType: "post",
-  path: "/choropleth-on-d3v4/",
-  category: "data science",
-  description: "Things about the choropleth."
-};
+import stateDataURL from "./states.json";
+import statisticsDataURL from "./states_data.csv";
 
 class choroplethBase extends React.Component {
   componentDidMount() {
@@ -31,22 +18,12 @@ class choroplethBase extends React.Component {
       */
 
     d3.queue()
-      .defer(
-        d3.csv,
-        `${window.location.protocol}//${window.location.host}${
-          this.props.data.statedata.publicURL
-        }`
-      )
-      .defer(
-        d3.json,
-        `${window.location.protocol}//${window.location.host}${
-          this.props.data.stateshapes.publicURL
-        }`
-      )
+      .defer(d3.csv, stateDataURL)
+      .defer(d3.json, statisticsDataURL)
       .awaitAll((error, results) => {
         if (error) {
-          console.log(this.props.data.statedata.publicURL);
-          console.log(this.props.data.stateshapes.publicURL);
+          console.log(stateDataURL);
+          console.log(statisticsDataURL);
           console.dir(error);
         } else {
           // console.log(results);
@@ -62,39 +39,12 @@ class choroplethBase extends React.Component {
     d3.select("svg").remove();
   }
 
-  renderText() {
-    return (
-      <div
-        className="content has-text-grey-darker"
-        dangerouslySetInnerHTML={{
-          __html: this.props.data.markdownRemark.html
-        }}
-      />
-    );
-  }
-
   render() {
     return (
-      <BlogPost
-        componentBlocks={[
-          {
-            wrapper: "break-out",
-            uniqueKey: "states",
-            renderComponent: () => <div id="states" />
-          },
-          {
-            wrapper: "break-out",
-            uniqueKey: "tooltip",
-            renderComponent: () => <div id="tooltip" />
-          },
-          {
-            wrapper: "column",
-            uniqueKey: "text-column",
-            renderComponent: this.renderText.bind(this)
-          }
-        ]}
-        {...this.props}
-      />
+      <React.Fragment>
+        <div id="states" />
+        <div id="tooltip" />
+      </React.Fragment>
     );
   }
 }
@@ -182,9 +132,8 @@ let tooltipHtml = d => {
 };
 
 let mouseOver = d => {
-  let tooltip = d3
-    .select("#tooltip")
-  
+  let tooltip = d3.select("#tooltip");
+
   tooltip
     .html(tooltipHtml(d))
     .style("opacity", 0.9)
@@ -226,25 +175,51 @@ let mergeData = (d1, d1key, d2, d2key) => {
   return data;
 };
 
-export const pageQuery = graphql`
-  query choroplethOnD3v4($slug: String!) {
-    markdownRemark(
-      fields: { slug: { eq: "/0006-choropleth-on-d3v4/_choropleth/" } }
-    ) {
-      html
-    }
-    post: javascriptFrontmatter(fields: { slug: { eq: $slug } }) {
-      ...JSBlogPost
-    }
-    stateshapes: file(
-      relativePath: { eq: "0006-choropleth-on-d3v4/states.json" }
-    ) {
-      publicURL
-    }
-    statedata: file(
-      relativePath: { eq: "0006-choropleth-on-d3v4/states_data.csv" }
-    ) {
-      publicURL
-    }
+/*
+  .state{
+    fill: none;
+    stroke: #a9a9a9;
+    stroke-width: 1;
   }
-`;
+  .state:hover{
+    fill-opacity:0.5;
+  }
+  #tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 1px;
+    border-radius: 2px;
+    pointer-events: none;
+  }
+  #tooltip h4{
+    margin:0;
+    font-size:14px;
+  }
+  #tooltip{
+    background:rgba(0,0,0,0.9);
+    border:1px solid grey;
+    border-radius:5px;
+    font-size:12px;
+    width:auto;
+    padding:4px;
+    color:white;
+    opacity:0;
+  }
+  #tooltip table{
+    table-layout:fixed;
+  }
+  #tooltip tr td{
+    padding:0;
+    margin:0;
+  }
+  #tooltip tr td:nth-child(1){
+    width:50px;
+  }
+  #tooltip tr td:nth-child(2){
+    text-align:center;
+  }
+*/

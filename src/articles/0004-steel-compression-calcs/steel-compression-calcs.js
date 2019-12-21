@@ -1,6 +1,6 @@
 import React from "react";
 
-export default () => {
+export const Calcs = () => {
   // componentDidMount() {
   //   window.c = { ...this.props.c };
   // }
