@@ -8,6 +8,7 @@ tags: ["data science"]
 description: "Things about the choropleth."
 ---
 
+import { graphql } from "gatsby"
 import Choropleth from "./choropleth"
 
 <!-- <Choropleth /> -->
@@ -287,3 +288,18 @@ let mergeData = (d1, d1key, d2, d2key) => {
   return data;
 };
 ```
+
+<!-- export const pageQuery = graphql`
+  query choroplethOnD3v4($slug: String!) {
+    stateshapes: file(
+      relativePath: { eq: "0006-choropleth-on-d3v4/states.json" }
+    ) {
+      publicURL
+    }
+    statedata: file(
+      relativePath: { eq: "0006-choropleth-on-d3v4/states_data.csv" }
+    ) {
+      publicURL
+    }
+  }
+`; -->

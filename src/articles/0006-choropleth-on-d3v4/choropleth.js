@@ -1,9 +1,6 @@
 import React from "react";
 import * as d3 from "d3";
 
-import stateDataURL from "./states.json";
-import statisticsDataURL from "./states_data.csv";
-
 class choroplethBase extends React.Component {
   componentDidMount() {
     this.d3Node = d3.select("div#states");
@@ -18,12 +15,12 @@ class choroplethBase extends React.Component {
       */
 
     d3.queue()
-      .defer(d3.csv, stateDataURL)
-      .defer(d3.json, statisticsDataURL)
+      .defer(d3.csv, this.props.data.statedata.publicURL)
+      .defer(d3.json, this.props.data.stateshapes.publicURL)
       .awaitAll((error, results) => {
         if (error) {
-          console.log(stateDataURL);
-          console.log(statisticsDataURL);
+          console.log(this.props.data.statedata.publicURL);
+          console.log(this.props.data.stateshapes.publicURL);
           console.dir(error);
         } else {
           // console.log(results);
