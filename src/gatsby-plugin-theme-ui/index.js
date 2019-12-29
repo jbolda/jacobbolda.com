@@ -21,18 +21,39 @@ export default {
     heading: 1.47
   },
   colors: {
-    text: "#192E29",
-    background: "#F8F9FC",
-    primary: "#39f1a2",
-    secondary: "#5A80A1",
-    muted: "#e9edf6",
+    text: "#000000",
+    background: "#F4F4F4",
+    primary: "#52777D",
+    secondary: "#192C3B",
+    muted: "#9EBBA9",
     modes: {
       dark: {
         text: "#F3FBF1",
-        background: "#1d2121",
-        primary: "#a6e58b",
-        secondary: "#363233",
-        muted: "#dcf4d3"
+        background: "#192C3B",
+        primary: "#52777D",
+        secondary: "#9EBBA9",
+        muted: "#000000"
+      }
+    }
+  },
+  jboldaGatsbyTheme: {
+    homepage: {
+      about: {
+        container: {
+          backgroundColor: "primary"
+        },
+        left: {
+          /* add tokens here */
+        },
+        right: {
+          /* add tokens here */
+        }
+      },
+      articles: {
+        container: { backgroundColor: "primary" },
+        each: {
+          /* add tokens here */
+        }
       }
     }
   },
