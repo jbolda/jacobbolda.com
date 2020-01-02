@@ -1,3 +1,5 @@
+import React from "react";
+
 const headingTextStandards = {
   fontFamily: "heading",
   fontWeight: "heading",
@@ -113,6 +115,55 @@ export default {
         link: {
           ...bodyTextStandards,
           color: "primary"
+        },
+        components: {
+          a: props => (
+            //eslint-disable-next-line
+            <a
+              {...props}
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontWeight: 700,
+                lineHeight: 1.47,
+                color: "#9EBBA9"
+              }}
+            />
+          ),
+          h3: props => (
+            //eslint-disable-next-line
+            <h3
+              {...props}
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontWeight: 700,
+                lineHeight: 1.47,
+                color: "#9EBBA9"
+              }}
+            />
+          ),
+          h4: props => (
+            //eslint-disable-next-line
+            <h4
+              {...props}
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontWeight: 700,
+                lineHeight: 1.47,
+                color: "#9EBBA9"
+              }}
+            />
+          ),
+          p: props => (
+            <p
+              {...props}
+              style={{
+                fontFamily: "Proza Libre, system-ui, sans-serif",
+                fontWeight: 400,
+                lineHeight: 1.98,
+                color: "#9EBBA9"
+              }}
+            />
+          )
         }
       },
       articles: {
