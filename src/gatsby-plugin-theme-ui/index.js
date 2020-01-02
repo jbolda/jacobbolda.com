@@ -62,15 +62,15 @@ export default {
         },
         heading: {
           ...headingTextStandards,
-          color: "text"
+          color: "#F3FBF1"
         },
         text: {
           ...bodyTextStandards,
-          color: "text"
+          color: "#F3FBF1"
         },
         link: {
           ...bodyTextStandards,
-          color: "secondary"
+          color: "muted"
         }
       },
       articles: {
@@ -80,15 +80,15 @@ export default {
         },
         heading: {
           ...headingTextStandards,
-          color: "text"
+          color: "#F3FBF1"
         },
         text: {
           ...bodyTextStandards,
-          color: "text"
+          color: "#F3FBF1"
         },
         link: {
           ...bodyTextStandards,
-          color: "secondary"
+          color: "muted"
         }
       }
     }
