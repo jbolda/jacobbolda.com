@@ -49,7 +49,35 @@ export default {
     }
   },
   jboldaGatsbyTheme: {
+    layout: {
+      heading: {
+        ...headingTextStandards,
+        color: "text"
+      },
+      text: {
+        ...bodyTextStandards,
+        color: "text"
+      },
+      link: {
+        ...bodyTextStandards,
+        color: "primary"
+      }
+    },
     homepage: {
+      landing: {
+        heading: {
+          ...headingTextStandards,
+          color: "text"
+        },
+        text: {
+          ...bodyTextStandards,
+          color: "text"
+        },
+        link: {
+          ...bodyTextStandards,
+          color: "primary"
+        }
+      },
       about: {
         container: {
           backgroundColor: "primary"
@@ -73,6 +101,20 @@ export default {
           color: "muted"
         }
       },
+      engagements: {
+        heading: {
+          ...headingTextStandards,
+          color: "text"
+        },
+        text: {
+          ...bodyTextStandards,
+          color: "text"
+        },
+        link: {
+          ...bodyTextStandards,
+          color: "primary"
+        }
+      },
       articles: {
         container: { backgroundColor: "primary" },
         each: {
@@ -89,6 +131,36 @@ export default {
         link: {
           ...bodyTextStandards,
           color: "muted"
+        }
+      }
+    },
+    articles: {
+      list: {
+        heading: {
+          ...headingTextStandards,
+          color: "text"
+        },
+        text: {
+          ...bodyTextStandards,
+          color: "text"
+        },
+        link: {
+          ...bodyTextStandards,
+          color: "primary"
+        }
+      },
+      article: {
+        heading: {
+          ...headingTextStandards,
+          color: "text"
+        },
+        text: {
+          ...bodyTextStandards,
+          color: "text"
+        },
+        link: {
+          ...bodyTextStandards,
+          color: "primary"
         }
       }
     }
