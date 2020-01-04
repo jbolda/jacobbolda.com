@@ -824,11 +824,11 @@
     "@babel/plugin-transform-react-jsx-source" "^7.7.4"
 
 "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2":
-  version "7.3.4"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.3.4.tgz#73d12ba819e365fcf7fd152aed56d6df97d21c83"
-  integrity sha512-IvfvnMdSaLBateu0jfsYIpZTxAc2cKEXEMiezGGN75QcBcecDUKd3PgLAncT0oOgxKy8dd8hrJKj9MfzgfZd6g==
+  version "7.7.7"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.7.tgz#194769ca8d6d7790ec23605af9ee3e42a0aa79cf"
+  integrity sha512-uCnC2JEVAu8AKB5do1WRIsvrdJ0flYx/A/9f/6chdacnEZ7LmavjdsDXr5ksYBegxtuTPR5Va9/+13QF/kFkCA==
   dependencies:
-    regenerator-runtime "^0.12.0"
+    regenerator-runtime "^0.13.2"
 
 "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.5":
   version "7.6.0"
@@ -1077,34 +1077,34 @@
     "@hapi/hoek" "6.x.x"
 
 "@jbolda/gatsby-theme-articles@^0.2.0-alpha.1":
-  version "0.2.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-articles/-/gatsby-theme-articles-0.2.0-alpha.1.tgz#32e41ece696d89ff6c80bc78965c2c80b97bb17e"
-  integrity sha512-cz/xgkpXTrSugF5SYvUufeoP9Ngck8CgBj9j+r3F2yq+kFj0dsksR/FBseQdcxy7gFLuVTyO3ATC43Brwyfnfw==
+  version "0.2.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-articles/-/gatsby-theme-articles-0.2.0-alpha.2.tgz#556de34f26c60bb27a61bd46f60359bb7a6a58c5"
+  integrity sha512-A9BLA/5Cuv+nC8CufkXQhi5yM6gNL94O9nRegnIL6mDeVKyFlm4y8S99t8eKgzWqzAp1H+5IQAV/AEE3MZAYjA==
   dependencies:
-    "@jbolda/isolated-theme-ui-components" "^0.2.0-alpha.1"
+    "@jbolda/isolated-theme-ui-components" "^0.2.0-alpha.2"
     gatsby-plugin-compile-es6-packages "2.1.0"
     isolated-theme-ui "1.0.1"
 
 "@jbolda/gatsby-theme-homepage@^0.2.0-alpha.1":
-  version "0.2.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-homepage/-/gatsby-theme-homepage-0.2.0-alpha.1.tgz#83ad6e9ab49d88a0c376eeb7357be6074426daed"
-  integrity sha512-S0rdUxUIfrq5w7yS6AN8+UZuqrsBcOIDgtcN0+vvnk2mBoDKYC/yH8PGcZx6DGeT8cOBcCR2/4skbS3v0BzYTw==
+  version "0.2.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-homepage/-/gatsby-theme-homepage-0.2.0-alpha.2.tgz#e1a146589c75cd40c8c1a02afabd7d0e7ef96f84"
+  integrity sha512-qyxABQq0kZJIxWSJl44iSskioMcYhvWK6nIXfA+Y9h1WSHWjujAQWbOhR+6fngrubFVoPMLGaoZ1e6ciaPpAtQ==
   dependencies:
-    "@jbolda/isolated-theme-ui-components" "^0.2.0-alpha.1"
+    "@jbolda/isolated-theme-ui-components" "^0.2.0-alpha.2"
     gatsby-plugin-compile-es6-packages "^2.1.0"
     isolated-theme-ui "^1.0.1"
 
 "@jbolda/gatsby-theme-layout@^0.2.0-alpha.1":
-  version "0.2.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-layout/-/gatsby-theme-layout-0.2.0-alpha.1.tgz#507541797ec2e87e06096dc4ae55713188fff032"
-  integrity sha512-6HTR/cg+72KnjciE6gc7zNZdZHASInY4Ohbp8YA6gdZIWMUwAu1/0T/Km49DlQ81V4P5eLgL/Zi8pXL0kMMXGw==
+  version "0.2.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-layout/-/gatsby-theme-layout-0.2.0-alpha.2.tgz#c6615c7a9ea5fa69cac9822d0bff83320fbf6327"
+  integrity sha512-MsdxZna4TA/hdMolCrUWqVpELeclUnP07lpePR8sFh7tjJozRuUcmVD5k1Ej6SGvro7gcqDzur1FgH0PQmIvHg==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "1.2.26"
     "@fortawesome/free-brands-svg-icons" "5.12.0"
     "@fortawesome/free-regular-svg-icons" "5.12.0"
     "@fortawesome/free-solid-svg-icons" "5.12.0"
     "@fortawesome/react-fontawesome" "0.1.8"
-    "@jbolda/isolated-theme-ui-components" "^0.2.0-alpha.1"
+    "@jbolda/isolated-theme-ui-components" "^0.2.0-alpha.2"
     gatsby-plugin-compile-es6-packages "2.1.0"
     isolated-theme-ui "1.0.1"
     react-use "13.13.0"
@@ -1114,10 +1114,10 @@
   resolved "https://registry.yarnpkg.com/@jbolda/isolated-theme-ui-components/-/isolated-theme-ui-components-0.0.4.tgz#831af082b5d45667dc0f198f0bac534b230e3805"
   integrity sha512-jRXGEP5Yau7tGfkr8DEjxrFQ1WrkK9lAEjTqFMvn8YbRRuzf9WfX7x587h0Ka879E+Nn+e/nLCeEPWE9rvYNeQ==
 
-"@jbolda/isolated-theme-ui-components@^0.2.0-alpha.1":
-  version "0.2.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@jbolda/isolated-theme-ui-components/-/isolated-theme-ui-components-0.2.0-alpha.1.tgz#5e6284fa42530d36d593622f32ba1cf6fdb7fd52"
-  integrity sha512-YzUwmUdY1P/uCS5AdBIpkPtN53ucti1ZQAUNt1hjGMmc+wZ8dGfm8pc3Xopbq8Ay1hRAa/JvggbjoGh6XPbESQ==
+"@jbolda/isolated-theme-ui-components@^0.2.0-alpha.1", "@jbolda/isolated-theme-ui-components@^0.2.0-alpha.2":
+  version "0.2.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@jbolda/isolated-theme-ui-components/-/isolated-theme-ui-components-0.2.0-alpha.2.tgz#f09ba301fd2641d9432fd84f9710d7f6bf9e8927"
+  integrity sha512-k0jGMzHKHomk4zDIJxQMi6dBY2eYZtR30KBAFzzXYPs4F5po8rLISABOUJnyduH3QJmU8hGn5IHYnmAbpmN3TQ==
 
 "@jimp/bmp@^0.6.8":
   version "0.6.8"
@@ -11536,10 +11536,15 @@ react-hot-loader@^4.12.18:
     shallowequal "^1.1.0"
     source-map "^0.7.3"
 
-react-is@^16.7.0, react-is@^16.8.1:
+react-is@^16.7.0:
   version "16.8.3"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.3.tgz#4ad8b029c2a718fc0cfc746c8d4e1b7221e5387d"
   integrity sha512-Y4rC1ZJmsxxkkPuMLwvKvlL1Zfpbcu+Bf4ZigkHup3v9EfdYhAlWAaVyA19olXq2o2mGn0w+dFKvk3pVVlYcIA==
+
+react-is@^16.8.1:
+  version "16.12.0"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
+  integrity sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
 
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
@@ -11739,11 +11744,6 @@ regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
-
-regenerator-runtime@^0.12.0:
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.12.1.tgz#fa1a71544764c036f8c49b13a08b2594c9f8a0de"
-  integrity sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg==
 
 regenerator-runtime@^0.13.2, regenerator-runtime@^0.13.3:
   version "0.13.3"
@@ -12834,9 +12834,9 @@ source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.1:
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
 sourcemap-codec@^1.4.1:
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/sourcemap-codec/-/sourcemap-codec-1.4.6.tgz#e30a74f0402bad09807640d39e971090a08ce1e9"
-  integrity sha512-1ZooVLYFxC448piVLBbtOxFcXwnymH9oUF8nRd3CuYDVvkRBxRl6pB4Mtas5a4drtL+E8LDgFkQNcgIw6tc8Hg==
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/sourcemap-codec/-/sourcemap-codec-1.4.7.tgz#5b2cd184e3fe51fd30ba049f7f62bf499b4f73ae"
+  integrity sha512-RuN23NzhAOuUtaivhcrjXx1OPXsFeH9m5sI373/U7+tGLKihjUyboZAzOadytMjnqHp1f45RGk1IzDKCpDpSYA==
 
 space-separated-tokens@^1.0.0:
   version "1.1.4"
