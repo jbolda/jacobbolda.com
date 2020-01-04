@@ -67,6 +67,7 @@ export default {
     },
     homepage: {
       landing: {
+        container: { paddingBottom: 8 },
         heading: {
           ...headingTextStandards,
           color: "text"
@@ -81,22 +82,14 @@ export default {
         }
       },
       about: {
-        container: {
-          backgroundColor: "primary"
-        },
-        left: {
-          /* add tokens here */
-        },
-        right: {
-          /* add tokens here */
-        },
+        container: { paddingBottom: 8, backgroundColor: "primary" },
         heading: {
           ...headingTextStandards,
-          color: "#F3FBF1"
+          color: "background"
         },
         text: {
           ...bodyTextStandards,
-          color: "#F3FBF1"
+          color: "background"
         },
         link: {
           ...bodyTextStandards,
@@ -104,6 +97,7 @@ export default {
         }
       },
       engagements: {
+        container: { paddingBottom: 8 },
         heading: {
           ...headingTextStandards,
           color: "text"
@@ -115,69 +109,17 @@ export default {
         link: {
           ...bodyTextStandards,
           color: "primary"
-        },
-        components: {
-          a: props => (
-            //eslint-disable-next-line
-            <a
-              {...props}
-              style={{
-                fontFamily: "Cormorant Garamond, serif",
-                fontWeight: 700,
-                lineHeight: 1.47,
-                color: "#9EBBA9"
-              }}
-            />
-          ),
-          h3: props => (
-            //eslint-disable-next-line
-            <h3
-              {...props}
-              style={{
-                fontFamily: "Cormorant Garamond, serif",
-                fontWeight: 700,
-                lineHeight: 1.47,
-                color: "#9EBBA9"
-              }}
-            />
-          ),
-          h4: props => (
-            //eslint-disable-next-line
-            <h4
-              {...props}
-              style={{
-                fontFamily: "Cormorant Garamond, serif",
-                fontWeight: 700,
-                lineHeight: 1.47,
-                color: "#9EBBA9"
-              }}
-            />
-          ),
-          p: props => (
-            <p
-              {...props}
-              style={{
-                fontFamily: "Proza Libre, system-ui, sans-serif",
-                fontWeight: 400,
-                lineHeight: 1.98,
-                color: "#9EBBA9"
-              }}
-            />
-          )
         }
       },
       articles: {
-        container: { backgroundColor: "primary" },
-        each: {
-          /* add tokens here */
-        },
+        container: { paddingBottom: 8, backgroundColor: "primary" },
         heading: {
           ...headingTextStandards,
-          color: "#F3FBF1"
+          color: "background"
         },
         text: {
           ...bodyTextStandards,
-          color: "#F3FBF1"
+          color: "background"
         },
         link: {
           ...bodyTextStandards,
