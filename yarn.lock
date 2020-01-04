@@ -1077,9 +1077,9 @@
     "@hapi/hoek" "6.x.x"
 
 "@jbolda/gatsby-theme-articles@^0.2.0-alpha.1":
-  version "0.2.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-articles/-/gatsby-theme-articles-0.2.0-alpha.2.tgz#556de34f26c60bb27a61bd46f60359bb7a6a58c5"
-  integrity sha512-A9BLA/5Cuv+nC8CufkXQhi5yM6gNL94O9nRegnIL6mDeVKyFlm4y8S99t8eKgzWqzAp1H+5IQAV/AEE3MZAYjA==
+  version "0.2.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-articles/-/gatsby-theme-articles-0.2.0-alpha.3.tgz#2fb5a88c10608fb314354ff5bfc7031c751dcca4"
+  integrity sha512-KzcpTbA9p1dTfaylUoW9FcgxJR9bFEhcq8DoTIzX4VMP2rPxqNkBlISKYUikgGI28wGFIf7vlZu1OytyzEqkEQ==
   dependencies:
     "@jbolda/isolated-theme-ui-components" "^0.2.0-alpha.2"
     gatsby-plugin-compile-es6-packages "2.1.0"
