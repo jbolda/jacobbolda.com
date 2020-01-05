@@ -2,7 +2,47 @@ import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import prismTheme from "prism-react-renderer/themes/nightOwl";
 import Pre from "../components/pre";
-import { Flex } from "@jbolda/isolated-theme-ui-components";
+import { Flex, Box, Heading, Text } from "@jbolda/isolated-theme-ui-components";
+
+const mdxComponents = ({ heading, text }) => {
+  const headings = ["h1", "h2", "h3", "h4", "h5", "h6"];
+  const body = ["p", "span", "div"];
+
+  return {
+    ...headings.reduce(
+      (components, h) => ({
+        ...components,
+        [h]: props => (
+          <Box
+            sx={{
+              paddingLeft: ["2.5%", "12.5%", "30%"],
+              width: ["95%", "75%", "40%"]
+            }}
+          >
+            <Heading as={h} {...props} sx={{ width: null, variant: heading }} />
+          </Box>
+        )
+      }),
+      {}
+    ),
+    ...body.reduce(
+      (components, b) => ({
+        ...components,
+        [b]: props => (
+          <Box
+            sx={{
+              paddingLeft: ["2.5%", "12.5%", "30%"],
+              width: ["95%", "75%", "40%"]
+            }}
+          >
+            <Text as={b} {...props} sx={{ variant: text }} />
+          </Box>
+        )
+      }),
+      {}
+    )
+  };
+};
 
 const headingTextStandards = {
   fontFamily: "heading",
@@ -21,7 +61,7 @@ export default {
   useCustomProperties: true, // true is default
   // ^ prevents FOUC aka flash of unstyled content
   useColorSchemeMediaQuery: true, // turns on dark mode if set in browser
-  breakpoints: ["40em", "56em", "64em"],
+  breakpoints: ["40em", "56em", "70em"],
   space: [0, 2, 4, 8, 12, 16, 20, 24, 28],
   fonts: {
     body: "Proza Libre, system-ui, sans-serif",
@@ -149,13 +189,20 @@ export default {
         }
       },
       article: {
+        content: {
+          width: ["100%", "100%", "100%"]
+          // display: "flex",
+          // flexDirection: "column",
+          // flexWrap: "wrap",
+          // justifyContent: "center"
+        },
+        footer: { width: ["95%", "75%", "40%"] },
         heading: {
           ...headingTextStandards,
           color: "text"
         },
         text: {
           ...bodyTextStandards,
-          width: ["95%", "85%", "50%"],
           color: "text"
         },
         link: {
@@ -163,6 +210,10 @@ export default {
           color: "primary"
         },
         components: {
+          ...mdxComponents({
+            heading: "jboldaGatsbyTheme.articles.article.heading",
+            text: "jboldaGatsbyTheme.articles.article.text"
+          }),
           pre: ({
             children,
             className = children.props ? children.props.className : ``
@@ -198,7 +249,7 @@ export default {
                       sx={{
                         ...style,
                         backgroundColor: "inherit",
-                        width: ["95%", "85%", "50%"]
+                        width: ["95%", "75%", "40%"]
                       }}
                     >
                       {tokens.map((line, i) => (
