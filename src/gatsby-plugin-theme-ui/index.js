@@ -1,4 +1,8 @@
 import React from "react";
+import Highlight, { defaultProps } from "prism-react-renderer";
+import prismTheme from "prism-react-renderer/themes/nightOwl";
+import Pre from "../components/pre";
+import { Flex } from "@jbolda/isolated-theme-ui-components";
 
 const headingTextStandards = {
   fontFamily: "heading",
@@ -40,13 +44,15 @@ export default {
     primary: "#52777D",
     secondary: "#192C3B",
     muted: "#9EBBA9",
+    terminal: "#192C3B",
     modes: {
       dark: {
         text: "#F3FBF1",
         background: "#192C3B",
         primary: "#52777D",
         secondary: "#9EBBA9",
-        muted: "#000000"
+        muted: "#000000",
+        terminal: "#192C3B"
       }
     }
   },
@@ -149,11 +155,65 @@ export default {
         },
         text: {
           ...bodyTextStandards,
+          width: ["95%", "85%", "50%"],
           color: "text"
         },
         link: {
           ...bodyTextStandards,
           color: "primary"
+        },
+        components: {
+          pre: ({
+            children,
+            className = children.props ? children.props.className : ``
+          }) => {
+            const language = className
+              ? className.replace(/language-/, "")
+              : "none";
+
+            return (
+              <Highlight
+                Prism={defaultProps.Prism}
+                code={children.props.children}
+                language={language}
+                theme={prismTheme}
+              >
+                {({
+                  className,
+                  style,
+                  tokens,
+                  getLineProps,
+                  getTokenProps
+                }) => (
+                  <Flex
+                    sx={{
+                      py: 4,
+                      backgroundColor: "terminal",
+                      width: ["100%", "100%", "100%"],
+                      overflow: "auto hidden"
+                    }}
+                  >
+                    <Pre
+                      className={className}
+                      sx={{
+                        ...style,
+                        backgroundColor: "inherit",
+                        width: ["95%", "85%", "50%"]
+                      }}
+                    >
+                      {tokens.map((line, i) => (
+                        <div {...getLineProps({ line, key: i })}>
+                          {line.map((token, key) => (
+                            <span {...getTokenProps({ token, key })} />
+                          ))}
+                        </div>
+                      ))}
+                    </Pre>
+                  </Flex>
+                )}
+              </Highlight>
+            );
+          }
         }
       }
     }
