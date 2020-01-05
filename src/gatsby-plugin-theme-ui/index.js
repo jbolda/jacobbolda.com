@@ -190,11 +190,8 @@ export default {
       },
       article: {
         content: {
-          width: ["100%", "100%", "100%"]
-          // display: "flex",
-          // flexDirection: "column",
-          // flexWrap: "wrap",
-          // justifyContent: "center"
+          width: ["100%", "100%", "100%"],
+          padding: 0
         },
         footer: { width: ["95%", "75%", "40%"] },
         heading: {
