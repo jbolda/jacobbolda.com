@@ -1077,34 +1077,34 @@
     "@hapi/hoek" "6.x.x"
 
 "@jbolda/gatsby-theme-articles@^0.2.0-alpha.1":
-  version "0.2.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-articles/-/gatsby-theme-articles-0.2.0-alpha.3.tgz#2fb5a88c10608fb314354ff5bfc7031c751dcca4"
-  integrity sha512-KzcpTbA9p1dTfaylUoW9FcgxJR9bFEhcq8DoTIzX4VMP2rPxqNkBlISKYUikgGI28wGFIf7vlZu1OytyzEqkEQ==
+  version "0.2.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-articles/-/gatsby-theme-articles-0.2.0-alpha.4.tgz#c40577caabdef8c50c547f82ada2bb435bdd2dcd"
+  integrity sha512-/rFnDELBVb1j5lnSl5MrJZb5Ic9zWdTJ3eTuf1wNeNU+3vg1OPHgDyINvDKhx7sbBXh3znV7Z06MTZYTMHfLJg==
   dependencies:
-    "@jbolda/isolated-theme-ui-components" "^0.2.0-alpha.2"
+    "@jbolda/isolated-theme-ui-components" "^0.2.0-alpha.3"
     gatsby-plugin-compile-es6-packages "2.1.0"
     isolated-theme-ui "1.0.1"
 
 "@jbolda/gatsby-theme-homepage@^0.2.0-alpha.1":
-  version "0.2.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-homepage/-/gatsby-theme-homepage-0.2.0-alpha.2.tgz#e1a146589c75cd40c8c1a02afabd7d0e7ef96f84"
-  integrity sha512-qyxABQq0kZJIxWSJl44iSskioMcYhvWK6nIXfA+Y9h1WSHWjujAQWbOhR+6fngrubFVoPMLGaoZ1e6ciaPpAtQ==
+  version "0.2.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-homepage/-/gatsby-theme-homepage-0.2.0-alpha.3.tgz#d0256ff5916f376187bfcc06fd33af8eb7bd714b"
+  integrity sha512-FKnj2YlGDjudfQaRE/mHd9tOssor3ROnULd1ucrPWcjW3B4ioNaYHR59K0sJoyr/iyXMY8MbjMQ13Dji6vqYYw==
   dependencies:
-    "@jbolda/isolated-theme-ui-components" "^0.2.0-alpha.2"
+    "@jbolda/isolated-theme-ui-components" "^0.2.0-alpha.3"
     gatsby-plugin-compile-es6-packages "^2.1.0"
     isolated-theme-ui "^1.0.1"
 
 "@jbolda/gatsby-theme-layout@^0.2.0-alpha.1":
-  version "0.2.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-layout/-/gatsby-theme-layout-0.2.0-alpha.2.tgz#c6615c7a9ea5fa69cac9822d0bff83320fbf6327"
-  integrity sha512-MsdxZna4TA/hdMolCrUWqVpELeclUnP07lpePR8sFh7tjJozRuUcmVD5k1Ej6SGvro7gcqDzur1FgH0PQmIvHg==
+  version "0.2.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-layout/-/gatsby-theme-layout-0.2.0-alpha.3.tgz#220ff990f38cb05597b7c44ed2a6396ee5573f4f"
+  integrity sha512-M6JXOzq/Ylj6zUrA8nM92zHjHAu69JIpWDdU7wgKb5/4B46DQ4G0Zdt3HaAWqt/20qh38DtYyiZHa19BDr2kXg==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "1.2.26"
     "@fortawesome/free-brands-svg-icons" "5.12.0"
     "@fortawesome/free-regular-svg-icons" "5.12.0"
     "@fortawesome/free-solid-svg-icons" "5.12.0"
     "@fortawesome/react-fontawesome" "0.1.8"
-    "@jbolda/isolated-theme-ui-components" "^0.2.0-alpha.2"
+    "@jbolda/isolated-theme-ui-components" "^0.2.0-alpha.3"
     gatsby-plugin-compile-es6-packages "2.1.0"
     isolated-theme-ui "1.0.1"
     react-use "13.13.0"
@@ -1114,10 +1114,10 @@
   resolved "https://registry.yarnpkg.com/@jbolda/isolated-theme-ui-components/-/isolated-theme-ui-components-0.0.4.tgz#831af082b5d45667dc0f198f0bac534b230e3805"
   integrity sha512-jRXGEP5Yau7tGfkr8DEjxrFQ1WrkK9lAEjTqFMvn8YbRRuzf9WfX7x587h0Ka879E+Nn+e/nLCeEPWE9rvYNeQ==
 
-"@jbolda/isolated-theme-ui-components@^0.2.0-alpha.1", "@jbolda/isolated-theme-ui-components@^0.2.0-alpha.2":
-  version "0.2.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@jbolda/isolated-theme-ui-components/-/isolated-theme-ui-components-0.2.0-alpha.2.tgz#f09ba301fd2641d9432fd84f9710d7f6bf9e8927"
-  integrity sha512-k0jGMzHKHomk4zDIJxQMi6dBY2eYZtR30KBAFzzXYPs4F5po8rLISABOUJnyduH3QJmU8hGn5IHYnmAbpmN3TQ==
+"@jbolda/isolated-theme-ui-components@^0.2.0-alpha.1", "@jbolda/isolated-theme-ui-components@^0.2.0-alpha.3":
+  version "0.2.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@jbolda/isolated-theme-ui-components/-/isolated-theme-ui-components-0.2.0-alpha.3.tgz#1edbd0be5b5cac8113e781928cb0194b204b6f1f"
+  integrity sha512-mMRz1p5krouQYr7htxtlULqBdeL1Y25yNHgbUoydrypGIl0xa76LkqXtmpe2yUQr2pt/mhkqix7gwwt5GLDqDw==
 
 "@jimp/bmp@^0.6.8":
   version "0.6.8"
