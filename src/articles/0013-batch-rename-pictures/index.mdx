@@ -1,0 +1,62 @@
+---
+title: Batch Rename Pictures
+written: "2019-08-03"
+updated: "2019-08-14"
+slug: "/batch-rename-pictures/"
+category: "files"
+description: "I wrote a Python 3 script to rename photo files with the timestamp that they were taken."
+---
+
+# Batch Rename Pictures
+
+I tend to take a fair amount of photos when I travel. If you have read any of my articles about places I visited, all those photos were taken by yours truly. We used to use Dropbox, and it comes with an import tool to pull the pictures off the camera. In this process, it would name the photo files based on the date and time the picture was taken. I have since migrated off Dropbox and started storing the photos on Amazon. This was mostly due to cost of space as I save the RAW versions of the photos as well.
+
+Now I just manually copy them to my computer and backup locations. All the files are named with the default incremented filename though. So I wrote a Python 3 script, seen below, that will rename all the files in a folder for you based on the timestamp that the photo was taken. You do need an external library though, `exifread`, but it is available on PYPI. You can install it to your system folder with `pip install exifread`.
+
+```python
+import exifread
+from collections import namedtuple, Counter
+import glob
+import os
+import sys
+
+
+def fileTags(folder, filetype, tag):
+    fileDict = {}
+    tagTuple = namedtuple('tag', ['datetime', 'frequency'])
+    for pictureFile in glob.glob("./" + folder + "/*." + filetype):   
+        originalFile = os.path.abspath(pictureFile)     
+        # Open image file for reading (binary mode)
+        f = open(originalFile, 'rb')
+        # Return Exif tags
+        tags = exifread.process_file(f)
+        # return the tag
+        frequency = Counter(item.datetime for item in fileDict.values())
+        fileDict[originalFile] = tagTuple(str(tags[tag]), str(frequency[str(tags[tag])]))
+    return fileDict
+
+
+def rename_pictures(folder, filetype):
+    tags = fileTags(folder, filetype, 'EXIF DateTimeOriginal')
+    for filename, tag in tags.items():
+        dtPretty = tag.datetime.replace(':', "-", 2).replace(':', '.')
+        newPath = os.path.abspath(os.path.join(os.getcwd(), folder, dtPretty + '.' + tag.frequency + '.' + filetype))
+        print(newPath)
+        os.replace(filename, newPath)
+    return print('Processed ' + str(len(tags.items())) + ' ' + filetype + ' files.')
+
+
+if __name__== "__main__":
+    args = sys.argv
+    if len(args) == 3:
+        rename_pictures(args[1], args[2])
+    elif len(args) == 2:
+        rename_pictures(args[1], 'jpg')
+        rename_pictures(args[1], 'nef')
+    else:
+        rename_pictures('', 'jpg')
+        rename_pictures('', 'nef')
+
+```
+
+This script will handle clashes where the timestamp is exactly the same with an incremented number. It takes two optional arguments, a folder and a file extension, respectively. If only a folder is specified, it will run the script and look for jpg and nef in the folder relative top where the script is run. If you don't specify anything, it will run it in the folder that the script is run from, and look for both jpg and nef. You are able to run this on a folder regardless if it has been run before (i.e. prior filenames shouldn't matter).

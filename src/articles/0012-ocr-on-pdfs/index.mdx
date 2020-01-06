@@ -1,0 +1,68 @@
+---
+title: Optical Character Recognition on PDFs
+written: "2019-08-01"
+updated: "2019-08-13"
+slug: "/ocr-on-pdfs/"
+category: "files"
+description: "I recently converted out of Evernote and in that conversion process I ended up with a handful of PDFs that I would like to run optical character recognition (OCR) on. This function makes the PDF searchable. I had something like 250 PDFs at this point in which I needed to apply OCR. That is not an insignificant task and it definitely was worth the effort to figure out a way to do this in a batch process."
+---
+
+# Optical Character Recognition (OCR) on PDFs
+
+I recently [converted out of Evernote](/converting-out-of-evernote/) and in that conversion process I ended up with a handful of PDFs that I would like to run optical character recognition (OCR) on. This function makes the PDF searchable. You can see my previous article to see how I was able to convert to out of Evernote and get my notes into PDFs.
+
+So I had something like 250 PDFs at this point in which I needed to apply OCR. That is not an insignificant task and it definitely was worth the effort to figure out a way to do this in a batch process. There seemed to be a few (online) services that would OCR single PDFs for you, drag and drop it in, and download finished PDF. No way I was doing that 250 times though even ignoring the privacy concerns.
+
+I came upon this library pretty soon after I found a way to dump markdown out files and convert them to PDF. The library is called OCRmyPDF. Prior to that I was looking for a library that could do export, PDF and OCR all in one go which didn't seem to exist. Breaking things down into steps, I could find libraries for each specific need. Now that I had actual PDF copies that just needed to run OCR, newly used search terms brought this library up pretty quickly. It seems like a pretty well put together library and the maintainer does this as a side project. If you find any value in this, please contribute back.
+
+My main computer runs Windows, so that brought a few additional issues. Compatibility with Windows always seems to happen anyways. Most of these libraries are built expecting Linux or Mac. The installation options were to use the Windows Subsystems for Linux (WSL) or a docker file which then spins up a Linux container for you.
+
+I was familiar already with docker having used it in prior projects so I thought that might be in easy direction to go. Since I wanted to run this in a batch process, it meant that I needed to run these containers through some sort of script. If you read [my previous post](/converting-out-of-evernote/), python made the most sense for me as I was already installed and I'm familiar with it. I wrote the following script to spin up a doctor container, run the file, and drop it back out onto the file system.
+
+```python
+import glob, os, subprocess
+
+for file in glob.glob('./*.pdf'):
+dirpath = os.getcwd()
+    filename, ext = os.path.splitext(file)
+    print('Processing and running OCR on ' + filename[2:] + ' at ' + dirpath)
+    # commandToRun = ['docker', 'run', '--rm', '-i', '-v=' + dirpath.replace('\\', '/').replace(' ', '\ ') + ':/tmp', 'jbarlow83/ocrmypdf', '-l', 'eng', '"/tmp/' + filename[2:] + '.pdf"', '"/tmp/' + filename[2:] + '_ocr.pdf"']
+    # commandToRun = ['docker', 'run', '--rm', '-i', '-v', dirpath + ':/tmp', 'jbarlow83/ocrmypdf-alpine', 'ocrmypdf', '--rotate-pages', '\'' + filename[2:] + '.pdf\'', '\'' + filename[2:] + '_ocr.pdf\'']
+    # commandToRun = ['docker', 'run', '--rm', '-i', '-v', dirpath + ':/tmp', 'jbarlow83/ocrmypdf-alpine', 'ocrmypdf', '--rotate-pages', '\'' + filename[2:] + '.pdf\'', '\'' + filename[2:] + '_ocr.pdf\'']
+    # commandToRun = ['docker', 'run', '--rm', '-i', '-v', dirpath + ':/tmp', 'jbarlow83/ocrmypdf-alpine', '--rotate-pages', 'testpdf.pdf', 'testpdf_ocr.pdf']
+    # commandToRun = ['docker', 'run', '--rm', '-i', '-v', dirpath + ':/tmp', 'jbarlow83/ocrmypdf-alpine', '--version']
+    # commandToRun = ['docker', 'run', '--rm', '-i', '-v', dirpath + ':/tmp', 'jbarlow83/ocrmypdf-alpine', 'testpdf.pdf', 'testpdf_ocr.pdf']
+    # commandToRun = ['docker', 'run', '--rm', '-i', '-v', dirpath + ':/tmp', 'jbarlow83/ocrmypdf-alpine', '-', '-', '<testpdf.pdf', '>testpdf_ocr.pdf']
+    # commandToRun = ['docker', 'run', '--rm', '-i', 'jbarlow83/ocrmypdf-alpine', '-', '-', '<', 'testpdf.pdf', '>', 'testpdf_ocr.pdf']
+    # commandToRun = ['docker', 'run', '--rm', '-i', 'jbarlow83/ocrmypdf-alpine', '-', '-', '< testpdf.pdf > testpdf_ocr.pdf']
+    # commandToRun = ['docker', 'run', '--rm', '-i', 'jbarlow83/ocrmypdf-alpine', '--rotate-pages - -', '<testpdf.pdf', '>', 'testpdf_ocr.pdf']
+    # commandToRun = ['docker', 'run', '--rm', '-i', '-v', dirpath + ':/tmp', 'jbarlow83/ocrmypdf-alpine', '--rotate-pages /tmp/testpdf.pdf -', '>testpdf_ocr.pdf']
+    # commandToRun = ['docker', 'run', '--rm', '-i', '-v', dirpath + ':/tmp', 'alpine', 'ls', '-la', '/tmp'
+    # commandToRun = ['docker', 'run', '--rm', '-i', '-v', dirpath + ':/tmp', 'alpine', 'touch', '/tmp/test.txt']
+    # commandToRun = ['docker', 'run', '--rm', '-i', '-v', dirpath + ':/tmp', 'alpine', 'touch', '/tmp/testfile.txt']
+    commandToRun = ['docker', 'run', '--rm', '-i', '-v', dirpath + ':/tmp', 'jbarlow83/ocrmypdf', '-v', '1', '--rotate-pages', '/tmp/testpdf.pdf', '/tmp/testpdf_ocr.pdf']
+    print(' '.join(commandToRun))
+    subprocess.run(commandToRun)
+```
+
+See all of those lines commented out? I tried quite a few iterations trying to track down what was going wrong. Unfortunately, it seems that there's some issue with sockets that I was not able to resolve. Even after dealing with all the Windows filesystem permission issues... [Here is a link to the issue and error message I was getting](https://github.com/jbarlow83/OCRmyPDF/issues/123). I added a comment on the issue to make note of it. I don't think it really makes sense to deal with this issue as it is deeper than just the library that I was using. I won't go into volume mount issues I waded through in Docker either. Let's move onto what actually worked, the other installation option.
+
+I tried WSL next. I hadn't actually used it yet. I hadn't a need, but it certainly seems easy enough. After going through the published installation tutorial with everything installed and running, I made the user account, as requested, during the initial setup. "This is going really smooth", I thought. Then I ran a couple commands and kept getting weird errors.
+
+The first issue, I was running this function on the windows mounted file system. It was returning into permission errors. Easy enough, I can use the `sudo` command to get elevated permissions to overcome this issue. Done, but then I got errors and one of the options that I was using.
+
+I was trying to run the `--redo-ocr` function as there was already existing text so I needed a way to force OCR only on the images. I could use the `--force-ocr` function but that rasterizes all of my existing text and then runs OCR. The existing text is already searchable so let's not do that. The error that I was getting said that this parameter did not exist. That seemed really weird. I ran the `--help` menu command, and it said that the parameter existed even though my error message said it didn't exist.
+
+[I ended up opening up an issue to try to figure this out.](https://github.com/jbarlow83/OCRmyPDF/issues/402) I was too close to the code. It turns out the installation instructions tell you to install an older version that's on PYPI, as that brought in additional dependencies that don't normally come through the other method. The following step then suggests installing the latest updated package to the user path. Yes, that made sense when I was following the instructions. I didn't put two and two together when I hit this error though.
+
+The `sudo` command actually changes your user and uses the `root` user path. We had only updated the path to the latest version on user account though. So it was actually using the system level installation of OCRmyPDF which _was_ the old version. The old version did not happen to have this `--redo-ocr` parameter yet. To add to the confusion, I didn't use `sudo` when running the `--help` command because why would I need elevated permissions for that? So the help was returning the commands for the latest version, and my error was returned from an earlier version (as it was run from the `root` path).
+
+After some discussion in the noted issue, I ended up learning the root of my issue (pun intended) and I was able to run the OCR function. I have a little script below that will batch OCR all the PDFs in a folder and drop a copy of the new PDFs into separate subfolder. Note: since we are on Linux (Ubuntu), we don't need to use Python, we can just use a little shell script directly. Also note, we put the `" "` around the filename as Windows files tend to have spaces, and my PDF export process produced filenames with spaces.
+
+```bash
+for filename in ./*.pdf; do sudo $HOME/.local/bin/ocrmypdf --redo-ocr --rotate-pages "${filename#./}" "./out/${filename#./}"; done
+```
+
+Now you have it. Everything that I ended up doing to take my scanned images (via Evernote), converted to PDF, and now a searchable text layer applied on top. I still have a whole bunch of organization to do deciding where I want to place these files, but I've got to usable system now to deal with all of my old Evernote documents, and I can use [Scanbot.io](www.scanbot.io) for all of my future documents.
+
+If you have any questions feel free to reach out to me Twitter or email or any my other contacts I hope you enjoyed it

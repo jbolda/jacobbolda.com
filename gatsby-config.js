@@ -3,16 +3,6 @@ module.exports = {
     siteTitle: `Jacob Bolda`,
     siteDescription: `Structural Engineer with a knack for creative solutions using code and ingenuity.`,
     siteAuthor: `Jacob Bolda`,
-    siteAuthorIdentity: `Structural Engineer`,
-    siteLanding: `
-      Focusing on the intersection of tech and Structural
-      Engineering. Masters degree in Structural Engineering
-      from the Milwaukee School of Engineering, undergrad in
-      Architectural Engineering with a minor in Management,
-      and a deep understanding of software and programming.
-      Marrying that experience with problem solving and
-      systematizing is powerful.
-    `,
     siteContact: "https://twitter.com/jacobbolda",
     contactLinks: [
       {
@@ -51,35 +41,11 @@ module.exports = {
         icon: ["fas", "camera"]
       }
     ],
-    navLinks: [{ url: "/recipes/", text: "Our Recipes" }]
+    navLinks: [
+      { url: "/articles/", text: "Articles" },
+      { url: "/recipes/", text: "Recipes" }
+    ]
   },
-  __experimentalThemes: [
-    {
-      resolve: `gatsby-theme-bulma-core`,
-      options: {
-        root: __dirname
-      }
-    },
-    {
-      resolve: `gatsby-theme-bulma-layout`,
-      options: {
-        root: __dirname
-      }
-    },
-    {
-      resolve: `gatsby-theme-bulma-homepage`,
-      options: {
-        root: __dirname
-      }
-    },
-    {
-      resolve: `gatsby-theme-bulma-blog`,
-      options: {
-        root: __dirname,
-        showArticlesOnHomepage: false
-      }
-    }
-  ],
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
@@ -91,8 +57,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `assets`,
-        path: `${__dirname}/src/assets/`
+        name: `homepage`,
+        path: `${__dirname}/src/homepage/`
       }
     },
     {
@@ -102,8 +68,6 @@ module.exports = {
         path: `${__dirname}/src/articles/`
       }
     },
-    `gatsby-transformer-javascript-frontmatter`,
-    `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-airtable`,
       apiKey: process.env.AIRTABLE_API_KEY,
@@ -114,7 +78,12 @@ module.exports = {
             tableName: `Recipes`,
             tableView: `List`,
             queryName: `Recipes`,
-            mapping: { Attachments: `fileNode` },
+            mapping: {
+              images: "fileNode",
+              ingredients: "text/markdown",
+              directions: "text/markdown"
+            },
+            separateMapTypes: true,
             tableLinks: [`Cooking_Method`, `Style`]
           },
           {
@@ -134,28 +103,40 @@ module.exports = {
         ]
       }
     },
+    `gatsby-plugin-theme-ui`,
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        plugins: [
+        gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {}
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590
+            }
           },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`
+          `gatsby-remark-responsive-iframe`
         ]
       }
     },
-    `gatsby-transformer-sharp`,
     {
-      resolve: `gatsby-plugin-typography`,
+      resolve: `@jbolda/gatsby-theme-homepage`,
+      options: { showArticlesOnHomepage: true }
+    },
+    {
+      resolve: `@jbolda/gatsby-theme-articles`,
+      options: { contentPath: "articles" }
+    },
+    {
+      resolve: `gatsby-theme-recipes`,
       options: {
-        pathToConfigModule: `src/utils/typography`
+        siteUrl: "https://www.jacobolda.com/",
+        sources: ["Airtable"],
+        rootBase: "/recipes/"
       }
     },
+    `gatsby-transformer-javascript-frontmatter`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {
@@ -165,7 +146,6 @@ module.exports = {
         // gtmPreview: "YOUR_GOOGLE_TAGMANAGER_ENVIROMENT_PREVIEW_NAME",
       }
     },
-    `gatsby-transformer-screenshot`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -175,7 +155,7 @@ module.exports = {
         background_color: `#f7f7f7`,
         theme_color: `#191919`,
         display: `minimal-ui`,
-        icon: "src/assets/avatar.png"
+        icon: "src/homepage/avatar.png"
       }
     },
     `gatsby-plugin-offline`,
