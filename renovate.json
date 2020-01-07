@@ -1,6 +1,5 @@
 {
   "extends": ["config:base"],
   "schedule": "after 3am on Wednesday",
-  "rebaseConflictedPrs": false,
-  ]
+  "rebaseConflictedPrs": false
 }
