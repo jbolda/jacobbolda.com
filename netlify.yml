@@ -4,4 +4,4 @@ build:
     onBuild: gatsby build
 
 plugins:
-  - type: netlify-plugin-gatsby-cache
+  - package: netlify-plugin-gatsby-cache
