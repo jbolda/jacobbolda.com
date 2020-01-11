@@ -115,6 +115,7 @@ module.exports = {
               maxWidth: 590
             }
           },
+          { resolve: `gatsby-remark-copy-linked-files` },
           `gatsby-remark-responsive-iframe`
         ]
       }
