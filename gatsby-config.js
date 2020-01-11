@@ -4,6 +4,7 @@ module.exports = {
     siteDescription: `Structural Engineer with a knack for creative solutions using code and ingenuity.`,
     siteAuthor: `Jacob Bolda`,
     siteContact: "https://twitter.com/jacobbolda",
+    siteURL: "https://www.jacobbolda.com/",
     contactLinks: [
       {
         url: "mailto:me@jacobbolda.com",
