@@ -1,9 +1,13 @@
 import React from "react";
 
-export const Calcs = ({ c }) => {
-  window.c = { ...c };
-  return <div />;
-};
+export default class Calcs extends React.Component {
+  componentDidMount() {
+    window.c = { ...c };
+  }
+  render() {
+    return null;
+  }
+}
 
 let calculator = {};
 calculator.E = 29000;
