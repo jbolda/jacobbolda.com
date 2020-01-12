@@ -1,7 +1,8 @@
 import React from "react";
 import * as d3 from "d3";
+import { StaticQuery, graphql } from "gatsby";
 
-class choroplethBase extends React.Component {
+class Choropleth extends React.Component {
   componentDidMount() {
     this.d3Node = d3.select("div#states");
     let measurements = {
@@ -11,16 +12,16 @@ class choroplethBase extends React.Component {
     let space = graph.setup(this.d3Node, measurements);
 
     /*
-       we begin drawing here, grab the data and use it to draw
-      */
+      we begin drawing here, grab the data and use it to draw
+    */
 
     d3.queue()
-      .defer(d3.csv, this.props.data.statedata.publicURL)
-      .defer(d3.json, this.props.data.stateshapes.publicURL)
+      .defer(d3.csv, this.props.stateData.publicURL)
+      .defer(d3.json, this.props.stateShapes.publicURL)
       .awaitAll((error, results) => {
         if (error) {
-          console.log(this.props.data.statedata.publicURL);
-          console.log(this.props.data.stateshapes.publicURL);
+          console.log(this.props.stateData.publicURL);
+          console.log(this.props.stateShapes.publicURL);
           console.dir(error);
         } else {
           // console.log(results);
@@ -46,7 +47,27 @@ class choroplethBase extends React.Component {
   }
 }
 
-export default choroplethBase;
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query choroplethOnD3v4 {
+        stateShapes: file(
+          relativePath: { eq: "0006-choropleth-on-d3v4/states.json" }
+        ) {
+          publicURL
+        }
+        stateData: file(
+          relativePath: { eq: "0006-choropleth-on-d3v4/states_data.csv" }
+        ) {
+          publicURL
+        }
+      }
+    `}
+    render={data => (
+      <Choropleth stateShapes={data.stateShapes} stateData={data.stateData} />
+    )}
+  />
+);
 
 var graph = {}; // we namespace our d3 graph into setup and draw
 

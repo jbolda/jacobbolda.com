@@ -1,11 +1,8 @@
 import React from "react";
 
-export const Calcs = () => {
-  // componentDidMount() {
-  //   window.c = { ...this.props.c };
-  // }
-
-  return <div>Test</div>;
+export const Calcs = ({ c }) => {
+  window.c = { ...c };
+  return <div />;
 };
 
 let calculator = {};
