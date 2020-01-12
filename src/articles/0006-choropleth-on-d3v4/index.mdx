@@ -7,14 +7,11 @@ tags: ["data science"]
 description: "Things about the choropleth."
 ---
 
-import { graphql } from "gatsby"
 import Choropleth from "./choropleth"
 
 # Choropleth on d3v4
 
-`<Choropleth />` should run here, but an upstream bug means it
-is broken.
-<!-- <Choropleth /> -->
+<Choropleth />
 
 I have been using d3js for a few years now. It is an amazing library, but very low level. In my mind, there is a spectrum of libraries that ranges from _press a button and it is complete_ to _toil away for hours, connect many wires and out comes a square_. But the square is completely custom!
 
@@ -291,18 +288,3 @@ let mergeData = (d1, d1key, d2, d2key) => {
   return data;
 };
 ```
-
-<!-- export const pageQuery = graphql`
-  query choroplethOnD3v4($slug: String!) {
-    stateshapes: file(
-      relativePath: { eq: "0006-choropleth-on-d3v4/states.json" }
-    ) {
-      publicURL
-    }
-    statedata: file(
-      relativePath: { eq: "0006-choropleth-on-d3v4/states_data.csv" }
-    ) {
-      publicURL
-    }
-  }
-`; -->

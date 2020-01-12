@@ -1,12 +1,13 @@
 import React from "react";
 
-export const Calcs = () => {
-  // componentDidMount() {
-  //   window.c = { ...this.props.c };
-  // }
-
-  return <div>Test</div>;
-};
+export default class Calcs extends React.Component {
+  componentDidMount() {
+    window.c = { ...c };
+  }
+  render() {
+    return null;
+  }
+}
 
 let calculator = {};
 calculator.E = 29000;

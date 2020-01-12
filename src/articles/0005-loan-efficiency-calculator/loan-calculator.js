@@ -82,7 +82,7 @@ class loanEfficiencyCalculator extends React.Component {
 
   componentDidMount() {}
 
-  renderCalculator() {
+  render() {
     return (
       <React.Fragment>
         <div
@@ -280,10 +280,6 @@ class loanEfficiencyCalculator extends React.Component {
         </div>
       );
     });
-  }
-
-  render() {
-    return this.renderCalculator;
   }
 }
 
