@@ -2,7 +2,7 @@ import React from "react";
 
 export default class Calcs extends React.Component {
   componentDidMount() {
-    window.c = { ...c };
+    window.c = { ...calculator };
   }
   render() {
     return null;
