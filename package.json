@@ -68,7 +68,7 @@
     "theme-ui": "^0.2.52"
   },
   "devDependencies": {
-    "netlify-plugin-gatsby-cache": "^0.2.0",
-    "prettier": "^1.19.1"
+    "netlify-plugin-gatsby-cache": "0.2.0",
+    "prettier": "1.19.1"
   }
 }
