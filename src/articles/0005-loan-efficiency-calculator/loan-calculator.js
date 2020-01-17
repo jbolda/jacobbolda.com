@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui";
 import React from "react";
 import Big from "big.js";
 
@@ -84,199 +86,157 @@ class loanEfficiencyCalculator extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <div
-          className="tile is-ancestor is-vertical"
-          style={{ backgroundColor: "hsl(0, 0%, 96%)" }}
-        >
-          <div className="tile is-parent is-3">
-            <div className="tile is-child box">
-              Total Payment:
-              <input
-                name="maxpayment"
-                type="number"
-                className="input"
-                step="10"
-                value={this.state.payment.toFixed(2)}
-                onChange={this.handlePayment.bind(this)}
-              />
-            </div>
-          </div>
-          <div
-            className="tile is-parent is-vertical"
-            style={{ backgroundColor: "inherit" }}
-          >
-            {this.loanInputs()}
-            <div className="tile">
-              <div className="tile is-parent box">
-                <div className="tile is-child is-3">Totals: </div>
-                <div className="tile is-child is-3">
-                  <span className="">Total Balance:&nbsp;</span>
-                  {this.state.totalBalance.toFixed(2)}
-                </div>
-                <div className="tile is-child is-3">
-                  <span className="">Total Minimum Payment:&nbsp;</span>
-                  {this.state.totalMin.toFixed(2)}+
-                  {this.state.additionalPayment.toFixed(2)}
-                </div>
-                <div className="tile is-child is-3">
-                  <span className="">Total Interest Paid:&nbsp;</span>
-                  {this.state.interest.toFixed(2)}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="tile is-parent is-3">
-            <div className="tile is-child">
-              <button
-                className="button is-success"
-                onClick={this.addAnother.bind(this)}
-              >
-                add another
-              </button>
-            </div>
-          </div>
+      <div
+        sx={{
+          wrap: "flex",
+          flexDirection: "column",
+          width: ["95%", "85%", "50%"],
+          paddingLeft: ["2.5%", "12.5%", "25%"]
+        }}
+      >
+        <div sx={{ padding: 4 }}>
+          Total Payment:
+          <Input
+            name="maxpayment"
+            type="number"
+            step="10"
+            value={this.state.payment.toFixed(2)}
+            onChange={this.handlePayment.bind(this)}
+          />
         </div>
-      </React.Fragment>
+
+        <div sx={{ padding: 4 }}>{this.loanInputs()}</div>
+
+        <div sx={{ width: ["50%", "50%", "50%"], padding: 4 }}>
+          <p>Totals: </p>
+          <p>{`Total Balance: ${this.state.totalBalance.toFixed(2)}`}</p>
+          <p>
+            {`Total Minimum Payment: ${this.state.totalMin.toFixed(
+              2
+            )}+${this.state.additionalPayment.toFixed(2)}`}
+          </p>
+          <p>{`Total Interest Paid: ${this.state.interest.toFixed(2)}`}</p>
+        </div>
+
+        <button
+          sx={{
+            bg: "background",
+            color: "text",
+            borderColor: "secondary",
+            margin: 5,
+            padding: 3,
+            borderRadius: "2em",
+            transition: "all 0.2s",
+            ":hover": {
+              color: "muted",
+              bg: "secondary"
+            }
+          }}
+          onClick={this.addAnother.bind(this)}
+        >
+          add another
+        </button>
+      </div>
     );
   }
 
   loanInputs() {
     return this.state.loans.map((loan, index) => {
-      let upArrow;
-      if (index === 0) {
-        upArrow = <span />;
-      } else {
-        upArrow = (
+      let upArrow =
+        index === 0 ? (
+          <span />
+        ) : (
           <button
-            className="button is-info"
+            sx={{
+              bg: "background",
+              color: "text",
+              borderColor: "secondary",
+              margin: 2,
+              paddingX: 3,
+              paddingY: 2,
+              borderRadius: "2em",
+              transition: "all 0.2s",
+              ":hover": {
+                color: "muted",
+                bg: "secondary"
+              }
+            }}
             onClick={this.handleShift.bind(this, index)}
           >
             ^
           </button>
         );
-      }
+
       return (
-        <div key={index} className="tile is-vertical box">
-          <div className="tile is-parent is-12">
-            <div className="tile is-child is-1">
-              <button
-                className="button is-danger"
-                onClick={this.handleDelete.bind(this, index)}
-              >
-                x
-              </button>
-              {upArrow}
-            </div>
-          </div>
-          <div className="tile is-parent is-12">
-            <div className="tile is-child is-3">
-              <div className="field">
-                <label className="label">Name</label>
-                <div
-                  className="control is-expanded"
-                  style={{ paddingRight: "0.5rem" }}
-                >
-                  <input
-                    name="name"
-                    type="text"
-                    className="input"
-                    value={loan.name}
-                    onChange={this.handleChange.bind(this, index)}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="tile is-child is-3">
-              <div className="field">
-                <label className="label">Balance</label>
-                <div className="field has-addons">
-                  <p className="control">
-                    <button className="button is-static">$</button>
-                  </p>
-                  <p
-                    className="control is-expanded"
-                    style={{ paddingRight: "0.5rem" }}
-                  >
-                    <input
-                      name="balance"
-                      type="number"
-                      className="input"
-                      step="100"
-                      value={loan.balance.toFixed(2)}
-                      onChange={this.handleChange.bind(this, index)}
-                    />
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="tile is-child is-3">
-              <div className="field">
-                <label className="label">Interest Rate</label>
-                <div className="field has-addons">
-                  <p className="control is-expanded">
-                    <input
-                      name="intRate"
-                      type="number"
-                      className="input"
-                      step="0.01"
-                      value={loan.intRate.toFixed(2)}
-                      onChange={this.handleChange.bind(this, index)}
-                    />
-                  </p>
-                  <p className="control" style={{ paddingRight: "0.5rem" }}>
-                    <button className="button is-static">%</button>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="tile is-child is-3">
-              <div className="field">
-                <label className="label">Minimum Payment</label>
-                <div className="field has-addons">
-                  <p className="control">
-                    <button className="button is-static">$</button>
-                  </p>
-                  <p className="control is-expanded">
-                    <input
-                      name="payment"
-                      type="number"
-                      className="input"
-                      step="5"
-                      value={loan.payment.toFixed(2)}
-                      onChange={this.handleChange.bind(this, index)}
-                    />
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="tile is-parent is-12">
-            <div className="tile is-child is-3">
-              <div className="container is-fluid">
-                <span>Interest Paid:&nbsp;</span>
-                <span>${loan.accumulatedInterest.round(2).toString()}</span>
-              </div>
-            </div>
-            <div className="tile is-child is-3">
-              <div className="container is-fluid">
-                <span>Months:&nbsp;</span>
-                <span>{loan.months.round(2).toString()}m</span>
-              </div>
-            </div>
-            <div className="tile is-child is-3">
-              <div className="container is-fluid">
-                <span>Years:&nbsp;</span>
-                <span>{loan.years.round(2).toString()}y</span>
-              </div>
-            </div>
-            <div className="tile is-child is-3">
-              <div className="container is-fluid">
-                <span>Ratio:&nbsp;</span>
-                <span>{loan.ratio.toFixed(2)}</span>
-              </div>
-            </div>
-          </div>
+        <div key={index} sx={{ padding: 4 }}>
+          <button
+            sx={{
+              bg: "background",
+              color: "text",
+              borderColor: "secondary",
+              margin: 2,
+              paddingX: 3,
+              paddingY: 2,
+              borderRadius: "2em",
+              transition: "all 0.2s",
+              ":hover": {
+                color: "muted",
+                bg: "secondary"
+              }
+            }}
+            onClick={this.handleDelete.bind(this, index)}
+          >
+            x
+          </button>
+          {upArrow}
+          <label>
+            Name
+            <Input
+              name="name"
+              type="text"
+              value={loan.name}
+              onChange={this.handleChange.bind(this, index)}
+            />
+          </label>
+          <label>
+            Balance $
+            <Input
+              name="balance"
+              type="number"
+              step="100"
+              value={loan.balance.toFixed(2)}
+              onChange={this.handleChange.bind(this, index)}
+            />
+          </label>
+          <label>
+            Interest Rate
+            <Input
+              name="intRate"
+              type="number"
+              step="0.01"
+              value={loan.intRate.toFixed(2)}
+              onChange={this.handleChange.bind(this, index)}
+            />
+            %
+          </label>
+
+          <label>
+            Minimum Payment $
+            <Input
+              name="payment"
+              type="number"
+              step="5"
+              value={loan.payment.toFixed(2)}
+              onChange={this.handleChange.bind(this, index)}
+            />
+          </label>
+          <p>{`Interest Paid: ${loan.accumulatedInterest
+            .round(2)
+            .toString()} | Months: ${loan.months
+            .round(2)
+            .toString()}m | Years: ${loan.years
+            .round(2)
+            .toString()}y | Ratio: ${loan.ratio.toFixed(2)}`}</p>
         </div>
       );
     });
@@ -284,6 +244,24 @@ class loanEfficiencyCalculator extends React.Component {
 }
 
 export default loanEfficiencyCalculator;
+
+const Input = props => (
+  <input
+    sx={{
+      display: "block",
+      width: "100%",
+      p: 2,
+      appearance: "none",
+      fontSize: "inherit",
+      lineHeight: "inherit",
+      border: "1px solid",
+      borderRadius: 4,
+      color: "inherit",
+      bg: "background"
+    }}
+    {...props}
+  />
+);
 
 let processLoans = loanGroup => {
   let newLoanGroup = { ...loanGroup };
