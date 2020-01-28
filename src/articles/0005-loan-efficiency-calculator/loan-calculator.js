@@ -90,7 +90,7 @@ class loanEfficiencyCalculator extends React.Component {
         sx={{
           wrap: "flex",
           flexDirection: "column",
-          width: ["95%", "85%", "50%"],
+          width: ["97.5%", "97.5%", "75%"],
           paddingLeft: ["2.5%", "12.5%", "25%"]
         }}
       >
