@@ -15,11 +15,22 @@ const mdxComponents = ({ heading, text }) => {
         [h]: props => (
           <Box
             sx={{
+              padding: 0,
               paddingLeft: ["2.5%", "12.5%", "30%"],
-              width: ["95%", "75%", "40%"]
+              margin: 0,
+              width: ["97.5%", "87.5%", "70%"]
             }}
           >
-            <Heading as={h} {...props} sx={{ width: null, variant: heading }} />
+            <Heading
+              as={h}
+              {...props}
+              sx={{
+                width: null,
+                padding: 0,
+                marginBottom: 0,
+                variant: heading
+              }}
+            />
           </Box>
         )
       }),
@@ -32,10 +43,18 @@ const mdxComponents = ({ heading, text }) => {
           <Box
             sx={{
               paddingLeft: ["2.5%", "12.5%", "30%"],
-              width: ["95%", "75%", "40%"]
+              margin: 0,
+              width: ["97.5%", "87.5%", "70%"]
             }}
           >
-            <Text as={b} {...props} sx={{ variant: text }} />
+            <Text
+              as={b}
+              {...props}
+              sx={{
+                padding: 0,
+                variant: text
+              }}
+            />
           </Box>
         )
       }),
@@ -57,7 +76,7 @@ const bodyTextStandards = {
 };
 
 export default {
-  initialColorMode: "light",
+  initialColorModeName: "light",
   useCustomProperties: true, // true is default
   // ^ prevents FOUC aka flash of unstyled content
   useColorSchemeMediaQuery: true, // turns on dark mode if set in browser
@@ -269,7 +288,8 @@ export default {
   text: {
     heading: {
       ...headingTextStandards,
-      letterSpacing: "heading"
+      letterSpacing: "heading",
+      my: 4
     },
     body: {
       ...bodyTextStandards,
