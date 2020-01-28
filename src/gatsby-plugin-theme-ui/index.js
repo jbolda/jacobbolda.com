@@ -2,7 +2,7 @@ import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import prismTheme from "prism-react-renderer/themes/nightOwl";
 import Pre from "../components/pre";
-import { Flex, Box, Heading, Text } from "@jbolda/isolated-theme-ui-components";
+import { Flex, Box, Heading, Text, Link } from "theme-ui";
 
 const mdxComponents = ({ heading, text }) => {
   const headings = ["h1", "h2", "h3", "h4", "h5", "h6"];
@@ -99,6 +99,7 @@ export default {
   },
   colors: {
     text: "#000000",
+    textAlwaysLight: "#F4F4F4",
     background: "#F4F4F4",
     primary: "#52777D",
     secondary: "#192C3B",
@@ -107,6 +108,7 @@ export default {
     modes: {
       dark: {
         text: "#F3FBF1",
+        textAlwaysLight: "#F3FBF1",
         background: "#192C3B",
         primary: "#52777D",
         secondary: "#9EBBA9",
@@ -132,7 +134,10 @@ export default {
     },
     homepage: {
       landing: {
-        container: { paddingBottom: 8 },
+        container: {
+          paddingBottom: 8,
+          flexWrap: "wrap"
+        },
         heading: {
           ...headingTextStandards,
           color: "text"
@@ -150,11 +155,11 @@ export default {
         container: { paddingBottom: 8, backgroundColor: "primary" },
         heading: {
           ...headingTextStandards,
-          color: "background"
+          color: "textAlwaysLight"
         },
         text: {
           ...bodyTextStandards,
-          color: "background"
+          color: "textAlwaysLight"
         },
         link: {
           ...bodyTextStandards,
@@ -174,17 +179,31 @@ export default {
         link: {
           ...bodyTextStandards,
           color: "primary"
+        },
+        components: {
+          a: ({ children, href }) => (
+            <Link
+              href={href}
+              sx={{ variant: "jboldaGatsbyTheme.homepage.engagements.link" }}
+            >
+              <Text
+                sx={{ variant: "jboldaGatsbyTheme.homepage.engagements.text" }}
+              >
+                {children}
+              </Text>
+            </Link>
+          )
         }
       },
       articles: {
         container: { paddingBottom: 8, backgroundColor: "primary" },
         heading: {
           ...headingTextStandards,
-          color: "background"
+          color: "textAlwaysLight"
         },
         text: {
           ...bodyTextStandards,
-          color: "background"
+          color: "textAlwaysLight"
         },
         link: {
           ...bodyTextStandards,
