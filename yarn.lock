@@ -874,10 +874,17 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.4", "@babel/runtime@^7.7.6":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.4", "@babel/runtime@^7.7.6":
   version "7.7.7"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.7.tgz#194769ca8d6d7790ec23605af9ee3e42a0aa79cf"
   integrity sha512-uCnC2JEVAu8AKB5do1WRIsvrdJ0flYx/A/9f/6chdacnEZ7LmavjdsDXr5ksYBegxtuTPR5Va9/+13QF/kFkCA==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
+"@babel/runtime@^7.1.2":
+  version "7.8.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.8.3.tgz#0811944f73a6c926bb2ad35e918dcc1bfab279f1"
+  integrity sha512-fVHx1rzEmwB130VTkLnxR+HmxcTjGzH12LYQcFFoBwakMd3aOMD4OsRN7tGG/UOYE2ektgFrS8uACAoRk1CY0w==
   dependencies:
     regenerator-runtime "^0.13.2"
 
@@ -1134,23 +1141,23 @@
   integrity sha512-gHrtH26T9s1sMPDFLrL7aWl+w4h9NmnvDCwSSYHVoB0zMgI0OHI3zz8PZdLXRRKfF7nICMYGUmDg50VvPx1hZg==
 
 "@jbolda/gatsby-theme-homepage@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-homepage/-/gatsby-theme-homepage-0.3.0.tgz#8bd94dcb81a6a1244a5012fb9be6d1915389f96a"
-  integrity sha512-HPLb96fmO3xn0UofcNDdq+tFxUCMIKZ0RLK8B210Gj5lk2izfIb0H6RjFAUE6fLhsl+SIGoHHPBiXxRf/nOlKQ==
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-homepage/-/gatsby-theme-homepage-0.3.1.tgz#80db5091f7be3d1c29a2cc0da6262ad72c080217"
+  integrity sha512-AXcss6xU5RiChOBlTIq6GBjjqw5NVtTkkBXO75kOVXkS+PBc5jPx7Vd2Tf0AHsjEMnM/SkyiXugPL1ItPomrfw==
   dependencies:
     "@jbolda/gatsby-theme-components" "0.0.1"
 
-"@jbolda/gatsby-theme-layout@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-layout/-/gatsby-theme-layout-0.3.0.tgz#3acd415cd6abccdb3e7fada7c0545ee56e080cbb"
-  integrity sha512-grJHNUyHEd/PdAS5ETP2Jbr3TsZLC5kIso2oT0CvyR0BTvOgPb3LttHFRrEcVD6zG8RskD2FTJ+nQqhY3bMCcA==
+"@jbolda/gatsby-theme-layout@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-layout/-/gatsby-theme-layout-0.3.2.tgz#5bdffa0ffb9b8f5cc084f8a5e717983289f1aec5"
+  integrity sha512-zRC5Gd957eiNEVsMWzIS/Q6EPaUX3LtxpqJVOaGYXz/ELHL+z54JZV+HyV/cZMWz5pAUH4JG97HA00YwZF8Csg==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "1.2.26"
     "@fortawesome/free-brands-svg-icons" "5.12.0"
     "@fortawesome/free-regular-svg-icons" "5.12.0"
     "@fortawesome/free-solid-svg-icons" "5.12.0"
     "@fortawesome/react-fontawesome" "0.1.8"
-    react-use "13.22.2"
+    react-use "13.22.3"
 
 "@jbolda/isolated-theme-ui-components@0.0.4":
   version "0.0.4"
@@ -11401,10 +11408,10 @@ react-side-effect@^1.1.0:
   dependencies:
     shallowequal "^1.0.1"
 
-react-use@13.22.2:
-  version "13.22.2"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.22.2.tgz#86f832a925c35f3866c777467df3bab7f9f98875"
-  integrity sha512-wytWEcF54h2MNSbdjalaeTAjrYih9BqezTzox9/iJ5g8efz1PVM3FjgFfYB6CJO56uL6pVI0RYOgipD5YZJXzA==
+react-use@13.22.3:
+  version "13.22.3"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.22.3.tgz#ce26cdda086b6ae8b9b14b71d3cebb306f6a0df9"
+  integrity sha512-8aboVs/OfKsNnhi4eXhkCA4tFp0aZlFpK/9LwulVlz8/50lzK5mtseC6NZHdlJ2l95/d8z4V2G+5NCMuz11ANw==
   dependencies:
     "@types/js-cookie" "2.2.4"
     "@xobotyi/scrollbar-width" "1.7.0"
@@ -12124,9 +12131,9 @@ schema-utils@^1.0.0:
     ajv-keywords "^3.1.0"
 
 screenfull@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/screenfull/-/screenfull-5.0.0.tgz#5c2010c0e84fd4157bf852877698f90b8cbe96f6"
-  integrity sha512-yShzhaIoE9OtOhWVyBBffA6V98CDCoyHTsp8228blmqYy1Z5bddzE/4FPiJKlr8DVR4VBiiUyfPzIQPIYDkeMA==
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/screenfull/-/screenfull-5.0.1.tgz#873052411eb9096bc1c8e615f5badad119e6e42c"
+  integrity sha512-NgQH4KKh2V3zlj2u90l7TUcSFxr9qL/64QEvhAvCN/fu1YS39YLTBKIqZqiS3STj3QD8sN6XnsK/8jk3hRq4WA==
 
 scroll-behavior@^0.9.10:
   version "0.9.11"
@@ -12623,9 +12630,9 @@ source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.1:
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
 sourcemap-codec@^1.4.1:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/sourcemap-codec/-/sourcemap-codec-1.4.7.tgz#5b2cd184e3fe51fd30ba049f7f62bf499b4f73ae"
-  integrity sha512-RuN23NzhAOuUtaivhcrjXx1OPXsFeH9m5sI373/U7+tGLKihjUyboZAzOadytMjnqHp1f45RGk1IzDKCpDpSYA==
+  version "1.4.8"
+  resolved "https://registry.yarnpkg.com/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz#ea804bd94857402e6992d05a38ef1ae35a9ab4c4"
+  integrity sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==
 
 space-separated-tokens@^1.0.0:
   version "1.1.4"
