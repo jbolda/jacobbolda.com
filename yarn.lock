@@ -984,14 +984,17 @@
     gatsby-plugin-compile-es6-packages "2.1.0"
     isolated-theme-ui "1.0.1"
 
-"@jbolda/gatsby-theme-homepage@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-homepage/-/gatsby-theme-homepage-0.2.1.tgz#8a11be1e44b88a2044ae2f2f8543525d35928e1c"
-  integrity sha512-mUb34IeQF30JxhglyNN+q2jW1lTxBkLuPo1VPbowfWmqUvCEqdB4SXecXO43jllOuFu3NZjEXfluyMbXZUflCg==
+"@jbolda/gatsby-theme-components@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-components/-/gatsby-theme-components-0.0.1.tgz#cf44b5fc26611f1b1e9501e384e82e23e5c13e9b"
+  integrity sha512-gHrtH26T9s1sMPDFLrL7aWl+w4h9NmnvDCwSSYHVoB0zMgI0OHI3zz8PZdLXRRKfF7nICMYGUmDg50VvPx1hZg==
+
+"@jbolda/gatsby-theme-homepage@^0.3.0":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-homepage/-/gatsby-theme-homepage-0.3.1.tgz#80db5091f7be3d1c29a2cc0da6262ad72c080217"
+  integrity sha512-AXcss6xU5RiChOBlTIq6GBjjqw5NVtTkkBXO75kOVXkS+PBc5jPx7Vd2Tf0AHsjEMnM/SkyiXugPL1ItPomrfw==
   dependencies:
-    "@jbolda/isolated-theme-ui-components" "^0.2.0"
-    gatsby-plugin-compile-es6-packages "^2.1.0"
-    isolated-theme-ui "^1.0.1"
+    "@jbolda/gatsby-theme-components" "0.0.1"
 
 "@jbolda/gatsby-theme-layout@^0.2.1":
   version "0.2.1"
@@ -6041,7 +6044,7 @@ gatsby-page-utils@^0.0.37:
     lodash "^4.17.15"
     micromatch "^3.1.10"
 
-gatsby-plugin-compile-es6-packages@2.1.0, gatsby-plugin-compile-es6-packages@^2.1.0:
+gatsby-plugin-compile-es6-packages@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-compile-es6-packages/-/gatsby-plugin-compile-es6-packages-2.1.0.tgz#eb6068d8936fd8b404716e47b821d09bf0656af7"
   integrity sha512-yrYAAjabHWJr3ARi8xzDm01dbBfyOxEWTwGkL3BMdgL/opfLvTrwLmfium4kSelnLs70DYY3rYDwyHjqyFsnFQ==
@@ -8120,7 +8123,7 @@ isobject@^3.0.0, isobject@^3.0.1:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
-isolated-theme-ui@1.0.1, isolated-theme-ui@^1.0.1:
+isolated-theme-ui@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/isolated-theme-ui/-/isolated-theme-ui-1.0.1.tgz#197d79bafb68d452aee5ba35509252b9ffb2af06"
   integrity sha512-FuCafGqck/vvbaL6AGakCXq9VzoH101pOTqwQ3UOm9hRWfkk4imxNOLtgZqD23KLlb0wjhX/j4qmR9p8vprDgQ==
