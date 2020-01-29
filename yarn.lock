@@ -975,14 +975,17 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@jbolda/gatsby-theme-articles@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-articles/-/gatsby-theme-articles-0.2.1.tgz#8d9a2328653443ebc25908cada968ab312f2c5aa"
-  integrity sha512-qJpYnGfpibOb6TeZB8mtD9f8JxO56RZTrUVQ90x49N0zzJTfexaQ3pbr3ExX+JVQSxGFHFY/2VEK4+S7jUR6SQ==
+"@jbolda/gatsby-theme-articles@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-articles/-/gatsby-theme-articles-0.3.0.tgz#a16d86de1aaa0777b8d6b748fb430d10bede2f9e"
+  integrity sha512-9E3Ovppngh9XfVX3SB4vdmXAxfVD0eYCZgF4h52iE5tHKzu5FL1fpZR2Cj7FA8fBnEJdQokidEs3ZjjbjnKUIg==
   dependencies:
-    "@jbolda/isolated-theme-ui-components" "^0.2.0"
-    gatsby-plugin-compile-es6-packages "2.1.0"
-    isolated-theme-ui "1.0.1"
+    "@jbolda/gatsby-theme-components" "0.0.1"
+
+"@jbolda/gatsby-theme-components@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-components/-/gatsby-theme-components-0.0.1.tgz#cf44b5fc26611f1b1e9501e384e82e23e5c13e9b"
+  integrity sha512-gHrtH26T9s1sMPDFLrL7aWl+w4h9NmnvDCwSSYHVoB0zMgI0OHI3zz8PZdLXRRKfF7nICMYGUmDg50VvPx1hZg==
 
 "@jbolda/gatsby-theme-homepage@^0.2.1":
   version "0.2.1"
