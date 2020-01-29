@@ -15,18 +15,14 @@ const mdxComponents = ({ heading, text }) => {
         [h]: props => (
           <Box
             sx={{
-              padding: 0,
-              paddingLeft: ["2.5%", "12.5%", "30%"],
-              margin: 0,
-              width: ["97.5%", "87.5%", "70%"]
+              marginX: ["2.5%", "12.5%", "30%"],
+              width: ["95%", "75%", "40%"]
             }}
           >
             <Heading
               as={h}
               {...props}
               sx={{
-                width: null,
-                padding: 0,
                 marginBottom: 0,
                 variant: heading
               }}
@@ -42,16 +38,15 @@ const mdxComponents = ({ heading, text }) => {
         [b]: props => (
           <Box
             sx={{
-              paddingLeft: ["2.5%", "12.5%", "30%"],
-              margin: 0,
-              width: ["97.5%", "87.5%", "70%"]
+              marginX: ["2.5%", "12.5%", "30%"],
+              width: ["95%", "75%", "40%"]
             }}
           >
             <Text
               as={b}
               {...props}
               sx={{
-                padding: 0,
+                padding: 2,
                 variant: text
               }}
             />
@@ -81,7 +76,7 @@ export default {
   // ^ prevents FOUC aka flash of unstyled content
   useColorSchemeMediaQuery: true, // turns on dark mode if set in browser
   breakpoints: ["40em", "56em", "70em"],
-  space: [0, 2, 4, 8, 12, 16, 20, 24, 28],
+  space: [0, 2, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40],
   fonts: {
     body: "Proza Libre, system-ui, sans-serif",
     heading: "Cormorant Garamond, serif",
@@ -130,13 +125,15 @@ export default {
       link: {
         ...bodyTextStandards,
         color: "primary"
+      },
+      footer: {
+        paddingY: 11
       }
     },
     homepage: {
       landing: {
         container: {
-          paddingBottom: 8,
-          flexWrap: "wrap"
+          paddingBottom: 11
         },
         heading: {
           ...headingTextStandards,
@@ -152,7 +149,7 @@ export default {
         }
       },
       about: {
-        container: { paddingBottom: 8, backgroundColor: "primary" },
+        container: { paddingY: 11, backgroundColor: "primary" },
         heading: {
           ...headingTextStandards,
           color: "textAlwaysLight"
@@ -167,7 +164,7 @@ export default {
         }
       },
       engagements: {
-        container: { paddingBottom: 8 },
+        container: { paddingY: 11 },
         heading: {
           ...headingTextStandards,
           color: "text"
@@ -196,7 +193,7 @@ export default {
         }
       },
       articles: {
-        container: { paddingBottom: 8, backgroundColor: "primary" },
+        container: { paddingY: 11, backgroundColor: "primary" },
         heading: {
           ...headingTextStandards,
           color: "textAlwaysLight"
@@ -284,7 +281,8 @@ export default {
                       sx={{
                         ...style,
                         backgroundColor: "inherit",
-                        width: ["95%", "75%", "40%"]
+                        paddingLeft: ["2.5%", "12.5%", "20%"],
+                        width: ["95%", "75%", "60%"]
                       }}
                     >
                       {tokens.map((line, i) => (
