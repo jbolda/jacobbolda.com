@@ -22,7 +22,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: npx netlify-cli deploy --dir=public --message ${{ github.event.pull_request.html_url }} 2>&1 | tee -a ./notes.md
       - name: comment PR
-        uses: machine-learning-apps/pr-comment@master
+        uses: machine-learning-apps/pr-comment@1.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
