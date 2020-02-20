@@ -20,7 +20,7 @@ jobs:
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        run: npx netlify-cli deploy --dir=public --message ${{ github.event.pull_request.html_url }} | tee -a ${{runner.workspace }}/notes.md
+        run: npx netlify-cli deploy --dir=public --message ${{ github.event.pull_request.html_url }} 2>&1 | tee -a ${{runner.workspace }}/notes.md
       - name: comment PR
         uses: machine-learning-apps/pr-comment@master
         env:
