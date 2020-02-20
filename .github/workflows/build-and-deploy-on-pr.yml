@@ -20,8 +20,10 @@ jobs:
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        run: npx netlify-cli deploy --dir=public --message ${{ github.event.message }} | tee -a ${{runner.workspace }}/notes.md
-      - name: Dump GitHub context
+        run: npx netlify-cli deploy --dir=public --message ${{ github.event.pull_request.html_url }} | tee -a ${{runner.workspace }}/notes.md
+      - name: comment PR
+        uses: machine-learning-apps/pr-comment@master
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          path: ${{runner.workspace }}/notes.md
