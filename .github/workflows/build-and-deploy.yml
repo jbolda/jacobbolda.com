@@ -13,7 +13,7 @@ jobs:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
         run: yarn build
       - name: deploy
-        if: success() && (github.ref == "refs/heads/master")
+        if: success() && ${{ github.ref }} == "refs/heads/master"
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
