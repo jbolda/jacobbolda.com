@@ -1,20 +1,27 @@
 name: build and push live
 
-on: push
+on: pull_request
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
       - run: yarn
       - name: build
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
         run: yarn build
       - name: deploy
-        if: success() && ${{ github.ref }} == "refs/heads/master"
+        if: success()
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        run: npx netlify-cli deploy --dir=public --prod
+        run: npx netlify-cli deploy --dir=public --message ${{ github.event.message }} | tee -a ${{runner.workspace }}/notes.md
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
