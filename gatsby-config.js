@@ -84,7 +84,7 @@ module.exports = {
               ingredients: "text/markdown",
               directions: "text/markdown"
             },
-            separateMapTypes: true,
+            separateMapType: true,
             tableLinks: [`Cooking_Method`, `Style`]
           },
           {
@@ -115,7 +115,8 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
-              withWebp: true
+              withWebp: true,
+              disableBgImage: true
             }
           },
           { resolve: `gatsby-remark-copy-linked-files` },
@@ -139,9 +140,7 @@ module.exports = {
         rootBase: "/recipes/"
       }
     },
-    `gatsby-transformer-javascript-frontmatter`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {
