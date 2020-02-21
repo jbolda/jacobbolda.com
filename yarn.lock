@@ -5275,6 +5275,11 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
+es6-promise@^4.2.8:
+  version "4.2.8"
+  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.2.8.tgz#4eb21594c972bc40553d276e510539143db53e0a"
+  integrity sha512-HJDGx5daxeIvxdBxvG2cb9g4tEvwIk3i8+nhX0yGrYmZUzbkdg8QbDevheDB8gd0//uPj4c1EQua8Q+MViT0/w==
+
 es6-promisify@^6.0.0:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/es6-promisify/-/es6-promisify-6.0.2.tgz#525c23725b8510f5f1f2feb5a1fbad93a93e29b4"
@@ -5867,6 +5872,13 @@ fd-slicer@~1.1.0:
   integrity sha1-JcfInLH5B3+IkbvmHY85Dq4lbx4=
   dependencies:
     pend "~1.2.0"
+
+fetch-retry@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/fetch-retry/-/fetch-retry-3.0.1.tgz#6bc9bd8b39a44c6b033c767fd40d76cac413487e"
+  integrity sha512-RJaGP9bhfrjdI3xcdk41OPzMOceMak1irLubAjE/B2s6uESisPe+oPejEUqNF40rZeXlzBxABTs/Vw+FcIC2bg==
+  dependencies:
+    es6-promise "^4.2.8"
 
 figgy-pudding@^3.5.1:
   version "3.5.1"
@@ -6474,6 +6486,16 @@ gatsby-remark-copy-linked-files@2.1.37:
     probe-image-size "^4.1.1"
     unist-util-visit "^1.4.1"
 
+gatsby-remark-embedder@^1.11.2:
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-embedder/-/gatsby-remark-embedder-1.11.2.tgz#67fa8b5323748e7c14fa73a7173c90947fdd2ba2"
+  integrity sha512-uQPknwIz+pQStOf1nxoW/JljcIQ5uXqns4dYWIRkAg+juNEkofNvtFld2pqeXPIZPwcEbZTScSm6+WyoTCKfCg==
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+    fetch-retry "^3.0.1"
+    node-fetch "^2.6.0"
+    unist-util-visit "^2.0.1"
+
 gatsby-remark-images@3.1.44:
   version "3.1.44"
   resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.1.44.tgz#0e56e1576b7bd8415b4e969b81712eb0f3614d9e"
@@ -6498,17 +6520,6 @@ gatsby-remark-prismjs@3.3.31:
   dependencies:
     "@babel/runtime" "^7.7.6"
     parse-numeric-range "^0.0.2"
-    unist-util-visit "^1.4.1"
-
-gatsby-remark-responsive-iframe@2.2.32:
-  version "2.2.32"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-responsive-iframe/-/gatsby-remark-responsive-iframe-2.2.32.tgz#895047959dc8a1cc7c3553f1ea82bcf5592cb59c"
-  integrity sha512-jBNkQiWN9Vxrok+d4Uz5YUD7nLF09ky43A6uO8bwZKQ9HHK8+GQMV4VCTjVRMZaSGPc1jAFCTJQgnm01GU2tfg==
-  dependencies:
-    "@babel/runtime" "^7.7.6"
-    cheerio "^1.0.0-rc.3"
-    common-tags "^1.8.0"
-    lodash "^4.17.15"
     unist-util-visit "^1.4.1"
 
 gatsby-remark-smartypants@2.1.21:
@@ -13777,6 +13788,15 @@ unist-util-visit@^1.0.0, unist-util-visit@^1.1.0, unist-util-visit@^1.4.1:
   integrity sha512-AvGNk7Bb//EmJZyhtRUnNMEpId/AZ5Ph/KUpTI09WHQuDZHKovQ1oEv3mfmKpWKtoMzyMC4GLBm1Zy5k12fjIw==
   dependencies:
     unist-util-visit-parents "^2.0.0"
+
+unist-util-visit@^2.0.1:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-2.0.2.tgz#3843782a517de3d2357b4c193b24af2d9366afb7"
+  integrity sha512-HoHNhGnKj6y+Sq+7ASo2zpVdfdRifhTgX2KTU3B/sO/TTlZchp7E3S4vjRzDJ7L60KmrCPsQkVK3lEF3cz36XQ==
+  dependencies:
+    "@types/unist" "^2.0.0"
+    unist-util-is "^4.0.0"
+    unist-util-visit-parents "^3.0.0"
 
 universalify@^0.1.0:
   version "0.1.2"
