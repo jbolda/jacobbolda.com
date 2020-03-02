@@ -10,6 +10,13 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - name: compress images
+        uses: calibreapp/image-actions@1.1.0
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          jpegQuality: "99"
+          pngQuality: "99"
+          webpQuality: "99"
       - run: yarn
       - name: build
         env:
