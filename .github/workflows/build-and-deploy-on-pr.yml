@@ -14,6 +14,9 @@ jobs:
         uses: calibreapp/image-actions@1.1.0
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          jpegQuality: "99"
+          pngQuality: "99"
+          webpQuality: "99"
       - run: yarn
       - name: build
         env:
