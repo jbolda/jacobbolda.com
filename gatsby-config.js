@@ -44,6 +44,7 @@ module.exports = {
     ],
     navLinks: [
       { url: "/articles/", text: "Articles" },
+      { url: "/notes/", text: "Notes" },
       { url: "/recipes/", text: "Recipes" }
     ]
   },
@@ -67,6 +68,20 @@ module.exports = {
       options: {
         name: `articles`,
         path: `${__dirname}/src/articles/`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `notes`,
+        path: `${__dirname}/src/notes/`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `drafts`,
+        path: `${__dirname}/src/drafts/`
       }
     },
     {
@@ -130,7 +145,13 @@ module.exports = {
     },
     {
       resolve: `@jbolda/gatsby-theme-articles`,
-      options: { contentPath: "articles" }
+      options: {
+        contents: [
+          { contentPath: "articles" },
+          { contentPath: "notes" },
+          { contentPath: "drafts" }
+        ]
+      }
     },
     {
       resolve: `gatsby-theme-recipes`,
