@@ -30,7 +30,7 @@
     "node": ">=10.*"
   },
   "dependencies": {
-    "@jbolda/gatsby-theme-articles": "0.4.0-next.1",
+    "@jbolda/gatsby-theme-articles": "0.4.1",
     "@jbolda/gatsby-theme-homepage": "0.3.1",
     "@jbolda/gatsby-theme-layout": "0.3.2",
     "@mdx-js/mdx": "1.5.7",
