@@ -162,6 +162,7 @@ module.exports = {
       }
     },
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-printer`,
     {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {
