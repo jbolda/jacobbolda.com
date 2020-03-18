@@ -1,0 +1,36 @@
+name: build and push draft
+
+on: pull_request
+
+jobs:
+  build-draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: compress images
+        uses: calibreapp/image-actions@1.1.0
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          jpegQuality: "99"
+          pngQuality: "99"
+          webpQuality: "99"
+      - run: yarn
+      - name: build
+        env:
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+        run: yarn build
+      - name: deploy
+        if: success()
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: npx netlify-cli deploy --dir=public --message ${{ github.event.pull_request.html_url }} 2>&1 | tee -a ./notes.md
+      - name: comment PR
+        uses: machine-learning-apps/pr-comment@1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          path: ./notes.md

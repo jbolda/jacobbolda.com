@@ -2,7 +2,7 @@ import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import prismTheme from "prism-react-renderer/themes/nightOwl";
 import Pre from "../components/pre";
-import { Flex, Box, Heading, Text } from "@jbolda/isolated-theme-ui-components";
+import { Flex, Box, Heading, Text, Link } from "theme-ui";
 
 const mdxComponents = ({ heading, text }) => {
   const headings = ["h1", "h2", "h3", "h4", "h5", "h6"];
@@ -15,11 +15,18 @@ const mdxComponents = ({ heading, text }) => {
         [h]: props => (
           <Box
             sx={{
-              paddingLeft: ["2.5%", "12.5%", "30%"],
+              marginX: ["2.5%", "12.5%", "30%"],
               width: ["95%", "75%", "40%"]
             }}
           >
-            <Heading as={h} {...props} sx={{ width: null, variant: heading }} />
+            <Heading
+              as={h}
+              {...props}
+              sx={{
+                marginBottom: 0,
+                variant: heading
+              }}
+            />
           </Box>
         )
       }),
@@ -31,11 +38,18 @@ const mdxComponents = ({ heading, text }) => {
         [b]: props => (
           <Box
             sx={{
-              paddingLeft: ["2.5%", "12.5%", "30%"],
+              marginX: ["2.5%", "12.5%", "30%"],
               width: ["95%", "75%", "40%"]
             }}
           >
-            <Text as={b} {...props} sx={{ variant: text }} />
+            <Text
+              as={b}
+              {...props}
+              sx={{
+                padding: 2,
+                variant: text
+              }}
+            />
           </Box>
         )
       }),
@@ -57,12 +71,12 @@ const bodyTextStandards = {
 };
 
 export default {
-  initialColorMode: "light",
+  initialColorModeName: "light",
   useCustomProperties: true, // true is default
   // ^ prevents FOUC aka flash of unstyled content
   useColorSchemeMediaQuery: true, // turns on dark mode if set in browser
   breakpoints: ["40em", "56em", "70em"],
-  space: [0, 2, 4, 8, 12, 16, 20, 24, 28],
+  space: [0, 2, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40],
   fonts: {
     body: "Proza Libre, system-ui, sans-serif",
     heading: "Cormorant Garamond, serif",
@@ -80,6 +94,7 @@ export default {
   },
   colors: {
     text: "#000000",
+    textAlwaysLight: "#F4F4F4",
     background: "#F4F4F4",
     primary: "#52777D",
     secondary: "#192C3B",
@@ -88,6 +103,7 @@ export default {
     modes: {
       dark: {
         text: "#F3FBF1",
+        textAlwaysLight: "#F3FBF1",
         background: "#192C3B",
         primary: "#52777D",
         secondary: "#9EBBA9",
@@ -109,11 +125,16 @@ export default {
       link: {
         ...bodyTextStandards,
         color: "primary"
+      },
+      footer: {
+        paddingY: 11
       }
     },
     homepage: {
       landing: {
-        container: { paddingBottom: 8 },
+        container: {
+          paddingBottom: 11
+        },
         heading: {
           ...headingTextStandards,
           color: "text"
@@ -128,14 +149,14 @@ export default {
         }
       },
       about: {
-        container: { paddingBottom: 8, backgroundColor: "primary" },
+        container: { paddingY: 11, backgroundColor: "primary" },
         heading: {
           ...headingTextStandards,
-          color: "background"
+          color: "textAlwaysLight"
         },
         text: {
           ...bodyTextStandards,
-          color: "background"
+          color: "textAlwaysLight"
         },
         link: {
           ...bodyTextStandards,
@@ -143,7 +164,7 @@ export default {
         }
       },
       engagements: {
-        container: { paddingBottom: 8 },
+        container: { paddingY: 11 },
         heading: {
           ...headingTextStandards,
           color: "text"
@@ -155,17 +176,31 @@ export default {
         link: {
           ...bodyTextStandards,
           color: "primary"
+        },
+        components: {
+          a: ({ children, href }) => (
+            <Link
+              href={href}
+              sx={{ variant: "jboldaGatsbyTheme.homepage.engagements.link" }}
+            >
+              <Text
+                sx={{ variant: "jboldaGatsbyTheme.homepage.engagements.text" }}
+              >
+                {children}
+              </Text>
+            </Link>
+          )
         }
       },
       articles: {
-        container: { paddingBottom: 8, backgroundColor: "primary" },
+        container: { paddingY: 11, backgroundColor: "primary" },
         heading: {
           ...headingTextStandards,
-          color: "background"
+          color: "textAlwaysLight"
         },
         text: {
           ...bodyTextStandards,
-          color: "background"
+          color: "textAlwaysLight"
         },
         link: {
           ...bodyTextStandards,
@@ -246,7 +281,8 @@ export default {
                       sx={{
                         ...style,
                         backgroundColor: "inherit",
-                        width: ["95%", "75%", "40%"]
+                        paddingLeft: ["2.5%", "12.5%", "20%"],
+                        width: ["95%", "75%", "60%"]
                       }}
                     >
                       {tokens.map((line, i) => (
@@ -269,7 +305,8 @@ export default {
   text: {
     heading: {
       ...headingTextStandards,
-      letterSpacing: "heading"
+      letterSpacing: "heading",
+      my: 4
     },
     body: {
       ...bodyTextStandards,

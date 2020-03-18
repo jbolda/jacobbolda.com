@@ -44,6 +44,7 @@ module.exports = {
     ],
     navLinks: [
       { url: "/articles/", text: "Articles" },
+      { url: "/notes/", text: "Notes" },
       { url: "/recipes/", text: "Recipes" }
     ]
   },
@@ -70,6 +71,20 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `notes`,
+        path: `${__dirname}/src/notes/`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `drafts`,
+        path: `${__dirname}/src/drafts/`
+      }
+    },
+    {
       resolve: `gatsby-source-airtable`,
       apiKey: process.env.AIRTABLE_API_KEY,
       options: {
@@ -84,7 +99,7 @@ module.exports = {
               ingredients: "text/markdown",
               directions: "text/markdown"
             },
-            separateMapTypes: true,
+            separateMapType: true,
             tableLinks: [`Cooking_Method`, `Style`]
           },
           {
@@ -105,6 +120,8 @@ module.exports = {
       }
     },
     `gatsby-plugin-theme-ui`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -112,11 +129,13 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590
+              maxWidth: 590,
+              withWebp: true,
+              disableBgImage: true
             }
           },
           { resolve: `gatsby-remark-copy-linked-files` },
-          `gatsby-remark-responsive-iframe`
+          `gatsby-remark-embedder`
         ]
       }
     },
@@ -126,7 +145,13 @@ module.exports = {
     },
     {
       resolve: `@jbolda/gatsby-theme-articles`,
-      options: { contentPath: "articles" }
+      options: {
+        contents: [
+          { contentPath: "articles" },
+          { contentPath: "notes" },
+          { contentPath: "drafts" }
+        ]
+      }
     },
     {
       resolve: `gatsby-theme-recipes`,
@@ -136,9 +161,8 @@ module.exports = {
         rootBase: "/recipes/"
       }
     },
-    `gatsby-transformer-javascript-frontmatter`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-sharp`,
+    `gatsby-plugin-printer`,
     {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {
