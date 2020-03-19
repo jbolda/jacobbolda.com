@@ -1,6 +1,6 @@
 ---
-title: Setting U CI/CD for Tauri
-written: "2020-X-x"
+title: Setting Up CI/CD for Tauri
+written: "2020-91-22"
 path: "/setting-up-ci-cd-for-tauri/"
 category: "CI/CD"
 keywords: ["GitHub Actions"]
@@ -10,9 +10,11 @@ description: "I've started helping out with a project called Tauri. It will be u
 # Setting Up CI/CD for Tauri
 ## Background
 
-I've started helping out with a project called Tauri. It will be useful for my personal use, but there's value in having this out in the world even if I end up not using it. When I started looking into it, they were pushing towards releasing an alpha. There was no continuous integration or continuous delivery currently set up, and I have seen the value that it can have in creating focus in a project. Thus began my involvement and we decided to use the shiny new GitHub Actions to deliver this. It was still on beta, but it had gone through iterations over months and months that we felt it was stable enough to use (and nearly out of beta anyway). The deep integration with GitHub was and will be incredibly useful for us.
+I've recently started helping out with a project called Tauri. It will use it myself, but I appreciate the vision and want to see it succeed. When I started looking into it, they were pushing towards releasing an alpha. They hadn't had a chance to setup continuous integration or continuous delivery, and I have seen the value that it can have in creating focus in a project. I knew I would be able to provide immediate value to the project with CI/CD.
 
-We didn't have much in the way of tests to run as much of the codebase had been more recently pulled out of other projects. The quickest win was to take and create some example projects and use those as what we're calling smoke tests. We took the manual process of testing in projects, and dumped that into CI. They are effectively "integration" tests where we will take any HTML, CSS and JS and build it with Tauri.
+Thus began my involvement and we decided to use the shiny new GitHub Actions to deliver this. It was still in beta, but it had gone through iterations over months and months that we felt it was stable enough to use (and nearly out of beta anyway). The deep integration with GitHub was and will be incredibly useful for us.
+
+We didn't have much in the way of tests to run as much of the codebase had been more recently pulled out of other projects. The quickest win was to take and create some example projects and use those in, what we're calling, our smoke tests. We took the manual process of testing in projects, and dumped that into CI. They are effectively "integration" tests where we will take any HTML, CSS and JS and build it with Tauri.
 
 ## Next Phase of Testing
 
