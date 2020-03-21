@@ -1,0 +1,18 @@
+---
+title: Remove Node Modules Alias
+written: 2020-03-21
+category: "bash"
+description: "Sometimes you just need to reroll your `node_modules` and start fresh."
+---
+
+# Remove Node Modules Alias
+
+Sometimes you just need to reroll your `node_modules` and start fresh. This is potentially simple if you only have one folder, but can get more involved if you multiple folders. You may have multiple folders when using `yarn workspaces` or when you need to free up a lot of space [insert `node_modules` blackhole image].
+
+I grabbed my bash scripts from [How to Delete ALL node_modules folders on your machine and Free up HD space!](https://medium.com/@MarkPieszak/how-to-delete-all-node-modules-folders-on-your-machine-and-free-up-hd-space-f3954843aeda), and created an alias for them. The first returns a report and the second deletes the folders recursively.
+
+Place these in your `.bashrc`.
+```bash
+alias rnm='find . -name "node_modules" -type d -prune | xargs du -chs'
+alias dnm='find . -name "node_modules" -type d -prune -exec rm -rf "{}" +'
+```
