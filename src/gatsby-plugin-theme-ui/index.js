@@ -113,8 +113,10 @@ export default {
     }
   },
   messages: {
-    backgroundColor: "background",
-    borderLeftColor: "secondary"
+    primary: {
+      backgroundColor: "background",
+      borderLeftColor: "secondary"
+    }
   },
   jboldaGatsbyTheme: {
     layout: {
