@@ -281,8 +281,25 @@ export default {
                       sx={{
                         ...style,
                         backgroundColor: "inherit",
-                        paddingLeft: ["2.5%", "12.5%", "20%"],
-                        width: ["95%", "75%", "60%"]
+                        ...(tokens.reduce((lineChars, line) => {
+                          console.log(line);
+                          return Math.max(
+                            lineChars,
+                            line.reduce(
+                              (pieceChars, piece) =>
+                                pieceChars + piece.content.length,
+                              0
+                            )
+                          );
+                        }, 0) > 100
+                          ? {
+                              paddingLeft: ["2.5%", "12.5%", "20%"],
+                              width: ["95%", "75%", "60%"]
+                            }
+                          : {
+                              paddingLeft: ["2.5%", "12.5%", "30%"],
+                              width: ["95%", "75%", "40%"]
+                            })
                       }}
                     >
                       {tokens.map((line, i) => (
