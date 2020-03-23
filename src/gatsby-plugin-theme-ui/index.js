@@ -112,6 +112,10 @@ export default {
       }
     }
   },
+  messages: {
+    backgroundColor: "background",
+    borderLeftColor: "secondary"
+  },
   jboldaGatsbyTheme: {
     layout: {
       heading: {
