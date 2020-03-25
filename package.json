@@ -54,7 +54,7 @@
     "gatsby-remark-smartypants": "2.2.0",
     "gatsby-source-airtable": "2.1.0",
     "gatsby-source-filesystem": "2.2.1",
-    "gatsby-theme-recipes": "0.1.0",
+    "gatsby-theme-recipes": "0.1.1",
     "gatsby-transformer-javascript-frontmatter": "2.2.0",
     "gatsby-transformer-json": "2.3.0",
     "gatsby-transformer-sharp": "2.4.1",
