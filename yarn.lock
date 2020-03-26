@@ -6849,10 +6849,10 @@ gatsby-telemetry@^1.2.2:
     stack-utils "1.0.2"
     uuid "3.4.0"
 
-gatsby-theme-recipes@0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/gatsby-theme-recipes/-/gatsby-theme-recipes-0.1.3.tgz#e15e8917344cec81cb9b56e22e4a541fa98e3f46"
-  integrity sha512-pwyFNF4eYCLO6+qSekXbjygmWWVubp5ziOGSTcIiB6y0pJJqnukmaepQkMbe5rHW7jgPHBMw3npdB+nWiaZC/Q==
+gatsby-theme-recipes@0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-recipes/-/gatsby-theme-recipes-0.1.4.tgz#1160c0b817f8eab3beaf027189a439fd55d2f635"
+  integrity sha512-eD7j4wRaUtX6Hb4XZ1gwa2f1RxpzrGXYg3gceLXkDmn1d4eDSwGSfuNR7g0AdqnjDwXxAqCKZvFP8mbrfpRdKw==
 
 gatsby-transformer-javascript-frontmatter@2.2.1:
   version "2.2.1"
