@@ -288,7 +288,6 @@ export default {
                         ...style,
                         backgroundColor: "inherit",
                         ...(tokens.reduce((lineChars, line) => {
-                          console.log(line);
                           return Math.max(
                             lineChars,
                             line.reduce(
