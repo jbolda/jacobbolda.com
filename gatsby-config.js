@@ -156,7 +156,7 @@ module.exports = {
     {
       resolve: `gatsby-theme-recipes`,
       options: {
-        siteUrl: "https://www.jacobolda.com",
+        siteUrl: "https://www.jacobbolda.com",
         sources: ["Airtable"],
         rootBase: "/recipes/"
       }
