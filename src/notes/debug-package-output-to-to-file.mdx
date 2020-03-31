@@ -1,0 +1,26 @@
+---
+title: debug output to file
+written: 2020-03-31
+category: "cli"
+description: "Using the debug package can be wonderful, but too much of a good thing blows up your terminal."
+---
+
+The [debug package](https://www.npmjs.com/package/debug) build to work both in node and the browser has been around quite some time and is lovely to work with. Unfortunately, sometimes it can be to much of a good thing. Working with `gatsby` recently and I needed to debug my component shadowing. `gastby` makes heavy use of the `debug` package which is handy to peer into the internal work that is happening.
+
+You can see the component shadowing happening by using:
+
+```
+DEBUG=gatsby:component-shadowing gatsby build
+```
+
+Unfortunately this blows out my terminal and I can't scroll up to the beginning of the logs. It also isn't readily searchable either. The easiest solution is to pipe this into a file (when using bash) by:
+
+```
+DEBUG=gatsby:component-shadowing gatsby build > build-log.txt
+```
+
+This works fine for the output from `gastby` proper as it logs to `STDOUT`. By default, `debug` logs to `STDERR` though. These are two different streams of data. We can make use of shell redirection though to make this work. `STDOUT` lives on stream 1, and `STDERR` lives on stream 2. Using `1> build-log.txt` we would pipe stream 1 into that `.txt` file. Using `2>&1`, we can pipe stream 2 into stream 1. Putting this all together and we can pipe everything into a log file that is now complete and searchable. 🎉
+
+```
+DEBUG=gatsby:component-shadowing gatsby build 1> build-log.txt 2>&1
+```
