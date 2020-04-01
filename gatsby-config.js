@@ -43,9 +43,21 @@ module.exports = {
       }
     ],
     navLinks: [
-      { url: "/articles/", text: "Articles" },
-      { url: "/notes/", text: "Notes" },
-      { url: "/recipes/", text: "Recipes" }
+      {
+        url: "/articles/",
+        text: "Articles",
+        socialImageComponent: require.resolve("./src/articles/social-image.js")
+      },
+      {
+        url: "/notes/",
+        text: "Notes",
+        socialImageComponent: require.resolve("./src/articles/social-image.js")
+      },
+      {
+        url: "/recipes/",
+        text: "Recipes",
+        socialImageComponent: require.resolve("./src/articles/social-image.js")
+      }
     ]
   },
   plugins: [
