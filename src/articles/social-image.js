@@ -21,7 +21,7 @@ const Border = ({ children }) => (
   </div>
 );
 
-export default ({ title = "this is a test title" }) => {
+export default ({ frontmatter: { title = "this is a test title" } }) => {
   return (
     <div
       style={{
