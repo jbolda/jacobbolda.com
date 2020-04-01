@@ -1,48 +1,22 @@
-const path = require("path");
-
-// exports.createPages = ({ graphql, actions }) => {
+// exports.createPages = async ({ graphql, actions }) => {
 //   const { createPage, createRedirect } = actions;
 
-//   return new Promise((resolve, reject) => {
-//     resolve(
-//       graphql(
-//         `
-//           {
-//           }
-//         `
-//       ).then(result => {
-//         if (result.errors) {
-//           result.errors.forEach(error => {
-//             console.log(error);
-//           });
-
-//           reject(result.errors);
-//         }
-
-//         Create from markdown
-//         result.data.allMarkdownRemark.edges.forEach(edge => {
-//           let frontmatter = edge.node.frontmatter;
-//           if (frontmatter.layoutType === `page`) {
-//             createPage({
-//               path: frontmatter.path, // required
-//               component: mdSimplePage,
-//               context: {
-//                 slug: edge.node.fields.slug
-//               }
-//             });
-//           }
-//         });
-
-//         return;
-//       })
-//     );
+//   return createPage({
+//     path: "test-social-image",
+//     component: require.resolve("./src/articles/social-image.js")
 //   });
-// };
 
-exports.onCreateWebpackConfig = ({ actions }) => {
-  actions.setWebpackConfig({
-    resolve: {
-      modules: [path.resolve(__dirname, "src"), "node_modules"]
-    }
-  });
-};
+// // Create from markdown
+// result.data.allMarkdownRemark.edges.forEach(edge => {
+//   let frontmatter = edge.node.frontmatter;
+//   if (frontmatter.layoutType === `page`) {
+//     createPage({
+//       path: frontmatter.path, // required
+//       component: mdSimplePage,
+//       context: {
+//         slug: edge.node.fields.slug
+//       }
+//     });
+//   }
+// });
+// };

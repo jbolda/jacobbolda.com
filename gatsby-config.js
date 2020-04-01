@@ -43,9 +43,18 @@ module.exports = {
       }
     ],
     navLinks: [
-      { url: "/articles/", text: "Articles" },
-      { url: "/notes/", text: "Notes" },
-      { url: "/recipes/", text: "Recipes" }
+      {
+        url: "/articles/",
+        text: "Articles"
+      },
+      {
+        url: "/notes/",
+        text: "Notes"
+      },
+      {
+        url: "/recipes/",
+        text: "Recipes"
+      }
     ]
   },
   plugins: [
@@ -147,9 +156,24 @@ module.exports = {
       resolve: `@jbolda/gatsby-theme-articles`,
       options: {
         contents: [
-          { contentPath: "articles" },
-          { contentPath: "notes" },
-          { contentPath: "drafts" }
+          {
+            contentPath: "articles",
+            socialImageComponent: require.resolve(
+              "./src/articles/social-image.js"
+            )
+          },
+          {
+            contentPath: "notes",
+            socialImageComponent: require.resolve(
+              "./src/articles/social-image.js"
+            )
+          },
+          {
+            contentPath: "drafts",
+            socialImageComponent: require.resolve(
+              "./src/articles/social-image.js"
+            )
+          }
         ]
       }
     },
