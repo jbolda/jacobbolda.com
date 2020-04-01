@@ -1130,10 +1130,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@jbolda/gatsby-theme-articles@0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-articles/-/gatsby-theme-articles-0.4.2.tgz#68f0ec8126ff9c72f002adcd04c1dcb9c49ea93a"
-  integrity sha512-3jKy31mpkAizfQOmwj14MT74FJsCnsJiSv9zFh/lOfmdP9aso/ZgbhpBRvBQwVN0sOv9cHGo8I/JUPangzpvSg==
+"@jbolda/gatsby-theme-articles@0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-articles/-/gatsby-theme-articles-0.4.3.tgz#6d37573c85631c1b13132c96885d8e1198486dea"
+  integrity sha512-lav4CJZuaVz0D6Cu88tZEM2utAVTZBLPctewjUlNZvqlveNnNNaJTHum0syBMnPGaNwYrpplvAMpm7yiws4SPA==
   dependencies:
     "@jbolda/gatsby-theme-components" "0.0.1"
 
