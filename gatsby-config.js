@@ -45,18 +45,15 @@ module.exports = {
     navLinks: [
       {
         url: "/articles/",
-        text: "Articles",
-        socialImageComponent: require.resolve("./src/articles/social-image.js")
+        text: "Articles"
       },
       {
         url: "/notes/",
-        text: "Notes",
-        socialImageComponent: require.resolve("./src/articles/social-image.js")
+        text: "Notes"
       },
       {
         url: "/recipes/",
-        text: "Recipes",
-        socialImageComponent: require.resolve("./src/articles/social-image.js")
+        text: "Recipes"
       }
     ]
   },
@@ -159,9 +156,24 @@ module.exports = {
       resolve: `@jbolda/gatsby-theme-articles`,
       options: {
         contents: [
-          { contentPath: "articles" },
-          { contentPath: "notes" },
-          { contentPath: "drafts" }
+          {
+            contentPath: "articles",
+            socialImageComponent: require.resolve(
+              "./src/articles/social-image.js"
+            )
+          },
+          {
+            contentPath: "notes",
+            socialImageComponent: require.resolve(
+              "./src/articles/social-image.js"
+            )
+          },
+          {
+            contentPath: "drafts",
+            socialImageComponent: require.resolve(
+              "./src/articles/social-image.js"
+            )
+          }
         ]
       }
     },
