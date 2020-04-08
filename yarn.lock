@@ -1142,10 +1142,10 @@
   resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-components/-/gatsby-theme-components-0.0.1.tgz#cf44b5fc26611f1b1e9501e384e82e23e5c13e9b"
   integrity sha512-gHrtH26T9s1sMPDFLrL7aWl+w4h9NmnvDCwSSYHVoB0zMgI0OHI3zz8PZdLXRRKfF7nICMYGUmDg50VvPx1hZg==
 
-"@jbolda/gatsby-theme-homepage@0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-homepage/-/gatsby-theme-homepage-0.3.2.tgz#9d8318c99568006d3bb1f54f1b8cc5fe255b7634"
-  integrity sha512-q5Aksba+tN9EGp/swowBQoTaHwZnMNvtnEqdu/U0eKD3GkbIlnaSrusEcEQSdv2LvKfsMQJMGhElrouV4tl09A==
+"@jbolda/gatsby-theme-homepage@0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@jbolda/gatsby-theme-homepage/-/gatsby-theme-homepage-0.3.3.tgz#871b9aeceed7e5a833a84981ff78f2ba866d5daa"
+  integrity sha512-GBv2EB5HnjlWlOjAY1QMEiv3ikxXqwzn8wAoUA2eH1/ibpluGbYZM/8rVuqxsWfIqFspQVD2IrjBQZD3v7Pdsw==
   dependencies:
     "@jbolda/gatsby-theme-components" "0.0.1"
 
