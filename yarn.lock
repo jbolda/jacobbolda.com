@@ -6898,13 +6898,14 @@ gatsby-remark-smartypants@2.2.1:
     retext-smartypants "^3.0.3"
     unist-util-visit "^1.4.1"
 
-gatsby-source-airtable@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-source-airtable/-/gatsby-source-airtable-2.1.0.tgz#9dfaa6b9e08c47bdf60270458ba89b0954d961fe"
-  integrity sha512-51axoKud0qoERX+vlyyuMwWS6exV8UeJgCY4v9rM8d8owGsNBnzg89v50JPJ3DpoBM7xpmuGiAVmkzWg2Y0gGg==
+gatsby-source-airtable@^2.1.1-beta.0:
+  version "2.1.1-beta.0"
+  resolved "https://registry.yarnpkg.com/gatsby-source-airtable/-/gatsby-source-airtable-2.1.1-beta.0.tgz#ba0d7f55a98aeb70e65cd28a1302429b02f82786"
+  integrity sha512-u2ORM2lyk0q0Sx5EH+NjwNE6rSEpsTD9mJFxOJk+txTm5IcySCl7d+2CfrWWQl97j0yzV5qQTpBAy7AlbLGV+Q==
   dependencies:
     airtable "^0.8.0"
     bluebird "^3.5.4"
+    mime "^2.4.4"
 
 gatsby-source-filesystem@2.2.2:
   version "2.2.2"
