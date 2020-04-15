@@ -63,7 +63,7 @@
     "prism-react-renderer": "1.0.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-helmet": "5.2.1",
+    "react-helmet": "6.0.0",
     "theme-ui": "0.3.1"
   },
   "devDependencies": {
