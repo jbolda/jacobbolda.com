@@ -69,6 +69,6 @@
   "devDependencies": {
     "patch-package": "6.2.2",
     "postinstall-postinstall": "2.1.0",
-    "prettier": "2.0.4"
+    "prettier": "2.0.5"
   }
 }
