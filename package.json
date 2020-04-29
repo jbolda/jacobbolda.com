@@ -44,7 +44,7 @@
     "gatsby-plugin-mdx": "1.1.11",
     "gatsby-plugin-netlify": "2.2.4",
     "gatsby-plugin-offline": "3.1.5",
-    "gatsby-plugin-printer": "1.0.8",
+    "gatsby-plugin-printer": "1.1.1",
     "gatsby-plugin-react-helmet": "3.2.5",
     "gatsby-plugin-sharp": "2.5.7",
     "gatsby-plugin-theme-ui": "0.3.0",
