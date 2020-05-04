@@ -67,5 +67,8 @@
   },
   "devDependencies": {
     "prettier": "2.0.5"
+  },
+  "resolutions": {
+    "puppeteer": "1.20.0"
   }
 }
