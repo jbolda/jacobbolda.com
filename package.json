@@ -10,8 +10,7 @@
     "build:hard": "gatsby clean && gatsby build",
     "serve": "gatsby serve",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pretty": "prettier --write \"{src,plugins,__{tests,mocks}__}/**/*.js\"",
-    "postinstall": "patch-package"
+    "pretty": "prettier --write \"{src,plugins,__{tests,mocks}__}/**/*.js\""
   },
   "repository": {
     "type": "git",
@@ -44,7 +43,7 @@
     "gatsby-plugin-mdx": "1.2.4",
     "gatsby-plugin-netlify": "2.3.0",
     "gatsby-plugin-offline": "3.2.0",
-    "gatsby-plugin-printer": "1.0.8",
+    "gatsby-plugin-printer": "1.1.1",
     "gatsby-plugin-react-helmet": "3.3.0",
     "gatsby-plugin-sharp": "2.6.0",
     "gatsby-plugin-theme-ui": "0.3.0",
@@ -67,8 +66,9 @@
     "theme-ui": "0.3.1"
   },
   "devDependencies": {
-    "patch-package": "6.2.2",
-    "postinstall-postinstall": "2.1.0",
     "prettier": "2.0.5"
+  },
+  "resolutions": {
+    "puppeteer": "1.20.0"
   }
 }
