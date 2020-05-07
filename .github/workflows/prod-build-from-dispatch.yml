@@ -1,12 +1,11 @@
-name: build and push to production
+name: production build from dispatch
 
 on:
-  push:
-    branches:
-      - master
+  repository_dispatch:
+    types: [rebuild-website-from-airtable-hook]
 
 jobs:
-  build-production:
+  dispatched-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -40,8 +39,9 @@ jobs:
       - run: yarn
       - name: build
         env:
+          GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES: true
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-        run: yarn build
+        run: yarn build --log-pages
       - name: deploy
         if: success()
         env:
