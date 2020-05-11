@@ -2,7 +2,7 @@ import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import prismTheme from "prism-react-renderer/themes/nightOwl";
 import Pre from "../components/pre";
-import { Flex, Box, Heading, Text, Link } from "theme-ui";
+import { Flex, Heading, Text, Link } from "theme-ui";
 
 const mdxComponents = ({ heading, text }) => {
   const headings = ["h1", "h2", "h3", "h4", "h5", "h6"];
