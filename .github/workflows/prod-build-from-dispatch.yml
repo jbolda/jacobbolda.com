@@ -16,21 +16,21 @@ jobs:
         id: yarn-cache-dir
         run: echo "::set-output name=dir::$(yarn cache dir)"
       - name: yarn cache
-        uses: actions/cache@v1
+        uses: actions/cache@master
         id: yarn-cache
         with:
           path: ${{ steps.yarn-cache-dir.outputs.dir }}
           key: yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: yarn-${{ hashFiles('**/yarn.lock') }}
       - name: gatsby .cache
-        uses: actions/cache@v1
+        uses: actions/cache@master
         id: gatsby-cache-folder
         with:
           path: .cache
           key: cache-gatsby
           restore-keys: cache-gatsby-${{ hashFiles('**/yarn.lock') }}
       - name: gatsby public folder
-        uses: actions/cache@v1
+        uses: actions/cache@master
         id: gatsby-public-folder
         with:
           path: public/
