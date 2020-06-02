@@ -33,7 +33,7 @@
     "@jbolda/gatsby-theme-articles": "0.4.6",
     "@jbolda/gatsby-theme-homepage": "0.3.3",
     "@jbolda/gatsby-theme-layout": "0.3.5",
-    "@mdx-js/mdx": "1.6.1",
+    "@mdx-js/mdx": "1.6.5",
     "big.js": "5.2.2",
     "d3": "4.13.0",
     "gatsby": "2.21.31",
