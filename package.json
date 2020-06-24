@@ -69,6 +69,6 @@
     "prettier": "2.0.5"
   },
   "resolutions": {
-    "puppeteer": "1.20.0"
+    "puppeteer": "4.0.1"
   }
 }
