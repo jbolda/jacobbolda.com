@@ -2,7 +2,7 @@ import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import prismTheme from "prism-react-renderer/themes/nightOwl";
 import Pre from "../components/pre";
-import { Flex, Heading, Text, Link } from "theme-ui";
+import { Flex, Heading, Text, Link, Message } from "theme-ui";
 
 const mdxComponents = ({ heading, text }) => {
   const headings = ["h1", "h2", "h3", "h4", "h5", "h6"];
@@ -246,6 +246,39 @@ export default {
             heading: "jboldaGatsbyTheme.articles.article.heading",
             text: "jboldaGatsbyTheme.articles.article.text",
           }),
+          a: ({ children, href }) => (
+            <Link
+              href={href}
+              sx={{ variant: "jboldaGatsbyTheme.articles.article.link" }}
+            >
+              <Text
+                as="span"
+                sx={{ variant: "jboldaGatsbyTheme.articles.article.text" }}
+              >
+                {children}
+              </Text>
+            </Link>
+          ),
+          blockquote: ({ children }) => (
+            <Message
+              as="blockquote"
+              sx={{
+                backgroundColor: "terminal",
+                paddingY: 8,
+                marginY: 3,
+                marginLeft: ["2.5%", "12.5%", "30%"],
+                width: ["95%", "75%", "40%"],
+                "& > p": {
+                  color: "textAlwaysLight",
+                  margin: 0,
+                  padding: 0,
+                  width: "100%",
+                },
+              }}
+            >
+              {children}
+            </Message>
+          ),
           pre: ({
             children,
             className = children.props ? children.props.className : ``,
