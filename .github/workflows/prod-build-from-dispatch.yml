@@ -22,26 +22,11 @@ jobs:
           path: ${{ steps.yarn-cache-dir.outputs.dir }}
           key: yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: yarn-${{ hashFiles('**/yarn.lock') }}
-      - name: gatsby .cache
-        uses: actions/cache@master
-        id: gatsby-cache-folder
-        with:
-          path: .cache
-          key: cache-gatsby
-          restore-keys: cache-gatsby-${{ hashFiles('**/yarn.lock') }}
-      - name: gatsby public folder
-        uses: actions/cache@master
-        id: gatsby-public-folder
-        with:
-          path: public/
-          key: public-gatsby
-          restore-keys: public-gatsby-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
       - name: build
         env:
-          GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES: true
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-        run: yarn build --log-pages
+        run: yarn build
       - name: deploy
         if: success()
         env:
