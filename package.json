@@ -1,14 +1,11 @@
 {
   "name": "jbolda.github.io",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "personal site and blog",
   "main": "index.js",
   "scripts": {
-    "develop": "gatsby develop",
-    "dev:hard": "gatsby clean && gatsby develop",
-    "build": "gatsby build",
-    "build:hard": "gatsby clean && gatsby build",
-    "serve": "gatsby serve",
+    "build": "toast incremental",
+    "prepare": "breadbox --dest public/web_modules",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pretty": "prettier --write \"{src,plugins,__{tests,mocks}__}/**/*.js\""
   },
@@ -27,48 +24,44 @@
   },
   "homepage": "https://www.jacobbolda.com",
   "engines": {
-    "node": ">=10.*"
+    "node": ">=14.*"
   },
   "dependencies": {
-    "@jbolda/gatsby-theme-articles": "0.4.6",
-    "@jbolda/gatsby-theme-homepage": "0.3.3",
-    "@jbolda/gatsby-theme-layout": "0.3.5",
-    "@mdx-js/mdx": "^2.0.0-next.7",
+    "@emotion/core": "^10.0.28",
+    "@mdx-js/mdx": "^2.0.0-next.1",
+    "@mdx-js/preact": "^2.0.0-next.1",
+    "@sector/breadbox": "^0.0.4",
+    "@sindresorhus/slugify": "^1.0.0",
+    "chalk": "^4.1.0",
     "big.js": "5.2.2",
     "d3": "4.13.0",
-    "gatsby": "2.24.49",
-    "gatsby-image": "2.4.16",
-    "gatsby-plugin-google-tagmanager": "2.3.11",
-    "gatsby-plugin-manifest": "2.4.24",
-    "gatsby-plugin-mdx": "1.2.35",
-    "gatsby-plugin-netlify": "2.3.13",
-    "gatsby-plugin-offline": "3.2.24",
-    "gatsby-plugin-printer": "1.1.1",
-    "gatsby-plugin-react-helmet": "3.3.10",
-    "gatsby-plugin-sharp": "2.6.28",
-    "gatsby-plugin-theme-ui": "0.3.0",
-    "gatsby-remark-copy-linked-files": "2.3.12",
-    "gatsby-remark-embedder": "3.0.0",
-    "gatsby-remark-images": "3.3.26",
-    "gatsby-remark-prismjs": "3.5.10",
-    "gatsby-remark-smartypants": "2.3.10",
-    "gatsby-source-airtable": "^2.1.1",
-    "gatsby-source-filesystem": "2.3.25",
-    "gatsby-theme-recipes": "0.1.5",
-    "gatsby-transformer-javascript-frontmatter": "2.3.11",
-    "gatsby-transformer-json": "2.4.11",
-    "gatsby-transformer-sharp": "2.5.13",
-    "gatsby-transformer-yaml": "2.4.10",
-    "prism-react-renderer": "1.1.1",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-helmet": "6.1.0",
-    "theme-ui": "0.3.1"
+    "globby": "^11.0.1",
+    "parse-numeric-range": "^1.2.0",
+    "prism-react-renderer": "^1.1.1",
+    "prismjs": "^1.20.0",
+    "rehype-autolink-headings": "^4.0.0",
+    "rehype-parse": "^7.0.1",
+    "rehype-slug": "^3.0.0",
+    "theme-ui": "0.3.1",
+    "toast": "^0.2.10",
+    "unified": "^9.0.0"
   },
   "devDependencies": {
     "prettier": "2.1.2"
   },
-  "resolutions": {
-    "puppeteer": "1.20.0"
+  "snowpack": {
+    "installOptions": {
+      "alias": {
+        "react": "preact/compat"
+      }
+    },
+    "knownEntrypoints": [
+      "preact",
+      "preact/hooks",
+      "@emotion/core",
+      "@mdx-js/preact",
+      "react-helmet",
+      "preact/compat"
+    ]
   }
 }
