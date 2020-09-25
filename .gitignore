@@ -1,6 +1,7 @@
 node_modules/
 public
 .cache
+src-old
 
 .vscode
 *.log
