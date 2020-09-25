@@ -23,20 +23,6 @@ jobs:
           path: ${{ steps.yarn-cache-dir.outputs.dir }}
           key: yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: yarn-${{ hashFiles('**/yarn.lock') }}
-      - name: gatsby .cache
-        uses: actions/cache@v1
-        id: gatsby-cache-folder
-        with:
-          path: .cache
-          key: cache-gatsby
-          restore-keys: cache-gatsby-${{ hashFiles('**/yarn.lock') }}
-      - name: gatsby public folder
-        uses: actions/cache@v1
-        id: gatsby-public-folder
-        with:
-          path: public/
-          key: public-gatsby
-          restore-keys: public-gatsby-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
       - name: build
         env:
