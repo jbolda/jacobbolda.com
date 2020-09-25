@@ -1,13 +1,13 @@
 import React from "react";
 import * as d3 from "d3";
-import { StaticQuery, graphql } from "gatsby";
+// import { StaticQuery, graphql } from "gatsby";
 
 class Choropleth extends React.Component {
   componentDidMount() {
     this.d3Node = d3.select("div#states");
     let measurements = {
       width: this.d3Node._groups[0][0].clientWidth,
-      height: this.d3Node._groups[0][0].clientHeight
+      height: this.d3Node._groups[0][0].clientHeight,
     };
     let space = graph.setup(this.d3Node, measurements);
 
@@ -63,7 +63,7 @@ export default () => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <Choropleth stateShapes={data.stateShapes} stateData={data.stateData} />
     )}
   />
@@ -102,16 +102,16 @@ average: tooltip, path fill
       "rgb(186,228,179)",
       "rgb(116,196,118)",
       "rgb(49,163,84)",
-      "rgb(0,109,44)"
+      "rgb(0,109,44)",
     ]);
 
   color.domain([
-    d3.min(data, function(d) {
+    d3.min(data, function (d) {
       return d.low;
     }),
-    d3.max(data, function(d) {
+    d3.max(data, function (d) {
       return d.high;
-    })
+    }),
   ]);
 
   let scaleFactor = measurements.width / 950;
@@ -122,16 +122,16 @@ average: tooltip, path fill
     .enter()
     .append("path")
     .attr("class", "state")
-    .attr("id", d => d.abbrev)
+    .attr("id", (d) => d.abbrev)
     .attr("stroke", "gray")
-    .attr("d", d => d.path)
+    .attr("d", (d) => d.path)
     .attr("transform", "scale(" + scaleFactor + ")")
-    .style("fill", d => color(d.average))
+    .style("fill", (d) => color(d.average))
     .on("mouseover", mouseOver)
     .on("mouseout", mouseOut);
 };
 
-let tooltipHtml = d => {
+let tooltipHtml = (d) => {
   return (
     "<h4>" +
     d.name +
@@ -149,7 +149,7 @@ let tooltipHtml = d => {
   );
 };
 
-let mouseOver = d => {
+let mouseOver = (d) => {
   let tooltip = d3.select("#tooltip");
 
   tooltip
@@ -162,28 +162,25 @@ let mouseOver = d => {
 };
 
 let mouseOut = () => {
-  d3.select("#tooltip")
-    .transition()
-    .duration(500)
-    .style("opacity", 0);
+  d3.select("#tooltip").transition().duration(500).style("opacity", 0);
 };
 
 // eslint-disable-next-line
 function scale(scaleFactor, width, height) {
   return d3.geoTransform({
-    point: function(x, y) {
+    point: function (x, y) {
       this.stream.point(
         (x - width / 2) * scaleFactor + width / 2,
         (y - height / 2) * scaleFactor + height / 2
       );
-    }
+    },
   });
 }
 
 let mergeData = (d1, d1key, d2, d2key) => {
   let data = [];
-  d1.forEach(s1 => {
-    d2.forEach(s2 => {
+  d1.forEach((s1) => {
+    d2.forEach((s2) => {
       if (s1[d1key] === s2[d2key]) {
         data.push(Object.assign({}, s1, s2));
       }
