@@ -73,5 +73,5 @@ exports.sourceData = async ({ createPage, ...options }) => {
         ...meta,
       };
     })
-  );
+  ).catch((error) => console.error("error fetching mdx files", error));
 };
