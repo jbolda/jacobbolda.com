@@ -5,17 +5,12 @@ const slugify = require("@sindresorhus/slugify");
 const mdx = require("@mdx-js/mdx");
 const util = require("util");
 const vm = require("vm");
-const rehypePrism = require("../rehype-prism-mdx");
+const rehypePrism = require("../rehype-prism-mdx.js");
 const rehypeSlug = require("rehype-slug");
 const rehypeLink = require("rehype-autolink-headings");
 const parse = require("rehype-parse");
 const globby = require("globby");
 const chalk = require("chalk");
-
-const {
-  transformComponentForBrowser,
-  transformComponentForNode,
-} = require("toast/src/transforms");
 
 exports.sourceData = async ({ createPage, ...options }) => {
   const files = await globby("./articles", {
