@@ -1,6 +1,6 @@
 node_modules/
 public
-.cache
+.tmp
 src-old
 
 .vscode
