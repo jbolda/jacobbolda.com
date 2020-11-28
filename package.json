@@ -66,7 +66,7 @@
     "theme-ui": "0.3.1"
   },
   "devDependencies": {
-    "prettier": "2.1.2"
+    "prettier": "2.2.1"
   },
   "resolutions": {
     "puppeteer": "1.20.0"
