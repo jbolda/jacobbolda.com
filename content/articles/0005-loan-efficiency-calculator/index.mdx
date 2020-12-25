@@ -1,12 +1,13 @@
----
-title: "Loan Efficiency Calculator"
-written: "2017-01-22"
-slug: "/loan-efficiency-calculator/"
-tags: ["finance"]
-description: "This calculator assists in running the numbers on loan overpayment and how that affects your interest paid and time to final payment."
----
+export const meta = {
+  title: "Loan Efficiency Calculator",
+  written: "2017-01-22",
+  slug: "/loan-efficiency-calculator/",
+  tags: ["finance"],
+  description:
+    "This calculator assists in running the numbers on loan overpayment and how that affects your interest paid and time to final payment.",
+};
 
-import LoanCalculator from "./loan-calculator.js"
+import LoanCalculator from "./loan-calculator.js";
 
 # Loan Efficiency Calculator
 
@@ -32,14 +33,12 @@ have a mix of both of these methods. Only you know you. Start off
 with a quick win, and then tackle that high interest debt. Or hit
 the high interest head first.
 
-
 Most importantly though, know what effects these choices create,
 emotional highs paying off loans or fiscal wins paying less
 interest. Secondly make the plan consistent by paying the same
 amount every month. As loans pay off, you will be making greater and
 greater additional payments as that payment "snowball" or creates an
 "avalanche" effect.
-
 
 The best part? I created a calculator below to help you run the
 numbers. Feel free to shoot me an email or tweet me with any
@@ -50,19 +49,16 @@ feedback or questions!
 Firstly, we enter the total payment. This is the amount you pay
 month over month, consistently, even as you pay off loans.
 
-
 Next, we add all of our loans. The name is just a label to keep you
 sane. The balance is how much you owe on the loan; the amount of
 money that interest accrues upon. The interest rate is entered as a
 percent. It is the APY, not APR. The minimum payment is the smallest
 you owe monthly to not go into default.
 
-
 Continuing, each loan will show the interest paid as well as the
 time it took to pay off this loan. There is a max loan of 60 years
 to prevent errors, but hopefully that is not a limit you will need
 to consider.
-
 
 As loans are paid off, the additional payment amount increases by
 the minimum payment of each loan that is paid off. At the bottom,
@@ -70,7 +66,6 @@ you can view the total numbers. The total balance is how much debt
 you have right now. The minimum payment represents the (total
 minimum payment) + (the additional payment) = (total payment), where
 the total payment is the first number that we entered.
-
 
 Lastly we have the total interest paid. Feel free to play around
 with the order of loan payment and see how it affects this number.
