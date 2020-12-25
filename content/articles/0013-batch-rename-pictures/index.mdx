@@ -1,11 +1,12 @@
----
-title: Batch Rename Pictures
-written: "2019-08-03"
-updated: "2019-08-14"
-slug: "/batch-rename-pictures/"
-category: "files"
-description: "I wrote a Python 3 script to rename photo files with the timestamp that they were taken."
----
+export const meta = {
+  title: "Batch Rename Pictures",
+  written: "2019-08-03",
+  updated: "2019-08-14",
+  slug: "/batch-rename-pictures/",
+  category: "files",
+  description:
+    "I wrote a Python 3 script to rename photo files with the timestamp that they were taken.",
+};
 
 # Batch Rename Pictures
 
@@ -24,8 +25,8 @@ import sys
 def fileTags(folder, filetype, tag):
     fileDict = {}
     tagTuple = namedtuple('tag', ['datetime', 'frequency'])
-    for pictureFile in glob.glob("./" + folder + "/*." + filetype):   
-        originalFile = os.path.abspath(pictureFile)     
+    for pictureFile in glob.glob("./" + folder + "/*." + filetype):
+        originalFile = os.path.abspath(pictureFile)
         # Open image file for reading (binary mode)
         f = open(originalFile, 'rb')
         # Return Exif tags

@@ -1,13 +1,15 @@
----
-title: Setting Up CI and CD for Tauri
-written: "2020-03-22"
-slug: "/setting-up-ci-and-cd-for-tauri/"
-category: "CI/CD"
-keywords: ["GitHub Actions"]
-description: "I've recently started helping out with a project called Tauri. I will use it myself, but I appreciate the vision and want to see it succeed. The repo did not have no continuous integration or continuous delivery set up, and I knew it would provide immediate value to the project. Thus began my involvement and we decided to use the shiny new GitHub Actions to deliver this."
----
+export const meta = {
+  title: "Setting Up CI and CD for Tauri",
+  written: "2020-03-22",
+  slug: "/setting-up-ci-and-cd-for-tauri/",
+  category: "CI/CD",
+  keywords: ["GitHub Actions"],
+  description:
+    "I've recently started helping out with a project called Tauri. I will use it myself, but I appreciate the vision and want to see it succeed. The repo did not have no continuous integration or continuous delivery set up, and I knew it would provide immediate value to the project. Thus began my involvement and we decided to use the shiny new GitHub Actions to deliver this.",
+};
 
 # Setting Up CI/CD for Tauri
+
 ## Background
 
 I've recently started helping out with a project called Tauri. I will use it myself, but I appreciate the vision and want to see it succeed. When I started looking into it, they were pushing towards releasing an alpha. The repo did not have no continuous integration or continuous delivery set up. I have seen the value that it can have in creating focus in a project. I knew I would be able to provide immediate value to the project with CI/CD.
@@ -23,6 +25,7 @@ This served us well and caught a few bugs in the process. We had the focus to ge
 Github Actions has two triggers of which we make heavy use: `push` and `pull_request`. Every commit that made to the repo is a `push`. When you open a pull request from a branch (call it `great_feature`) to another branch (our working branch, `dev`), each commit to `great_feature` would possibly trigger both of these events. We can use a filter to focus on the events we care about though. In our workflows, we only PR (pull request) the `dev` and `master` branches. This means that if we filter to only the `dev` and `master` branches on commit, we will only run that workflow when we _merge_ a PR. A merged PR typically only occurs once a day or less so this will be a good fit for the longer running tests, e.g. the smoke tests in our case. Below is how that might look.
 
 Unit tests:
+
 ```yml
 # these run fast so we can have them run on any commit
 name: unit tests
@@ -35,6 +38,7 @@ on:
 ```
 
 Smoke tests:
+
 ```yml
 # these run slower so we run only on merges to dev or master branch
 name: smoke tests
@@ -72,26 +76,26 @@ We will look to do even more above and beyond the typical publish workflow in th
 Let's wrap all of this into nice little bullet pointed list. (That's basically `.yml` right? You will soon be an expert at reading it if you aren't already :D ) This is the ideal that we are working towards. As it stands now, we have #3 through #6 implemented. We manually do #2 which then feeds into #3 and kicks off the rest of the automatic workflow.
 
 1. a human pushes to dev through a pull request (can happen any number of times)
-    - pull request includes a changeset file describing the change and required version bump
+   - pull request includes a changeset file describing the change and required version bump
 2. a pull request is created (or updated) to include the change and version bump
-    - this pull request stays open and will be force pushed until it gets merged (and published)
-    - increase the version number based on changesets
-    - delete all changeset files
+   - this pull request stays open and will be force pushed until it gets merged (and published)
+   - increase the version number based on changesets
+   - delete all changeset files
 3. a codeowner merges the publish PR to dev (no direct push permissible for anyone)
-    - all tests (unit, e2e, smoke tests) are run on the PR
-    - failures prevent the publish so they must pass before merge
+   - all tests (unit, e2e, smoke tests) are run on the PR
+   - failures prevent the publish so they must pass before merge
 4. merge to dev triggers release sequence
-    - changes are squashed and a PR is opened against master
+   - changes are squashed and a PR is opened against master
 5. when PR to master is merged...
-    - vulnerability audit (crates and yarn) and output saved
-    - checksums and metadata and output saved
-    - packages are published on npm/cargo, tarball/zip created
-    - release is created for each package that had updates (if version isn't changed, build skips the publish steps)
-    - output from audit/checksums is piped into the release body
-    - tarball / zip attached to release
-    - async process to publish to IOTA tangle (feeless) via release tag [note: still have things to resolve here]
+   - vulnerability audit (crates and yarn) and output saved
+   - checksums and metadata and output saved
+   - packages are published on npm/cargo, tarball/zip created
+   - release is created for each package that had updates (if version isn't changed, build skips the publish steps)
+   - output from audit/checksums is piped into the release body
+   - tarball / zip attached to release
+   - async process to publish to IOTA tangle (feeless) via release tag [note: still have things to resolve here]
 6. release is complete
-    - master has updated code and tagged
-    - GitHub release has tarballs, checksums, and changelog (may have multiple releases if more than one package published) [note: is part of step 2 and is not yet implemented]
+   - master has updated code and tagged
+   - GitHub release has tarballs, checksums, and changelog (may have multiple releases if more than one package published) [note: is part of step 2 and is not yet implemented]
 
-Hopefully this inspires you to implement this into your own workflows. If you have any questions, feel free to reach out and I would be happy to answer. Cheers! 
+Hopefully this inspires you to implement this into your own workflows. If you have any questions, feel free to reach out and I would be happy to answer. Cheers!
