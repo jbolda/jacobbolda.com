@@ -1,9 +1,7 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui";
-import React from "react";
+import { h, Component } from "preact";
 import Big from "big.js";
 
-class loanEfficiencyCalculator extends React.Component {
+class loanEfficiencyCalculator extends Component {
   constructor(props) {
     super(props);
     let initialLoans = {
@@ -21,9 +19,9 @@ class loanEfficiencyCalculator extends React.Component {
           payment: Big(320),
           accumulatedInterest: Big(0),
           months: Big(0),
-          years: Big(0)
-        }
-      ]
+          years: Big(0),
+        },
+      ],
     };
     this.state = processLoans(initialLoans);
   }
@@ -40,8 +38,8 @@ class loanEfficiencyCalculator extends React.Component {
         accumulatedInterest: Big(0),
         months: Big(0),
         years: Big(0),
-        ratio: Big(0)
-      }
+        ratio: Big(0),
+      },
     ];
     let setLoans = processLoans(loanGroup);
     this.setState(setLoans);
@@ -91,7 +89,7 @@ class loanEfficiencyCalculator extends React.Component {
           wrap: "flex",
           flexDirection: "column",
           width: ["97.5%", "97.5%", "75%"],
-          paddingLeft: ["2.5%", "12.5%", "25%"]
+          paddingLeft: ["2.5%", "12.5%", "25%"],
         }}
       >
         <div sx={{ padding: 4 }}>
@@ -129,8 +127,8 @@ class loanEfficiencyCalculator extends React.Component {
             transition: "all 0.2s",
             ":hover": {
               color: "muted",
-              bg: "secondary"
-            }
+              bg: "secondary",
+            },
           }}
           onClick={this.addAnother.bind(this)}
         >
@@ -158,8 +156,8 @@ class loanEfficiencyCalculator extends React.Component {
               transition: "all 0.2s",
               ":hover": {
                 color: "muted",
-                bg: "secondary"
-              }
+                bg: "secondary",
+              },
             }}
             onClick={this.handleShift.bind(this, index)}
           >
@@ -181,8 +179,8 @@ class loanEfficiencyCalculator extends React.Component {
               transition: "all 0.2s",
               ":hover": {
                 color: "muted",
-                bg: "secondary"
-              }
+                bg: "secondary",
+              },
             }}
             onClick={this.handleDelete.bind(this, index)}
           >
@@ -245,7 +243,7 @@ class loanEfficiencyCalculator extends React.Component {
 
 export default loanEfficiencyCalculator;
 
-const Input = props => (
+const Input = (props) => (
   <input
     sx={{
       display: "block",
@@ -257,13 +255,13 @@ const Input = props => (
       border: "1px solid",
       borderRadius: 4,
       color: "inherit",
-      bg: "background"
+      bg: "background",
     }}
     {...props}
   />
 );
 
-let processLoans = loanGroup => {
+let processLoans = (loanGroup) => {
   let newLoanGroup = { ...loanGroup };
   newLoanGroup.loans = [];
   newLoanGroup.balance = Big(0);
@@ -280,14 +278,14 @@ let processLoans = loanGroup => {
   return setLoans;
 };
 
-let loanStats = loan => {
+let loanStats = (loan) => {
   loan.months = Big(0);
   loan.ratio = Big(loan.balance).div(loan.payment);
   loan.accumulatedInterest = Big(0);
   return loan;
 };
 
-let remainingMonths = loanGroup => {
+let remainingMonths = (loanGroup) => {
   let months = Big(1);
   do {
     loanGroup.wallet = loanGroup.payment;
@@ -297,13 +295,8 @@ let remainingMonths = loanGroup => {
       loan.chest = months.eq(1) ? loan.balance : loan.chest; // chest is the emphereal version of balance
       if (loan.chest.gt(0)) {
         loan.months = loan.months.plus(1);
-        loan.interest = Big(loan.chest)
-          .times(loan.intRate)
-          .div(100)
-          .div(12);
-        loan.chest = Big(loan.chest)
-          .minus(loan.payment)
-          .plus(loan.interest);
+        loan.interest = Big(loan.chest).times(loan.intRate).div(100).div(12);
+        loan.chest = Big(loan.chest).minus(loan.payment).plus(loan.interest);
         loanGroup.wallet = Big(loanGroup.wallet).minus(loan.payment); // the emphereal version of payment for everything
         loanGroup.chest = Big(loanGroup.chest).plus(loan.chest);
         loan.accumulatedInterest = loan.accumulatedInterest.plus(loan.interest);
@@ -332,9 +325,9 @@ let remainingMonths = loanGroup => {
   return loanGroup;
 };
 
-let cleanNumbers = loanGroup => {
+let cleanNumbers = (loanGroup) => {
   let loans = loanGroup.loans;
-  loans.forEach(loan => {
+  loans.forEach((loan) => {
     loan.years = Big(loan.months).div(12);
     loanGroup.interest = loanGroup.interest.plus(loan.accumulatedInterest);
     loanGroup.totalBalance = loanGroup.totalBalance.plus(loan.balance);
