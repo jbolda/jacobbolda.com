@@ -5,10 +5,11 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: ["./src/**/*.js"],
+  purge: ["./src/**/*.js", "./content/**/*.js"],
   theme: {},
   variants: {},
   plugins: [
+    require("@tailwindcss/typography"),
     // require("@tailwindcss/ui")
   ],
 };
