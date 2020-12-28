@@ -13,7 +13,7 @@ const components = {
 export default function PageWrapper(props) {
   return (
     <MDXProvider components={components}>
-      <div>
+      <div class="prose lg:prose-xl container mx-auto text-center">
         <Helmet>
           <link rel="stylesheet" href="/styles.css" />
         </Helmet>
