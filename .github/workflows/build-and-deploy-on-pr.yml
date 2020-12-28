@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
       - name: compress images
         uses: calibreapp/image-actions@1.1.0
         with:
@@ -17,11 +17,11 @@ jobs:
           jpegQuality: "99"
           pngQuality: "99"
           webpQuality: "99"
-      - run: yarn
+      - run: npm install
       - name: build
         env:
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-        run: yarn build
+        run: npm run build
       - name: deploy
         if: success()
         env:
