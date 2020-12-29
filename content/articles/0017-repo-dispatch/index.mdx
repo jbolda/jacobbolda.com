@@ -1,11 +1,12 @@
----
-title: Github Actions Repository Dispatch Event
-written: 2020-05-08
-slug: "/github-actions-repository-dispatch-event/"
-category: "github actions"
-keywords: ["Github Actions", "repository_dispatch"]
-description: "Github Actions repository dispatch is a way to trigger a build via an external system."
----
+export const meta = {
+  title: "Github Actions Repository Dispatch Event",
+  written: "2020-05-08",
+  slug: "/github-actions-repository-dispatch-event/",
+  category: "github actions",
+  keywords: ["Github Actions", "repository_dispatch"],
+  description:
+    "Github Actions repository dispatch is a way to trigger a build via an external system.",
+};
 
 # Github Actions Repository Dispatch Event
 
@@ -59,16 +60,16 @@ When this is properly configured, posting to this endpoint will kick off a workf
 For this specific example, I am deploying my site on Netlify. The Netlify CLI very recently [had their CLI added to the runner](https://github.com/actions/virtual-environments/pull/1423). This means we don't need to install it and it will save us some time on the build. Depending on your site content or configuration, you need to install your dependencies, build your site and then you can use `netlify` to deploy it.
 
 ```yml
-      - run: yarn
-      - name: build
-        env:
-          GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES: true
-          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-        run: yarn build --log-pages
-      - name: deploy
-        if: success()
-        env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        run: npx netlify-cli deploy --dir=public --prod --message "${{ github.event.head_commit.message }}"
+- run: yarn
+- name: build
+  env:
+    GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES: true
+    AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+  run: yarn build --log-pages
+- name: deploy
+  if: success()
+  env:
+    NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+    NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+  run: npx netlify-cli deploy --dir=public --prod --message "${{ github.event.head_commit.message }}"
 ```
