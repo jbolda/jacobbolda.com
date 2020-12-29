@@ -17,6 +17,8 @@ jobs:
           jpegQuality: "99"
           pngQuality: "99"
           webpQuality: "99"
+      - name: update to npm7
+        run: npm install -g npm@latest
       - run: npm install
       - name: build
         env:

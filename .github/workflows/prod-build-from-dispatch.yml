@@ -12,6 +12,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
+      - name: update to npm7
+        run: npm install -g npm@latest
       - run: npm install
       - name: build
         env:
