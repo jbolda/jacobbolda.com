@@ -4,11 +4,11 @@ import { MDXProvider } from "@mdx-js/preact";
 import Landing from "./../../an-extra-boop-for-the-homepage/landing.js";
 import About from "./../../an-extra-boop-for-the-homepage/about.js";
 
-import STEMonFire from "./../../an-extra-boop-for-the-homepage/STE-Mon-Fire.js";
-import AECC from "./../../an-extra-boop-for-the-homepage/AEC-Collective.js";
+import STEMonFire from "./../../an-extra-boop-for-the-homepage/ste-mon-fire.js";
+import AECC from "./../../an-extra-boop-for-the-homepage/aec-collective.js";
 import Masters from "./../../an-extra-boop-for-the-homepage/masters-thesis.js";
 import Prog from "./../../an-extra-boop-for-the-homepage/programming.js";
-import EWB from "./../../an-extra-boop-for-the-homepage/EWB.js";
+import EWB from "./../../an-extra-boop-for-the-homepage/ewb.js";
 import MitchellLofts from "./../../an-extra-boop-for-the-homepage/mitchell-street-market-lofts.js";
 import REU from "./../../an-extra-boop-for-the-homepage/reu.js";
 
