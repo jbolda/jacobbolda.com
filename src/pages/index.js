@@ -13,27 +13,29 @@ import MitchellLofts from "./../../an-extra-boop-for-the-homepage/mitchell-stree
 import REU from "./../../an-extra-boop-for-the-homepage/reu.js";
 
 export default (props) => (
-  <MDXProvider>
-    <div>
-      <img src="/avatar.png" />
-      <Landing />
-    </div>
-    <About />
-    <div>
-      <STEMonFire />
-      <AECC />
-      <Masters />
-      <Prog />
-      <EWB />
-      <MitchellLofts />
-      <REU />
-    </div>
+  <div class="prose lg:prose-xl container mx-auto text-center">
+    <MDXProvider>
+      <div>
+        <img src="/avatar.png" />
+        <Landing />
+      </div>
+      <About />
+      <div>
+        <STEMonFire />
+        <AECC />
+        <Masters />
+        <Prog />
+        <EWB />
+        <MitchellLofts />
+        <REU />
+      </div>
+    </MDXProvider>
     <div>
       {props.articles.map((article) => (
-        <p>
+        <p class="text-base font-semibold">
           <a href={article.meta.slug}>{article.meta.title}</a>
         </p>
       ))}
     </div>
-  </MDXProvider>
+  </div>
 );

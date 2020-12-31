@@ -18,7 +18,7 @@ export default function PageWrapper(props) {
     <>
       <Header />
       <MDXProvider components={components}>
-        <div class="prose lg:prose-xl container mx-auto text-center">
+        <div>
           <Helmet>
             <link rel="stylesheet" href="/styles.css" />
           </Helmet>
