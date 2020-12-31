@@ -23,5 +23,9 @@ export const sourceData = async ({ setDataForSlug }) => {
     data: { articles: [...articles, ...notes] },
   });
 
+  await setDataForSlug("/articles", {
+    data: { articles: [...articles, ...notes] },
+  });
+
   return;
 };
