@@ -1,6 +1,9 @@
-import { h } from "preact";
+import { h, Fragment } from "preact";
 import { Helmet } from "react-helmet";
 import { MDXProvider } from "@mdx-js/preact";
+
+import Header from "./components/header.js";
+import Footer from "./components/footer.js";
 
 const components = {
   codeblock: (props) => (
@@ -12,13 +15,17 @@ const components = {
 };
 export default function PageWrapper(props) {
   return (
-    <MDXProvider components={components}>
-      <div class="prose lg:prose-xl container mx-auto text-center">
-        <Helmet>
-          <link rel="stylesheet" href="/styles.css" />
-        </Helmet>
-        {props.children}
-      </div>
-    </MDXProvider>
+    <>
+      <Header />
+      <MDXProvider components={components}>
+        <div class="prose lg:prose-xl container mx-auto text-center">
+          <Helmet>
+            <link rel="stylesheet" href="/styles.css" />
+          </Helmet>
+          {props.children}
+        </div>
+      </MDXProvider>
+      <Footer />
+    </>
   );
 }
