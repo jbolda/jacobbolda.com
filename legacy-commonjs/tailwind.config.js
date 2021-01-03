@@ -1,4 +1,5 @@
 // const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   future: {
@@ -6,10 +7,13 @@ module.exports = {
     purgeLayersByDefault: true,
   },
   purge: ["./src/**/*.js", "./content/**/*.js"],
-  theme: {},
+  theme: {
+    extend: {
+      colors: {
+        rose: colors.rose,
+      },
+    },
+  },
   variants: {},
-  plugins: [
-    require("@tailwindcss/typography"),
-    // require("@tailwindcss/ui")
-  ],
+  plugins: [require("@tailwindcss/typography")],
 };

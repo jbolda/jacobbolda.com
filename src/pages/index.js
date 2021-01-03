@@ -1,6 +1,5 @@
 /* @jsx h */
 import { h } from "preact";
-import { MDXProvider } from "@mdx-js/preact";
 import Landing from "./../../an-extra-boop-for-the-homepage/landing.js";
 import About from "./../../an-extra-boop-for-the-homepage/about.js";
 
@@ -13,23 +12,21 @@ import MitchellLofts from "./../../an-extra-boop-for-the-homepage/mitchell-stree
 import REU from "./../../an-extra-boop-for-the-homepage/reu.js";
 
 export default (props) => (
-  <div class="prose lg:prose-xl container mx-auto text-center">
-    <MDXProvider>
-      <div>
-        <img src="/avatar.png" />
-        <Landing />
-      </div>
-      <About />
-      <div>
-        <STEMonFire />
-        <AECC />
-        <Masters />
-        <Prog />
-        <EWB />
-        <MitchellLofts />
-        <REU />
-      </div>
-    </MDXProvider>
+  <div>
+    <div>
+      <img src="/avatar.png" />
+      <Landing />
+    </div>
+    <About />
+    <div>
+      <STEMonFire />
+      <AECC />
+      <Masters />
+      <Prog />
+      <EWB />
+      <MitchellLofts />
+      <REU />
+    </div>
     <div>
       {props.articles.map((article) => (
         <p class="text-base font-semibold">

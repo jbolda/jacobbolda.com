@@ -5,6 +5,8 @@ import { MDXProvider } from "@mdx-js/preact";
 import Header from "./components/header.js";
 import Footer from "./components/footer.js";
 
+import ArticleWrapper from "./components/wrapperArticle.js";
+
 const components = {
   codeblock: (props) => (
     <div
@@ -16,16 +18,24 @@ const components = {
 export default function PageWrapper(props) {
   return (
     <>
+      <Helmet>
+        <link rel="stylesheet" href="/styles.css" />
+      </Helmet>
       <Header />
       <MDXProvider components={components}>
-        <div>
-          <Helmet>
-            <link rel="stylesheet" href="/styles.css" />
-          </Helmet>
+        <ContentWrapper pageType={props.pageType}>
           {props.children}
-        </div>
+        </ContentWrapper>
       </MDXProvider>
       <Footer />
     </>
   );
 }
+
+const ContentWrapper = ({ children, pageType }) => {
+  if (pageType === "article") {
+    return <ArticleWrapper>{children}</ArticleWrapper>;
+  } else {
+    return <div>{children}</div>;
+  }
+};
