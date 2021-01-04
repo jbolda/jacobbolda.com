@@ -107,9 +107,9 @@ export default (props) => (
         </div>
       </div>
       <div class="relative px-4 sm:px-6 lg:px-8">
-        <div class="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
+        <article class="mt-6 prose sm:prose-lg lg:prose-xl xl:prose-2xl prose-indigo text-gray-500 mx-auto">
           {props.children}
-        </div>
+        </article>
       </div>
     </div>
   </>
