@@ -27,7 +27,7 @@ const ArticleSection = ({ children }) => (
   </div>
 );
 
-const ArticleWrap = ({ article }) => (
+export const ArticleWrap = ({ article }) => (
   <div>
     <div>
       {!article.keywords
