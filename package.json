@@ -35,7 +35,7 @@
     "prism-react-renderer": "^1.1.1",
     "prismjs": "^1.20.0",
     "tailwindcss": "^2.0.2",
-    "toast": "^0.3.37"
+    "toast": "^0.3.39"
   },
   "devDependencies": {
     "esinstall": "^0.5.2",
