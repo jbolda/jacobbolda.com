@@ -38,6 +38,7 @@
     "toast": "^0.3.39"
   },
   "devDependencies": {
+    "airtable": "^0.10.1",
     "esinstall": "^0.5.2",
     "prettier": "^2.2.1"
   },
