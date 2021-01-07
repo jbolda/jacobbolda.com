@@ -1,15 +1,12 @@
 /* @jsx h */
 import { h } from "preact";
-import { MDXProvider } from "@mdx-js/preact";
 
 export default (props) => (
-  <MDXProvider>
-    <ArticleSection>
-      {props.articles.map((article) => (
-        <ArticleWrap article={article} />
-      ))}
-    </ArticleSection>
-  </MDXProvider>
+  <ArticleSection>
+    {props.articles.map((article) => (
+      <ArticleWrap article={article} />
+    ))}
+  </ArticleSection>
 );
 
 const ArticleSection = ({ children }) => (
