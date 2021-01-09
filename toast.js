@@ -1,8 +1,29 @@
-import { sourceMdx } from "@toastdotdev/mdx";
+import { sourceMdx, compileMdx } from "@toastdotdev/mdx";
 import { sourceAirtableRecipes } from "./fetch/fetch-airtable-recipes.js";
 
+import { promises as fs } from "fs";
+
 export const sourceData = async ({ setDataForSlug }) => {
-  const { Recipes: recipes } = await sourceAirtableRecipes({ tables });
+  const { Recipes: recipes } = await sourceAirtableRecipes({ tables }).then(
+    (query) => ({
+      ...query,
+      Recipes: query.Recipes.map((recipe) => {
+        recipe.slug = `/${recipe.name
+          .replace(/ /g, "-")
+          .replace(/[,&]/g, "")
+          .toLowerCase()}/`;
+
+        recipe.ingredientsHTML = `<ul><li>${recipe.ingredients
+          .replace(/(- )/g, "")
+          .replace(/[\n\r]+/g, "</li><li>")}</li></ul>`;
+        recipe.directionsHTML = `<ol><li>${recipe.directions.replace(
+          /[\n\r]+/g,
+          "</li><li>"
+        )}</li></ol>`;
+        return recipe;
+      }),
+    })
+  );
 
   const articles = await sourceMdx({
     setDataForSlug,
@@ -39,6 +60,22 @@ export const sourceData = async ({ setDataForSlug }) => {
   await setDataForSlug("/recipes", {
     data: { recipes, pageType: "page" },
   });
+
+  const recipeComponent = await fs.readFile("./src/components/recipe.js", {
+    encoding: "utf-8",
+  });
+  for (let recipe of recipes) {
+    await setDataForSlug(recipe.slug, {
+      data: {
+        recipe,
+        pageType: "page",
+      },
+      component: {
+        mode: "source",
+        value: recipeComponent,
+      },
+    });
+  }
 
   return;
 };

@@ -36,16 +36,19 @@ export const RecipeWrap = ({ recipe }) => (
     </div>
     <div class="flex-1 bg-white p-6 flex flex-col justify-between">
       <div class="flex-1">
-        <a href={"recipe.meta.slug"} class="mt-2 block">
+        <a href={recipe.slug} class="mt-2 block">
           <p class="text-xl font-semibold text-gray-900">{recipe.name}</p>
-          <p class="mt-3 text-base text-gray-500">{recipe.ingredients}</p>
+          <div
+            class="mt-3 prose text-base text-gray-500"
+            dangerouslySetInnerHTML={{ __html: recipe.ingredientsHTML }}
+          />
         </a>
         <div class="mt-3">
           <a
-            href={"recipe.meta.slug"}
+            href={recipe.slug}
             class="text-base font-semibold text-indigo-600 hover:text-indigo-500"
           >
-            Read full story
+            check out recipe
           </a>
         </div>
       </div>
