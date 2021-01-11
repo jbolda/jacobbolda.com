@@ -39,7 +39,7 @@ export const RecipeWrap = ({ recipe }) => (
         <a href={recipe.slug} class="mt-2 block">
           <p class="text-xl font-semibold text-gray-900">{recipe.name}</p>
           <div
-            class="mt-3 prose text-base text-gray-500"
+            class="mt-3 text-base text-gray-500"
             dangerouslySetInnerHTML={{ __html: recipe.ingredientsHTML }}
           />
         </a>

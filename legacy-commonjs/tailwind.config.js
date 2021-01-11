@@ -1,4 +1,3 @@
-// const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 
 module.exports = {
@@ -16,9 +15,5 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/aspect-ratio"),
-    require("nightwind"),
-  ],
+  plugins: [require("@tailwindcss/aspect-ratio"), require("nightwind")],
 };

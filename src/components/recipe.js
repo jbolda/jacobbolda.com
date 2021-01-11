@@ -5,7 +5,7 @@ export default ({ recipe }) => (
   <div class="bg-white overflow-hidden">
     <div class="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <div class="hidden lg:block bg-gray-50 absolute top-0 bottom-0 left-3/4 w-screen" />
-      <div class="mx-auto text-base max-w-prose lg:max-w-none">
+      <div class="mx-auto text-base max-w-lg:max-w-none">
         <h3 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">{`Last Made: ${recipe["last made"]}`}</h3>
         <h2 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
           {recipe.name}
@@ -46,7 +46,7 @@ export default ({ recipe }) => (
               fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)"
             />
           </svg>
-          <div class="relative text-base mx-auto max-w-prose lg:max-w-none">
+          <div class="relative text-base mx-auto max-w-lg:max-w-none">
             <figure>
               <div class="aspect-w-12 aspect-h-7 lg:aspect-none">
                 <img
@@ -59,7 +59,7 @@ export default ({ recipe }) => (
           </div>
         </div>
         <div class="mt-8 lg:mt-0">
-          <div class="mt-5 prose prose-indigo text-gray-500 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1">
+          <div class="mt-5 text-gray-500 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1">
             <h3>Ingredients</h3>
             <div dangerouslySetInnerHTML={{ __html: recipe.ingredientsHTML }} />
             <h3>Directions</h3>
