@@ -1,5 +1,5 @@
 import { h } from "preact";
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 
 export default ({ toggle }) => (
   <footer class="bg-white">
@@ -73,11 +73,13 @@ export default ({ toggle }) => (
 );
 
 const Toggle = (props) => {
-  const [colorMode, toggleColorMode] = useState(
-    !document || window.localStorage.setItem("nightwind-mode", "dark")
-      ? "light"
-      : "dark"
-  );
+  const [colorMode, toggleColorMode] = useState("light");
+
+  useEffect(() => {
+    window.localStorage.getItem("nightwind-mode") === "dark"
+      ? toggleColorMode("dark")
+      : toggleColorMode("light");
+  }, []);
 
   const toggleAction = () => {
     if (!document.documentElement.classList.contains("dark")) {

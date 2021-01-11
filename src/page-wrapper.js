@@ -58,7 +58,12 @@ const init = () => {
     const mql = window.matchMedia("(prefers-color-scheme: dark)");
     const hasMediaQueryPreference = typeof mql.matches === "boolean";
     if (hasMediaQueryPreference) {
-      return mql.matches ? "dark" : "light";
+      if (mql.matches) {
+        window.localStorage.setItem("nightwind-mode", "dark");
+        return "dark";
+      } else {
+        ("light");
+      }
     }
     return "light";
   }
