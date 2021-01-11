@@ -16,7 +16,7 @@ import { ArticleWrap } from "./articles.js";
 export default (props) => (
   <div>
     <Hero />
-    <div class="mx-auto my-auto prose prose">
+    <div class="mx-auto my-auto prose">
       <About />
     </div>
     <Engagements>
@@ -37,11 +37,11 @@ export default (props) => (
 );
 
 const Hero = (props) => (
-  <div class="relative bg-white overflow-hidden">
+  <div class="relative overflow-hidden">
     <div class="max-w-7xl mx-auto">
-      <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+      <div class="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
         <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-          <div class="prose prose-xl sm:text-center lg:text-left">
+          <div class="sm:text-center lg:text-left">
             <Landing />
           </div>
         </main>
@@ -73,7 +73,7 @@ const Engagements = ({ children }) => (
       </div>
       <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
         {children.map((child) => (
-          <div className="p-2 prose prose flex flex-col rounded-lg shadow-lg overflow-hidden">
+          <div className="p-2 text-gray-900 flex flex-col rounded-lg shadow-lg overflow-hidden">
             {child}
           </div>
         ))}

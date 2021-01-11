@@ -4,10 +4,7 @@ export default (props) => (
   <>
     <div class="relative py-16 bg-white overflow-hidden">
       <div class="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
-        <div
-          class="relative h-full text-lg max-w-prose mx-auto"
-          aria-hidden="true"
-        >
+        <div class="relative h-full text-lg max-w-mx-auto" aria-hidden="true">
           <svg
             class="absolute top-12 left-full transform translate-x-32"
             width={404}
@@ -107,9 +104,7 @@ export default (props) => (
         </div>
       </div>
       <div class="relative px-4 sm:px-6 lg:px-8">
-        <article class="mt-6 prose sm:prose-lg lg:prose-xl xl:prose-2xl prose-indigo text-gray-500 mx-auto">
-          {props.children}
-        </article>
+        <article class="mt-6 text-gray-500 mx-auto">{props.children}</article>
       </div>
     </div>
   </>
