@@ -44,21 +44,6 @@
     "esinstall": "^0.5.2",
     "prettier": "^2.2.1"
   },
-  "snowpack": {
-    "exclude": [
-      "public/**/*",
-      "toast.js"
-    ],
-    "installOptions": {
-      "alias": {
-        "react": "preact/compat"
-      }
-    },
-    "knownEntrypoints": [
-      "preact/hooks",
-      "preact"
-    ]
-  },
   "volta": {
     "node": "14.15.3",
     "npm": "7.3.0"
