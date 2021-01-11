@@ -4,7 +4,6 @@ import { MDXProvider } from "@mdx-js/preact";
 
 import Header from "./components/header.js";
 import Footer from "./components/footer.js";
-import nightwind from "nightwind/helper.js";
 
 import ArticleWrapper from "./components/wrapperArticle.js";
 
@@ -21,7 +20,7 @@ export default function PageWrapper(props) {
     <>
       <Helmet>
         <link rel="stylesheet" href="/styles.css" />
-        <script dangerouslySetInnerHTML={{ __html: nightwind.init() }} />
+        <script dangerouslySetInnerHTML={{ __html: init() }} />
       </Helmet>
       <Header />
       <MDXProvider components={components}>
@@ -39,5 +38,36 @@ const ContentWrapper = ({ children, pageType }) => {
     return <ArticleWrapper>{children}</ArticleWrapper>;
   } else {
     return <div>{children}</div>;
+  }
+};
+
+const init = () => {
+  function getInitialColorMode() {
+    try {
+      if (!window || !document) return "light";
+    } catch (e) {
+      return "light";
+    }
+    const persistedColorPreference = window.localStorage.getItem(
+      "nightwind-mode"
+    );
+    const hasPersistedPreference = typeof persistedColorPreference === "string";
+    if (hasPersistedPreference) {
+      return persistedColorPreference;
+    }
+    const mql = window.matchMedia("(prefers-color-scheme: dark)");
+    const hasMediaQueryPreference = typeof mql.matches === "boolean";
+    if (hasMediaQueryPreference) {
+      return mql.matches ? "dark" : "light";
+    }
+    return "light";
+  }
+  try {
+    getInitialColorMode() == "light"
+      ? document.documentElement.classList.remove("dark")
+      : document.documentElement.classList.add("dark");
+    document.documentElement.classList.add("nightwind");
+  } catch (e) {
+    //noop
   }
 };
