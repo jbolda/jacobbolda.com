@@ -31,10 +31,11 @@
     "@toastdotdev/mdx": "^0.1.5",
     "big.js": "5.2.2",
     "d3": "4.13.0",
-    "postcss": "^8.1.6",
+    "nightwind": "^1.0.8",
+    "postcss": "^8.2.1",
     "postcss-cli": "^8.2.0",
     "prism-react-renderer": "^1.1.1",
-    "prismjs": "^1.20.0",
+    "prismjs": "^1.22.0",
     "tailwindcss": "^2.0.2",
     "toast": "^0.3.39"
   },

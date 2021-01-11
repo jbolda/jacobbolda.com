@@ -2,6 +2,7 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
+  darkMode: "class",
   future: {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
@@ -18,5 +19,6 @@ module.exports = {
   plugins: [
     require("@tailwindcss/typography"),
     require("@tailwindcss/aspect-ratio"),
+    require("nightwind"),
   ],
 };

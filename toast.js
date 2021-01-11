@@ -1,4 +1,4 @@
-import { sourceMdx, compileMdx } from "@toastdotdev/mdx";
+import { sourceMdx } from "@toastdotdev/mdx";
 import { sourceAirtableRecipes } from "./fetch/fetch-airtable-recipes.js";
 
 import { promises as fs } from "fs";

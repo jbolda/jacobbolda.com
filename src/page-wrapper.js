@@ -4,6 +4,7 @@ import { MDXProvider } from "@mdx-js/preact";
 
 import Header from "./components/header.js";
 import Footer from "./components/footer.js";
+import nightwind from "nightwind/helper.js";
 
 import ArticleWrapper from "./components/wrapperArticle.js";
 
@@ -20,6 +21,7 @@ export default function PageWrapper(props) {
     <>
       <Helmet>
         <link rel="stylesheet" href="/styles.css" />
+        <script dangerouslySetInnerHTML={{ __html: nightwind.init() }} />
       </Helmet>
       <Header />
       <MDXProvider components={components}>
