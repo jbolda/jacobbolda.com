@@ -16,7 +16,7 @@ import { ArticleWrap } from "./articles.js";
 export default (props) => (
   <div>
     <Hero />
-    <div class="mx-auto my-auto prose">
+    <div class="relative pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
       <About />
     </div>
     <Engagements>
@@ -73,7 +73,7 @@ const Engagements = ({ children }) => (
       </div>
       <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
         {children.map((child) => (
-          <div className="p-2 text-gray-900 flex flex-col rounded-lg shadow-lg overflow-hidden">
+          <div className="p-4 text-gray-900 flex flex-col rounded-lg shadow-lg overflow-hidden">
             {child}
           </div>
         ))}
