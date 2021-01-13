@@ -13,6 +13,7 @@ jobs:
       - run: npm install
       - name: build
         env:
+          NODE_ENV: production
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
         run: npm run build
       - name: deploy
