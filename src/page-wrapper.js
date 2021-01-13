@@ -7,7 +7,53 @@ import Footer from "./components/footer.js";
 
 import ArticleWrapper from "./components/wrapperArticle.js";
 
+const Heading = ({ as = "h1", children }) => {
+  const Component = as;
+  const weight = (c) => {
+    switch (c) {
+      case "h1":
+        return "font-extrabold text-3xl mb-6 mt-2";
+      case "h2":
+        return "font-bold text-2xl mb-4";
+      case "h3":
+        return "font-semibold text-xl mb-2";
+      default:
+        return "font-medium text-lg mb-1";
+    }
+  };
+  return (
+    <Component class={`${weight(as)} text-gray-900 mx-auto`}>
+      {children}
+    </Component>
+  );
+};
+
 const components = {
+  p: ({ children }) => (
+    <p class="text-base text-gray-500 mx-auto mb-1">{children}</p>
+  ),
+  h1: (props) => <Heading as="h1" {...props} />,
+  h2: (props) => <Heading as="h2" {...props} />,
+  h3: (props) => <Heading as="h3" {...props} />,
+  h4: (props) => <Heading as="h4" {...props} />,
+  h5: (props) => <Heading as="h5" {...props} />,
+  h6: (props) => <Heading as="h6" {...props} />,
+  blockquote: ({ children }) => <blockquote>{children}</blockquote>,
+  ul: ({ children }) => <ul>{children}</ul>,
+  ol: ({ children }) => <ol>{children}</ol>,
+  li: ({ children }) => <li>{children}</li>,
+  table: ({ children }) => <table class="table-auto">{children}</table>,
+  thead: ({ children }) => <thead>{children}</thead>,
+  tbody: ({ children }) => <tbody>{children}</tbody>,
+  tr: ({ children }) => <tr>{children}</tr>,
+  th: ({ children }) => <th>{children}</th>,
+  td: ({ children }) => <td>{children}</td>,
+  inlineCode: ({ children }) => <span>{children}</span>,
+  em: ({ children }) => <em>{children}</em>,
+  strong: ({ children }) => <strong>{children}</strong>,
+  del: ({ children }) => <del>{children}</del>,
+  hr: ({ children }) => <hr>{children}</hr>,
+  a: ({ children }) => <a>{children}</a>,
   codeblock: (props) => (
     <div
       class="bg-gray-900"
@@ -37,7 +83,7 @@ const ContentWrapper = ({ children, pageType }) => {
   if (pageType === "article") {
     return <ArticleWrapper>{children}</ArticleWrapper>;
   } else {
-    return <div>{children}</div>;
+    return <div class="bg-white">{children}</div>;
   }
 };
 
