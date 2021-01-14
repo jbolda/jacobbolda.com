@@ -28,10 +28,19 @@ const Heading = ({ as = "h1", children }) => {
   );
 };
 
+const Text = ({ as = "p", children }) => {
+  const Component = as;
+  return (
+    <Component
+      class={`text-xl md:text-lg lg:text-base text-gray-500 mx-auto mb-1`}
+    >
+      {children}
+    </Component>
+  );
+};
+
 const components = {
-  p: ({ children }) => (
-    <p class="text-base text-gray-500 mx-auto mb-1">{children}</p>
-  ),
+  p: ({ children }) => <Text as="p">{children}</Text>,
   h1: (props) => <Heading as="h1" {...props} />,
   h2: (props) => <Heading as="h2" {...props} />,
   h3: (props) => <Heading as="h3" {...props} />,
@@ -49,8 +58,8 @@ const components = {
   th: ({ children }) => <th>{children}</th>,
   td: ({ children }) => <td>{children}</td>,
   inlineCode: ({ children }) => <span>{children}</span>,
-  em: ({ children }) => <em>{children}</em>,
-  strong: ({ children }) => <strong>{children}</strong>,
+  em: ({ children }) => <Text as="em">{children}</Text>,
+  strong: ({ children }) => <Text as="strong">{children}</Text>,
   del: ({ children }) => <del>{children}</del>,
   hr: ({ children }) => <hr>{children}</hr>,
   a: ({ children }) => <a>{children}</a>,
