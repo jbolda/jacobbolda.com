@@ -1,13 +1,13 @@
 import { h, Fragment } from "preact";
 
 export default (props) => (
-  <div class="relative bg-white">
+  <div class="relative flex-initial">
     <div class="flex justify-between items-center px-4 py-6">
       <div class="flex justify-start lg:w-0 lg:flex-1">
         <a href="/">
           <span class="sr-only">Jacob Bolda</span>
           <svg
-            class="h-8 w-auto sm:h-10"
+            class="h-8 w-auto sm:h-10 text-gray-400"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"

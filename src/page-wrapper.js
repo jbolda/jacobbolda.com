@@ -72,7 +72,7 @@ const components = {
 };
 export default function PageWrapper(props) {
   return (
-    <>
+    <div class="flex flex-col min-h-screen bg-white">
       <Helmet>
         <link rel="stylesheet" href="/styles.css" />
         <script dangerouslySetInnerHTML={{ __html: init() }} />
@@ -84,7 +84,7 @@ export default function PageWrapper(props) {
         </ContentWrapper>
       </MDXProvider>
       <Footer />
-    </>
+    </div>
   );
 }
 
@@ -92,7 +92,7 @@ const ContentWrapper = ({ children, pageType }) => {
   if (pageType === "article") {
     return <ArticleWrapper>{children}</ArticleWrapper>;
   } else {
-    return <div class="bg-white">{children}</div>;
+    return <div class="flex-grow">{children}</div>;
   }
 };
 
