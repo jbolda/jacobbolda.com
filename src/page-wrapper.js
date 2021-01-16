@@ -64,18 +64,31 @@ const components = {
   hr: ({ children }) => <hr>{children}</hr>,
   a: ({ children }) => <a>{children}</a>,
   codeblock: (props) => (
-    <div
-      class="bg-gray-900"
-      dangerouslySetInnerHTML={{ __html: props.children }}
-    />
+    <div class="bg-gray-900 w-full">
+      <div
+        class="mx-content"
+        dangerouslySetInnerHTML={{ __html: props.children }}
+      />
+    </div>
   ),
 };
 export default function PageWrapper(props) {
+  const title = `Jacob Bolda${
+    props?.meta?.title ? `| ${props.meta.title}` : ""
+  }`;
   return (
     <div class="flex flex-col min-h-screen bg-white">
       <Helmet>
+        <style type="text/css">{`
+          html {
+            background-color: rgba(0, 0, 0)
+          }
+        `}</style>
+        <script>{nightwindInit}</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+        <title>{title}</title>
         <link rel="stylesheet" href="/styles.css" />
-        <script dangerouslySetInnerHTML={{ __html: init() }} />
       </Helmet>
       <Header />
       <MDXProvider components={components}>
@@ -96,38 +109,28 @@ const ContentWrapper = ({ children, pageType }) => {
   }
 };
 
-const init = () => {
+const nightwindInit = `
+(function() {
   function getInitialColorMode() {
-    try {
-      if (!window || !document) return "light";
-    } catch (e) {
-      return "light";
-    }
-    const persistedColorPreference = window.localStorage.getItem(
-      "nightwind-mode"
-    );
-    const hasPersistedPreference = typeof persistedColorPreference === "string";
+    const persistedColorPreference = window.localStorage.getItem('nightwind-mode');
+    const hasPersistedPreference = typeof persistedColorPreference === 'string';
     if (hasPersistedPreference) {
       return persistedColorPreference;
     }
-    const mql = window.matchMedia("(prefers-color-scheme: dark)");
-    const hasMediaQueryPreference = typeof mql.matches === "boolean";
+    const mql = window.matchMedia('(prefers-color-scheme: dark)');
+    const hasMediaQueryPreference = typeof mql.matches === 'boolean';
     if (hasMediaQueryPreference) {
       if (mql.matches) {
         window.localStorage.setItem("nightwind-mode", "dark");
         return "dark";
       } else {
-        ("light");
+        window.localStorage.setItem("nightwind-mode", "light");
+        return "light";
       }
     }
-    return "light";
+    return 'light';
   }
-  try {
-    getInitialColorMode() == "light"
-      ? document.documentElement.classList.remove("dark")
-      : document.documentElement.classList.add("dark");
-    document.documentElement.classList.add("nightwind");
-  } catch (e) {
-    //noop
-  }
-};
+  getInitialColorMode() == 'light' ? document.documentElement.classList.remove('dark') : document.documentElement.classList.add('dark');
+  document.documentElement.classList.add('nightwind');
+})()
+`;

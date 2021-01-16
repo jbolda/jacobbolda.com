@@ -76,7 +76,7 @@ const Toggle = (props) => {
   const [colorMode, toggleColorMode] = useState("light");
 
   useEffect(() => {
-    window.localStorage.getItem("nightwind-mode") === "dark"
+    document.documentElement.classList.contains("dark")
       ? toggleColorMode("dark")
       : toggleColorMode("light");
   }, []);
