@@ -49,8 +49,25 @@ export const sourceData = async ({ setDataForSlug }) => {
     slugPrefix: "/an-extra-boop-for-the-homepage/",
   });
 
+  const curate_list = [
+    "tiny-mba",
+    "loan-efficiency-calculator",
+    "setting-up-ci-and-cd-for-tauri",
+    "github-actions-repository-dispatch-event",
+    "gmail-productivity-hacks",
+    "on-las-vegas",
+  ];
+  const curated = [...articles, ...notes].reduce((curate, article) => {
+    if (curate_list.includes(article.meta.slug)) {
+      return curate.concat([article]);
+    } else {
+      return curate;
+    }
+  }, []);
+
   await setDataForSlug("/", {
-    data: { articles: [...articles, ...notes], pageType: "page" },
+    data: { articles: curated, pageType: "page" },
+  });
   });
 
   await setDataForSlug("/articles", {
