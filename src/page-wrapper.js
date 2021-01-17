@@ -79,15 +79,11 @@ export default function PageWrapper(props) {
   return (
     <div class="flex flex-col min-h-screen bg-white">
       <Helmet>
-        <style type="text/css">{`
-          html {
-            background-color: rgba(0, 0, 0)
-          }
-        `}</style>
-        <script>{nightwindInit}</script>
+        <body style="background-color: rgba(0, 0, 0);" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
         <title>{title}</title>
+        <script>{nightwindInit}</script>
         <link rel="stylesheet" href="/styles.css" />
       </Helmet>
       <Header />
