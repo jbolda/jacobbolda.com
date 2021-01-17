@@ -1,5 +1,7 @@
 /* @jsx h */
 import { h } from "preact";
+import Heading from "./../src/components/heading.js";
+import List from "./../src/components/list.js";
 
 export default ({ recipe }) => (
   <div class="bg-white overflow-hidden">
@@ -60,13 +62,19 @@ export default ({ recipe }) => (
         </div>
         <div class="mt-8 lg:mt-0">
           <div class="mt-5 text-gray-500 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1">
-            <h3>Ingredients</h3>
-            <div dangerouslySetInnerHTML={{ __html: recipe.ingredientsHTML }} />
-            <h3>Directions</h3>
-            <div dangerouslySetInnerHTML={{ __html: recipe.directionsHTML }} />
+            <Heading as="h3">Ingredients</Heading>
+            <List
+              as="ul"
+              dangerouslySetInnerHTML={{ __html: recipe.ingredientsHTML }}
+            />
+            <Heading as="h3">Directions</Heading>
+            <List
+              as="ol"
+              dangerouslySetInnerHTML={{ __html: recipe.directionsHTML }}
+            />
 
-            <h4>Inspiration</h4>
-            <a href={recipe.Inspiration}>{recipe.Inspiration}</a>
+            <Heading as="h4">Inspiration</Heading>
+            <a href={recipe.inspiration}>{recipe.inspiration}</a>
           </div>
         </div>
       </div>

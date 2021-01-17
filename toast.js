@@ -13,13 +13,13 @@ export const sourceData = async ({ setDataForSlug }) => {
           .replace(/[,&]/g, "")
           .toLowerCase()}/`;
 
-        recipe.ingredientsHTML = `<ul><li>${recipe.ingredients
+        recipe.ingredientsHTML = `<li>${recipe.ingredients
           .replace(/(- )/g, "")
-          .replace(/[\n\r]+/g, "</li><li>")}</li></ul>`;
-        recipe.directionsHTML = `<ol><li>${recipe.directions.replace(
+          .replace(/[\n\r]+/g, "</li><li>")}</li>`;
+        recipe.directionsHTML = `<li>${recipe.directions.replace(
           /[\n\r]+/g,
           "</li><li>"
-        )}</li></ol>`;
+        )}</li>`;
         return recipe;
       }),
     })
