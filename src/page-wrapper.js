@@ -4,40 +4,11 @@ import { MDXProvider } from "@mdx-js/preact";
 
 import Header from "./components/header.js";
 import Footer from "./components/footer.js";
+import Heading from "./components/heading.js";
+import Text from "./components/text.js";
+import List from "./components/list.js";
 
 import ArticleWrapper from "./components/wrapperArticle.js";
-
-const Heading = ({ as = "h1", children }) => {
-  const Component = as;
-  const weight = (c) => {
-    switch (c) {
-      case "h1":
-        return "font-extrabold text-3xl mb-6 mt-2";
-      case "h2":
-        return "font-bold text-2xl mb-4";
-      case "h3":
-        return "font-semibold text-xl mb-2";
-      default:
-        return "font-medium text-lg mb-1";
-    }
-  };
-  return (
-    <Component class={`${weight(as)} text-gray-900 mx-auto`}>
-      {children}
-    </Component>
-  );
-};
-
-const Text = ({ as = "p", children }) => {
-  const Component = as;
-  return (
-    <Component
-      class={`text-xl md:text-lg lg:text-base text-gray-500 mx-auto mb-1`}
-    >
-      {children}
-    </Component>
-  );
-};
 
 const components = {
   p: ({ children }) => <Text as="p">{children}</Text>,
@@ -48,9 +19,9 @@ const components = {
   h5: (props) => <Heading as="h5" {...props} />,
   h6: (props) => <Heading as="h6" {...props} />,
   blockquote: ({ children }) => <blockquote>{children}</blockquote>,
-  ul: ({ children }) => <ul>{children}</ul>,
-  ol: ({ children }) => <ol>{children}</ol>,
-  li: ({ children }) => <li>{children}</li>,
+  ul: ({ children }) => <List as="ul">{children}</List>,
+  ol: ({ children }) => <List as="ol">{children}</List>,
+  li: ({ children }) => <List as="li">{children}</List>,
   table: ({ children }) => <table class="table-auto">{children}</table>,
   thead: ({ children }) => <thead>{children}</thead>,
   tbody: ({ children }) => <tbody>{children}</tbody>,
