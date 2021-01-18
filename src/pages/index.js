@@ -54,9 +54,7 @@ const Articles = ({ children }) => (
       </div>
       <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
         {children.map((child) => (
-          <div className="p-2 flex flex-col rounded-lg shadow-lg overflow-hidden">
-            {child}
-          </div>
+          <div className="p-2 flex flex-col">{child}</div>
         ))}
       </div>
     </div>
