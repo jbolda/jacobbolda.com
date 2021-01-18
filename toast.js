@@ -37,6 +37,12 @@ export const sourceData = async ({ setDataForSlug }) => {
     slugPrefix: "/",
   });
 
+  const pages = await sourceMdx({
+    setDataForSlug,
+    directory: "./content/pages",
+    slugPrefix: "/",
+  });
+
   for (let page of [...articles, ...notes]) {
     await setDataForSlug(`/${page.meta.slug}`, {
       data: { pageType: "article" },
@@ -68,6 +74,9 @@ export const sourceData = async ({ setDataForSlug }) => {
   await setDataForSlug("/", {
     data: { articles: curated, pageType: "page" },
   });
+
+  await setDataForSlug("/about", {
+    data: { pageType: "article" },
   });
 
   await setDataForSlug("/articles", {

@@ -1,7 +1,6 @@
 /* @jsx h */
 import { h } from "preact";
 import Landing from "./../../an-extra-boop-for-the-homepage/landing.js";
-import About from "./../../an-extra-boop-for-the-homepage/about.js";
 import Engagements from "./../components/engagements.js";
 
 import { ArticleWrap } from "./articles.js";
@@ -9,9 +8,6 @@ import { ArticleWrap } from "./articles.js";
 export default (props) => (
   <div>
     <Hero />
-    <div class="relative max-w-prose mx-auto pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
-      <About />
-    </div>
     <Engagements />
     <Articles>
       {props.articles.map((article) => (
