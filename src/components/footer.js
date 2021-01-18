@@ -1,7 +1,7 @@
 import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
 
-export default ({ toggle }) => (
+export default ({ children }) => (
   <footer class="flex-initial">
     <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
       <nav
@@ -9,8 +9,14 @@ export default ({ toggle }) => (
         aria-label="Footer"
       >
         <div class="px-5 py-2">
+          <a href="/about/" class="text-base text-gray-500 hover:text-gray-900">
+            About
+          </a>
+        </div>
+
+        <div class="px-5 py-2">
           <a
-            href="/articles"
+            href="/articles/"
             class="text-base text-gray-500 hover:text-gray-900"
           >
             Articles
@@ -19,7 +25,7 @@ export default ({ toggle }) => (
 
         <div class="px-5 py-2">
           <a
-            href="/recipes"
+            href="/recipes/"
             class="text-base text-gray-500 hover:text-gray-900"
           >
             Recipes
