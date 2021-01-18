@@ -19,7 +19,14 @@ export default (props) => (
 
 const Hero = (props) => (
   <div class="relative overflow-hidden">
-    <div class="max-w-7xl mx-auto">
+    <div class="lg:float-right md:absolute md:inset-y-0 md:right-0 md:w-1/2">
+      <img
+        class="mx-auto rounded-full h-48 lg:rounded-none lg:object-contain lg:h-96 lg:w-full"
+        src="/avatar.png"
+        alt
+      />
+    </div>
+    <div class="md:max-w-7xl mx-auto">
       <div class="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
         <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
           <div class="sm:text-center lg:text-left">
@@ -27,13 +34,6 @@ const Hero = (props) => (
           </div>
         </main>
       </div>
-    </div>
-    <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-      <img
-        class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-        src="/avatar.png"
-        alt
-      />
     </div>
   </div>
 );
