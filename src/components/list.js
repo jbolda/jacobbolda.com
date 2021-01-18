@@ -6,7 +6,9 @@ export default ({ as = "li", children, ...rest }) => {
   const Component = as;
   return (
     <Component
-      class={`text-xl md:text-lg lg:text-base text-gray-500 mx-auto mb-1`}
+      class={`${
+        as === "ul" ? "list-disc list-inside " : ""
+      }text-xl md:text-lg lg:text-base text-primary-900 mx-auto mb-1`}
       {...rest}
     >
       {children}

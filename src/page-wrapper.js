@@ -1,4 +1,4 @@
-import { h, Fragment } from "preact";
+import { h } from "preact";
 import { Helmet } from "react-helmet";
 import { MDXProvider } from "@mdx-js/preact";
 
@@ -7,6 +7,7 @@ import Footer from "./components/footer.js";
 import Heading from "./components/heading.js";
 import Text from "./components/text.js";
 import List from "./components/list.js";
+import Link from "./components/link.js";
 
 import ArticleWrapper from "./components/wrapperArticle.js";
 
@@ -33,7 +34,7 @@ const components = {
   strong: ({ children }) => <Text as="strong">{children}</Text>,
   del: ({ children }) => <del>{children}</del>,
   hr: ({ children }) => <hr>{children}</hr>,
-  a: ({ children }) => <a>{children}</a>,
+  a: ({ children, ...rest }) => <Link {...rest}>{children}</Link>,
   codeblock: (props) => (
     <div class="bg-gray-900 w-full">
       <div
@@ -48,7 +49,7 @@ export default function PageWrapper(props) {
     props?.meta?.title ? `| ${props.meta.title}` : ""
   }`;
   return (
-    <div class="flex flex-col min-h-screen bg-white">
+    <div class="flex flex-col min-h-screen bg-primary-50">
       <Helmet>
         <html style="background-color: rgba(0, 0, 0);" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

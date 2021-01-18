@@ -2,16 +2,18 @@
 import { h } from "preact";
 import Heading from "./../src/components/heading.js";
 import List from "./../src/components/list.js";
+import Link from "./../src/components/link.js";
 
 export default ({ recipe }) => (
-  <div class="bg-white overflow-hidden">
+  <div class="overflow-hidden">
     <div class="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-      <div class="hidden lg:block bg-gray-50 absolute top-0 bottom-0 left-3/4 w-screen" />
+      <div class="hidden lg:block absolute top-0 bottom-0 left-3/4 w-screen" />
       <div class="mx-auto text-base max-w-lg:max-w-none">
-        <h3 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">{`Last Made: ${recipe["last made"]}`}</h3>
-        <h2 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          {recipe.name}
-        </h2>
+        <Heading
+          as="h3"
+          className="text-primary-300"
+        >{`Last Made: ${recipe["last made"]}`}</Heading>
+        <Heading as="h2">{recipe.name}</Heading>
       </div>
       <div class="mt-8 lg:grid lg:grid-cols-2 lg:gap-8">
         <div class="relative lg:row-start-1 lg:col-start-2">
@@ -74,7 +76,7 @@ export default ({ recipe }) => (
             />
 
             <Heading as="h4">Inspiration</Heading>
-            <a href={recipe.inspiration}>{recipe.inspiration}</a>
+            <Link href={recipe.inspiration}>{recipe.inspiration}</Link>
           </div>
         </div>
       </div>

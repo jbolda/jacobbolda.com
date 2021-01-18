@@ -1,6 +1,6 @@
 import { h } from "preact";
 
-export default ({ as = "h1", children }) => {
+export default ({ as = "h1", children, className }) => {
   const Component = as;
   const weight = (c) => {
     switch (c) {
@@ -15,7 +15,7 @@ export default ({ as = "h1", children }) => {
     }
   };
   return (
-    <Component class={`${weight(as)} text-gray-900 mx-auto`}>
+    <Component class={`${weight(as)} text-primary-900 mx-auto ${className}`}>
       {children}
     </Component>
   );
