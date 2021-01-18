@@ -1,7 +1,7 @@
 import { h } from "preact";
 
 export default (props) => (
-  <div class="relative py-16 bg-white overflow-hidden flex-grow">
+  <div class="relative py-16 overflow-hidden flex-grow">
     <div class="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
       <div class="relative h-full text-lg max-w-mx-auto" aria-hidden="true">
         <svg

@@ -10,7 +10,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        rose: colors.rose,
+        primary: {
+          50: "#f4f4f4",
+          300: "#9ebba9",
+          600: "#52777d",
+          900: "#192c3b",
+        },
       },
     },
   },

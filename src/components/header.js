@@ -1,4 +1,5 @@
-import { h, Fragment } from "preact";
+import { h } from "preact";
+import Link from "./link.js";
 
 export default (props) => (
   <div class="relative flex-initial">
@@ -7,7 +8,7 @@ export default (props) => (
         <a href="/">
           <span class="sr-only">Jacob Bolda</span>
           <svg
-            class="h-8 w-auto sm:h-10 text-gray-400"
+            class="h-8 w-auto sm:h-10 text-primary-900"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -23,24 +24,9 @@ export default (props) => (
         </a>
       </div>
       <nav class="space-x-10">
-        <a
-          href="/about/"
-          class="text-base font-medium text-gray-500 hover:text-gray-900"
-        >
-          About
-        </a>
-        <a
-          href="/articles/"
-          class="text-base font-medium text-gray-500 hover:text-gray-900"
-        >
-          Articles
-        </a>
-        <a
-          href="/recipes/"
-          class="text-base font-medium text-gray-500 hover:text-gray-900"
-        >
-          Recipes
-        </a>
+        <Link href="/about/">About</Link>
+        <Link href="/articles/">Articles</Link>
+        <Link href="/recipes/">Recipes</Link>
       </nav>
     </div>
   </div>
