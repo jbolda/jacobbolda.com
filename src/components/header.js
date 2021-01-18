@@ -24,13 +24,19 @@ export default (props) => (
       </div>
       <nav class="space-x-10">
         <a
-          href="/articles"
+          href="/about/"
+          class="text-base font-medium text-gray-500 hover:text-gray-900"
+        >
+          About
+        </a>
+        <a
+          href="/articles/"
           class="text-base font-medium text-gray-500 hover:text-gray-900"
         >
           Articles
         </a>
         <a
-          href="/recipes"
+          href="/recipes/"
           class="text-base font-medium text-gray-500 hover:text-gray-900"
         >
           Recipes
