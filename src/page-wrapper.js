@@ -50,7 +50,7 @@ export default function PageWrapper(props) {
   return (
     <div class="flex flex-col min-h-screen bg-white">
       <Helmet>
-        <body style="background-color: rgba(0, 0, 0);" />
+        <html style="background-color: rgba(0, 0, 0);" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
         <title>{title}</title>
