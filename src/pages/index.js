@@ -1,4 +1,3 @@
-/* @jsx h */
 import { h, Fragment } from "preact";
 import Landing from "./../../an-extra-boop-for-the-homepage/landing.js";
 import Engagements from "./../components/engagements.js";
