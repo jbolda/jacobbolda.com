@@ -1,5 +1,6 @@
 import { sourceMdx } from "@toastdotdev/mdx";
 import { sourceAirtableRecipes } from "./fetch/fetch-airtable-recipes.js";
+import { sourceDraftArticles } from "./fetch/fetch-draft-articles.js";
 
 import { promises as fs } from "fs";
 
@@ -23,6 +24,14 @@ export const sourceData = async ({ setDataForSlug }) => {
       }),
     })
   );
+
+  const drafts = await sourceDraftArticles().then(() => {
+    return sourceMdx({
+      setDataForSlug,
+      directory: "./content/drafts",
+      slugPrefix: "/",
+    });
+  });
 
   const articles = await sourceMdx({
     setDataForSlug,
