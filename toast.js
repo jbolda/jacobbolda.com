@@ -16,10 +16,9 @@ export const sourceData = async ({ setDataForSlug }) => {
         recipe.ingredientsHTML = `<li>${recipe.ingredients
           .replace(/(- )/g, "")
           .replace(/[\n\r]+/g, "</li><li>")}</li>`;
-        recipe.directionsHTML = `<li>${recipe.directions.replace(
-          /[\n\r]+/g,
-          "</li><li>"
-        )}</li>`;
+        recipe.directionsHTML = `<li>${recipe.directions
+          .replace(/(^[1-9]\. )/gm, "")
+          .replace(/[\n\r]+/g, "</li><li>")}</li>`;
         return recipe;
       }),
     })

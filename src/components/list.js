@@ -7,8 +7,8 @@ export default ({ as = "li", children, ...rest }) => {
   return (
     <Component
       class={`${
-        as === "ul" ? "list-disc list-inside " : ""
-      }text-xl md:text-lg lg:text-base text-primary-900 mx-auto mb-1`}
+        as === "ul" ? "list-disc " : "list-decimal "
+      }list-inside text-xl md:text-lg lg:text-base text-primary-900 mx-auto mb-1`}
       {...rest}
     >
       {children}
