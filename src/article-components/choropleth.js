@@ -1,11 +1,14 @@
 import { h, Component, Fragment } from "preact";
-import * as d3 from "d3";
 
-const relativeURL = "/src/article-components/";
+const relativeURL = "/article-components/";
 
 export default class Choropleth extends Component {
-  componentDidMount() {
-    this.d3Node = d3.select("div#states");
+  async componentDidMount() {
+    graph.d3 = await import("https://cdn.skypack.dev/d3@4.13.0").catch((e) =>
+      console.error(e)
+    );
+
+    this.d3Node = graph.d3.select("div#states");
     let measurements = {
       width: this.d3Node._groups[0][0].clientWidth,
       height: this.d3Node._groups[0][0].clientHeight,
@@ -16,13 +19,12 @@ export default class Choropleth extends Component {
       we begin drawing here, grab the data and use it to draw
     */
 
-    d3.queue()
-      .defer(d3.csv, `${relativeURL}states_data.csv`)
-      .defer(d3.json, `${relativeURL}states.json`)
+    graph.d3
+      .queue()
+      .defer(graph.d3.csv, `${relativeURL}states_data.csv`)
+      .defer(graph.d3.json, `${relativeURL}states.json`)
       .awaitAll((error, results) => {
         if (error) {
-          console.log(this.props.stateData.publicURL);
-          console.log(this.props.stateShapes.publicURL);
           console.dir(error);
         } else {
           // console.log(results);
@@ -35,7 +37,7 @@ export default class Choropleth extends Component {
   }
 
   componentWillUnmount() {
-    d3.select("svg").remove();
+    graph.d3.select("svg").remove();
   }
 
   render() {
@@ -74,7 +76,7 @@ low: tooltip, color domain
 high: tooltip, color domain
 average: tooltip, path fill
 */
-  let color = d3
+  let color = graph.d3
     .scaleQuantize()
     .range([
       "rgb(237,248,233)",
@@ -85,10 +87,10 @@ average: tooltip, path fill
     ]);
 
   color.domain([
-    d3.min(data, function (d) {
+    graph.d3.min(data, function (d) {
       return d.low;
     }),
-    d3.max(data, function (d) {
+    graph.d3.max(data, function (d) {
       return d.high;
     }),
   ]);
@@ -129,24 +131,24 @@ let tooltipHtml = (d) => {
 };
 
 let mouseOver = (d) => {
-  let tooltip = d3.select("#tooltip");
+  let tooltip = graph.d3.select("#tooltip");
 
   tooltip
     .html(tooltipHtml(d))
     .style("opacity", 0.9)
-    .style("left", d3.event.pageX + "px")
-    .style("top", d3.event.pageY - 28 + "px");
+    .style("left", graph.d3.event.pageX + "px")
+    .style("top", graph.d3.event.pageY - 28 + "px");
 
   tooltip.transition().duration(200);
 };
 
 let mouseOut = () => {
-  d3.select("#tooltip").transition().duration(500).style("opacity", 0);
+  graph.d3.select("#tooltip").transition().duration(500).style("opacity", 0);
 };
 
 // eslint-disable-next-line
 function scale(scaleFactor, width, height) {
-  return d3.geoTransform({
+  return graph.d3.geoTransform({
     point: function (x, y) {
       this.stream.point(
         (x - width / 2) * scaleFactor + width / 2,
