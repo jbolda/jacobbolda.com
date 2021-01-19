@@ -1,4 +1,3 @@
-/* @jsx h */
 import { h } from "preact";
 import Heading from "./../src/components/heading.js";
 import List from "./../src/components/list.js";
