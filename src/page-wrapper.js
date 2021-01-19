@@ -44,6 +44,7 @@ const components = {
     </div>
   ),
 };
+
 export default function PageWrapper(props) {
   const title = `Jacob Bolda${
     props?.meta?.title ? `| ${props.meta.title}` : ""
@@ -51,7 +52,7 @@ export default function PageWrapper(props) {
   return (
     <div class="flex flex-col min-h-screen bg-primary-50">
       <Helmet>
-        <html style="background-color: rgba(0, 0, 0);" />
+        <html class="dark" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
         <title>{title}</title>
