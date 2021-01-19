@@ -7,6 +7,7 @@ const specs = [
   "@mdx-js/preact",
   "react-helmet",
   "preact/compat",
+  "big.js",
 ];
 
 const options = {
