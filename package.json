@@ -29,7 +29,6 @@
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@toastdotdev/mdx": "^0.1.5",
     "big.js": "5.2.2",
-    "d3": "4.13.0",
     "nightwind": "^1.0.8",
     "postcss": "^8.2.1",
     "postcss-cli": "^8.2.0",
