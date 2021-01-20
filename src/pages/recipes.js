@@ -1,10 +1,18 @@
 import { h } from "preact";
+import { Helmet } from "react-helmet";
 import List from "./../components/list.js";
 import Heading from "./../components/heading.js";
 import Link from "./../components/link.js";
 
 export default (props) => (
   <RecipeSection>
+    <Helmet>
+      <title>Recipes</title>
+      <meta
+        property="description"
+        content="We like to cook. We particularly like to cook these recipes. Hopefully you find these of mutual interest."
+      />
+    </Helmet>
     {props.recipes.map((recipe) => (
       <RecipeWrap recipe={recipe} />
     ))}

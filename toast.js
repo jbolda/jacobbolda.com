@@ -53,7 +53,7 @@ export const sourceData = async ({ setDataForSlug }) => {
 
   for (let page of [...articles, ...notes]) {
     await setDataForSlug(`/${page.meta.slug}`, {
-      data: { pageType: "article" },
+      data: { pageType: "article", ...page.meta },
     });
   }
 

@@ -1,10 +1,18 @@
 import { h } from "preact";
+import { Helmet } from "react-helmet";
 import Heading from "./../components/heading.js";
 import Text from "./../components/text.js";
 import Link from "./../components/link.js";
 
 export default (props) => (
   <ArticleSection>
+    <Helmet>
+      <title>Articles</title>
+      <meta
+        property="description"
+        content="These are all of my articles. Enjoy!"
+      />
+    </Helmet>
     {props.articles.map((article) => (
       <ArticleWrap article={article} />
     ))}
