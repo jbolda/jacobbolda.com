@@ -52,11 +52,15 @@ export default function PageWrapper(props) {
   return (
     <div class="flex flex-col min-h-screen bg-primary-50">
       <Helmet>
-        <html class="dark" />
+        <html class="dark" lang="en" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
-        <title>{title}</title>
         <script>{nightwindInit}</script>
+        <title>{title}</title>
+        <meta
+          property="description"
+          content="Senior Software Engineer creating and wielding open source to enable others with proper tools."
+        />
         <link rel="stylesheet" href="/styles.css" />
       </Helmet>
       <Header />

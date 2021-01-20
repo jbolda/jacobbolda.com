@@ -1,7 +1,12 @@
 import { h } from "preact";
+import { Helmet } from "react-helmet";
 
 export default (props) => (
   <div class="relative py-16 overflow-hidden flex-grow">
+    <Helmet>
+      <title>{props.children.props.title}</title>
+      <meta property="description" content={props.children.props.description} />
+    </Helmet>
     <div class="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
       <div class="relative h-full text-lg max-w-mx-auto" aria-hidden="true">
         <svg
