@@ -1,2 +1,3 @@
 # jacobbolda.com
-Why visit the source code when you can visit the site?
+
+Welcome to my humble abode. This website is built using [toast](https://toast.dev) and styled with [tailwind][https://tailwindcss.com].
