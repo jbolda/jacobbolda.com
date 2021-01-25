@@ -1,5 +1,5 @@
 import { h, Fragment } from "preact";
-import { Helmet } from "react-helmet";
+import { useEffect } from "preact/hooks";
 import Landing from "./../../an-extra-boop-for-the-homepage/landing.js";
 import Engagements from "./../components/engagements.js";
 import Heading from "./../components/heading.js";
@@ -7,17 +7,32 @@ import Text from "./../components/text.js";
 
 import { ArticleWrap } from "./articles.js";
 
-export default (props) => (
-  <>
-    <Hero />
-    <Engagements />
-    <Articles>
-      {props.articles.map((article) => (
-        <ArticleWrap article={article} />
-      ))}
-    </Articles>
-  </>
-);
+export default (props) => {
+  useEffect(() => {
+    console.log("removing old service workers");
+    try {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    } catch (e) {
+      //noop
+    }
+  }, []);
+
+  return (
+    <>
+      <Hero />
+      <Engagements />
+      <Articles>
+        {props.articles.map((article) => (
+          <ArticleWrap article={article} />
+        ))}
+      </Articles>
+    </>
+  );
+};
 
 const Hero = (props) => (
   <div class="relative overflow-hidden">
