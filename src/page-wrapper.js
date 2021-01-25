@@ -52,7 +52,7 @@ export default function PageWrapper(props) {
   return (
     <div class="flex flex-col min-h-screen bg-primary-50">
       <Helmet>
-        <html class="dark" lang="en" />
+        <html lang="en" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
         <script>{nightwindInit}</script>
@@ -86,13 +86,11 @@ const nightwindInit = `
 (function() {
   function getInitialColorMode() {
     const persistedColorPreference = window.localStorage.getItem('nightwind-mode');
-    const hasPersistedPreference = typeof persistedColorPreference === 'string';
-    if (hasPersistedPreference) {
+    if (typeof persistedColorPreference === 'string') {
       return persistedColorPreference;
     }
     const mql = window.matchMedia('(prefers-color-scheme: dark)');
-    const hasMediaQueryPreference = typeof mql.matches === 'boolean';
-    if (hasMediaQueryPreference) {
+    if (typeof mql.matches === 'boolean') {
       if (mql.matches) {
         window.localStorage.setItem("nightwind-mode", "dark");
         return "dark";
