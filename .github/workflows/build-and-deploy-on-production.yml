@@ -3,7 +3,7 @@ name: build and push to production
 on:
   push:
     branches:
-      - master
+      - production
 
 jobs:
   build-production:
