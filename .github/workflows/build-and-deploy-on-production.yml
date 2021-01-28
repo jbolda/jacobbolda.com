@@ -3,7 +3,9 @@ name: build and push to production
 on:
   push:
     branches:
-      - master
+      - production
+  repository_dispatch:
+    types: [rebuild-website-from-airtable-hook]
 
 jobs:
   build-production:
