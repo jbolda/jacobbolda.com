@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - production
+  repository_dispatch:
+    types: [rebuild-website-from-airtable-hook]
 
 jobs:
   build-production:
