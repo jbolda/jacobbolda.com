@@ -32,6 +32,11 @@ import fetch from "node-fetch";
 import { promises as fs } from "fs";
 
 export const sourceDraftArticles = async () => {
+  try {
+    await fs.rmdir("./content/drafts/", { recursive: true });
+  } catch (e) {
+    // noop
+  }
   await fs.mkdir("./content/drafts/", { recursive: true });
 
   const url =
@@ -40,6 +45,7 @@ export const sourceDraftArticles = async () => {
   const response = await fetch(url, {
     method: "post",
     headers: { "Content-Type": "application/json" },
+    redirect: "follow",
     follow: 20,
   });
   const json = await response.json();
