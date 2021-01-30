@@ -37,12 +37,13 @@ export const sourceData = async ({ setDataForSlug }) => {
     })
   );
 
-  const drafts = await sourceDraftArticles().then(() => {
-    return sourceMdx({
+  const drafts = await sourceDraftArticles().then(async () => {
+    const data = await sourceMdx({
       setDataForSlug,
       directory: "./content/drafts",
       slugPrefix: "/",
-    }).then((data) => data.sort(sortByDate));
+    });
+    return data.sort(sortByDate);
   });
 
   const articles = await sourceMdx({
