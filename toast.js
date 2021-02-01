@@ -4,6 +4,18 @@ import { sourceDraftArticles } from "./fetch/fetch-draft-articles.js";
 
 import { promises as fs } from "fs";
 
+const sortByDate = (object1, object2) => {
+  const o1date = !object1.meta.updated
+    ? object1.meta.written
+    : object1.meta.updated;
+  if (!o1date) return 1;
+  const o2date = !object2.meta.updated
+    ? object2.meta.written
+    : object2.meta.updated;
+  if (!o2date) return -1;
+  return new Date(o2date) > new Date(o1date) ? 1 : -1;
+};
+
 export const sourceData = async ({ setDataForSlug }) => {
   const { Recipes: recipes } = await sourceAirtableRecipes({ tables }).then(
     (query) => ({
@@ -12,7 +24,7 @@ export const sourceData = async ({ setDataForSlug }) => {
         recipe.slug = `/${recipe.name
           .replace(/ /g, "-")
           .replace(/[,&]/g, "")
-          .toLowerCase()}/`;
+          .toLowerCase()}`;
 
         recipe.ingredientsHTML = `<li>${recipe.ingredients
           .replace(/(- )/g, "")
@@ -25,25 +37,26 @@ export const sourceData = async ({ setDataForSlug }) => {
     })
   );
 
-  const drafts = await sourceDraftArticles().then(() => {
-    return sourceMdx({
+  const drafts = await sourceDraftArticles().then(async () => {
+    const data = await sourceMdx({
       setDataForSlug,
       directory: "./content/drafts",
       slugPrefix: "/",
     });
+    return data.sort(sortByDate);
   });
 
   const articles = await sourceMdx({
     setDataForSlug,
     directory: "./content/articles",
     slugPrefix: "/",
-  });
+  }).then((data) => data.sort(sortByDate));
 
   const notes = await sourceMdx({
     setDataForSlug,
     directory: "./content/notes",
     slugPrefix: "/",
-  });
+  }).then((data) => data.sort(sortByDate));
 
   const pages = await sourceMdx({
     setDataForSlug,
@@ -51,7 +64,7 @@ export const sourceData = async ({ setDataForSlug }) => {
     slugPrefix: "/",
   });
 
-  for (let page of [...articles, ...notes]) {
+  for (let page of [...articles, ...notes, ...drafts]) {
     await setDataForSlug(`/${page.meta.slug}`, {
       data: { pageType: "article", ...page.meta },
     });
@@ -89,6 +102,15 @@ export const sourceData = async ({ setDataForSlug }) => {
 
   await setDataForSlug("/articles", {
     data: { articles: [...articles, ...notes], pageType: "page" },
+  });
+
+  await setDataForSlug("/garden", {
+    data: {
+      articles,
+      notes,
+      drafts,
+      pageType: "page",
+    },
   });
 
   await setDataForSlug("/recipes", {

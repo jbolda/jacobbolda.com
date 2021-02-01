@@ -19,16 +19,20 @@ export default (props) => (
   </ArticleSection>
 );
 
-const ArticleSection = ({ children }) => (
+export const ArticleSection = ({ heading = "Articles", children }) => (
   <div class="pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
     <div class="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
       <div>
         <h2 class="text-3xl tracking-tight font-extrabold text-primary-900 sm:text-4xl">
-          Articles
+          {heading}
         </h2>
       </div>
       <div class="mt-6 pt-10 grid gap-16 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
-        {children}
+        {children.length === 0 ? (
+          <Text>{`There are no ${heading.toLowerCase()} currently.`}</Text>
+        ) : (
+          children
+        )}
       </div>
     </div>
   </div>
