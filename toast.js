@@ -24,7 +24,7 @@ export const sourceData = async ({ setDataForSlug }) => {
         recipe.slug = `/${recipe.name
           .replace(/ /g, "-")
           .replace(/[,&]/g, "")
-          .toLowerCase()}/`;
+          .toLowerCase()}`;
 
         recipe.ingredientsHTML = `<li>${recipe.ingredients
           .replace(/(- )/g, "")

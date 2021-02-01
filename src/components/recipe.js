@@ -1,7 +1,7 @@
 import { h } from "preact";
-import Heading from "./../src/components/heading.js";
-import List from "./../src/components/list.js";
-import Link from "./../src/components/link.js";
+import Heading from "./src/components/heading.js";
+import List from "./src/components/list.js";
+import Link from "./src/components/link.js";
 
 export default ({ recipe }) => (
   <div class="overflow-hidden">
