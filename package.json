@@ -9,6 +9,7 @@
     "build": "npm run build:css && npm run build:site",
     "build:css": "postcss --config legacy-commonjs index.css -o public/styles.css",
     "build:site": "toast incremental .",
+    "nuke": "rm -drf public/* && npm run postinstall && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pretty": "prettier --write \"{src,fetch,legacy-commonjs}/**/*.{js, json}\""
   },
