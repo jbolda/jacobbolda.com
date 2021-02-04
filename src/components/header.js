@@ -24,9 +24,10 @@ export default (props) => (
         </a>
       </div>
       <nav class="space-x-10">
-        <Link href="/about/">About</Link>
-        <Link href="/articles/">Articles</Link>
-        <Link href="/recipes/">Recipes</Link>
+        <Link href="/about">About</Link>
+        <Link href="/uses">Uses</Link>
+        <Link href="/articles">Articles</Link>
+        <Link href="/recipes">Recipes</Link>
       </nav>
     </div>
   </div>

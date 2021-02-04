@@ -1,6 +1,6 @@
 import Airtable from "airtable";
 
-export const sourceAirtableRecipes = async ({ tables }) => {
+export const sourceAirtable = async ({ tables }) => {
   try {
     // hoist api so we can use in scope outside of this block
     var api = await new Airtable({

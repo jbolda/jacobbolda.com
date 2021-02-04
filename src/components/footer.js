@@ -11,7 +11,7 @@ export default ({ children }) => (
       >
         <div class="px-5 py-2">
           <Link
-            href="/about/"
+            href="/about"
             class="text-base text-gray-500 hover:text-gray-900"
           >
             About
@@ -20,7 +20,16 @@ export default ({ children }) => (
 
         <div class="px-5 py-2">
           <Link
-            href="/articles/"
+            href="/uses"
+            class="text-base text-gray-500 hover:text-gray-900"
+          >
+            Uses
+          </Link>
+        </div>
+
+        <div class="px-5 py-2">
+          <Link
+            href="/articles"
             class="text-base text-gray-500 hover:text-gray-900"
           >
             Articles
@@ -29,7 +38,7 @@ export default ({ children }) => (
 
         <div class="px-5 py-2">
           <Link
-            href="/recipes/"
+            href="/recipes"
             class="text-base text-gray-500 hover:text-gray-900"
           >
             Recipes

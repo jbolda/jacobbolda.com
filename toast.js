@@ -1,5 +1,5 @@
 import { sourceMdx } from "@toastdotdev/mdx";
-import { sourceAirtableRecipes } from "./fetch/fetch-airtable-recipes.js";
+import { sourceAirtable } from "./fetch/fetch-airtable.js";
 import { sourceDraftArticles } from "./fetch/fetch-draft-articles.js";
 
 import { promises as fs } from "fs";
@@ -17,25 +17,27 @@ const sortByDate = (object1, object2) => {
 };
 
 export const sourceData = async ({ setDataForSlug }) => {
-  const { Recipes: recipes } = await sourceAirtableRecipes({ tables }).then(
-    (query) => ({
-      ...query,
-      Recipes: query.Recipes.map((recipe) => {
-        recipe.slug = `/${recipe.name
-          .replace(/ /g, "-")
-          .replace(/[,&]/g, "")
-          .toLowerCase()}`;
+  const { Recipes: recipes } = await sourceAirtable({
+    tables: recipeTables,
+  }).then((query) => ({
+    ...query,
+    Recipes: query.Recipes.map((recipe) => {
+      recipe.slug = `/${recipe.name
+        .replace(/ /g, "-")
+        .replace(/[,&]/g, "")
+        .toLowerCase()}`;
 
-        recipe.ingredientsHTML = `<li>${recipe.ingredients
-          .replace(/(- )/g, "")
-          .replace(/[\n\r]+/g, "</li><li>")}</li>`;
-        recipe.directionsHTML = `<li>${recipe.directions
-          .replace(/(^[1-9]\. )/gm, "")
-          .replace(/[\n\r]+/g, "</li><li>")}</li>`;
-        return recipe;
-      }),
-    })
-  );
+      recipe.ingredientsHTML = `<li>${recipe.ingredients
+        .replace(/(- )/g, "")
+        .replace(/[\n\r]+/g, "</li><li>")}</li>`;
+      recipe.directionsHTML = `<li>${recipe.directions
+        .replace(/(^[1-9]\. )/gm, "")
+        .replace(/[\n\r]+/g, "</li><li>")}</li>`;
+      return recipe;
+    }),
+  }));
+
+  const { uses } = await sourceAirtable({ tables: websiteTables });
 
   const drafts = await sourceDraftArticles().then(async () => {
     const data = await sourceMdx({
@@ -100,6 +102,10 @@ export const sourceData = async ({ setDataForSlug }) => {
     data: { pageType: "article" },
   });
 
+  await setDataForSlug("/uses", {
+    data: { uses, pageType: "page" },
+  });
+
   await setDataForSlug("/articles", {
     data: { articles: [...articles, ...notes], pageType: "page" },
   });
@@ -136,7 +142,7 @@ export const sourceData = async ({ setDataForSlug }) => {
   return;
 };
 
-const tables = [
+const recipeTables = [
   {
     baseId: `appcL6Jdj7ZrhTg4q`,
     tableName: `Recipes`,
@@ -154,5 +160,13 @@ const tables = [
     tableName: `Style`,
     tableView: `Main View`,
     queryName: `Style`,
+  },
+];
+
+const websiteTables = [
+  {
+    baseId: `appQ4j8G66ikJyYjY`,
+    tableName: `uses`,
+    queryName: `uses`,
   },
 ];
