@@ -4,6 +4,7 @@ import Landing from "./../../an-extra-boop-for-the-homepage/landing.js";
 import Engagements from "./../components/engagements.js";
 import Heading from "./../components/heading.js";
 import Text from "./../components/text.js";
+import Img from "./../components/img.js";
 
 import { ArticleWrap } from "./articles.js";
 
@@ -37,10 +38,11 @@ export default (props) => {
 const Hero = (props) => (
   <div class="relative overflow-hidden">
     <div class="lg:float-right md:absolute md:inset-y-0 md:right-0 md:w-1/2">
-      <img
+      <Img
         class="mx-auto rounded-full h-48 lg:rounded-none lg:object-contain lg:h-96 lg:w-full"
         src="/avatar.png"
-        alt
+        avif="./avatar.avif"
+        alt="An image of Jacob Bolda trying to look decent."
       />
     </div>
     <div class="md:max-w-7xl mx-auto">
