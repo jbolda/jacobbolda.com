@@ -30,13 +30,13 @@
     "@tailwindcss/aspect-ratio": "0.2.0",
     "@toastdotdev/mdx": "0.1.5",
     "big.js": "5.2.2",
-    "nightwind": "1.1.4",
-    "postcss": "8.2.1",
+    "nightwind": "1.1.6",
+    "postcss": "8.2.6",
     "postcss-cli": "8.3.1",
     "prism-react-renderer": "1.1.1",
-    "prismjs": "1.22.0",
-    "tailwindcss": "2.0.2",
-    "toast": "0.3.42"
+    "prismjs": "1.23.0",
+    "tailwindcss": "2.0.3",
+    "toast": "0.3.43"
   },
   "devDependencies": {
     "airtable": "0.10.1",
@@ -46,6 +46,6 @@
   },
   "volta": {
     "node": "14.15.5",
-    "npm": "7.3.0"
+    "npm": "7.5.4"
   }
 }
