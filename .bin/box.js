@@ -10,12 +10,6 @@ const specs = [
   "big.js",
 ];
 
-const options = {
-  alias: {
-    react: "preact/compat",
-  },
-};
-
 // esinstall doesn't let us quiet the output while it runs
 // so we kinda do that here.
 const logger = {
@@ -28,12 +22,17 @@ const logger = {
   },
 };
 
+const options = {
+  dest: "./public/web_modules",
+  alias: {
+    react: "preact/compat",
+  },
+  logger,
+};
+
 async function main() {
-  const { success, stats } = await install(specs, {
-    dest: "./public/web_modules",
-    logger,
-    ...options,
-  });
+  const { success, stats } = await install(specs, options);
+
   console.log(stats);
 }
 

@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "airtable": "0.10.1",
-    "esinstall": "1.0.5",
+    "esinstall": "0.5.2",
     "node-fetch": "2.6.1",
     "prettier": "2.2.1"
   },
