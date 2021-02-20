@@ -29,8 +29,11 @@
   "dependencies": {
     "@tailwindcss/aspect-ratio": "0.2.0",
     "@toastdotdev/mdx": "0.1.5",
+    "airtable": "0.10.1",
     "big.js": "5.2.2",
+    "esinstall": "1.0.5",
     "nightwind": "1.1.6",
+    "node-fetch": "2.6.1",
     "postcss": "8.2.6",
     "postcss-cli": "8.3.1",
     "prism-react-renderer": "1.1.1",
@@ -39,9 +42,6 @@
     "toast": "0.3.43"
   },
   "devDependencies": {
-    "airtable": "0.10.1",
-    "esinstall": "0.5.2",
-    "node-fetch": "2.6.1",
     "prettier": "2.2.1"
   },
   "volta": {
