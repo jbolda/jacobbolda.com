@@ -30,7 +30,7 @@
     "@tailwindcss/aspect-ratio": "0.2.0",
     "@toastdotdev/mdx": "0.1.5",
     "airtable": "0.10.1",
-    "big.js": "5.2.2",
+    "big.js": "6.0.3",
     "esinstall": "1.0.5",
     "nightwind": "1.1.6",
     "node-fetch": "2.6.1",
