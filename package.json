@@ -32,7 +32,7 @@
     "airtable": "0.10.1",
     "big.js": "6.0.3",
     "esinstall": "1.0.5",
-    "nightwind": "1.1.6",
+    "nightwind": "1.1.11",
     "node-fetch": "2.6.1",
     "postcss": "8.2.6",
     "postcss-cli": "8.3.1",
