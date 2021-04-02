@@ -79,12 +79,12 @@ export const sourceData = async ({ setDataForSlug }) => {
   });
 
   const curate_list = [
+    "npm-workspace-bash-function",
     "tiny-mba",
     "loan-efficiency-calculator",
     "setting-up-ci-and-cd-for-tauri",
     "github-actions-repository-dispatch-event",
     "gmail-productivity-hacks",
-    "on-las-vegas",
   ];
   const curated = [...articles, ...notes].reduce((curate, article) => {
     if (curate_list.includes(article.meta.slug)) {
