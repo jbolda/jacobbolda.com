@@ -1,0 +1,37 @@
+export const meta = {
+  title: "NPM Workspace Bash Function",
+  written: "2021-03-31",
+  slug: "npm-workspace-bash-function",
+  category: "bash",
+  keywords: ["bash", "npm", "workspace"],
+  description: "Typing out npm workspace is a heck of a lot of button presses.",
+};
+
+# {props.title}
+
+Many of my repositories these days are making use of the workspace feature. It started with `yarn`, but recently `npm@^7.7.0` gained support for workspace commands. It is quite a bit of typing for every command though. So I created an alias to `nw` in my `.bashrc` file. This typically resides in your home or user directory.
+
+This function operates in your terminal and accepts args. In the vein of `yarn workspace`, the command expects `nw <package> <command>`. NPM workspaces also allow for an array of (or otherwise multiple packages). This function then lets you enter `nw <command> <package1> <package2> <package3>` for any number of packages that you want to run the command on.
+
+```bash
+function nw() {
+    if [ "$#" -gt 2 ]; then
+        local ws=''
+        for arg in $@
+        do
+            ws="$ws --workspace=$arg"
+        done
+        npm run-script $1 $ws
+    else
+        npm run-script $2 --workspace=$1
+    fi
+}
+```
+
+While I was editing it, I figured it made sense to add an alias for `npm run` as well generally for those repositories that aren't workspaces.
+
+```bash
+alias nr='npm run'
+```
+
+Happy terminal bashing! Let me know on the socials if you have any other nifty helpers in this same vein.
