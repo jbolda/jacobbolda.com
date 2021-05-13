@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@tailwindcss/aspect-ratio": "0.2.0",
-    "@toastdotdev/mdx": "0.1.5",
+    "@toastdotdev/mdx": "0.2.4",
     "airtable": "0.10.1",
     "big.js": "6.0.3",
     "esinstall": "1.0.5",
