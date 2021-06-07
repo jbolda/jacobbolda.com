@@ -42,7 +42,7 @@
     "toast": "0.3.43"
   },
   "devDependencies": {
-    "prettier": "2.2.1"
+    "prettier": "2.3.1"
   },
   "volta": {
     "node": "14.16.0",
