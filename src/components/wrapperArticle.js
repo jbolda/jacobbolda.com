@@ -6,7 +6,7 @@ export default (props) => (
   <div class="relative py-16 overflow-hidden flex-grow">
     <Helmet>
       <title>{props.children.props.title}</title>
-      <meta property="description" content={props.children.props.description} />
+      <meta property="og:type" content="article" />
     </Helmet>
     <Unfurl
       title={props.children.props.title}

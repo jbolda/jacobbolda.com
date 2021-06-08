@@ -47,9 +47,7 @@ const components = {
 };
 
 export default function PageWrapper(props) {
-  const title = `Jacob Bolda${
-    props?.meta?.title ? `| ${props.meta.title}` : ""
-  }`;
+  const title = `Jacob Bolda${props?.title ? `| ${props.title}` : ""}`;
 
   return (
     <div class="flex flex-col min-h-screen bg-primary-50">
@@ -63,11 +61,13 @@ export default function PageWrapper(props) {
           property="description"
           content="Senior Software Engineer creating and wielding open source to enable others with proper tools."
         />
+        <meta property="og:type" content="website" />
         <link rel="stylesheet" href="/styles.css" />
       </Helmet>
       <Unfurl
         title={title}
         subtitle="Senior Software Engineer creating and wielding open source to enable others with proper tools."
+        meta={props}
       />
       <Header />
       <MDXProvider components={components}>

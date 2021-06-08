@@ -10,42 +10,33 @@ const embedParams = ({ title, subtitle }) =>
     `?preset=${cardPreset}&p=${card}&subtitle=${subtitle}&title=${title}`
   );
 
-export default ({ title, subtitle }) => (
-  <Helmet>
-    <meta name="og:url" content="https://www.jacobbolda.com/" />
-    <meta name="og:title" content={title} />
-    <meta name="og:description" content={subtitle} />
-    <meta
-      name="image"
-      content={`https://i.microlink.io/https://cards.microlink.io/${embedParams(
-        { title, subtitle }
-      )}`}
-    />
-    <meta
-      itemprop="image"
-      content={`https://i.microlink.io/https://cards.microlink.io/${embedParams(
-        { title, subtitle }
-      )}`}
-    />
-    <meta
-      property="og:image"
-      content={`https://i.microlink.io/https://cards.microlink.io/${embedParams(
-        { title, subtitle }
-      )}`}
-    />
+export default ({ title, subtitle, meta }) => {
+  const ogImage = `https://i.microlink.io/https://cards.microlink.io/${embedParams(
+    { title, subtitle }
+  )}`;
+  const fullURL =
+    meta && meta.slug
+      ? `https://www.jacobbolda.com/${meta.slug}`
+      : "https://www.jacobbolda.com/";
+  return (
+    <Helmet>
+      <meta name="image" content={ogImage} />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:domain" value="www.jacobbolda.com" />
-    <meta name="twitter:title" value={title} />
-    <meta name="twitter:description" value={subtitle} />
-    <meta
-      name="twitter:image"
-      content={`https://i.microlink.io/https://cards.microlink.io/${embedParams(
-        { title, subtitle }
-      )}`}
-    />
-  </Helmet>
-);
+      <meta name="og:url" content={fullURL} />
+      <meta name="og:title" content={title} />
+      <meta name="og:description" content={subtitle} />
+      <meta property="og:image" content={ogImage} />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:url" value={fullURL} />
+      <meta name="twitter:site" content="@jacobbolda" />
+      <meta name="twitter:creator" content="@jacobbolda" />
+      <meta name="twitter:title" value={title} />
+      <meta name="twitter:description" value={subtitle} />
+      <meta name="twitter:image" content={ogImage} />
+    </Helmet>
+  );
+};
 
 /*
 <>
