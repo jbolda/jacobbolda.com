@@ -13,6 +13,8 @@ const embedParams = ({ title, subtitle }) =>
 export default ({ title, subtitle }) => (
   <Helmet>
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="og:title" content={title} />
     <meta
       name="image"
       content={`https://i.microlink.io/https://cards.microlink.io/${embedParams(
