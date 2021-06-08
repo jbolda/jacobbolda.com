@@ -12,9 +12,9 @@ const embedParams = ({ title, subtitle }) =>
 
 export default ({ title, subtitle }) => (
   <Helmet>
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
+    <meta name="og:url" content="https://www.jacobbolda.com/" />
     <meta name="og:title" content={title} />
+    <meta name="og:description" content={subtitle} />
     <meta
       name="image"
       content={`https://i.microlink.io/https://cards.microlink.io/${embedParams(
@@ -28,13 +28,18 @@ export default ({ title, subtitle }) => (
       )}`}
     />
     <meta
-      name="twitter:image"
+      property="og:image"
       content={`https://i.microlink.io/https://cards.microlink.io/${embedParams(
         { title, subtitle }
       )}`}
     />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:domain" value="www.jacobbolda.com" />
+    <meta name="twitter:title" value={title} />
+    <meta name="twitter:description" value={subtitle} />
     <meta
-      property="og:image"
+      name="twitter:image"
       content={`https://i.microlink.io/https://cards.microlink.io/${embedParams(
         { title, subtitle }
       )}`}
