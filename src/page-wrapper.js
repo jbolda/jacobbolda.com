@@ -8,6 +8,7 @@ import Heading from "./components/heading.js";
 import Text from "./components/text.js";
 import List from "./components/list.js";
 import Link from "./components/link.js";
+import Unfurl from "./components/unfurl.js";
 
 import ArticleWrapper from "./components/wrapperArticle.js";
 
@@ -49,6 +50,7 @@ export default function PageWrapper(props) {
   const title = `Jacob Bolda${
     props?.meta?.title ? `| ${props.meta.title}` : ""
   }`;
+
   return (
     <div class="flex flex-col min-h-screen bg-primary-50">
       <Helmet>
@@ -63,6 +65,10 @@ export default function PageWrapper(props) {
         />
         <link rel="stylesheet" href="/styles.css" />
       </Helmet>
+      <Unfurl
+        title={title}
+        subtitle="Senior Software Engineer creating and wielding open source to enable others with proper tools."
+      />
       <Header />
       <MDXProvider components={components}>
         <ContentWrapper pageType={props.pageType}>
