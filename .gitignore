@@ -4,5 +4,6 @@ public
 
 .vscode
 *.log
+.netlify
 
 content/drafts
