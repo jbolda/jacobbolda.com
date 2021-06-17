@@ -45,7 +45,7 @@ export const sourceDraftArticles = async () => {
   await fs.mkdir("./content/drafts/", { recursive: true });
 
   const url =
-    "https://script.google.com/macros/s/AKfycbwPzjEshwhPdf08j56sbEkz7kICKyUBT3fw_dE6AfDsIL-BP-qz_u6kzA/exec?id=boop";
+    "https://script.google.com/macros/s/AKfycbwyyJUpUcAvKYv6kdAqgw8bxMFGb81IsvC-tGgKWm1kcZwyRNm56-0XesR7vzkn-ukOBw/exec?id=boop";
 
   const response = await fetch(url, {
     method: "post",
