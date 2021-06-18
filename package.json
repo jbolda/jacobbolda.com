@@ -27,7 +27,7 @@
     "node": ">=14.13.*"
   },
   "dependencies": {
-    "@tailwindcss/aspect-ratio": "0.2.0",
+    "@tailwindcss/aspect-ratio": "0.2.1",
     "@toastdotdev/mdx": "0.1.5",
     "airtable": "0.11.1",
     "big.js": "6.0.3",
