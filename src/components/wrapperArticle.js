@@ -112,8 +112,8 @@ export default (props) => (
         </svg>
       </div>
     </div>
-    <div class="relative px-4 sm:px-6 lg:px-8">
-      <article class="mt-6 text-gray-500 max-w-prose mx-auto">
+    <div class="relative">
+      <article class="mt-6 text-gray-500 mx-auto px-2">
         {props.children}
       </article>
     </div>

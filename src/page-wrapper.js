@@ -20,11 +20,15 @@ const components = {
   h4: (props) => <Heading as="h4" {...props} />,
   h5: (props) => <Heading as="h5" {...props} />,
   h6: (props) => <Heading as="h6" {...props} />,
-  blockquote: ({ children }) => <blockquote>{children}</blockquote>,
+  blockquote: ({ children }) => (
+    <blockquote class="max-w-prose">{children}</blockquote>
+  ),
   ul: ({ children }) => <List as="ul">{children}</List>,
   ol: ({ children }) => <List as="ol">{children}</List>,
   li: ({ children }) => <List as="li">{children}</List>,
-  table: ({ children }) => <table class="table-auto">{children}</table>,
+  table: ({ children }) => (
+    <table class="table-auto max-w-prose">{children}</table>
+  ),
   thead: ({ children }) => <thead>{children}</thead>,
   tbody: ({ children }) => <tbody>{children}</tbody>,
   tr: ({ children }) => <tr>{children}</tr>,
@@ -37,11 +41,10 @@ const components = {
   hr: ({ children }) => <hr>{children}</hr>,
   a: ({ children, ...rest }) => <Link {...rest}>{children}</Link>,
   codeblock: (props) => (
-    <div class="bg-gray-900 w-full">
-      <div
-        class="mx-content"
-        dangerouslySetInnerHTML={{ __html: props.children }}
-      />
+    <div class="bg-gray-900 dark:bg-gray-900 w-full max-w-full mb-4">
+      <div class="mx-content py-3 px-8 overflow-x-auto">
+        <div {...props} />
+      </div>
     </div>
   ),
 };
