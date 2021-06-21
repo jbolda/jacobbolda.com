@@ -27,18 +27,18 @@
     "node": ">=14.13.*"
   },
   "dependencies": {
-    "@tailwindcss/aspect-ratio": "0.2.0",
-    "@toastdotdev/mdx": "0.1.5",
+    "@tailwindcss/aspect-ratio": "^0.2.1",
+    "@toastdotdev/mdx": "^0.2.4",
     "airtable": "0.11.1",
     "big.js": "6.0.3",
-    "esinstall": "1.0.5",
-    "nightwind": "1.1.6",
+    "esinstall": "^1.1.5",
+    "nightwind": "^1.1.11",
     "node-fetch": "2.6.1",
-    "postcss": "8.2.10",
+    "postcss": "^8.3.5",
     "postcss-cli": "8.3.1",
-    "prism-react-renderer": "1.1.1",
+    "prism-react-renderer": "^1.2.1",
     "prismjs": "1.23.0",
-    "tailwindcss": "2.1.1",
+    "tailwindcss": "^2.2.2",
     "toast": "0.3.43"
   },
   "devDependencies": {

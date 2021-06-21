@@ -8,7 +8,7 @@ export default ({ as = "li", children, ...rest }) => {
     <Component
       class={`${
         as === "ul" ? "list-disc " : "list-decimal "
-      }list-inside text-xl md:text-lg lg:text-base text-primary-900 mx-auto mb-1`}
+      }list-inside text-xl md:text-lg lg:text-base text-primary-900 mx-auto px-auto mb-1 max-w-prose`}
       {...rest}
     >
       {children}
