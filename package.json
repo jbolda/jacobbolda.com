@@ -32,6 +32,7 @@
     "airtable": "0.11.1",
     "big.js": "6.0.3",
     "esinstall": "^1.1.5",
+    "gray-matter": "^4.0.3",
     "nightwind": "^1.1.11",
     "node-fetch": "2.6.1",
     "postcss": "^8.3.5",
@@ -42,7 +43,11 @@
     "toast": "0.3.43"
   },
   "devDependencies": {
-    "prettier": "2.3.1"
+    "prettier": "2.3.1",
+    "remark-mdx": "^2.0.0-next.9",
+    "remark-parse": "^9.0.0",
+    "remark-stringify": "^9.0.1",
+    "unified": "^9.2.1"
   },
   "volta": {
     "node": "14.17.1",
