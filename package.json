@@ -32,14 +32,19 @@
     "airtable": "0.11.1",
     "big.js": "6.0.3",
     "esinstall": "^1.1.5",
+    "gray-matter": "^4.0.3",
     "nightwind": "^1.1.11",
     "node-fetch": "2.6.1",
     "postcss": "^8.3.5",
     "postcss-cli": "8.3.1",
     "prism-react-renderer": "^1.2.1",
     "prismjs": "1.23.0",
+    "remark-mdx": "^2.0.0-next.9",
+    "remark-parse": "^9.0.0",
+    "remark-stringify": "^9.0.1",
     "tailwindcss": "^2.2.2",
-    "toast": "0.3.43"
+    "toast": "0.3.43",
+    "unified": "^9.2.1"
   },
   "devDependencies": {
     "prettier": "2.3.1"

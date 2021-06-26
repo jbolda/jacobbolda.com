@@ -35,6 +35,8 @@ function doPost(e) {
 
 import fetch from "node-fetch";
 import { promises as fs } from "fs";
+import frontmatter from "gray-matter";
+import { convertFromYamlToMeta } from "../.bin/frontmatter-to-meta.js";
 
 export const sourceDraftArticles = async () => {
   try {
@@ -45,8 +47,7 @@ export const sourceDraftArticles = async () => {
   await fs.mkdir("./content/drafts/", { recursive: true });
 
   const url =
-    "https://script.google.com/macros/s/AKfycbwyyJUpUcAvKYv6kdAqgw8bxMFGb81IsvC-tGgKWm1kcZwyRNm56-0XesR7vzkn-ukOBw/exec?id=boop";
-
+    "https://script.google.com/macros/s/AKfycbxw2HBOQrO4WlnRsUBSbdu1qbnytdGBuNuxSTg3_69DE-7S6KKPzsmLHga8tTjGaATCpw/exec?id=boop";
   const response = await fetch(url, {
     method: "post",
     headers: { "Content-Type": "application/json" },
@@ -56,8 +57,15 @@ export const sourceDraftArticles = async () => {
   const json = await response.json();
 
   return Promise.all(
-    json.result.map((result) =>
-      fs.writeFile(`./content/drafts/${result.name}`, Buffer.from(result.blob))
-    )
+    json.result.map(async (result) => {
+      let filename = result.name.split(".");
+      let fileBuffer = Buffer.from(result.blob);
+      filename.pop();
+      filename.push(["mdx"]);
+      fs.writeFile(
+        `./content/drafts/${filename.join(".")}`,
+        await convertFromYamlToMeta({ content: fileBuffer })
+      );
+    })
   );
 };
