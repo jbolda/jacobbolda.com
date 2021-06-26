@@ -39,15 +39,15 @@
     "postcss-cli": "8.3.1",
     "prism-react-renderer": "^1.2.1",
     "prismjs": "1.23.0",
-    "tailwindcss": "^2.2.2",
-    "toast": "0.3.43"
-  },
-  "devDependencies": {
-    "prettier": "2.3.1",
     "remark-mdx": "^2.0.0-next.9",
     "remark-parse": "^9.0.0",
     "remark-stringify": "^9.0.1",
+    "tailwindcss": "^2.2.2",
+    "toast": "0.3.43",
     "unified": "^9.2.1"
+  },
+  "devDependencies": {
+    "prettier": "2.3.1"
   },
   "volta": {
     "node": "14.17.1",
