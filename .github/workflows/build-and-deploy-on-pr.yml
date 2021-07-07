@@ -16,12 +16,12 @@ jobs:
           jpegQuality: "99"
           pngQuality: "99"
           webpQuality: "99"
-      - run: npm install
+      - run: npm ci
       - name: build
+        run: npm run build
         env:
           NODE_ENV: production
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-        run: npm run build
       - name: deploy
         if: success()
         env:
