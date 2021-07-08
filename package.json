@@ -48,7 +48,7 @@
     "unified": "^9.2.1"
   },
   "devDependencies": {
-    "prettier": "2.3.1"
+    "prettier": "2.3.2"
   },
   "volta": {
     "node": "16.4.2",
