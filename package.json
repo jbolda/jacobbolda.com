@@ -43,7 +43,7 @@
     "remark-mdx": "^2.0.0-next.9",
     "remark-parse": "^9.0.0",
     "remark-stringify": "^9.0.1",
-    "tailwindcss": "^2.2.4",
+    "tailwindcss": "^2.2.7",
     "toast": "0.3.43",
     "unified": "^9.2.1"
   },
