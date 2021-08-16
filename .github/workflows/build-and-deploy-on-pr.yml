@@ -27,7 +27,10 @@ jobs:
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        run: netlify deploy --dir=public --message ${{ github.event.pull_request.html_url }} 2>&1 | tee -a ./notes.md
+        run: |
+          wget https://github.com/lannonbr/netlify_deploy/releases/download/netlify_deploy-v0.3.0/netlify-deploy-linux-0.3.0.tar.gz
+          tar -xvf netlify-deploy-linux-0.3.0.tar.gz
+          ./release/netlify_deploy --path public --prod 2>&1 | tee -a ./notes.md
       - name: comment PR
         uses: machine-learning-apps/pr-comment@1.0.0
         env:
