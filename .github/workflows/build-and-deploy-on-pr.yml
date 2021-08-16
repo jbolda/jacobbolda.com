@@ -30,7 +30,7 @@ jobs:
         run: |
           wget https://github.com/lannonbr/netlify_deploy/releases/download/netlify_deploy-v0.3.0/netlify-deploy-linux-0.3.0.tar.gz
           tar -xvf netlify-deploy-linux-0.3.0.tar.gz
-          ./release/netlify_deploy --path public --prod 2>&1 | tee -a ./notes.md
+          ./release/netlify_deploy --path public 2>&1 | tee -a ./notes.md
       - name: comment PR
         uses: machine-learning-apps/pr-comment@1.0.0
         env:
