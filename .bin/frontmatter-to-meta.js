@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
-import unified from "unified";
+import { unified } from "unified";
 import parse from "remark-parse";
 import mdx from "remark-mdx";
 import stringify from "remark-stringify";

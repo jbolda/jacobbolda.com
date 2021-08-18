@@ -1,0 +1,36 @@
+diff --git a/node_modules/@toastdotdev/mdx/CHANGELOG.md b/node_modules/@toastdotdev/mdx/CHANGELOG.md
+old mode 100644
+new mode 100755
+diff --git a/node_modules/@toastdotdev/mdx/README.md b/node_modules/@toastdotdev/mdx/README.md
+old mode 100644
+new mode 100755
+diff --git a/node_modules/@toastdotdev/mdx/index.js b/node_modules/@toastdotdev/mdx/index.js
+old mode 100644
+new mode 100755
+index 7bf9bff..5c84468
+--- a/node_modules/@toastdotdev/mdx/index.js
++++ b/node_modules/@toastdotdev/mdx/index.js
+@@ -80,6 +80,8 @@ export const sourceMdx = async ({
+   directory = [],
+   sources = [],
+   slugPrefix = "/",
++  remarkPlugins = [],
++  rehypePlugins = [],
+   ...options
+ }) => {
+   let files = [];
+@@ -114,6 +116,8 @@ export const sourceMdx = async ({
+         result = await processMdx(file || source, {
+           filepath: filename,
+           namedExports,
++          remarkPlugins,
++          rehypePlugins,
+         });
+       } catch (e) {
+         let matchString = "";
+diff --git a/node_modules/@toastdotdev/mdx/rehype-prism-mdx.js b/node_modules/@toastdotdev/mdx/rehype-prism-mdx.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/@toastdotdev/mdx/remark-pluck-meta.js b/node_modules/@toastdotdev/mdx/remark-pluck-meta.js
+old mode 100644
+new mode 100755
