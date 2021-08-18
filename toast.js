@@ -3,6 +3,17 @@ import { sourceAirtable } from "./fetch/fetch-airtable.js";
 import { sourceDraftArticles } from "./fetch/fetch-draft-articles.js";
 
 import { promises as fs } from "fs";
+import remarkWikiLink from "remark-wiki-link";
+const remarkPlugins = [
+  [
+    remarkWikiLink.wikiLinkPlugin,
+    {
+      hrefTemplate: (permalink) => `/${permalink}`,
+      wikiLinkClassName:
+        "text-base font-semibold text-primary-600 hover:text-primary-300",
+    },
+  ],
+];
 
 const sortByDate = (object1, object2) => {
   const o1date = !object1.meta.updated
@@ -44,6 +55,7 @@ export const sourceData = async ({ setDataForSlug }) => {
       setDataForSlug,
       directory: "./content/drafts",
       slugPrefix: "/",
+      remarkPlugins,
     });
     return data.sort(sortByDate);
   });
@@ -52,18 +64,21 @@ export const sourceData = async ({ setDataForSlug }) => {
     setDataForSlug,
     directory: "./content/articles",
     slugPrefix: "/",
+    remarkPlugins,
   }).then((data) => data.sort(sortByDate));
 
   const notes = await sourceMdx({
     setDataForSlug,
     directory: "./content/notes",
     slugPrefix: "/",
+    remarkPlugins,
   }).then((data) => data.sort(sortByDate));
 
   const pages = await sourceMdx({
     setDataForSlug,
     directory: "./content/pages",
     slugPrefix: "/",
+    remarkPlugins,
   });
 
   for (let page of [...articles, ...notes, ...drafts]) {
@@ -76,6 +91,7 @@ export const sourceData = async ({ setDataForSlug }) => {
     setDataForSlug,
     directory: "./content/homepage",
     slugPrefix: "/an-extra-boop-for-the-homepage/",
+    remarkPlugins,
   });
 
   const curate_list = [
