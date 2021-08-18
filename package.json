@@ -42,7 +42,7 @@
     "prismjs": "1.24.1",
     "remark-mdx": "^2.0.0-next.9",
     "remark-parse": "^10.0.0",
-    "remark-stringify": "^9.0.1",
+    "remark-stringify": "^10.0.0",
     "remark-wiki-link": "^1.0.4",
     "tailwindcss": "^2.2.7",
     "toast": "0.3.43",
