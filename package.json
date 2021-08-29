@@ -45,7 +45,7 @@
     "remark-stringify": "^10.0.0",
     "remark-wiki-link": "^1.0.4",
     "tailwindcss": "^2.2.7",
-    "toast": "0.3.43",
+    "toast": "0.3.44",
     "unified": "^10.1.0"
   },
   "devDependencies": {
