@@ -44,7 +44,7 @@
     "remark-parse": "^10.0.0",
     "remark-stringify": "^10.0.0",
     "remark-wiki-link": "^1.0.4",
-    "tailwindcss": "^2.2.7",
+    "tailwindcss": "^2.2.9",
     "toast": "0.3.46",
     "unified": "^10.1.0"
   },
