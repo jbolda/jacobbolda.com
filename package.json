@@ -35,7 +35,7 @@
     "esinstall": "^1.1.7",
     "gray-matter": "^4.0.3",
     "nightwind": "^1.1.11",
-    "node-fetch": "2.6.1",
+    "node-fetch": "2.6.2",
     "postcss": "^8.3.6",
     "postcss-cli": "8.3.1",
     "prism-react-renderer": "^1.2.1",
