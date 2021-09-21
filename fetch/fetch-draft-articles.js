@@ -35,16 +35,29 @@ function doPost(e) {
 
 import fetch from "node-fetch";
 import { promises as fs } from "fs";
-import frontmatter from "gray-matter";
 import { convertFromYamlToMeta } from "../.bin/frontmatter-to-meta.js";
 
 export const sourceDraftArticles = async () => {
+  const contentPath = "./content/drafts/";
+
+  if (process.env.SITE_FILE_CACHE) {
+    console.info("trying to use draft articles from cache");
+    try {
+      const files = await fs.readdir(contentPath);
+      // it exists, let's skip downloading
+      if (files.length > 0) return;
+    } catch (err) {
+      console.error("error pulling draft articles from cache");
+      console.error(err);
+    }
+  }
+
   try {
-    await fs.rmdir("./content/drafts/", { recursive: true });
+    await fs.rm(contentPath, { recursive: true });
   } catch (e) {
     // noop
   }
-  await fs.mkdir("./content/drafts/", { recursive: true });
+  await fs.mkdir(contentPath, { recursive: true });
 
   const url =
     "https://script.google.com/macros/s/AKfycbxw2HBOQrO4WlnRsUBSbdu1qbnytdGBuNuxSTg3_69DE-7S6KKPzsmLHga8tTjGaATCpw/exec?id=boop";
