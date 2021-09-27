@@ -10,6 +10,7 @@
     "build:css": "NODE_ENV=production postcss --config legacy-commonjs index.css -o public/styles.css",
     "build:css:watch": "postcss --config legacy-commonjs index.css -o public/styles.css -w",
     "build:site": "toast incremental .",
+    "dev": "node ./scripts/watch.js",
     "nuke": "rm -drf public/* && npm run postinstall && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pretty": "prettier --write \"{src,fetch,legacy-commonjs}/**/*.{js, json}\""
@@ -49,6 +50,9 @@
     "unified": "^10.1.0"
   },
   "devDependencies": {
+    "@effection/process": "^2.0.0-beta.15",
+    "chokidar": "^3.5.2",
+    "effection": "^2.0.0-beta.16",
     "patch-package": "^6.4.7",
     "prettier": "2.3.2"
   },
