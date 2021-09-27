@@ -41,8 +41,8 @@ const components = {
   hr: ({ children }) => <hr>{children}</hr>,
   a: ({ children, ...rest }) => <Link {...rest}>{children}</Link>,
   codeblock: (props) => (
-    <div class="bg-gray-900 dark:bg-gray-900 w-full max-w-full mb-4">
-      <div class="mx-content py-3 px-8 overflow-x-auto">
+    <div class="bg-gray-900 dark:bg-gray-900 w-full mb-4 overflow-x-auto">
+      <div class="mx-auto py-3 px-8 max-w-5xl">
         <div {...props} />
       </div>
     </div>
