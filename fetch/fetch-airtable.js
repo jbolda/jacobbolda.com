@@ -29,7 +29,7 @@ export const sourceAirtable = async ({ tables }) => {
     return;
   }
 
-  console.time(`\nfetch all Airtable rows from ${tables.length} tables`);
+  console.time(`fetch all Airtable rows from ${tables.length} tables`);
 
   let queue = [];
   tables.forEach((tableOptions) => {
@@ -69,7 +69,7 @@ export const sourceAirtable = async ({ tables }) => {
       await fs.mkdir(contentPath, { recursive: true });
       await fs.writeFile(filePath, JSON.stringify(reduced));
 
-      console.timeEnd(`\nfetch all Airtable rows from ${tables.length} tables`);
+      console.timeEnd(`fetch all Airtable rows from ${tables.length} tables`);
       return reduced;
     })
     .catch((e) => {

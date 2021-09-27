@@ -59,6 +59,7 @@ export const sourceDraftArticles = async () => {
   }
   await fs.mkdir(contentPath, { recursive: true });
 
+  console.time(`fetch all draft article content`);
   const url =
     "https://script.google.com/macros/s/AKfycbxw2HBOQrO4WlnRsUBSbdu1qbnytdGBuNuxSTg3_69DE-7S6KKPzsmLHga8tTjGaATCpw/exec?id=boop";
   const response = await fetch(url, {
@@ -68,6 +69,7 @@ export const sourceDraftArticles = async () => {
     follow: 20,
   });
   const json = await response.json();
+  console.timeEnd(`fetch all draft article content`);
 
   return Promise.all(
     json.result.map(async (result) => {
