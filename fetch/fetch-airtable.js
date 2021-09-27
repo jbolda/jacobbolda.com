@@ -1,6 +1,23 @@
 import Airtable from "airtable";
+import path from "path";
+import { promises as fs } from "fs";
 
 export const sourceAirtable = async ({ tables }) => {
+  const contentPath = "./.tmp/airtable/";
+  const filePath = path.join(contentPath, `${tables[0].baseId}.json`);
+
+  if (process.env.SITE_FILE_CACHE) {
+    console.info("trying to use airtable from cache");
+    try {
+      // it exists, let's skip downloading
+      const cacheFile = await fs.readFile(filePath);
+      return JSON.parse(cacheFile);
+    } catch (err) {
+      console.error("error pulling airtable from cache");
+      console.error(err);
+    }
+  }
+
   try {
     // hoist api so we can use in scope outside of this block
     var api = await new Airtable({
@@ -12,7 +29,7 @@ export const sourceAirtable = async ({ tables }) => {
     return;
   }
 
-  console.time(`\nfetch all Airtable rows from ${tables.length} tables`);
+  console.time(`fetch all Airtable rows from ${tables.length} tables`);
 
   let queue = [];
   tables.forEach((tableOptions) => {
@@ -36,7 +53,7 @@ export const sourceAirtable = async ({ tables }) => {
   // we flatten the array to return all rows from all tables after mapping
   // the queryName to each row
   return Promise.all(queue)
-    .then((all) => {
+    .then(async (all) => {
       const reduced = all.reduce((nested, query) => {
         const rows = query[0];
         const queryName = query[1];
@@ -44,7 +61,15 @@ export const sourceAirtable = async ({ tables }) => {
         return nested;
       }, {});
 
-      console.timeEnd(`\nfetch all Airtable rows from ${tables.length} tables`);
+      try {
+        await fs.rm(filePath);
+      } catch (e) {
+        // noop
+      }
+      await fs.mkdir(contentPath, { recursive: true });
+      await fs.writeFile(filePath, JSON.stringify(reduced));
+
+      console.timeEnd(`fetch all Airtable rows from ${tables.length} tables`);
       return reduced;
     })
     .catch((e) => {

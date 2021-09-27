@@ -27,6 +27,7 @@ const sortByDate = (object1, object2) => {
   return new Date(o2date) > new Date(o1date) ? 1 : -1;
 };
 
+console.time(`fetch content`);
 export const sourceData = async ({ setDataForSlug }) => {
   const { Recipes: recipes } = await sourceAirtable({
     tables: recipeTables,
@@ -59,6 +60,8 @@ export const sourceData = async ({ setDataForSlug }) => {
     });
     return data.sort(sortByDate);
   });
+
+  console.timeEnd(`fetch content`);
 
   const articles = await sourceMdx({
     setDataForSlug,
