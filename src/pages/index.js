@@ -60,9 +60,9 @@ const Hero = (props) => (
 const Articles = ({ children }) => (
   <div className="relative pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
     <div className="relative max-w-7xl mx-auto">
-      <div className="text-center">
-        <Heading as="h2">Articles</Heading>
-        <Text>Curated for your reading pleasure</Text>
+      <div className="">
+        <Heading as="h2">Content and Resources</Heading>
+        <Text>Curated for best consumption</Text>
       </div>
       <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
         {children.map((child) => (

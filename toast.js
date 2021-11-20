@@ -49,7 +49,7 @@ export const sourceData = async ({ setDataForSlug }) => {
     }),
   }));
 
-  const { uses } = await sourceAirtable({ tables: websiteTables });
+  const { uses, curate } = await sourceAirtable({ tables: websiteTables });
 
   const drafts = await sourceDraftArticles().then(async () => {
     const data = await sourceMdx({
@@ -97,21 +97,19 @@ export const sourceData = async ({ setDataForSlug }) => {
     remarkPlugins,
   });
 
-  const curate_list = [
-    "npm-workspace-bash-function",
-    "tiny-mba",
-    "loan-efficiency-calculator",
-    "setting-up-ci-and-cd-for-tauri",
-    "github-actions-repository-dispatch-event",
-    "gmail-productivity-hacks",
-  ];
-  const curated = [...articles, ...notes].reduce((curate, article) => {
-    if (curate_list.includes(article.meta.slug)) {
-      return curate.concat([article]);
-    } else {
+  const curate_list = curate
+    .sort((a, b) => a.order - b.order)
+    .map((item) => item.url);
+  const curated = [...articles, ...notes, ...drafts].reduce(
+    (curate, article) => {
+      if (curate_list.includes(article.meta.slug)) {
+        curate[curate_list.findIndex((item) => item === article.meta.slug)] =
+          article;
+      }
       return curate;
-    }
-  }, []);
+    },
+    curate_list
+  );
 
   await setDataForSlug("/", {
     data: { articles: curated, pageType: "page" },
@@ -187,5 +185,10 @@ const websiteTables = [
     baseId: `appQ4j8G66ikJyYjY`,
     tableName: `uses`,
     queryName: `uses`,
+  },
+  {
+    baseId: `appQ4j8G66ikJyYjY`,
+    tableName: `curate`,
+    queryName: `curate`,
   },
 ];
