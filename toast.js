@@ -103,12 +103,12 @@ export const sourceData = async ({ setDataForSlug }) => {
   const curated = [...articles, ...notes, ...drafts].reduce(
     (curate, article) => {
       if (curate_list.includes(article.meta.slug)) {
-        return curate.concat([article]);
-      } else {
-        return curate;
+        curate[curate_list.findIndex((item) => item === article.meta.slug)] =
+          article;
       }
+      return curate;
     },
-    []
+    curate_list
   );
 
   await setDataForSlug("/", {
