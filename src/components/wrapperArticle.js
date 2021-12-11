@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import Unfurl from "./unfurl.js";
 
 export default (props) => (
-  <div class="relative py-16 flex-grow">
+  <div class="relative py-16 grow">
     <Helmet>
       <title>{props.children.props.title}</title>
       <meta property="og:type" content="article" />

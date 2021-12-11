@@ -1,10 +1,12 @@
 import { h } from "preact";
 
-export default ({ as = "p", children }) => {
+export default ({ as = "p", classAdd = "", children }) => {
   const Component = as;
   return (
     <Component
-      class={`text-xl md:text-lg lg:text-base text-primary-900 px-1 max-w-prose`}
+      class={`text-xl md:text-lg lg:text-base text-primary-900 max-w-prose${
+        classAdd.length > 0 ? ` ${classAdd}` : ""
+      }`}
     >
       {children}
     </Component>

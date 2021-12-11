@@ -7,7 +7,7 @@ module.exports = {
     purgeLayersByDefault: true,
   },
   mode: "jit",
-  purge: ["./src/**/*.js", "./content/**/*.js"],
+  content: ["./src/**/*.js", "./content/**/*.js"],
   theme: {
     extend: {
       colors: {
@@ -20,6 +20,5 @@ module.exports = {
       },
     },
   },
-  variants: {},
   plugins: [require("@tailwindcss/aspect-ratio"), require("nightwind")],
 };

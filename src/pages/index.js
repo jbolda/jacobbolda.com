@@ -1,6 +1,5 @@
 import { h, Fragment } from "preact";
 import { useEffect } from "preact/hooks";
-import Landing from "./../../an-extra-boop-for-the-homepage/landing.js";
 import Engagements from "./../components/engagements.js";
 import Heading from "./../components/heading.js";
 import Text from "./../components/text.js";
@@ -49,7 +48,19 @@ const Hero = (props) => (
       <div class="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
         <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
           <div class="sm:text-center lg:text-left">
-            <Landing />
+            <Heading as="h3">Hi, I am</Heading>
+
+            <Heading as="h1">Jacob Bolda</Heading>
+
+            <Heading as="h1">Senior Software Engineer</Heading>
+
+            <Text>
+              Senior Software Engineer built on the foundation of a classically
+              trained Structural Engineer. Masters degree in Structural
+              Engineering from the Milwaukee School of Engineering and life long
+              tech enthusiast. Expertise in nodejs and windows and avid open
+              source-er.
+            </Text>
           </div>
         </main>
       </div>
