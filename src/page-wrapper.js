@@ -13,7 +13,11 @@ import Unfurl from "./components/unfurl.js";
 import ArticleWrapper from "./components/wrapperArticle.js";
 
 const components = {
-  p: ({ children }) => <Text as="p">{children}</Text>,
+  p: ({ children }) => (
+    <Text as="p" classAdd="px-2 mx-auto">
+      {children}
+    </Text>
+  ),
   h1: (props) => <Heading as="h1" {...props} />,
   h2: (props) => <Heading as="h2" {...props} />,
   h3: (props) => <Heading as="h3" {...props} />,
@@ -23,9 +27,21 @@ const components = {
   blockquote: ({ children }) => (
     <blockquote class="max-w-prose">{children}</blockquote>
   ),
-  ul: ({ children }) => <List as="ul">{children}</List>,
-  ol: ({ children }) => <List as="ol">{children}</List>,
-  li: ({ children }) => <List as="li">{children}</List>,
+  ul: ({ children }) => (
+    <List as="ul" classAdd="min-w-full">
+      {children}
+    </List>
+  ),
+  ol: ({ children }) => (
+    <List as="ol" classAdd="min-w-full">
+      {children}
+    </List>
+  ),
+  li: ({ children }) => (
+    <List as="li" classAdd="">
+      {children}
+    </List>
+  ),
   table: ({ children }) => (
     <table class="table-auto max-w-prose">{children}</table>
   ),
@@ -87,7 +103,7 @@ const ContentWrapper = ({ children, pageType }) => {
   if (pageType === "article") {
     return <ArticleWrapper>{children}</ArticleWrapper>;
   } else {
-    return <div class="flex-grow">{children}</div>;
+    return <div class="grow">{children}</div>;
   }
 };
 

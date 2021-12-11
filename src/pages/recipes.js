@@ -39,7 +39,7 @@ const RecipeSection = ({ children }) => (
 
 export const RecipeWrap = ({ recipe }) => (
   <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
-    <div class="flex-shrink-0">
+    <div class="shrink-0">
       {recipe.images.map((recipeImage) => (
         <img
           src={recipeImage.thumbnails.full.url}
