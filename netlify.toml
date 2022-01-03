@@ -5,3 +5,14 @@ publish = "public"
 [[redirects]]
 from = "/images/*"
 to = "https://res.cloudinary.com/jacobbolda/image/upload/w_600/:splat"
+status = 200
+
+[[redirects]]
+from = "/feedback/js/script.js"
+to = "https://plausible.io/js/plausible.outbound-links.js"
+status = 200
+
+[[redirects]]
+from = "/feedback/api/event"
+to = "https://plausible.io/api/event"
+status = 202

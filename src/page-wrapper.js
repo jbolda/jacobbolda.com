@@ -82,6 +82,12 @@ export default function PageWrapper(props) {
         />
         <meta property="og:type" content="website" />
         <link rel="stylesheet" href="/styles.css" />
+        <script
+          defer
+          data-domain="jacobbolda.com"
+          data-api="/feedback/api/event"
+          src="/feedback/js/script.js"
+        ></script>
       </Helmet>
       <Unfurl
         title={title}
