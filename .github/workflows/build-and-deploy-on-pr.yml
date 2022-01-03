@@ -9,16 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: volta-cli/action@v1
-      - name: compress images
-        uses: calibreapp/image-actions@1.1.0
-        with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          jpegQuality: "99"
-          pngQuality: "99"
-          webpQuality: "99"
       - run: npm ci
       - name: build
-        run: npm run build
+        run: netlify build
         env:
           NODE_ENV: production
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
