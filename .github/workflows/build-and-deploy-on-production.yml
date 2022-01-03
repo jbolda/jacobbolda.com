@@ -17,7 +17,7 @@ jobs:
       - uses: volta-cli/action@v1
       - run: npm ci
       - name: build
-        run: netlify build
+        run: netlify build -o
         env:
           NODE_ENV: production
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
