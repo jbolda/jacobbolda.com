@@ -17,7 +17,7 @@ jobs:
       - uses: volta-cli/action@v1
       - run: npm ci
       - name: build
-        run: npm run build
+        run: netlify build -o
         env:
           NODE_ENV: production
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
@@ -26,7 +26,4 @@ jobs:
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        run: |
-          wget https://github.com/lannonbr/netlify_deploy/releases/download/netlify_deploy-v0.3.0/netlify-deploy-linux-0.3.0.tar.gz
-          tar -xvf netlify-deploy-linux-0.3.0.tar.gz
-          ./release/netlify_deploy --path public --prod
+        run: netlify deploy --dir=public --prod --message "${{ github.event.head_commit.message || github.event.ref }}"
