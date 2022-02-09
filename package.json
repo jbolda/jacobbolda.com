@@ -51,7 +51,7 @@
     "unified": "^10.1.1"
   },
   "devDependencies": {
-    "@effection/process": "^2.0.3",
+    "@effection/process": "^2.0.4",
     "chokidar": "^3.5.3",
     "effection": "^2.0.4",
     "patch-package": "^6.4.7",
