@@ -55,7 +55,7 @@
     "chokidar": "^3.5.2",
     "effection": "^2.0.2",
     "patch-package": "^6.4.7",
-    "prettier": "2.4.1"
+    "prettier": "2.5.1"
   },
   "volta": {
     "node": "16.7.0",
