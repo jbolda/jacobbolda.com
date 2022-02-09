@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@effection/process": "^2.0.3",
-    "chokidar": "^3.5.2",
+    "chokidar": "^3.5.3",
     "effection": "^2.0.2",
     "patch-package": "^6.4.7",
     "prettier": "2.5.1"
