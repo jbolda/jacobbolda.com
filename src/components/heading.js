@@ -15,7 +15,9 @@ export default ({ as = "h1", children }) => {
     }
   };
   return (
-    <Component class={`${weight(as)} text-primary-900 max-w-2xl`}>
+    <Component
+      class={`${weight(as)} text-primary-900 dark:text-primary-50 max-w-2xl`}
+    >
       {children}
     </Component>
   );

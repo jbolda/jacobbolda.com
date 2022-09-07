@@ -69,12 +69,12 @@ export default function PageWrapper(props) {
   const title = `Jacob Bolda${props?.title ? `| ${props.title}` : ""}`;
 
   return (
-    <div class="flex flex-col min-h-screen bg-primary-50">
+    <div class="flex flex-col min-h-screen bg-primary-50 dark:bg-primary-900">
       <Helmet>
         <html lang="en" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
-        <script>{nightwindInit}</script>
+        <script>{darkmodeInit}</script>
         <title>{title}</title>
         <meta
           property="description"
@@ -113,26 +113,26 @@ const ContentWrapper = ({ children, pageType }) => {
   }
 };
 
-const nightwindInit = `
+const darkmodeInit = `
 (function() {
   function getInitialColorMode() {
-    const persistedColorPreference = window.localStorage.getItem('nightwind-mode');
+    const persistedColorPreference = window.localStorage.getItem('theme');
     if (typeof persistedColorPreference === 'string') {
       return persistedColorPreference;
     }
     const mql = window.matchMedia('(prefers-color-scheme: dark)');
     if (typeof mql.matches === 'boolean') {
       if (mql.matches) {
-        window.localStorage.setItem("nightwind-mode", "dark");
+        window.localStorage.setItem("theme", "dark");
         return "dark";
       } else {
-        window.localStorage.setItem("nightwind-mode", "light");
+        window.localStorage.setItem("theme", "light");
         return "light";
       }
     }
     return 'light';
   }
   getInitialColorMode() == 'light' ? document.documentElement.classList.remove('dark') : document.documentElement.classList.add('dark');
-  document.documentElement.classList.add('nightwind');
+  document.documentElement.classList.add('dark');
 })()
 `;

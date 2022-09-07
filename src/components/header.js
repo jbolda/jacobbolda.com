@@ -7,7 +7,7 @@ export default (props) => {
   const toggleHamburgerMenu = () => setHamburgerMenu(!hamburgerActive);
 
   return (
-    <div class="relative flex-initial bg-primary-50">
+    <div class="relative flex-initial bg-primary-50 dark:bg-primary-900">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="flex justify-between items-center px-4 py-6">
           <div class="flex justify-start lg:w-0 lg:flex-1">
@@ -24,7 +24,7 @@ export default (props) => {
       </div>
       {!hamburgerActive ? null : (
         <div class="z-50 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-          <div class="rounded-lg shadow-lg ring ring-primary-300 ring-opacity-5 bg-primary-50 divide-y-2 divide-gray-50">
+          <div class="rounded-lg shadow-lg ring ring-primary-300 ring-opacity-5 bg-primary-50 dark:bg-primary-900 divide-y-2 divide-gray-50">
             <div class="pt-3 sm:pt-4 pb-4 px-6 sm:px-8">
               <div class="flex items-center justify-between">
                 <Logo />
@@ -48,7 +48,7 @@ export default (props) => {
 const OpenMenu = ({ toggle }) => (
   <button
     type="button"
-    class="bg-primary-50 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+    class="bg-primary-50 dark:bg-primary-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
     onClick={toggle}
   >
     <span class="sr-only">Open menu</span>
@@ -73,7 +73,7 @@ const OpenMenu = ({ toggle }) => (
 const CloseMenu = ({ toggle }) => (
   <button
     type="button"
-    class="bg-primary-50 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+    class="bg-primary-50 dark:bg-primary-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
     onClick={toggle}
   >
     <span class="sr-only">Close menu</span>
@@ -99,7 +99,7 @@ const Logo = () => (
   <a href="/">
     <span class="sr-only">Jacob Bolda</span>
     <svg
-      class="h-8 w-auto sm:h-10 text-primary-900"
+      class="h-8 w-auto sm:h-10 text-primary-900 dark:text-primary-50"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

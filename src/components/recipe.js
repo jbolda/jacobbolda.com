@@ -10,7 +10,7 @@ export default ({ recipe }) => (
       <div class="mx-auto text-base max-w-lg:max-w-none">
         <Heading
           as="h3"
-          className="text-primary-300"
+          className="text-primary-300 dark:text-primary-600"
         >{`Last Made: ${recipe["last made"]}`}</Heading>
         <Heading as="h2">{recipe.name}</Heading>
       </div>
