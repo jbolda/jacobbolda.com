@@ -20,5 +20,6 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/aspect-ratio"), require("nightwind")],
+  variants: {},
+  plugins: [require("@tailwindcss/aspect-ratio")],
 };
