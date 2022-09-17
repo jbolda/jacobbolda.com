@@ -6,7 +6,7 @@ export default ({ as = "a", flair = "37", children, ...rest }) => {
     <Component
       class={
         flair === "37"
-          ? `text-base font-semibold text-primary-600 hover:text-primary-300`
+          ? `text-base font-semibold text-primary-600 dark:text-primary-300 hover:text-primary-300`
           : ``
       }
       {...rest}

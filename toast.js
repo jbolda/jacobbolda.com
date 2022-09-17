@@ -10,7 +10,7 @@ const remarkPlugins = [
     {
       hrefTemplate: (permalink) => `/${permalink}`,
       wikiLinkClassName:
-        "text-base font-semibold text-primary-600 hover:text-primary-300",
+        "text-base font-semibold text-primary-600 dark:text-primary-300 hover:text-primary-300",
     },
   ],
 ];
