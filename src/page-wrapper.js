@@ -67,6 +67,7 @@ const components = {
 
 export default function PageWrapper(props) {
   const title = `Jacob Bolda${props?.title ? `| ${props.title}` : ""}`;
+  props.children.props.components = components;
 
   return (
     <div class="flex flex-col min-h-screen bg-primary-50 dark:bg-primary-900">
@@ -95,11 +96,11 @@ export default function PageWrapper(props) {
         meta={props}
       />
       <Header />
-      <MDXProvider components={components}>
-        <ContentWrapper pageType={props.pageType}>
-          {props.children}
-        </ContentWrapper>
-      </MDXProvider>
+      {/* <MDXProvider components={components}> */}
+      <ContentWrapper pageType={props.pageType}>
+        {props.children}
+      </ContentWrapper>
+      {/* </MDXProvider> */}
       <Footer />
     </div>
   );
