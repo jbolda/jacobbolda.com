@@ -18,46 +18,39 @@ export const sourceAirtable = async ({ tables }) => {
     }
   }
 
-  try {
-    // hoist api so we can use in scope outside of this block
-    var api = await new Airtable({
-      apiKey: process.env.AIRTABLE_API_KEY,
-    });
-  } catch (e) {
-    // airtable uses `assert` which doesn't exit the process
-    console.warn("\nAPI key is required to connect to Airtable");
-    return;
-  }
+  if (!process.env.AIRTABLE_API_KEY)
+    throw new Error("env var AIRTABLE_API_KEY not set");
+
+  // const api = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY });
+  Airtable.configure({ apiKey: process.env.AIRTABLE_API_KEY });
 
   console.time(`fetch all Airtable rows from ${tables.length} tables`);
 
   let queue = [];
-  tables.forEach((tableOptions) => {
-    let base = api.base(tableOptions.baseId);
+  const tableQueries = tables.map(async (tableOptions) => {
+    let allRecords = [];
+    const { baseId, tableView, tableName, queryName } = tableOptions;
+    let base = Airtable.base(baseId);
+    let view = tableView || "";
 
-    let table = base(tableOptions.tableName);
+    await base(tableName)
+      .select({ view })
+      .eachPage((records, fetchNextPage) => {
+        allRecords.push(...records.map((record) => record.fields));
+        fetchNextPage();
+      })
+      .catch((error) => console.error(error));
 
-    let view = tableOptions.tableView || "";
-
-    let query = table.select({
-      view: view,
-    });
-
-    // query.all() returns a promise, pass an array for each table with
-    // both our promise and the queryName and then map reduce at the
-    // final promise resolution to get queryName onto each row
-    queue.push(Promise.all([query.all(), tableOptions.queryName]));
+    return [queryName, allRecords];
   });
 
   // queue has array of promises and when resolved becomes nested arrays
   // we flatten the array to return all rows from all tables after mapping
   // the queryName to each row
-  return Promise.all(queue)
+  return Promise.all(tableQueries)
     .then(async (all) => {
-      const reduced = all.reduce((nested, query) => {
-        const rows = query[0];
-        const queryName = query[1];
-        nested[queryName] = rows.map((record) => record.fields);
+      const reduced = all.reduce((nested, tuple) => {
+        nested[tuple[0]] = tuple[1];
         return nested;
       }, {});
 
@@ -74,6 +67,5 @@ export const sourceAirtable = async ({ tables }) => {
     })
     .catch((e) => {
       throw e;
-      return;
     });
 };
