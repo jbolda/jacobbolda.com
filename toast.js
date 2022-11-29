@@ -27,8 +27,8 @@ const sortByDate = (object1, object2) => {
   return new Date(o2date) > new Date(o1date) ? 1 : -1;
 };
 
-console.time(`fetch content`);
 export const sourceData = async ({ setDataForSlug }) => {
+  console.time(`fetch content`);
   const { Recipes: recipes } = await sourceAirtable({
     tables: recipeTables,
   }).then((query) => ({
