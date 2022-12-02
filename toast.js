@@ -54,7 +54,7 @@ export const sourceData = async ({ setDataForSlug }) => {
           .replace(/(^[1-9]\. )/gm, "")
           .replace(/[\n\r]+/g, "</li><li>")}</li>`;
 
-        const imageUrlOG = recipe.images[0].url;
+        const imageUrlOG = recipe.images[0].thumbnails.large.url;
         const imageUrl = `/images/${imageUrlOG
           .split("/")
           .pop()}.${recipe.images[0].type.split("/").pop()}`;
