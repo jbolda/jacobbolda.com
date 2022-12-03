@@ -1,8 +1,9 @@
 import { sourceMdx } from "@toastdotdev/mdx";
 import { sourceAirtable } from "./fetch/fetch-airtable.js";
 import { sourceDraftArticles } from "./fetch/fetch-draft-articles.js";
+import fetch from "node-fetch";
 
-import { promises as fs } from "fs";
+import { promises as fs, createWriteStream } from "fs";
 import remarkWikiLink from "remark-wiki-link";
 const remarkPlugins = [
   [
@@ -27,26 +28,44 @@ const sortByDate = (object1, object2) => {
   return new Date(o2date) > new Date(o1date) ? 1 : -1;
 };
 
-console.time(`fetch content`);
 export const sourceData = async ({ setDataForSlug }) => {
+  console.time(`fetch content`);
+  try {
+    await fs.access("./public/images");
+  } catch (error) {
+    await fs.mkdir("./public/images");
+  }
+
   const { Recipes: recipes } = await sourceAirtable({
     tables: recipeTables,
-  }).then((query) => ({
+  }).then(async (query) => ({
     ...query,
-    Recipes: query.Recipes.map((recipe) => {
-      recipe.slug = `/${recipe.name
-        .replace(/ /g, "-")
-        .replace(/[,&]/g, "")
-        .toLowerCase()}`;
+    Recipes: await Promise.all(
+      query.Recipes.map(async (recipe) => {
+        recipe.slug = `/${recipe.name
+          .replace(/ /g, "-")
+          .replace(/[,&]/g, "")
+          .toLowerCase()}`;
 
-      recipe.ingredientsHTML = `<li>${recipe.ingredients
-        .replace(/(- )/g, "")
-        .replace(/[\n\r]+/g, "</li><li>")}</li>`;
-      recipe.directionsHTML = `<li>${recipe.directions
-        .replace(/(^[1-9]\. )/gm, "")
-        .replace(/[\n\r]+/g, "</li><li>")}</li>`;
-      return recipe;
-    }),
+        recipe.ingredientsHTML = `<li>${recipe.ingredients
+          .replace(/(- )/g, "")
+          .replace(/[\n\r]+/g, "</li><li>")}</li>`;
+        recipe.directionsHTML = `<li>${recipe.directions
+          .replace(/(^[1-9]\. )/gm, "")
+          .replace(/[\n\r]+/g, "</li><li>")}</li>`;
+
+        const imageUrlOG = recipe.images[0].thumbnails.large.url;
+        const imageUrl = `/images/${imageUrlOG
+          .split("/")
+          .pop()}.${recipe.images[0].type.split("/").pop()}`;
+        await fetch(imageUrlOG).then((res) =>
+          res.body.pipe(createWriteStream(`./public${imageUrl}`))
+        );
+        recipe.imageUrl = imageUrl;
+
+        return recipe;
+      })
+    ),
   }));
 
   const { uses, curate } = await sourceAirtable({ tables: websiteTables });

@@ -2,25 +2,48 @@
 This needs to be added to Google Apps Scripts and deployed as a webapp
 
 ```js
-const folderID = "[FILL_IN_YOUR_FOLDER_ID_HERE]"
+const folderID = "xxxxxxxx"
 
-function doPost(e) {
+function doPost() {
   return (function(){
-    const folder = DriveApp.getFolderById(folderID);
-    // sometimes files are not marked with the correct mimetype?
-    // I had to switch to `.getFiles()` and check the file string ended with .md/.mdx
-    const files = folder.getFilesByType("text/markdown");
+    const rootFolder = DriveApp.getFolderById(folderID);
+    const folders = rootFolder.getFolders();
     const fileBlobs = [];
-    while (files.hasNext())  {
-      let file = files.next();
-      let filename = file.getName();
-      // note we are only pulling things that begin with article
-      // or `if (!!filename.startsWith("article.") && (!!filename.endsWith(".md") || !!filename.endsWith(".mdx"))) {`
-      // see note earlier comment, needed if using `getFiles()`
-      if (filename.startsWith("article.")) {
-        fileBlobs.push({name: filename, blob: file.getBlob().getBytes()})
+
+    while (folders.hasNext()) {
+      let folder = folders.next();
+      let folderName = folder.getName();
+      // only process certain folders
+      if (!folderName.startsWith('brain')) continue;
+      Logger.log(`processing ${folderName}`);
+      const files = folder.getFiles();
+      while (files.hasNext())  {
+        let file = files.next();
+        let filename = file.getName();
+        if (!!filename.endsWith(".md") || !!filename.endsWith(".mdx")) {
+          try {
+            let fileBlob = file.getBlob();
+            let fileString = fileBlob.getDataAsString();
+            if (!fileString.startsWith('---')) {
+              Logger.log(`skipping ${file}, no frontmatter`);
+              continue;
+            }
+            let frontmatterSplit = fileString.split('---\n');
+            let frontmatterString = frontmatterSplit[1];
+            let frontmatter = YAML.eval(frontmatterString);
+            if (frontmatter?.slug && frontmatter?.title && frontmatter?.written) {
+              Logger.log(`including ${file}`);
+              fileBlobs.push({name: filename, blob: fileBlob.getBytes()})
+            }
+          } catch (error) {
+          Logger.log(`skipping ${file}, error: ${error.message}`);
+          }
+        } else {
+          Logger.log(`skipping ${file}`);
+        }
       }
     }
+
     return ContentService
           .createTextOutput(JSON.stringify({
             result: fileBlobs,
@@ -28,7 +51,7 @@ function doPost(e) {
             mimeType: "json"
           }))
           .setMimeType(ContentService.MimeType.JSON);
-  })(e.parameters.id);
+  })();
 }
 ```
 */
@@ -59,9 +82,10 @@ export const sourceDraftArticles = async () => {
   }
   await fs.mkdir(contentPath, { recursive: true });
 
+  if (!process.env.ARTICLE_FETCH_ENDPOINT)
+    throw new Error("env var ARTICLE_FETCH_ENDPOINT is not set");
+  const url = process.env.ARTICLE_FETCH_ENDPOINT;
   console.time(`fetch all draft article content`);
-  const url =
-    "https://script.google.com/macros/s/AKfycbxw2HBOQrO4WlnRsUBSbdu1qbnytdGBuNuxSTg3_69DE-7S6KKPzsmLHga8tTjGaATCpw/exec?id=boop";
   const response = await fetch(url, {
     method: "post",
     headers: { "Content-Type": "application/json" },
