@@ -6,7 +6,6 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  mode: "jit",
   content: ["./src/**/*.js", "./content/**/*.js"],
   theme: {
     extend: {
@@ -20,6 +19,5 @@ module.exports = {
       },
     },
   },
-  variants: {},
   plugins: [require("@tailwindcss/aspect-ratio")],
 };

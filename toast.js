@@ -131,7 +131,13 @@ export const sourceData = async ({ setDataForSlug }) => {
   );
 
   await setDataForSlug("/", {
-    data: { articles: curated, pageType: "page" },
+    data: {
+      articlesCurated: curated,
+      articlesRecent: [...articles, ...notes, ...drafts]
+        .sort(sortByDate)
+        .slice(0, 9),
+      pageType: "page",
+    },
   });
 
   await setDataForSlug("/about", {
