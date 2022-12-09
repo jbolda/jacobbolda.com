@@ -36,6 +36,7 @@ export const sourceData = async ({ setDataForSlug }) => {
     await fs.mkdir("./public/images");
   }
 
+  console.time(`source recipes from Airtable`);
   const { Recipes: recipes } = await sourceAirtable({
     tables: recipeTables,
   }).then(async (query) => ({
@@ -58,18 +59,24 @@ export const sourceData = async ({ setDataForSlug }) => {
         const imageUrl = `/images/${imageUrlOG
           .split("/")
           .pop()}.${recipe.images[0].type.split("/").pop()}`;
-        await fetch(imageUrlOG).then((res) =>
-          res.body.pipe(createWriteStream(`./public${imageUrl}`))
-        );
+
+        if (!query.cache)
+          await fetch(imageUrlOG).then((res) =>
+            res.body.pipe(createWriteStream(`./public${imageUrl}`))
+          );
         recipe.imageUrl = imageUrl;
 
         return recipe;
       })
     ),
   }));
+  console.timeEnd(`source recipes from Airtable`);
 
+  console.time(`source site metadata from Airtable`);
   const { uses, curate } = await sourceAirtable({ tables: websiteTables });
+  console.timeEnd(`source site metadata from Airtable`);
 
+  console.time(`source draft articles from Google Drive`);
   const drafts = await sourceDraftArticles().then(async () => {
     const data = await sourceMdx({
       setDataForSlug,
@@ -79,6 +86,7 @@ export const sourceData = async ({ setDataForSlug }) => {
     });
     return data.sort(sortByDate);
   });
+  console.timeEnd(`source draft articles from Google Drive`);
 
   console.timeEnd(`fetch content`);
 

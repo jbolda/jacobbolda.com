@@ -10,8 +10,8 @@ export const sourceAirtable = async ({ tables }) => {
     console.info("trying to use airtable from cache");
     try {
       // it exists, let's skip downloading
-      const cacheFile = await fs.readFile(filePath);
-      return JSON.parse(cacheFile);
+      const cacheFile = await fs.readFile(filePath, "utf-8");
+      return { ...JSON.parse(cacheFile), cache: true };
     } catch (err) {
       console.error("error pulling airtable from cache");
       console.error(err);
