@@ -36,6 +36,7 @@ export const sourceData = async ({ setDataForSlug }) => {
     await fs.mkdir("./public/images");
   }
 
+  console.time(`source recipes from Airtable`);
   const { Recipes: recipes } = await sourceAirtable({
     tables: recipeTables,
   }).then(async (query) => ({
@@ -58,18 +59,24 @@ export const sourceData = async ({ setDataForSlug }) => {
         const imageUrl = `/images/${imageUrlOG
           .split("/")
           .pop()}.${recipe.images[0].type.split("/").pop()}`;
-        await fetch(imageUrlOG).then((res) =>
-          res.body.pipe(createWriteStream(`./public${imageUrl}`))
-        );
+
+        if (!query.cache)
+          await fetch(imageUrlOG).then((res) =>
+            res.body.pipe(createWriteStream(`./public${imageUrl}`))
+          );
         recipe.imageUrl = imageUrl;
 
         return recipe;
       })
     ),
   }));
+  console.timeEnd(`source recipes from Airtable`);
 
+  console.time(`source site metadata from Airtable`);
   const { uses, curate } = await sourceAirtable({ tables: websiteTables });
+  console.timeEnd(`source site metadata from Airtable`);
 
+  console.time(`source draft articles from Google Drive`);
   const drafts = await sourceDraftArticles().then(async () => {
     const data = await sourceMdx({
       setDataForSlug,
@@ -79,6 +86,7 @@ export const sourceData = async ({ setDataForSlug }) => {
     });
     return data.sort(sortByDate);
   });
+  console.timeEnd(`source draft articles from Google Drive`);
 
   console.timeEnd(`fetch content`);
 
@@ -103,7 +111,7 @@ export const sourceData = async ({ setDataForSlug }) => {
     remarkPlugins,
   });
 
-  for (let page of [...articles, ...notes, ...drafts]) {
+  for (let page of [...drafts, ...articles, ...notes]) {
     await setDataForSlug(`/${page.meta.slug}`, {
       data: { pageType: "article", ...page.meta },
     });
@@ -119,7 +127,7 @@ export const sourceData = async ({ setDataForSlug }) => {
   const curate_list = curate
     .sort((a, b) => a.order - b.order)
     .map((item) => item.url);
-  const curated = [...articles, ...notes, ...drafts].reduce(
+  const curated = [...drafts, ...articles, ...notes].reduce(
     (curate, article) => {
       if (curate_list.includes(article.meta.slug)) {
         curate[curate_list.findIndex((item) => item === article.meta.slug)] =
@@ -131,7 +139,13 @@ export const sourceData = async ({ setDataForSlug }) => {
   );
 
   await setDataForSlug("/", {
-    data: { articles: curated, pageType: "page" },
+    data: {
+      articlesCurated: curated,
+      articlesRecent: [...drafts, ...articles, ...notes]
+        .sort(sortByDate)
+        .slice(0, 9),
+      pageType: "page",
+    },
   });
 
   await setDataForSlug("/about", {
@@ -143,7 +157,7 @@ export const sourceData = async ({ setDataForSlug }) => {
   });
 
   await setDataForSlug("/articles", {
-    data: { articles: [...articles, ...notes], pageType: "page" },
+    data: { articles: [...drafts, ...articles, ...notes], pageType: "page" },
   });
 
   await setDataForSlug("/garden", {

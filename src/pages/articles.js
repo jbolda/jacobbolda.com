@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import Heading from "./../components/heading.js";
 import Text from "./../components/text.js";
 import Link from "./../components/link.js";
+import { SeedSVG } from "./../components/small-icons/index.js";
 
 export default (props) => (
   <ArticleSection>
@@ -40,17 +41,29 @@ export const ArticleSection = ({ heading = "Articles", children }) => (
 
 export const ArticleWrap = ({ article }) => (
   <div>
-    <div>
-      {!article.keywords
-        ? null
-        : article.keywords.map((keyword) => <ArticleTag tag={keyword} />)}
-    </div>
+    {!article.keywords ? null : (
+      <div>
+        {article.keywords.map((keyword) => (
+          <ArticleTag tag={keyword} />
+        ))}
+      </div>
+    )}
     <Link href={`/${article.meta.slug}/`} flair="none">
       <Heading as="h3">{article.meta.title}</Heading>
       <Text>{article.meta.description}</Text>
     </Link>
-    <div class="mt-3">
-      <Link href={`/${article.meta.slug}/`}>Read full story</Link>
+    <div className="flex">
+      <div class="mt-3 flex-auto">
+        <Link href={`/${article.meta.slug}/`}>Read full story</Link>
+      </div>
+      {article.meta.progress && article.meta.progress !== "article" ? (
+        <div
+          className="flex-none items-center rounded-full bg-primary-50 p-1"
+          alt="Icon indicating that this content will continue to grow"
+        >
+          <SeedSVG className="w-10" />
+        </div>
+      ) : null}
     </div>
   </div>
 );
