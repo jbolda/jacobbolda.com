@@ -1,4 +1,4 @@
-import { h, Fragment } from "preact";
+import { h } from "preact";
 import { Helmet } from "react-helmet";
 import Heading from "./../components/heading.js";
 import Text from "./../components/text.js";
@@ -40,7 +40,7 @@ export const ArticleSection = ({ heading = "Articles", children }) => (
 );
 
 export const ArticleWrap = ({ article }) => (
-  <>
+  <div>
     {!article.keywords ? null : (
       <div>
         {article.keywords.map((keyword) => (
@@ -65,7 +65,7 @@ export const ArticleWrap = ({ article }) => (
         </div>
       ) : null}
     </div>
-  </>
+  </div>
 );
 
 const ArticleTag = ({ tag }) => (
