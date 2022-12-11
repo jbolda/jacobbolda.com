@@ -15,22 +15,27 @@ export default (props) => (
     />
     {props?.children?.props?.progress &&
     props.children.props.progress !== "article" ? (
-      <div className="flex justify-center">
-        <div className="flex-none">
-          <div
-            className="justify-items-end items-center rounded-full bg-primary-50 p-1 w-12"
-            alt="Icon indicating that this content will continue to grow"
-          >
-            <SeedSVG className="w-10" />
-          </div>
-        </div>
-        <p className="flex-none self-center px-2 text-xl md:text-lg lg:text-base text-primary-900 dark:text-primary-50 px-2">
-          This content is in progress and is expected to continue to evolve.
-        </p>
+      <div className="max-w-prose mx-auto flex justify-center">
+        <Seed />
       </div>
     ) : null}
     <article class="mt-6 text-gray-500 grid grid-col-1 gap-y-3 justify-items-center">
       {props.children}
     </article>
+  </div>
+);
+
+const Seed = () => (
+  <div className="rounded-md bg-primary-50 p-4">
+    <div className="flex">
+      <div className="flex-shrink-0">
+        <SeedSVG className="w-10" aria-hidden="true" />
+      </div>
+      <div className="ml-3 flex-1 md:flex md:justify-between">
+        <p className="text-sm text-primary-700 self-center">
+          This content is in progress and is expected to continue to evolve.
+        </p>
+      </div>
+    </div>
   </div>
 );
