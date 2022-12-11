@@ -157,7 +157,7 @@ export const sourceData = async ({ setDataForSlug }) => {
   });
 
   await setDataForSlug("/articles", {
-    data: { articles: [...articles, ...notes], pageType: "article" },
+    data: { articles: [...drafts, ...articles, ...notes], pageType: "article" },
   });
 
   await setDataForSlug("/garden", {
