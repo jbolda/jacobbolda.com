@@ -111,7 +111,7 @@ export const sourceData = async ({ setDataForSlug }) => {
     remarkPlugins,
   });
 
-  for (let page of [...articles, ...notes, ...drafts]) {
+  for (let page of [...drafts, ...articles, ...notes]) {
     await setDataForSlug(`/${page.meta.slug}`, {
       data: { pageType: "article", ...page.meta },
     });
@@ -127,7 +127,7 @@ export const sourceData = async ({ setDataForSlug }) => {
   const curate_list = curate
     .sort((a, b) => a.order - b.order)
     .map((item) => item.url);
-  const curated = [...articles, ...notes, ...drafts].reduce(
+  const curated = [...drafts, ...articles, ...notes].reduce(
     (curate, article) => {
       if (curate_list.includes(article.meta.slug)) {
         curate[curate_list.findIndex((item) => item === article.meta.slug)] =
@@ -141,7 +141,7 @@ export const sourceData = async ({ setDataForSlug }) => {
   await setDataForSlug("/", {
     data: {
       articlesCurated: curated,
-      articlesRecent: [...articles, ...notes, ...drafts]
+      articlesRecent: [...drafts, ...articles, ...notes]
         .sort(sortByDate)
         .slice(0, 9),
       pageType: "page",
@@ -149,7 +149,7 @@ export const sourceData = async ({ setDataForSlug }) => {
   });
 
   await setDataForSlug("/about", {
-    data: { pageType: "article" },
+    data: { pageType: "page" },
   });
 
   await setDataForSlug("/uses", {
@@ -157,7 +157,7 @@ export const sourceData = async ({ setDataForSlug }) => {
   });
 
   await setDataForSlug("/articles", {
-    data: { articles: [...articles, ...notes], pageType: "page" },
+    data: { articles: [...articles, ...notes], pageType: "article" },
   });
 
   await setDataForSlug("/garden", {
@@ -165,7 +165,7 @@ export const sourceData = async ({ setDataForSlug }) => {
       articles,
       notes,
       drafts,
-      pageType: "page",
+      pageType: "article",
     },
   });
 

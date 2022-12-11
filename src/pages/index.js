@@ -115,12 +115,12 @@ const Social = (props) => (
 
 const Articles = ({ children, textHeading, textSubheading }) => (
   <div className="relative mx-auto max-w-7xl">
-    <div className="relative pt-16 pb-20 px-2 sm:px-1 lg:pt-24 lg:pb-28 lg:px-8">
-      <div className="px-2">
+    <div className="relative pt-16 pb-20 px-2 sm:px-1 lg:pt-24 lg:pb-28 lg:px-8 divide-y-2 divide-gray-200">
+      <div className="px-2 mb-8">
         <Heading as="h2">{textHeading}</Heading>
         <Text>{textSubheading}</Text>
       </div>
-      <div className="mt-12 max-w-lg grid gap-5 lg:grid-cols-3 lg:max-w-none">
+      <div className="max-w-lg grid gap-5 lg:grid-cols-3 lg:max-w-none pt-4 rounded-md">
         {children.map((child) => (
           <div className="p-2 flex flex-col">{child}</div>
         ))}
