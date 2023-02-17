@@ -60,7 +60,7 @@ const socialIcons = {
   ),
 };
 
-export const SocialButton = ({ href, icon, content }) => {
+const SocialButton = ({ href, icon, content }) => {
   const Icon = socialIcons[icon];
   return (
     <a rel="me" href={href} className="flex place-items-center ">
@@ -73,3 +73,41 @@ export const SocialButton = ({ href, icon, content }) => {
     </a>
   );
 };
+
+export const Social = (props) => (
+  <section class="md:max-w-7xl mx-auto">
+    <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-2 gap-8 md:grid-cols-2 lg:grid-cols-4 place-content-center">
+        {[
+          {
+            name: "twitter",
+            href: "https://www.twitter.com/jacobbolda",
+            content: "jacobbolda",
+          },
+          {
+            name: "youtube",
+            href: "https://www.youtube.com/jacobbolda",
+            content: "jacobbolda",
+          },
+          {
+            name: "mastodon",
+            href: "https://hachyderm.io/@jacobbolda",
+            content: "jacobbolda",
+          },
+          {
+            name: "github",
+            href: "https://www.github.com/jbolda",
+            content: "jbolda",
+          },
+        ].map((link) => (
+          <SocialButton
+            key={link.name}
+            icon={link.name}
+            href={link.href}
+            content={link.content}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+);
