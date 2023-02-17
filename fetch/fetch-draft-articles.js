@@ -53,6 +53,8 @@ function doPost() {
           .setMimeType(ContentService.MimeType.JSON);
   })();
 }
+
+Deploy this script and use the Web App Url, e.g. `https://script.google.com/macros/s/{BIG_ID}/exec`
 ```
 */
 
