@@ -91,8 +91,8 @@ const Social = (props) => (
             content: "jacobbolda",
           },
           {
-            name: "twitch",
-            href: "https://www.twitch.com/jacobbolda",
+            name: "mastodon",
+            href: "https://www.hachyderm.io/@jacobbolda",
             content: "jacobbolda",
           },
           {
