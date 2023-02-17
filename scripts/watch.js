@@ -1,7 +1,6 @@
 import {
   main,
   spawn,
-  sleep,
   ensure,
   throwOnErrorEvent,
   once,
@@ -12,14 +11,10 @@ import chokidar from "chokidar";
 import { exec, daemon } from "@effection/process";
 
 main(function* start() {
-  yield runWatchedCommand("css", "npm run build:css:watch", "tailwindcss");
-  yield runWatchedCommand(
-    "public",
-    "serve -n -u --no-port-switching public",
-    undefined,
-    "connections"
-  );
+  yield runWatchedCommand("css", "npm run build:css:watch");
+  yield runWatchedCommand("public dir", "serve -u --no-port-switching public");
   yield fileWatcher();
+  yield;
 });
 
 function runWatchedCommand(label, command, expectText, expectError) {
@@ -31,12 +26,12 @@ function runWatchedCommand(label, command, expectText, expectError) {
       });
 
       yield spawn(
-        child.stdout.forEach((data) => {
+        child.stdout.forEach(function* (data) {
           console.log(data.toString());
         })
       );
       yield spawn(
-        child.stderr.forEach((data) => {
+        child.stderr.forEach(function* (data) {
           console.error(data.toString());
         })
       );
@@ -53,11 +48,6 @@ function runWatchedCommand(label, command, expectText, expectError) {
       return child;
     },
   };
-}
-
-function* tickingBomb(message) {
-  yield sleep(5000);
-  throw new Error(message);
 }
 
 function* runBuild() {
@@ -81,31 +71,34 @@ function* runBuild() {
   console.timeEnd("run build command");
 }
 
-function* fileWatcher() {
-  console.time("started file watching");
-  let watcher = chokidar.watch(".", {
-    ignored: ["node_modules", ".tmp", "public"],
-    ignoreInitial: true,
-  });
+function fileWatcher() {
+  return {
+    *init() {
+      console.time("started file watching");
+      let watcher = chokidar.watch(".", {
+        ignored: ["node_modules", ".tmp", "public", ".git"],
+        ignoreInitial: true,
+      });
+      yield ensure(() => watcher.close());
+      yield spawn(throwOnErrorEvent(watcher));
+      yield once(watcher, "ready");
 
-  yield ensure(() => watcher.close());
-  yield spawn(throwOnErrorEvent(watcher));
+      // console.log(watcher.getWatched());
+      console.timeEnd("started file watching");
 
-  yield once(watcher, "ready");
-  console.timeEnd("started file watching");
-
-  yield runBuild();
-
-  let fileChanges = createChannel();
-  let writeOperation = (file) =>
-    function* () {
-      fileChanges.send();
-      console.debug(`${file} changed, rebuilding`);
-    };
-
-  yield spawn(on(watcher, "add").forEach(writeOperation));
-  yield spawn(on(watcher, "unlink").forEach(writeOperation));
-  yield spawn(on(watcher, "change").forEach(writeOperation));
-
-  yield fileChanges.forEach(() => runBuild());
+      yield runBuild();
+      let fileChanges = createChannel();
+      let writeOperation = function* (file) {
+        fileChanges.send();
+        console.debug(`${file} changed, rebuilding`);
+      };
+      yield spawn(on(watcher, "add").forEach(writeOperation));
+      yield spawn(on(watcher, "unlink").forEach(writeOperation));
+      yield spawn(on(watcher, "change").forEach(writeOperation));
+      return yield fileChanges.forEach(function* () {
+        console.log("things");
+        yield runBuild();
+      });
+    },
+  };
 }

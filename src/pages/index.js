@@ -1,6 +1,6 @@
 import { h, Fragment } from "preact";
 import { useEffect } from "preact/hooks";
-import { SocialButton } from "./../components/social-button/index.js";
+import { Social } from "../components/social.js";
 import Engagements from "./../components/engagements.js";
 import Heading from "./../components/heading.js";
 import Text from "./../components/text.js";
@@ -73,44 +73,6 @@ const Hero = (props) => (
       </div>
     </div>
   </div>
-);
-
-const Social = (props) => (
-  <section class="md:max-w-7xl mx-auto">
-    <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-2 gap-8 md:grid-cols-2 lg:grid-cols-4 place-content-center">
-        {[
-          {
-            name: "twitter",
-            href: "https://www.twitter.com/jacobbolda",
-            content: "jacobbolda",
-          },
-          {
-            name: "youtube",
-            href: "https://www.youtube.com/jacobbolda",
-            content: "jacobbolda",
-          },
-          {
-            name: "mastodon",
-            href: "https://www.hachyderm.io/@jacobbolda",
-            content: "jacobbolda",
-          },
-          {
-            name: "github",
-            href: "https://www.github.com/jbolda",
-            content: "jbolda",
-          },
-        ].map((link) => (
-          <SocialButton
-            key={link.name}
-            icon={link.name}
-            href={link.href}
-            content={link.content}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
 );
 
 const Articles = ({ children, textHeading, textSubheading }) => (
