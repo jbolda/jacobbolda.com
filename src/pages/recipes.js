@@ -7,7 +7,6 @@ import Link from "./../components/link.js";
 export default (props) => (
   <RecipeSection>
     <Helmet>
-      <title>Recipes</title>
       <meta
         property="description"
         content="We like to cook. We particularly like to cook these recipes. Hopefully you find these of mutual interest."
@@ -40,7 +39,11 @@ const RecipeSection = ({ children }) => (
 export const RecipeWrap = ({ recipe }) => (
   <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
     <div class="shrink-0">
-      <img src={recipe.imageUrl} class="h-48 w-full object-cover" />
+      <img
+        src={recipe.imageUrl}
+        class="h-48 w-full object-cover"
+        alt={`close up view of ${recipe.name}`}
+      />
     </div>
     <div class="flex-1 p-6 flex flex-col justify-between">
       <div class="flex-1">

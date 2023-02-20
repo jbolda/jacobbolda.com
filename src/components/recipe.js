@@ -1,10 +1,15 @@
 import { h } from "preact";
+import { Helmet } from "react-helmet";
 import Heading from "./src/components/heading.js";
 import List from "./src/components/list.js";
 import Link from "./src/components/link.js";
 
 export default ({ recipe }) => (
   <div class="overflow-hidden">
+    <Helmet>
+      <title>Jacob Bolda | {recipe.name}</title>
+      <meta property="og:type" content="website" />
+    </Helmet>
     <div class="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <div class="hidden lg:block absolute top-0 bottom-0 left-3/4 w-screen" />
       <div class="mx-auto text-base max-w-lg:max-w-none">
@@ -12,7 +17,7 @@ export default ({ recipe }) => (
           as="h3"
           className="text-primary-300 dark:text-primary-600"
         >{`Last Made: ${recipe["last made"]}`}</Heading>
-        <Heading as="h2">{recipe.name}</Heading>
+        <Heading as="h1">{recipe.name}</Heading>
       </div>
       <div class="mt-8 lg:grid lg:grid-cols-2 lg:gap-8">
         <div class="relative lg:row-start-1 lg:col-start-2">
@@ -63,12 +68,12 @@ export default ({ recipe }) => (
         </div>
         <div class="mt-8 lg:mt-0">
           <div class="mt-5 text-gray-500 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1">
-            <Heading as="h3">Ingredients</Heading>
+            <Heading as="h2">Ingredients</Heading>
             <List
               as="ul"
               dangerouslySetInnerHTML={{ __html: recipe.ingredientsHTML }}
             />
-            <Heading as="h3">Directions</Heading>
+            <Heading as="h2">Directions</Heading>
             <List
               as="ol"
               dangerouslySetInnerHTML={{ __html: recipe.directionsHTML }}
