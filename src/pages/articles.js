@@ -48,13 +48,13 @@ export const ArticleWrap = ({ article }) => (
         ))}
       </div>
     )}
-    <Link href={`/${article.meta.slug}/`} flair="none">
+    <Link href={`/${article.meta.slug}`} flair="none">
       <Heading as="h3">{article.meta.title}</Heading>
       <Text>{article.meta.description}</Text>
     </Link>
     <div className="flex">
       <div class="mt-3 flex-auto">
-        <Link href={`/${article.meta.slug}/`}>Read full story</Link>
+        <Link href={`/${article.meta.slug}`}>Read full story</Link>
       </div>
       {article.meta.progress && article.meta.progress !== "article" ? (
         <div
