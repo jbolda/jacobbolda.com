@@ -6,7 +6,7 @@ import { SeedSVG } from "./small-icons/index.js";
 export default (props) => (
   <div class="relative py-16 grow">
     <Helmet>
-      <title>{props.children.props.title}</title>
+      <title>Jacob Bolda | {props.children.props.title}</title>
       <meta property="og:type" content="article" />
     </Helmet>
     <Unfurl

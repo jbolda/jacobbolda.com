@@ -7,7 +7,7 @@ import Link from "./src/components/link.js";
 export default ({ recipe }) => (
   <div class="overflow-hidden">
     <Helmet>
-      <title>{recipe.name}</title>
+      <title>Jacob Bolda | {recipe.name}</title>
       <meta property="og:type" content="website" />
     </Helmet>
     <div class="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
