@@ -59,7 +59,7 @@ const Hero = (props) => (
 
             <Heading as="h1">Jacob Bolda</Heading>
 
-            <Heading as="h1">Senior Software Engineer</Heading>
+            <Heading as="h2">Senior Software Engineer</Heading>
 
             <Text>
               Senior Software Engineer built on the foundation of a classically

@@ -40,7 +40,11 @@ const RecipeSection = ({ children }) => (
 export const RecipeWrap = ({ recipe }) => (
   <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
     <div class="shrink-0">
-      <img src={recipe.imageUrl} class="h-48 w-full object-cover" />
+      <img
+        src={recipe.imageUrl}
+        class="h-48 w-full object-cover"
+        alt={`close up view of ${recipe.name}`}
+      />
     </div>
     <div class="flex-1 p-6 flex flex-col justify-between">
       <div class="flex-1">
