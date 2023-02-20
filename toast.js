@@ -149,19 +149,23 @@ export const sourceData = async ({ setDataForSlug }) => {
   });
 
   await setDataForSlug("/about", {
-    data: { pageType: "article" },
+    data: { pageType: "article", title: "About" },
   });
 
   await setDataForSlug("/404", {
-    data: { pageType: "page" },
+    data: { pageType: "page", title: "Oops, Where Did That Page Go" },
   });
 
   await setDataForSlug("/uses", {
-    data: { uses, pageType: "page" },
+    data: { uses, pageType: "page", title: "Uses" },
   });
 
   await setDataForSlug("/articles", {
-    data: { articles: [...drafts, ...articles, ...notes], pageType: "page" },
+    data: {
+      articles: [...drafts, ...articles, ...notes],
+      pageType: "page",
+      title: "Articles",
+    },
   });
 
   await setDataForSlug("/garden", {
@@ -170,11 +174,12 @@ export const sourceData = async ({ setDataForSlug }) => {
       notes,
       drafts,
       pageType: "page",
+      title: "Garden",
     },
   });
 
   await setDataForSlug("/recipes", {
-    data: { recipes, pageType: "page" },
+    data: { recipes, pageType: "page", title: "Recipes" },
   });
 
   const recipeComponent = await fs.readFile("./src/components/recipe.js", {

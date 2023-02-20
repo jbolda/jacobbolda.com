@@ -5,7 +5,6 @@ import { ArticleSection, ArticleWrap } from "./articles.js";
 export default (props) => (
   <>
     <Helmet>
-      <title>Garden</title>
       <meta
         property="description"
         content="These are all of my articles. Enjoy!"

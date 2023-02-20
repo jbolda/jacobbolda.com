@@ -66,7 +66,9 @@ const components = {
 };
 
 export default function PageWrapper(props) {
-  const title = `Jacob Bolda${props?.title ? `| ${props.title}` : ""}`;
+  const title = `Jacob Bolda${
+    props?.children?.props?.title ? ` | ${props.children.props.title}` : ""
+  }`;
   props.children.props.components = components;
 
   return (

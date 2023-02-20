@@ -7,7 +7,6 @@ import Link from "./../components/link.js";
 export default (props) => (
   <RecipeSection>
     <Helmet>
-      <title>Recipes</title>
       <meta
         property="description"
         content="We like to cook. We particularly like to cook these recipes. Hopefully you find these of mutual interest."

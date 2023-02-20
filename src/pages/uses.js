@@ -7,7 +7,6 @@ import Link from "./../components/link.js";
 export default (props) => (
   <UsesSection>
     <Helmet>
-      <title>Uses</title>
       <meta
         property="description"
         content="These are all the things that I use. Cheers!"

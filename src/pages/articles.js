@@ -8,7 +8,6 @@ import { SeedSVG } from "./../components/small-icons/index.js";
 export default (props) => (
   <ArticleSection>
     <Helmet>
-      <title>Articles</title>
       <meta
         property="description"
         content="These are all of my articles. Enjoy!"
