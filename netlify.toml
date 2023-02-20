@@ -8,6 +8,11 @@ to = "https://res.cloudinary.com/jacobbolda/image/upload/w_600/:splat"
 status = 200
 
 [[redirects]]
+from = "/social/*"
+to = "https://res.cloudinary.com/jacobbolda/image/upload/w_1280,h_720,c_fill,q_auto,f_auto/w_750,h_650,c_fit,co_rgb:FFFFFF,g_north_west,x_75,y_75,l_text:roboto_96_bold_normal_left::splat/social/social_image_template.jpg"
+status = 200
+
+[[redirects]]
 from = "/feedback/js/script.js"
 to = "https://plausible.io/js/plausible.outbound-links.js"
 status = 200
