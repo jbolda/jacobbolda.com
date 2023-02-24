@@ -14,16 +14,28 @@ import ArticleWrapper from "./components/wrapperArticle.js";
 
 const components = {
   p: ({ children }) => (
-    <Text as="p" classAdd="px-2 mx-auto">
+    <Text as="p" classAdd="px-2 sm:w-3/4 md:w-2/3 lg:w-1/2">
       {children}
     </Text>
   ),
-  h1: (props) => <Heading as="h1" {...props} />,
-  h2: (props) => <Heading as="h2" {...props} />,
-  h3: (props) => <Heading as="h3" {...props} />,
-  h4: (props) => <Heading as="h4" {...props} />,
-  h5: (props) => <Heading as="h5" {...props} />,
-  h6: (props) => <Heading as="h6" {...props} />,
+  h1: (props) => (
+    <Heading as="h1" {...props} classAdd="px-2 sm:w-3/4 md:w-2/3 lg:w-1/2" />
+  ),
+  h2: (props) => (
+    <Heading as="h2" {...props} classAdd="px-2 sm:w-3/4 md:w-2/3 lg:w-1/2" />
+  ),
+  h3: (props) => (
+    <Heading as="h3" {...props} classAdd="px-2 sm:w-3/4 md:w-2/3 lg:w-1/2" />
+  ),
+  h4: (props) => (
+    <Heading as="h4" {...props} classAdd="px-2 sm:w-3/4 md:w-2/3 lg:w-1/2" />
+  ),
+  h5: (props) => (
+    <Heading as="h5" {...props} classAdd="px-2 sm:w-3/4 md:w-2/3 lg:w-1/2" />
+  ),
+  h6: (props) => (
+    <Heading as="h6" {...props} classAdd="px-2 sm:w-3/4 md:w-2/3 lg:w-1/2" />
+  ),
   blockquote: ({ children }) => (
     <blockquote class="max-w-prose">{children}</blockquote>
   ),
@@ -42,9 +54,7 @@ const components = {
       {children}
     </List>
   ),
-  table: ({ children }) => (
-    <table class="table-auto max-w-prose">{children}</table>
-  ),
+  table: ({ children }) => <table class="table-auto">{children}</table>,
   thead: ({ children }) => <thead>{children}</thead>,
   tbody: ({ children }) => <tbody>{children}</tbody>,
   tr: ({ children }) => <tr>{children}</tr>,
@@ -58,8 +68,10 @@ const components = {
   a: ({ children, ...rest }) => <Link {...rest}>{children}</Link>,
   codeblock: (props) => (
     <div class="bg-gray-900 dark:bg-gray-900 w-full mb-4 overflow-x-auto">
-      <div class="mx-auto py-3 px-8 max-w-5xl">
-        <div {...props} />
+      <div class="grid justify-items-center">
+        <div class="py-3 px-2 sm:w-3/4 md:w-2/3 lg:w-1/2">
+          <div {...props} />
+        </div>
       </div>
     </div>
   ),
