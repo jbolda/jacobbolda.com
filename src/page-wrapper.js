@@ -14,27 +14,51 @@ import ArticleWrapper from "./components/wrapperArticle.js";
 
 const components = {
   p: ({ children }) => (
-    <Text as="p" classAdd="px-2 sm:w-3/4 md:w-2/3 lg:w-1/2">
+    <Text as="p" classAdd="px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
       {children}
     </Text>
   ),
   h1: (props) => (
-    <Heading as="h1" {...props} classAdd="px-2 sm:w-3/4 md:w-2/3 lg:w-1/2" />
+    <Heading
+      as="h1"
+      {...props}
+      classAdd="px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2"
+    />
   ),
   h2: (props) => (
-    <Heading as="h2" {...props} classAdd="px-2 sm:w-3/4 md:w-2/3 lg:w-1/2" />
+    <Heading
+      as="h2"
+      {...props}
+      classAdd="px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2"
+    />
   ),
   h3: (props) => (
-    <Heading as="h3" {...props} classAdd="px-2 sm:w-3/4 md:w-2/3 lg:w-1/2" />
+    <Heading
+      as="h3"
+      {...props}
+      classAdd="px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2"
+    />
   ),
   h4: (props) => (
-    <Heading as="h4" {...props} classAdd="px-2 sm:w-3/4 md:w-2/3 lg:w-1/2" />
+    <Heading
+      as="h4"
+      {...props}
+      classAdd="px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2"
+    />
   ),
   h5: (props) => (
-    <Heading as="h5" {...props} classAdd="px-2 sm:w-3/4 md:w-2/3 lg:w-1/2" />
+    <Heading
+      as="h5"
+      {...props}
+      classAdd="px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2"
+    />
   ),
   h6: (props) => (
-    <Heading as="h6" {...props} classAdd="px-2 sm:w-3/4 md:w-2/3 lg:w-1/2" />
+    <Heading
+      as="h6"
+      {...props}
+      classAdd="px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2"
+    />
   ),
   blockquote: ({ children }) => (
     <blockquote class="max-w-prose">{children}</blockquote>
