@@ -93,7 +93,7 @@ const components = {
   codeblock: (props) => (
     <div class="bg-gray-900 dark:bg-gray-900 w-full mb-4 overflow-x-auto">
       <div class="grid justify-items-center">
-        <div class="py-3 px-2 sm:w-3/4 md:w-2/3 lg:w-1/2">
+        <div class="py-3 px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
           <div {...props} />
         </div>
       </div>
