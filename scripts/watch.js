@@ -96,7 +96,6 @@ function fileWatcher() {
       yield spawn(on(watcher, "unlink").forEach(writeOperation));
       yield spawn(on(watcher, "change").forEach(writeOperation));
       return yield fileChanges.forEach(function* () {
-        console.log("things");
         yield runBuild();
       });
     },

@@ -9,6 +9,7 @@ const specs = [
   "preact/compat",
   "preact/jsx-runtime",
   "big.js",
+  "react-player/lazy",
 ];
 
 // esinstall doesn't let us quiet the output while it runs
@@ -27,6 +28,8 @@ const options = {
   dest: "./public/web_modules",
   alias: {
     react: "preact/compat",
+    "react-dom": "preact/compat",
+    "react-player": "react-player",
   },
   logger,
 };
