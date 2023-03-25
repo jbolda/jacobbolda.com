@@ -11,6 +11,27 @@ import Link from "./components/link.js";
 import Unfurl from "./components/unfurl.js";
 
 import ArticleWrapper from "./components/wrapperArticle.js";
+import VideoWrapper from "./components/videoWrapper.js";
+
+const ClickToSeek = ({ player, timing, children }) => {
+  return (
+    <button
+      class="w-full"
+      onClick={() => seekPlayerToTimestamp(player, timing)}
+    >
+      {children}
+    </button>
+  );
+};
+
+const seekPlayerToTimestamp = (player, timestamp) => {
+  if (!player) return;
+  console.log(player.props);
+  console.log(player.getCurrentTime());
+  console.log(player.getSecondsLoaded());
+  console.log(player.getDuration());
+  player.seekTo(timestamp);
+};
 
 const components = {
   p: ({ children }) => (
@@ -99,6 +120,10 @@ const components = {
       </div>
     </div>
   ),
+  ClickText: ({ text, children }) => (
+    <Text classAdd="px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2">{text}</Text>
+  ),
+  ClickToSeek,
 };
 
 export default function PageWrapper(props) {
@@ -147,6 +172,8 @@ export default function PageWrapper(props) {
 const ContentWrapper = ({ children, pageType }) => {
   if (pageType === "article") {
     return <ArticleWrapper>{children}</ArticleWrapper>;
+  } else if (pageType === "video") {
+    return <VideoWrapper>{children}</VideoWrapper>;
   } else {
     return <div class="grow">{children}</div>;
   }

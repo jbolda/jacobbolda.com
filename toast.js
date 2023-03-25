@@ -1,6 +1,7 @@
 import { sourceMdx } from "@toastdotdev/mdx";
 import { sourceAirtable } from "./fetch/fetch-airtable.js";
 import { sourceDraftArticles } from "./fetch/fetch-draft-articles.js";
+import { processSubtitles } from "./process/process-srt.js";
 import fetch from "node-fetch";
 
 import { promises as fs, createWriteStream } from "fs";
@@ -29,6 +30,17 @@ const sortByDate = (object1, object2) => {
 };
 
 export const sourceData = async ({ setDataForSlug }) => {
+  const data = await sourceMdx({
+    setDataForSlug,
+    directory: "./content/videos",
+    slugPrefix: "/",
+    remarkPlugins: [processSubtitles],
+  });
+
+  await setDataForSlug(`/webvtt-and-video-html-element`, {
+    data: { pageType: "video", ...data[0].meta },
+  });
+
   console.time(`fetch content`);
   try {
     await fs.access("./public/images");
