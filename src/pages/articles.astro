@@ -1,0 +1,11 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "~/layouts/PageLayout.astro";
+import Articles from "~/components/pages/articles.jsx";
+
+const articles = await getCollection("articles");
+---
+
+<PageLayout>
+  <Articles articles={articles} />
+</PageLayout>

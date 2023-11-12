@@ -1,0 +1,106 @@
+---
+title: Setting Up CI and CD for Tauri
+written: '2020-03-22'
+slug: /setting-up-ci-and-cd-for-tauri/
+category: CI/CD
+keywords:
+  - GitHub Actions
+description: >-
+  I've recently started helping out with a project called Tauri. I will use it
+  myself, but I appreciate the vision and want to see it succeed. The repo did
+  not have no continuous integration or continuous delivery set up, and I knew
+  it would provide immediate value to the project. Thus began my involvement and
+  we decided to use the shiny new GitHub Actions to deliver this.
+---
+
+# Setting Up CI/CD for Tauri
+
+## Background
+
+I've recently started helping out with a project called Tauri. I will use it myself, but I appreciate the vision and want to see it succeed. When I started looking into it, they were pushing towards releasing an alpha. The repo did not have no continuous integration or continuous delivery set up. I have seen the value that it can have in creating focus in a project. I knew I would be able to provide immediate value to the project with CI/CD.
+
+Thus began my involvement. We decided to use the shiny new GitHub Actions to deliver this. It was still in beta, but it had gone through iterations over months and months. We felt it was stable enough to use (and nearly out of beta anyway). The deep integration with GitHub will be useful for us.
+
+We didn't have much in the way of tests to run as much of the codebase had been more recently pulled out of other projects. The quickest win was to take and create some example projects. We could then create, what we're calling, our smoke tests on top of the examples. We took the manual process of testing in projects, and dumped . They are "integration" tests where we will take any HTML, CSS and JS and build it with Tauri.
+
+## Next Phase of Testing
+
+This served us well and caught a few bugs in the process. We had the focus to get to and meet our release goal of launching the first alpha build. As the confidence in our code base has risen, the value has flipped. The time these smoke tests take to run has grown faster than to the value delivered. The time that it takes to run the smoke tests has become painful. We had these tests run on every push to a PR, as we wanted a tight feedback loop in fixing any issues we had. Now that we started to add more unit tests. We can back off and not run on every push while still getting the needed feedback. The next phase in our setup will be running our unit tests on every push, and dialing back our smoke test runs.
+
+Github Actions has two triggers of which we make heavy use: `push` and `pull_request`. Every commit that made to the repo is a `push`. When you open a pull request from a branch (call it `great_feature`) to another branch (our working branch, `dev`), each commit to `great_feature` would possibly trigger both of these events. We can use a filter to focus on the events we care about though. In our workflows, we only PR (pull request) the `dev` and `master` branches. This means that if we filter to only the `dev` and `master` branches on commit, we will only run that workflow when we *merge* a PR. A merged PR typically only occurs once a day or less so this will be a good fit for the longer running tests, e.g. the smoke tests in our case. Below is how that might look.
+
+Unit tests:
+
+```yml
+# these run fast so we can have them run on any commit
+name: unit tests
+on:
+  pull_request:
+  push:
+    branches:
+      - dev
+      - master
+```
+
+Smoke tests:
+
+```yml
+# these run slower so we run only on merges to dev or master branch
+name: smoke tests
+on:
+  push:
+    branches:
+      - dev
+      - master
+```
+
+Tauri operates off the `dev` branch as default, and merges to `master` for release. With these Github Actions set up, we will run the unit tests on every commit to an open PR (see `pull_request`). When that PR is merged into `dev`, we will run both the unit tests and the smoke tests.
+
+## Our Examples (aka Smoke Tests)
+
+Let us touch on this for a moment. The smoke tests are a handful of examples created using the major frameworks (Vue, create-react-app, Quasar, Next.js, Gatsby, ...). Originally these resided in a separate repository. They were then moved into the main Tauri repo for what seemed worthwhile benefits. We implemented the Renovate bot which opens a pull request to upgrade dependencies which includes our examples. Remember those Github Actions? This would trigger our tests to run. It was nice to see these tested every time our examples updated. Having the examples close by and wired up also made for testing locally much easier. The downside is that these pull requests created a lot of noise. The examples were flooding our CI and commit history. To help reduce the noise, we grouped updates into logical chunks and ran them on specific days. That helped but not quite enough.
+
+Our Github Actions uses a "standard action" called `actions/checkout` which pulls in our repo. This was recently updated to `v2`, and with it came the feature which made it much easier to checkout multiple repos. This feature gave us enough incentive to shift the examples back into their own repository. We could still implement the update process and test using the examples, but the noise is removed. This changes the local dev workflow, but we can adapt to it.
+
+## Next Level Publishing
+
+The next big value add that we will see is a programmatic release process. We can set up a system to release our packages to either crates or NPM. While this concept is not new, the difficulty that we are seeing is that none of these existing systems or command line programs are able to deal with a monorepo that has multiple languages. It gets even more involved if we want to release packages independent of one another. We looked at a CLI utility called `bumped` that takes a version command and runs specified scripts to version bump and publish. This would publish our packages keeping them in lockstep. There is value though, potentially, in having some packages increment versions with each other and be on the same version. If we do a patch on one package it doesn't necessarily make sense to publish a new patch version on everything in the repo. How shall we best deal with this?
+
+Since we haven't been able to find anything completely built out, we are going to have to work our own. There is a package called `changesets` that is primarily built for use with JavaScript and Yarn. As mentioned before, we do have rust code in our library so we can't use `changsets` out of the box, but the bulk of the operations are done through a CLI and managed with markdown files. The package is something that, once we have initialized, can mostly run the CLI in our CI and doesn't need to be handled by the user. For a user to recommend a package change, they need only create a markdown file in the `.changesets` folder. While having the CLI create the file for you is nice, it isn't a necessity.
+
+The version bump and polishing sequences are tightly coupled to JavaScript though. However, the implementation of `changesets` is split up nicely into packages each with their own scope. We could use the packages that parse the markdown files into version changes, and build a life cycle around it. It would run version bumps and publishes based on a script that we pass. There is nothing that is yet published, but experimentation has shown promising results. Regardless if the code changing is Rust or JavaScript, we can describe the change in markdown. This will parse the markdown for us and we can then issue commands based on the described version bump. After the version is bumped, we need only issue a publish command for crates or npm. Since we don't need dynamic use of this library, we could manually set each package to publish using a specified script.
+
+The only sticky point is the changelog creation. It is rather coupled to code around the publishing sequence. We will need to rip out peices of that to keep that functionality.
+
+## Leveling Up Our Releases
+
+We will look to do even more above and beyond the typical publish workflow in the later phases of our Github Actions use. This project has a deep consideration for security that is worth bringing to our publishing workflow. A workflow could involve publishing the package to multiple package managers including a private one hosted by Tauri. We can also do some interesting things like signing our releases, including a hash in the release and/or even publishing this information on a blockchain that it can be easily verified. Publishing on the blockchain is another avenue to increase the confidence that what is seen on GitHub matches what you have downloaded. The IOTA foundation created a Github Action which will publish a release to their blockchain. This has shown promise, but he gave a couple errors to tackle still.
+
+## Publish and Release Checklist
+
+Let's wrap all of this into nice little bullet pointed list. (That's basically `.yml` right? You will soon be an expert at reading it if you aren't already :D ) This is the ideal that we are working towards. As it stands now, we have #3 through #6 implemented. We manually do #2 which then feeds into #3 and kicks off the rest of the automatic workflow.
+
+1. a human pushes to dev through a pull request (can happen any number of times)
+   * pull request includes a changeset file describing the change and required version bump
+2. a pull request is created (or updated) to include the change and version bump
+   * this pull request stays open and will be force pushed until it gets merged (and published)
+   * increase the version number based on changesets
+   * delete all changeset files
+3. a codeowner merges the publish PR to dev (no direct push permissible for anyone)
+   * all tests (unit, e2e, smoke tests) are run on the PR
+   * failures prevent the publish so they must pass before merge
+4. merge to dev triggers release sequence
+   * changes are squashed and a PR is opened against master
+5. when PR to master is merged...
+   * vulnerability audit (crates and yarn) and output saved
+   * checksums and metadata and output saved
+   * packages are published on npm/cargo, tarball/zip created
+   * release is created for each package that had updates (if version isn't changed, build skips the publish steps)
+   * output from audit/checksums is piped into the release body
+   * tarball / zip attached to release
+   * async process to publish to IOTA tangle (feeless) via release tag \[note: still have things to resolve here]
+6. release is complete
+   * master has updated code and tagged
+   * GitHub release has tarballs, checksums, and changelog (may have multiple releases if more than one package published) \[note: is part of step 2 and is not yet implemented]
+
+Hopefully this inspires you to implement this into your own workflows. If you have any questions, feel free to reach out and I would be happy to answer. Cheers!

@@ -1,0 +1,46 @@
+---
+title: Yarn Global Add Local Package With Windows Path
+written: '2020-08-11'
+category: yarn
+description: >-
+  As much as I dislike global packages, sometimes they have value. This is a
+  slick way to test a local package (even non-published) as a global CLI.
+---
+
+# Yarn Global Add Local Package With Windows Path
+
+As much as I dislike global packages, sometimes they have value. This is a slick way to test a local package (even non-published) as a global CLI. Yarn uses the same commands with the addition of the `global` keyword.
+
+```shell
+yarn global add package
+```
+
+It has a [handful of options](https://classic.yarnpkg.com/en/docs/cli/add#toc-adding-dependencies) for linking local dependencies. The local symlink version seems handy.
+
+```shell
+yarn global add link:/c/Users/Jacob/Documents/dev/tauri/tauri/cli/tauri.js
+```
+
+Unfortunately, Windows seems to choke on the colon.
+
+```shell
+❯ yarn global add link:/c/Users/Jacob/Documents/dev/tauri/tauri/cli/tauri.js
+yarn global v1.22.4
+[1/4] Resolving packages...
+error Couldn't find package "link;C:\\Users\\Jacob\\Documents\\dev\\tauri\\tauri\\cli\\tauri.js" on the "npm" registry.
+info Visit https://yarnpkg.com/en/docs/cli/global for documentation about this command.
+```
+
+The only thing I managed to get to work was passing the absolute path without their special options.
+
+```shell
+yarn global add /c/Users/Jacob/Documents/dev/tauri/tauri/cli/tauri.js
+```
+
+Now typing out the full path is a bit of a chore. Using `$PWD` and running the command from the folder in question, we can shorten it to the following.
+
+```shell
+yarn global add $PWD
+```
+
+Cheers and have fun testing that CLI!

@@ -1,0 +1,12 @@
+---
+import PageLayout from "~/layouts/PageLayout.astro";
+import Home from "~/components/pages/home.jsx";
+
+// TODO fetch list of articles
+const articlesCurated = [];
+const articlesRecent = [];
+---
+
+<PageLayout>
+  <Home articlesCurated={articlesCurated} articlesRecent={articlesRecent} />
+</PageLayout>
