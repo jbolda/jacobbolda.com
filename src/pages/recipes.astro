@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "~/layouts/PageLayout.astro";
+import Recipes, { RecipeWrap } from "~/components/pages/recipes.jsx";
+import { Picture } from "astro:assets";
+
+const recipeCollection = await getCollection("recipes");
+const recipes = recipeCollection.map((recipe) => ({
+  ...recipe.data,
+  slug: recipe.slug,
+}));
+---
+
+<PageLayout>
+  <Recipes recipes={recipes}>
+    {
+      recipes.map((recipe) => (
+        <RecipeWrap key={recipe.name} recipe={recipe}>
+          {recipe.image ? (
+            <Picture
+              slot="image"
+              class="h-48 w-full object-cover"
+              src={recipe.image}
+              alt={`close up view of ${recipe.name}`}
+            />
+          ) : null}
+        </RecipeWrap>
+      ))
+    }
+  </Recipes>
+</PageLayout>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Link from "./link.jsx";
 
-export default ({ children }) => (
+export default () => (
   <footer className="flex-initial">
     <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
       <nav
@@ -102,11 +102,11 @@ const Toggle = (props) => {
   const toggleAction = () => {
     if (!document.documentElement.classList.contains("dark")) {
       document.documentElement.classList.add("dark");
-      window.localStorage.setItem("nightwind-mode", "dark");
+      window.localStorage.setItem("theme", "dark");
       toggleColorMode("dark");
     } else {
       document.documentElement.classList.remove("dark");
-      window.localStorage.setItem("nightwind-mode", "light");
+      window.localStorage.setItem("theme", "light");
       toggleColorMode("light");
     }
   };

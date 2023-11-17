@@ -5,13 +5,15 @@ import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
+import prefetchContent from "./integration/prefetch-content";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.jacobbolda.com",
-  integrations: [react(), mdx(), sitemap(), tailwind()],
+  integrations: [prefetchContent(), react(), mdx(), sitemap(), tailwind()],
+  experimental: { devOverlay: true },
   vite: {
     resolve: {
       alias: {

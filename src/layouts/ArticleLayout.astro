@@ -1,13 +1,17 @@
 ---
 import Layout from "./Layout.astro";
 import PageWrapper from "~/components/common/page-wrapper.jsx";
+import Header from "~/components/common/header.jsx";
+import Footer from "~/components/common/footer.jsx";
 import ArticleWrapper from "~/components/common/article-wrapper.jsx";
-// const articleProps = Astro.props;
+
 const articleProps = Astro.props;
 ---
 
 <Layout>
-  <PageWrapper client:load>
+  <PageWrapper>
+    <Header client:load />
     <ArticleWrapper {...articleProps}><slot /></ArticleWrapper>
+    <Footer client:load />
   </PageWrapper>
 </Layout>

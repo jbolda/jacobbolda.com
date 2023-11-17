@@ -1,12 +1,17 @@
-import Airtable from "airtable";
+import Airtable, { type FieldSet } from "airtable";
 import path from "path";
 import { promises as fs } from "fs";
 
-export const sourceAirtable = async ({ tables }) => {
-  const contentPath = "./.tmp/airtable/";
+export const sourceAirtable = async (
+  contentDir: string,
+  tables: Record<string, any>[],
+  template: null | ((f: object, contentPath: string) => Promise<void>) = null,
+  cache: boolean = false
+) => {
+  const contentPath = `./src/content/${contentDir}`;
   const filePath = path.join(contentPath, `${tables[0].baseId}.json`);
 
-  if (process.env.SITE_FILE_CACHE) {
+  if (process.env.SITE_FILE_CACHE || cache) {
     console.info("trying to use airtable from cache");
     try {
       // it exists, let's skip downloading
@@ -21,14 +26,10 @@ export const sourceAirtable = async ({ tables }) => {
   if (!process.env.AIRTABLE_API_KEY)
     throw new Error("env var AIRTABLE_API_KEY not set");
 
-  // const api = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY });
   Airtable.configure({ apiKey: process.env.AIRTABLE_API_KEY });
 
-  console.time(`fetch all Airtable rows from ${tables.length} tables`);
-
-  let queue = [];
   const tableQueries = tables.map(async (tableOptions) => {
-    let allRecords = [];
+    let allRecords: FieldSet[] = [];
     const { baseId, tableView, tableName, queryName } = tableOptions;
     let base = Airtable.base(baseId);
     let view = tableView || "";
@@ -60,9 +61,12 @@ export const sourceAirtable = async ({ tables }) => {
         // noop
       }
       await fs.mkdir(contentPath, { recursive: true });
-      await fs.writeFile(filePath, JSON.stringify(reduced));
+      if (template) {
+        await template(reduced, contentPath);
+      } else {
+        await fs.writeFile(filePath, JSON.stringify(reduced));
+      }
 
-      console.timeEnd(`fetch all Airtable rows from ${tables.length} tables`);
       return reduced;
     })
     .catch((e) => {

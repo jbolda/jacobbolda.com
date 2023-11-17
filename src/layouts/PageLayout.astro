@@ -1,10 +1,14 @@
 ---
 import Layout from "./Layout.astro";
 import PageWrapper from "~/components/common/page-wrapper.jsx";
+import Header from "~/components/common/header.jsx";
+import Footer from "~/components/common/footer.jsx";
 ---
 
 <Layout>
   <PageWrapper>
+    <Header client:load />
     <div class="grow"><slot /></div>
+    <Footer client:load />
   </PageWrapper>
 </Layout>

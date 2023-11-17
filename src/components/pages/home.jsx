@@ -13,12 +13,12 @@ export default (props) => {
       <Social />
       <Articles textHeading="Curated" textSubheading="For the best consumption">
         {props.articlesCurated.map((article) => (
-          <ArticleWrap article={article} />
+          <ArticleWrap key={article.slug} article={article} />
         ))}
       </Articles>
       <Articles textHeading="Recent" textSubheading="These are top of mind">
         {props.articlesRecent.map((article) => (
-          <ArticleWrap article={article} />
+          <ArticleWrap key={article.slug} article={article} />
         ))}
       </Articles>
       <Engagements />
@@ -41,11 +41,8 @@ const Hero = (props) => (
         <main className="mt-10 max-w-7xl px-4 sm:mt-12 sm:px-3 md:mt-16 lg:mt-20 lg:px-10 xl:mt-28">
           <div className="sm:text-center lg:text-left">
             <Heading as="h3">Hi, I am</Heading>
-
             <Heading as="h1">Jacob Bolda</Heading>
-
             <Heading as="h2">Senior Software Engineer</Heading>
-
             <Text>
               Senior Software Engineer built on the foundation of a classically
               trained Structural Engineer. Masters degree in Structural
@@ -69,7 +66,9 @@ const Articles = ({ children, textHeading, textSubheading }) => (
       </div>
       <div className="max-w-lg grid gap-5 lg:grid-cols-3 lg:max-w-none pt-4 rounded-md">
         {children.map((child) => (
-          <div className="p-2 flex flex-col">{child}</div>
+          <div key={child.key} className="p-2 flex flex-col">
+            {child}
+          </div>
         ))}
       </div>
     </div>

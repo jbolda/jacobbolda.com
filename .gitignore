@@ -8,4 +8,8 @@ dist
 *.log
 .netlify
 
-content/drafts
+# content sync directories
+src/content/drafts
+src/content/uses
+src/content/curated
+src/content/recipe*

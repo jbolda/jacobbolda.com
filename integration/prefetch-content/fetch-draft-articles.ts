@@ -60,12 +60,11 @@ Deploy this script and use the Web App Url, e.g. `https://script.google.com/macr
 
 import fetch from "node-fetch";
 import { promises as fs } from "fs";
-import { convertFromYamlToMeta } from "../.bin/frontmatter-to-meta.js";
 
-export const sourceDraftArticles = async () => {
-  const contentPath = "./content/drafts/";
+export const sourceDraftArticles = async (cache) => {
+  const contentPath = "./src/content/drafts/";
 
-  if (process.env.SITE_FILE_CACHE) {
+  if (cache) {
     console.info("trying to use draft articles from cache");
     try {
       const files = await fs.readdir(contentPath);
@@ -103,10 +102,8 @@ export const sourceDraftArticles = async () => {
       let fileBuffer = Buffer.from(result.blob);
       filename.pop();
       filename.push(["mdx"]);
-      fs.writeFile(
-        `./content/drafts/${filename.join(".")}`,
-        await convertFromYamlToMeta({ content: fileBuffer })
-      );
+      if (!fileBuffer.toString().includes("progress: article"))
+        fs.writeFile(`./src/content/drafts/${filename.join(".")}`, fileBuffer);
     })
   );
 };

@@ -3,6 +3,31 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      (function () {
+        function getInitialColorMode() {
+          const persistedColorPreference = window.localStorage.getItem("theme");
+          if (typeof persistedColorPreference === "string") {
+            return persistedColorPreference;
+          }
+          const mql = window.matchMedia("(prefers-color-scheme: dark)");
+          if (typeof mql.matches === "boolean") {
+            if (mql.matches) {
+              window.localStorage.setItem("theme", "dark");
+              return "dark";
+            } else {
+              window.localStorage.setItem("theme", "light");
+              return "light";
+            }
+          }
+          return "light";
+        }
+        getInitialColorMode() == "light"
+          ? document.documentElement.classList.remove("dark")
+          : document.documentElement.classList.add("dark");
+        document.documentElement.classList.add("dark");
+      })();
+    </script>
   </head>
   <body>
     <slot />

@@ -1,12 +1,8 @@
 // const colors = require("tailwindcss/colors");
 
 module.exports = {
-  // darkMode: "class",
-  // future: {
-  //   removeDeprecatedGapUtilities: true,
-  //   purgeLayersByDefault: true,
-  // },
-  content: ["./src/**/*.{astro,jsx,mdx}"], //, "./content/**/*.js"],
+  darkMode: "class",
+  content: ["./src/**/*.{astro,jsx,mdx}"],
   theme: {
     extend: {
       colors: {
@@ -19,5 +15,4 @@ module.exports = {
       },
     },
   },
-  // plugins: [require("@tailwindcss/aspect-ratio")],
 };

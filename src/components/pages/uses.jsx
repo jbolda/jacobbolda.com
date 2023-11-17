@@ -1,10 +1,23 @@
----
 import { Helmet } from "react-helmet";
 import Heading from "~/components/common/heading.jsx";
 import Text from "~/components/common/text.jsx";
 import Link from "~/components/common/link.jsx";
 
-const UsesSection = ({ heading = "Uses", children }) => (
+export default (props) => (
+  <UsesSection>
+    <Helmet>
+      <meta
+        property="description"
+        content="These are all the things that I use. Cheers!"
+      />
+    </Helmet>
+    {props.uses.map((thing) => (
+      <UseWrap key={thing.title} thing={thing} />
+    ))}
+  </UsesSection>
+);
+
+export const UsesSection = ({ heading = "Uses", children }) => (
   <div className="pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
     <div className="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
       <div>
@@ -23,27 +36,15 @@ const UsesSection = ({ heading = "Uses", children }) => (
   </div>
 );
 
-const UseWrap = ({ thing }) => (
+export const UseWrap = ({ thing }) => (
   <div>
     <Link href={thing.url} flair="none">
       <Heading as="h3">{thing.title}</Heading>
       {!thing.subtitle ? null : <Text>{thing.subtitle}</Text>}
       <Text>{thing.description}</Text>
     </Link>
-    <div class="mt-3">
+    <div className="mt-3">
       <Link href={thing.url}>Check it out!</Link>
     </div>
   </div>
 );
----
-
-<UsesSection>
-  <Helmet>
-    <meta
-      property="description"
-      content="These are all the things that I use. Cheers!"
-    />
-  </Helmet>
-  <!-- {props.uses.map((thing) => <UseWrap thing={thing} />)} -->
-  <div>TODO</div>
-</UsesSection>

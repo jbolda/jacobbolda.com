@@ -3,7 +3,23 @@ import { getCollection } from "astro:content";
 import PageLayout from "~/layouts/PageLayout.astro";
 import Articles from "~/components/pages/articles.jsx";
 
-const articles = await getCollection("articles");
+const sortByDate = (object1, object2) => {
+  const o1date = !object1.data.updated
+    ? object1.data.written
+    : object1.data.updated;
+  if (!o1date) return 1;
+  const o2date = !object2.data.updated
+    ? object2.data.written
+    : object2.data.updated;
+  if (!o2date) return -1;
+  return new Date(o2date) > new Date(o1date) ? 1 : -1;
+};
+
+const articleCollection = await getCollection("articles");
+const articles = articleCollection.sort(sortByDate).map((article) => ({
+  ...article.data,
+  slug: article.slug,
+}));
 ---
 
 <PageLayout>
