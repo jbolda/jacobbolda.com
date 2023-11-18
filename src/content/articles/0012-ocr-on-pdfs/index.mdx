@@ -1,8 +1,8 @@
 ---
 title: Optical Character Recognition on PDFs
-written: '2019-08-01'
-updated: '2019-08-13'
-slug: /ocr-on-pdfs/
+written: 2019-08-01
+updated: 2019-08-13
+slug: ocr-on-pdfs
 category: files
 description: >-
   I recently converted out of Evernote and in that conversion process I ended up
@@ -61,7 +61,7 @@ I was trying to run the `--redo-ocr` function as there was already existing text
 
 [I ended up opening up an issue to try to figure this out.](https://github.com/jbarlow83/OCRmyPDF/issues/402) I was too close to the code. It turns out the installation instructions tell you to install an older version that's on PYPI, as that brought in additional dependencies that don't normally come through the other method. The following step then suggests installing the latest updated package to the user path. Yes, that made sense when I was following the instructions. I didn't put two and two together when I hit this error though.
 
-The `sudo` command actually changes your user and uses the `root` user path. We had only updated the path to the latest version on user account though. So it was actually using the system level installation of OCRmyPDF which *was* the old version. The old version did not happen to have this `--redo-ocr` parameter yet. To add to the confusion, I didn't use `sudo` when running the `--help` command because why would I need elevated permissions for that? So the help was returning the commands for the latest version, and my error was returned from an earlier version (as it was run from the `root` path).
+The `sudo` command actually changes your user and uses the `root` user path. We had only updated the path to the latest version on user account though. So it was actually using the system level installation of OCRmyPDF which _was_ the old version. The old version did not happen to have this `--redo-ocr` parameter yet. To add to the confusion, I didn't use `sudo` when running the `--help` command because why would I need elevated permissions for that? So the help was returning the commands for the latest version, and my error was returned from an earlier version (as it was run from the `root` path).
 
 After some discussion in the noted issue, I ended up learning the root of my issue (pun intended) and I was able to run the OCR function. I have a little script below that will batch OCR all the PDFs in a folder and drop a copy of the new PDFs into separate subfolder. Note: since we are on Linux (Ubuntu), we don't need to use Python, we can just use a little shell script directly. Also note, we put the `" "` around the filename as Windows files tend to have spaces, and my PDF export process produced filenames with spaces.
 
