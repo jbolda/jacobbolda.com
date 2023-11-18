@@ -81,14 +81,15 @@ const components = {
   del: ({ children }) => <del>{children}</del>,
   hr: ({ children }) => <hr>{children}</hr>,
   a: ({ children, ...rest }) => <Link {...rest}>{children}</Link>,
-  codeblock: (props) => (
-    <div class="bg-gray-900 dark:bg-gray-900 w-full mb-4 overflow-x-auto">
-      <div class="grid justify-items-center">
-        <div class="py-3 px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
-          <div {...props} />
-        </div>
-      </div>
-    </div>
+  pre: ({ children, className, ...rest }) => (
+    <pre className={className + " w-full grid justify-items-center"} {...rest}>
+      {children}
+    </pre>
+  ),
+  code: ({ children }) => (
+    <code className="py-3 px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
+      {children}
+    </code>
   ),
 };
 
