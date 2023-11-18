@@ -18,7 +18,7 @@ const sortByDate = (object1, object2) => {
 const articleCollection = await getCollection("articles");
 const articles = articleCollection.sort(sortByDate).map((article) => ({
   ...article.data,
-  slug: article.slug,
+  slug: article.slug.startsWith("/") ? article.slug : `/${article.slug}`,
 }));
 ---
 
