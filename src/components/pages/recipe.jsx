@@ -74,7 +74,7 @@ const RecipeChrome = ({ recipe, children }) => (
         {!recipe["last made"] ? null : (
           <Heading as="h3" className="text-primary-300 dark:text-primary-600">
             {"Last Made: "}
-            <time datetime={recipe["last made"].toISOString()}>
+            <time dateTime={recipe["last made"].toISOString()}>
               {recipe["last made"].toLocaleDateString("en-us", {
                 year: "numeric",
                 month: "short",

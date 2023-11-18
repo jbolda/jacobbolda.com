@@ -42,7 +42,7 @@ export const ArticleWrap = ({ article }) => (
     {!article?.keywords ? null : (
       <div>
         {article.keywords.map((keyword) => (
-          <ArticleTag tag={keyword} />
+          <ArticleTag key={keyword} tag={keyword} />
         ))}
       </div>
     )}
