@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import Layout from "./Layout.astro";
 import PageWrapper from "~/components/common/page-wrapper.jsx";
 import Header from "~/components/common/header.jsx";
@@ -9,6 +10,7 @@ const articleProps = Astro.props;
 ---
 
 <Layout>
+  <ViewTransitions />
   <PageWrapper>
     <Header client:load />
     <ArticleWrapper {...articleProps}><slot /></ArticleWrapper>

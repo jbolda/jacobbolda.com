@@ -21,13 +21,13 @@
         }
         return "light";
       }
-
-      document.addEventListener("DOMContentLoaded", (event) => {
-        console.log("DOM fully loaded and parsed");
+      const darkModeCheck = (event) => {
         getInitialColorMode() == "light"
           ? document.documentElement.classList.remove("dark")
           : document.documentElement.classList.add("dark");
-      });
+      };
+      document.addEventListener("DOMContentLoaded", darkModeCheck);
+      window.addEventListener("popstate", darkModeCheck);
     </script>
   </head>
   <body>
