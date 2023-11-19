@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "~/layouts/PageLayout.astro";
+import Home from "~/components/pages/home.jsx";
+
+const curatedCollection = await getCollection("curated");
+const curate = curatedCollection[0].data.curate;
+const articles = await getCollection("articles");
+const drafts = await getCollection("drafts");
+const notes = await getCollection("notes");
+
+const curate_list = curate
+  .sort((a, b) => a.order - b.order)
+  .map((item) => item.url);
+const articlesCurated = [...drafts, ...articles, ...notes]
+  .reduce(
+    (c, article) => {
+      if (curate_list.includes(article.slug)) {
+        c[curate_list.findIndex((item) => item === article.slug)] = {
+          ...article.data,
+          slug: article.slug,
+        };
+      }
+      return c;
+    },
+    curate_list.map((slug) => ({ slug }))
+  )
+  // @ts-expect-error
+  .filter((article) => article?.title && article.slug);
+
+const sortByDate = (object1, object2) => {
+  const o1date = !object1.data.updated
+    ? object1.data.written
+    : object1.data.updated;
+  if (!o1date) return 1;
+  const o2date = !object2.data.updated
+    ? object2.data.written
+    : object2.data.updated;
+  if (!o2date) return -1;
+  return new Date(o2date) > new Date(o1date) ? 1 : -1;
+};
+const articlesRecent = [...drafts, ...articles, ...notes]
+  .sort(sortByDate)
+  .slice(0, 9)
+  .map((article) => ({ ...article.data, slug: article.slug }));
+---
+
+<PageLayout>
+  <Home articlesCurated={articlesCurated} articlesRecent={articlesRecent} />
+</PageLayout>

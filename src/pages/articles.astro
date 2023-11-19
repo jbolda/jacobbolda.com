@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "~/layouts/PageLayout.astro";
+import ArticleComponent from "~/components/pages/articles.jsx";
+
+const sortByDate = (object1, object2) => {
+  const o1date = !object1.data.updated
+    ? object1.data.written
+    : object1.data.updated;
+  if (!o1date) return 1;
+  const o2date = !object2.data.updated
+    ? object2.data.written
+    : object2.data.updated;
+  if (!o2date) return -1;
+  return new Date(o2date) > new Date(o1date) ? 1 : -1;
+};
+
+const articlesCollection = await getCollection("articles");
+const draftsCollection = await getCollection("drafts");
+const notesCollection = await getCollection("notes");
+
+const articles = [
+  ...articlesCollection,
+  ...draftsCollection,
+  ...notesCollection,
+]
+  .sort(sortByDate)
+  .map((article) => ({
+    ...article.data,
+    slug: article.slug.startsWith("/") ? article.slug : `/${article.slug}`,
+  }));
+---
+
+<PageLayout>
+  <ArticleComponent articles={articles} />
+</PageLayout>

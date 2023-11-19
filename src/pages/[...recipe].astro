@@ -1,0 +1,37 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import PageLayout from "~/layouts/PageLayout.astro";
+import Recipe from "~/components/pages/recipe.jsx";
+import components from "~/components/common/mdxComponents";
+import { Picture } from "astro:assets";
+
+export async function getStaticPaths() {
+  const recipeCollection = await getCollection("recipes");
+  return recipeCollection.map((recipe) => {
+    return {
+      params: { recipe: recipe.slug },
+      props: recipe,
+    };
+  });
+}
+type Props = CollectionEntry<"recipes">;
+
+const recipe = Astro.props;
+const { Content } = await recipe.render();
+---
+
+<PageLayout>
+  <Recipe recipe={recipe.data}>
+    {
+      recipe.data.image ? (
+        <Picture
+          slot="image"
+          class="rounded-lg shadow-lg object-cover object-center"
+          src={recipe.data.image}
+          alt={`Image of ${recipe.data.name}`}
+        />
+      ) : null
+    }
+    <Content components={components} />
+  </Recipe>
+</PageLayout>

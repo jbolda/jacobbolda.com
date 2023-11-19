@@ -1,0 +1,12 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "~/layouts/PageLayout.astro";
+import Uses from "~/components/pages/uses.jsx";
+
+const usesCollection = await getCollection("uses");
+const uses = usesCollection.map((uses) => uses.data);
+---
+
+<PageLayout>
+  <Uses uses={uses} />
+</PageLayout>
