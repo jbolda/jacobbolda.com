@@ -19,13 +19,6 @@ export default function PageWrapper(props) {
           content="Senior Software Engineer creating and wielding open source to enable others with proper tools."
         />
         <meta property="og:type" content="website" />
-        <link rel="stylesheet" href="/styles.css" />
-        <script
-          defer
-          data-domain="jacobbolda.com"
-          data-api="/feedback/api/event"
-          src="/feedback/js/script.js"
-        ></script>
       </Helmet>
       <Unfurl
         title={title}
