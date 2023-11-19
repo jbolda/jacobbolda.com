@@ -22,6 +22,14 @@ const drafts = defineCollection({
   type: "content",
   schema: articleSchema,
 });
+const engagements = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    category: z.string().optional(),
+    description: z.string(),
+  }),
+});
 
 const uses = defineCollection({
   type: "content",
@@ -72,6 +80,7 @@ export const collections = {
   articles,
   notes,
   drafts,
+  engagements,
   uses,
   curated,
   recipes,
