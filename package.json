@@ -31,7 +31,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
-    "astro": "^3.5.3",
+    "astro": "^3.5.5",
     "astro-icon": "^1.0.0-next.2",
     "big.js": "^6.2.1",
     "limax": "4.1.0",
