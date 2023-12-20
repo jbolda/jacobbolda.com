@@ -24,7 +24,7 @@
     "lint:eslint": "eslint . --ext .js,.ts,.astro"
   },
   "dependencies": {
-    "@astrojs/react": "^3.0.4",
+    "@astrojs/react": "^3.0.7",
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.3",
     "@astrolib/analytics": "^0.4.2",
