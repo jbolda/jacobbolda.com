@@ -45,7 +45,7 @@
     "@astrojs/mdx": "^1.1.4",
     "@astrojs/partytown": "^2.0.2",
     "@astrojs/tailwind": "^5.0.2",
-    "@iconify-json/flat-color-icons": "^1.1.7",
+    "@iconify-json/flat-color-icons": "^1.1.10",
     "@iconify-json/tabler": "^1.1.96",
     "@tailwindcss/typography": "^0.5.10",
     "@types/lodash.merge": "^4.6.9",
