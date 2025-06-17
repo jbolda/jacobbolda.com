@@ -23,7 +23,7 @@ export default (props) => (
 const Seed = () => (
   <div className="rounded-md bg-primary-50 p-4">
     <div className="flex">
-      <div className="flex-shrink-0">
+      <div className="shrink-0">
         <SeedSVG className="w-10" aria-hidden="true" />
       </div>
       <div className="ml-3 flex-1 md:flex md:justify-between">
