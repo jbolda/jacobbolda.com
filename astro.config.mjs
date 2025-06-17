@@ -3,17 +3,17 @@ import { fileURLToPath } from "url";
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
-import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import prefetchContent from "./integration/prefetch-content";
+
+import tailwindcss from "@tailwindcss/vite";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.jacobbolda.com",
-  integrations: [prefetchContent(), react(), mdx(), sitemap(), tailwind()],
-  experimental: { devOverlay: true },
+  integrations: [prefetchContent(), react(), mdx(), sitemap()],
   markdown: {
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
@@ -39,5 +39,6 @@ export default defineConfig({
         "~": path.resolve(__dirname, "./src"),
       },
     },
+    plugins: [tailwindcss()],
   },
 });
