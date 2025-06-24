@@ -21,7 +21,7 @@ jobs:
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        run: netlify deploy --dir=dist --message ${{ github.event.pull_request.html_url }} 2>&1 | tee -a ./notes.md
+        run: npx netlify deploy --dir=dist --message ${{ github.event.pull_request.html_url }} 2>&1 | tee -a ./notes.md
       - name: comment PR
         uses: peter-evans/create-or-update-comment@v4
         with:
