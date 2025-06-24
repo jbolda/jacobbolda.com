@@ -8,12 +8,16 @@ import prefetchContent from "./integration/prefetch-content";
 
 import tailwindcss from "@tailwindcss/vite";
 
+import playformCompress from "@playform/compress";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// TODO add the rss plugin
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.jacobbolda.com",
-  integrations: [prefetchContent(), react(), mdx(), sitemap()],
+  integrations: [prefetchContent(), react(), mdx(), sitemap(), playformCompress()],
   markdown: {
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
