@@ -1,4 +1,6 @@
 import { defineCollection, reference, z } from "astro:content";
+import { glob } from "astro/loaders";
+import { sourceDraftArticles } from "../../content-loaders/draft-articles";
 
 const articleSchema = z.object({
   title: z.string(),
@@ -12,15 +14,15 @@ const articleSchema = z.object({
 });
 
 const articles = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/articles" }),
   schema: articleSchema,
 });
 const notes = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/notes" }),
   schema: articleSchema,
 });
 const drafts = defineCollection({
-  type: "content",
+  loader: sourceDraftArticles(false),
   schema: articleSchema,
 });
 const engagements = defineCollection({

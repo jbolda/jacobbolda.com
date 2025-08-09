@@ -1,23 +1,18 @@
 import type { AstroIntegration } from "astro";
 import { sourceAirtable } from "./fetch-airtable.ts";
 import { promises as fs, createWriteStream } from "node:fs";
-import fetch from "node-fetch";
-import { sourceDraftArticles } from "./fetch-draft-articles.ts";
+import { sourceDraftArticles } from "../../content-loaders/draft-articles.ts";
 
 export default function createPlugin(): AstroIntegration {
   return {
-    name: "@astrojs/partytown",
+    name: "fetch-content",
     hooks: {
-      "astro:config:setup": async ({
-        config: _config,
-        command: _command,
-        injectScript: _injectScript,
-      }) => {
-        const cache = !!process.env.SITE_FILE_CACHE ?? false;
-        await sourceUses(cache);
-        await sourceCurated(cache);
-        await sourceRecipes(cache);
-        await sourceDraftArticles(cache);
+      "astro:config:done": async () => {
+        const cache = !!process.env.SITE_FILE_CACHE;
+        // await sourceUses(cache);
+        // await sourceCurated(cache);
+        // await sourceRecipes(cache);
+        // await sourceDraftArticles(cache);
       },
     },
   };

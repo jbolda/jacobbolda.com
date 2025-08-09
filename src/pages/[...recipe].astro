@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 import PageLayout from "~/layouts/PageLayout.astro";
 import Recipe from "~/components/pages/recipe.jsx";
 import components from "~/components/common/mdxComponents";
@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"recipes">;
 
 const recipe = Astro.props;
-const { Content } = await recipe.render();
+const { Content } = await render(recipe);
 ---
 
 <PageLayout>

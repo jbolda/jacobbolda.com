@@ -11,7 +11,7 @@ export const sourceAirtable = async (
   const contentPath = `./src/content/${contentDir}`;
   const filePath = path.join(contentPath, `${tables[0].baseId}.json`);
 
-  if (process.env.SITE_FILE_CACHE || cache) {
+  if (import.meta.env.SITE_FILE_CACHE || cache) {
     console.info("trying to use airtable from cache");
     try {
       // it exists, let's skip downloading
@@ -23,10 +23,11 @@ export const sourceAirtable = async (
     }
   }
 
-  if (!process.env.AIRTABLE_API_KEY)
+  console.log(import.meta.env);
+  if (!import.meta.env.AIRTABLE_API_KEY)
     throw new Error("env var AIRTABLE_API_KEY not set");
 
-  Airtable.configure({ apiKey: process.env.AIRTABLE_API_KEY });
+  Airtable.configure({ apiKey: import.meta.env.AIRTABLE_API_KEY });
 
   const tableQueries = tables.map(async (tableOptions) => {
     let allRecords: FieldSet[] = [];
