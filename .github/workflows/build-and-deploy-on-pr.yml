@@ -10,20 +10,12 @@ jobs:
       - uses: actions/checkout@v3
       - uses: volta-cli/action@v1
       - run: npm ci
-      - name: build
-        run: npx netlify build -o
-        env:
-          NODE_ENV: production
-          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
-          ARTICLE_FETCH_ENDPOINT: ${{ secrets.ARTICLE_FETCH_ENDPOINT }}
       - name: deploy
         if: success()
         env:
+          NODE_ENV: production
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        run: npx netlify deploy --dir=dist --message ${{ github.event.pull_request.html_url }} 2>&1 | tee -a ./notes.md
-      # - name: comment PR
-      #   uses: peter-evans/create-or-update-comment@v4
-      #   with:
-      #     issue-number: ${{ github.event.pull_request.id }}
-      #     body-path: "notes.md"
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          ARTICLE_FETCH_ENDPOINT: ${{ secrets.ARTICLE_FETCH_ENDPOINT }}
+        run: npx netlify deploy --dir=dist --message ${{ github.event.pull_request.html_url }}
