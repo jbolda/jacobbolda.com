@@ -41,15 +41,22 @@ Logger.log(fileBlobs);
 Deploy this script and use the Web App Url, e.g. `https://script.google.com/macros/s/{BIG_ID}/exec`
 ```
 */
+import type { Loader, LoaderContext } from "astro/loaders";
 
-export function sourceDraftArticles(cache) {
+export function sourceDraftArticles(cache): Loader {
   if (!import.meta.env.ARTICLE_FETCH_ENDPOINT)
     throw new Error("env var ARTICLE_FETCH_ENDPOINT is not set");
   const url = import.meta.env.ARTICLE_FETCH_ENDPOINT;
 
   return {
     name: "draft-content-loader",
-    load: async ({ store, logger, renderMarkdown, meta, generateDigest }) => {
+    load: async ({
+      store,
+      logger,
+      renderMarkdown,
+      meta,
+      generateDigest,
+    }: LoaderContext) => {
       console.time(`fetch all draft article content`);
       const response = await fetch(url, {
         method: "post",
