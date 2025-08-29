@@ -80,7 +80,7 @@ export function sourceAirtable({
             try {
               const id = item.id as string;
               const slug = slugField
-                ? slugger.slug(item[slugField] as string)
+                ? `/${slugger.slug(item[slugField] as string)}`
                 : undefined;
               const data = await parseData({
                 id,
