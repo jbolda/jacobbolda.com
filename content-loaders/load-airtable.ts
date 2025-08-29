@@ -1,5 +1,8 @@
 import Airtable, { type FieldSet, type Table } from "airtable";
 import type { Loader, LoaderContext } from "astro/loaders";
+import GithubSlugger from "github-slugger";
+
+const slugger = new GithubSlugger();
 
 type AirtableBase = {
   baseId: string;
@@ -52,7 +55,13 @@ const fetchAirtable = async (
   return results;
 };
 
-export function sourceAirtable({ bases }: { bases: AirtableBase[] }): Loader {
+export function sourceAirtable({
+  bases,
+  slugField,
+}: {
+  bases: AirtableBase[];
+  slugField?: string;
+}): Loader {
   return {
     name: "airtable-loader",
     load: async ({
@@ -67,14 +76,15 @@ export function sourceAirtable({ bases }: { bases: AirtableBase[] }): Loader {
         const response = await fetchAirtable(bases);
 
         for (const [tableName, fieldSet] of Object.entries(response)) {
-          // console.dir({ tableName, fieldSet });
           for (const item of fieldSet) {
-            // console.dir(item);
             try {
               const id = item.id as string;
+              const slug = slugField
+                ? slugger.slug(item[slugField] as string)
+                : undefined;
               const data = await parseData({
                 id,
-                data: item,
+                data: { ...item, slug },
               });
               const digest = generateDigest(data);
               store.set({

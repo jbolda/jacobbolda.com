@@ -78,22 +78,36 @@ const recipes = defineCollection({
         queryName: `Recipes`,
       },
     ],
+    slugField: "name",
   }),
-  schema: ({ image }) =>
-    z.object({
-      name: z.string(),
-      ingredients: z.string(),
-      directions: z.string(),
-      image: image().optional(),
-      "cooking method": z.string().array().optional(),
-      style: z.string().array().optional(),
-      inspiration: z.string().url().optional(),
-      "last made": z.string().optional(),
-      rating: z.number().optional(),
-      "cooking time": z.number().optional(),
-      "preparation time": z.number().optional(),
-      "total time": z.number().optional(),
-    }),
+  schema: z.object({
+    name: z.string(),
+    slug: z.string(),
+    ingredients: z.string(),
+    directions: z.string(),
+    images: z
+      .array(
+        z.object({
+          id: z.string(),
+          width: z.number(),
+          height: z.number(),
+          url: z.string().url(),
+          filename: z.string(),
+          size: z.number(),
+          type: z.string(),
+          thumbnail: z.any(),
+        })
+      )
+      .optional(),
+    "cooking method": z.string().array().optional(),
+    style: z.string().array().optional(),
+    inspiration: z.string().url().optional(),
+    "last made": z.coerce.date().optional(),
+    rating: z.number().optional(),
+    "cooking time": z.number().optional(),
+    "preparation time": z.number().optional(),
+    "total time": z.number().optional(),
+  }),
 });
 
 const recipeStyles = defineCollection({
