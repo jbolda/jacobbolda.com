@@ -3,7 +3,7 @@ import Unfurl from "./unfurl.jsx";
 import { SeedSVG } from "./small-icons.jsx";
 
 export default (props) => (
-  <div className="relative py-16 grow">
+  <div className="relative py-0 md:py-2 lg:py-8 grow">
     <Helmet>
       <title>{`Jacob Bolda | ${props.title}`}</title>
       <meta property="og:type" content="article" />

@@ -99,7 +99,7 @@ export const RecipeChrome = ({
       <title>Jacob Bolda | {recipe.data.name}</title>
       <meta property="og:type" content="website" />
     </Helmet>
-    <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+    <div className="relative max-w-7xl mx-auto py-0 md:py-2 lg:py-8 px-4 sm:px-6 lg:px-8">
       <div className="hidden lg:block absolute top-0 bottom-0 left-3/4 w-screen" />
       <div className="mx-auto text-base max-w-lg:max-w-none">
         {!recipe?.data?.["last made"] ? null : (
