@@ -32,8 +32,8 @@
     "@types/react-dom": "^18.2.15",
     "astro": "^5.13.4",
     "big.js": "^6.2.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
