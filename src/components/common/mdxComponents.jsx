@@ -52,7 +52,7 @@ const components = {
     />
   ),
   blockquote: ({ children }) => (
-    <blockquote class="max-w-prose">{children}</blockquote>
+    <blockquote className="max-w-prose">{children}</blockquote>
   ),
   ul: ({ children }) => (
     <List as="ul" classAdd="min-w-full">
@@ -69,7 +69,7 @@ const components = {
       {children}
     </List>
   ),
-  table: ({ children }) => <table class="table-auto">{children}</table>,
+  table: ({ children }) => <table className="table-auto">{children}</table>,
   thead: ({ children }) => <thead>{children}</thead>,
   tbody: ({ children }) => <tbody>{children}</tbody>,
   tr: ({ children }) => <tr>{children}</tr>,

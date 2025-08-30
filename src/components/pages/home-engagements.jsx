@@ -4,7 +4,7 @@ import Link from "~/components/common/link.jsx";
 
 const Engagements = ({ children }) => (
   <div className="relative mx-auto max-w-7xl">
-    <div className="relative pt-16 pb-20 px-2 sm:px-1 lg:pt-24 lg:pb-28 lg:px-8 divide-y-2 divide-gray-200">
+    <div className="relative py-0 md:py-2 lg:py-8 px-2 sm:px-1 lg:px-8 divide-y-2 divide-gray-200">
       <div className="px-2 mb-8">
         <Heading as="h2">Professional Engagements</Heading>
         <Text>Or things done in public</Text>

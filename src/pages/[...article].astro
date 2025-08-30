@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 import ArticleLayout from "~/layouts/ArticleLayout.astro";
 import components from "~/components/common/mdxComponents";
 
@@ -9,7 +9,7 @@ export async function getStaticPaths() {
   const notes = await getCollection("notes");
   const engagements = await getCollection("engagements");
   return [...articles, ...drafts, ...notes, ...engagements].map((article) => ({
-    params: { article: article.slug },
+    params: { article: article.id },
     props: article,
   }));
 }
@@ -19,7 +19,7 @@ type Props =
   | CollectionEntry<"notes">;
 
 const article = Astro.props;
-const { Content } = await article.render();
+const { Content } = await render(article);
 ---
 
 <ArticleLayout {...article.data}>

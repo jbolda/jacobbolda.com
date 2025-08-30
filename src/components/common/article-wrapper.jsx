@@ -3,7 +3,7 @@ import Unfurl from "./unfurl.jsx";
 import { SeedSVG } from "./small-icons.jsx";
 
 export default (props) => (
-  <div className="relative py-16 grow">
+  <div className="relative py-0 md:py-2 lg:py-8 grow">
     <Helmet>
       <title>{`Jacob Bolda | ${props.title}`}</title>
       <meta property="og:type" content="article" />
@@ -23,7 +23,7 @@ export default (props) => (
 const Seed = () => (
   <div className="rounded-md bg-primary-50 p-4">
     <div className="flex">
-      <div className="flex-shrink-0">
+      <div className="shrink-0">
         <SeedSVG className="w-10" aria-hidden="true" />
       </div>
       <div className="ml-3 flex-1 md:flex md:justify-between">

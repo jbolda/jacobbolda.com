@@ -10,7 +10,7 @@ export default (props) => {
   return (
     <>
       <Hero />
-      <Social />
+      <Social className="text-primary-900 dark:text-white" />
       <Articles textHeading="Curated" textSubheading="For the best consumption">
         {props.articlesCurated.map((article) => (
           <ArticleWrap key={article.slug} article={article} />
@@ -59,7 +59,7 @@ const Hero = (props) => (
 
 const Articles = ({ children, textHeading, textSubheading }) => (
   <div className="relative mx-auto max-w-7xl">
-    <div className="relative pt-16 pb-20 px-2 sm:px-1 lg:pt-24 lg:pb-28 lg:px-8 divide-y-2 divide-gray-200">
+    <div className="relative py-0 md:py-2 lg:py-8 px-2 sm:px-1 lg:px-8 divide-y-2 divide-gray-200">
       <div className="px-2 mb-8">
         <Heading as="h2">{textHeading}</Heading>
         <Text>{textSubheading}</Text>

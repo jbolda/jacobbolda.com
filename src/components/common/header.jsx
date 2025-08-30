@@ -23,7 +23,7 @@ export default (props) => {
       </div>
       {!hamburgerActive ? null : (
         <div className="z-50 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-          <div className="rounded-lg shadow-lg ring ring-primary-300 ring-opacity-5 bg-primary-50 dark:bg-primary-900 divide-y-2 divide-gray-50">
+          <div className="rounded-lg shadow-lg ring-3 ring-primary-300 ring-opacity-5 bg-primary-50 dark:bg-primary-900 divide-y-2 divide-gray-50">
             <div className="pt-3 sm:pt-4 pb-4 px-6 sm:px-8">
               <div className="flex items-center justify-between">
                 <Logo />
@@ -47,7 +47,7 @@ export default (props) => {
 const OpenMenu = ({ toggle }) => (
   <button
     type="button"
-    className="bg-primary-50 dark:bg-primary-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+    className="bg-primary-50 dark:bg-primary-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-hidden focus:ring-2 focus:ring-inset focus:ring-indigo-500"
     onClick={toggle}
   >
     <span className="sr-only">Open menu</span>
@@ -72,7 +72,7 @@ const OpenMenu = ({ toggle }) => (
 const CloseMenu = ({ toggle }) => (
   <button
     type="button"
-    className="bg-primary-50 dark:bg-primary-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+    className="bg-primary-50 dark:bg-primary-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-hidden focus:ring-2 focus:ring-inset focus:ring-indigo-500"
     onClick={toggle}
   >
     <span className="sr-only">Close menu</span>

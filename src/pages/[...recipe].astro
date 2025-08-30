@@ -1,37 +1,38 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
+import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
 import PageLayout from "~/layouts/PageLayout.astro";
-import Recipe from "~/components/pages/recipe.jsx";
-import components from "~/components/common/mdxComponents";
-import { Picture } from "astro:assets";
+import { RecipeEntry, RecipeChrome } from "~/components/pages/recipe.js";
+import { Image } from "astro:assets";
 
-export async function getStaticPaths() {
+export const getStaticPaths = (async () => {
   const recipeCollection = await getCollection("recipes");
   return recipeCollection.map((recipe) => {
     return {
-      params: { recipe: recipe.slug },
+      params: { recipe: recipe.data.slug },
       props: recipe,
     };
   });
-}
-type Props = CollectionEntry<"recipes">;
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const recipe = Astro.props;
-const { Content } = await recipe.render();
 ---
 
 <PageLayout>
-  <Recipe recipe={recipe.data}>
-    {
-      recipe.data.image ? (
-        <Picture
-          slot="image"
-          class="rounded-lg shadow-lg object-cover object-center"
-          src={recipe.data.image}
-          alt={`Image of ${recipe.data.name}`}
-        />
-      ) : null
-    }
-    <Content components={components} />
-  </Recipe>
+  <RecipeChrome recipe={recipe}>
+    <RecipeEntry recipe={recipe}>
+      {
+        recipe.data.images ? (
+          <Image
+            inferSize={true}
+            class="rounded-lg shadow-lg object-cover object-center"
+            src={recipe.data.images[0].url}
+            alt={`Image of ${recipe.data.name}`}
+          />
+        ) : null
+      }
+    </RecipeEntry>
+  </RecipeChrome>
 </PageLayout>

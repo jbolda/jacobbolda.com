@@ -1,4 +1,7 @@
 import { defineCollection, reference, z } from "astro:content";
+import { glob } from "astro/loaders";
+import { sourceDraftArticles } from "../../content-loaders/load-draft-articles";
+import { sourceAirtable } from "../../content-loaders/load-airtable";
 
 const articleSchema = z.object({
   title: z.string(),
@@ -12,19 +15,19 @@ const articleSchema = z.object({
 });
 
 const articles = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/articles" }),
   schema: articleSchema,
 });
 const notes = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/notes" }),
   schema: articleSchema,
 });
 const drafts = defineCollection({
-  type: "content",
+  loader: sourceDraftArticles(false),
   schema: articleSchema,
 });
 const engagements = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/engagements" }),
   schema: z.object({
     title: z.string(),
     category: z.string().optional(),
@@ -33,7 +36,15 @@ const engagements = defineCollection({
 });
 
 const uses = defineCollection({
-  type: "content",
+  loader: sourceAirtable({
+    bases: [
+      {
+        baseId: `appQ4j8G66ikJyYjY`,
+        tableName: `uses`,
+        queryName: `uses`,
+      },
+    ],
+  }),
   schema: z.object({
     title: z.string(),
     url: z.string().optional(),
@@ -42,39 +53,92 @@ const uses = defineCollection({
 });
 
 const curated = defineCollection({
-  type: "data",
+  loader: sourceAirtable({
+    bases: [
+      {
+        baseId: `appQ4j8G66ikJyYjY`,
+        tableName: `curate`,
+        queryName: `curate`,
+      },
+    ],
+  }),
   schema: z.object({
-    curate: z.object({ url: z.string(), order: z.number() }).array(),
+    url: z.string(),
+    order: z.number(),
   }),
 });
 
 const recipes = defineCollection({
-  type: "content",
-  schema: ({ image }) =>
-    z.object({
-      name: z.string(),
-      image: image().optional(),
-      "cooking method": z.string().array().optional(),
-      style: z.string().array().optional(),
-      inspiration: z.string().url().optional(),
-      "last made": z.date().optional(),
-      rating: z.number().optional(),
-      "cooking time": z.number().optional(),
-      "preparation time": z.number().optional(),
-      "total time": z.number().optional(),
-    }),
+  loader: sourceAirtable({
+    bases: [
+      {
+        baseId: `appcL6Jdj7ZrhTg4q`,
+        tableName: `Recipes`,
+        tableView: `List`,
+        queryName: `Recipes`,
+      },
+    ],
+    slugField: "name",
+  }),
+  schema: z.object({
+    name: z.string(),
+    slug: z.string(),
+    ingredients: z.string(),
+    directions: z.string(),
+    images: z
+      .array(
+        z.object({
+          id: z.string(),
+          width: z.number(),
+          height: z.number(),
+          url: z.string().url(),
+          filename: z.string(),
+          size: z.number(),
+          type: z.string(),
+          thumbnail: z.any(),
+        })
+      )
+      .optional(),
+    "cooking method": z.string().array().optional(),
+    style: z.string().array().optional(),
+    inspiration: z.string().url().optional(),
+    "last made": z.coerce.date().optional(),
+    rating: z.number().optional(),
+    "cooking time": z.number().optional(),
+    "preparation time": z.number().optional(),
+    "total time": z.number().optional(),
+  }),
 });
 
 const recipeStyles = defineCollection({
-  type: "data",
-  schema: z
-    .object({ Name: z.string(), Recipes: z.string().array().optional() })
-    .array(),
+  loader: sourceAirtable({
+    bases: [
+      {
+        baseId: `appcL6Jdj7ZrhTg4q`,
+        tableName: `Style`,
+        tableView: `Main View`,
+        queryName: `Style`,
+      },
+    ],
+  }),
+  schema: z.object({
+    Name: z.string(),
+    Recipes: z.string().array().optional(),
+  }),
 });
 
 const recipeCookingMethods = defineCollection({
-  type: "data",
-  schema: z.object({ Name: z.string(), Recipes: z.string().array() }).array(),
+  loader: sourceAirtable({
+    bases: [
+      {
+        baseId: `appcL6Jdj7ZrhTg4q`,
+        tableName: `Cooking Method`,
+        tableView: `Main View`,
+        queryName: `Cooking Method`,
+      },
+    ],
+  }),
+  schema: z.object({ Name: z.string(), Recipes: z.string().array() }),
 });
 
 export const collections = {

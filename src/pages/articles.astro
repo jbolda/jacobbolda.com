@@ -27,7 +27,7 @@ const articles = [
   .sort(sortByDate)
   .map((article) => ({
     ...article.data,
-    slug: article.slug.startsWith("/") ? article.slug : `/${article.slug}`,
+    slug: article.id.startsWith("/") ? article.id : `/${article.id}`,
   }));
 ---
 
