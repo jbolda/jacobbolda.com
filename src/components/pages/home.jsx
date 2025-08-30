@@ -10,7 +10,7 @@ export default (props) => {
   return (
     <>
       <Hero />
-      <Social />
+      <Social className="text-primary-900 dark:text-white" />
       <Articles textHeading="Curated" textSubheading="For the best consumption">
         {props.articlesCurated.map((article) => (
           <ArticleWrap key={article.slug} article={article} />

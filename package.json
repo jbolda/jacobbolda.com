@@ -38,7 +38,10 @@
   },
   "devDependencies": {
     "@astrojs/mdx": "^4.3.4",
+    "@iconify/json": "^2.2.363",
     "@tailwindcss/typography": "^0.5.16",
+    "@svgr/core": "^8.1.0",
+    "@svgr/plugin-jsx": "^8.1.0",
     "airtable": "^0.12.2",
     "js-yaml": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",
@@ -46,7 +49,8 @@
     "prettier-plugin-astro": "^0.14.1",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.12",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "unplugin-icons": "^22.2.0"
   },
   "volta": {
     "node": "24.2.0",

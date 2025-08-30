@@ -4,6 +4,7 @@ import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import Icons from "unplugin-icons/vite";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -43,6 +44,12 @@ export default defineConfig({
         "~": path.resolve(__dirname, "./src"),
       },
     },
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      Icons({
+        compiler: "jsx",
+        jsx: "react",
+      }),
+    ],
   },
 });
