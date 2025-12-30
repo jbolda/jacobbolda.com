@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@astrojs/mdx": "^4.3.4",
-    "@iconify/json": "^2.2.363",
+    "@iconify/json": "^2.2.422",
     "@tailwindcss/typography": "^0.5.16",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
