@@ -43,7 +43,7 @@
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
     "airtable": "^0.12.2",
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^4.3.0",
     "mdast-util-to-string": "^4.0.0",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
