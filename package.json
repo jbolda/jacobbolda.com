@@ -20,7 +20,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier -w ."
+    "format": "prettier -w .",
+    "check:upgrade": "node scripts/compare-upgrade.ts",
+    "check:utils": "tsc -p tsconfig.check.json --noEmit",
+    "simulator": "node simulators/service-graph.ts"
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
@@ -38,13 +41,19 @@
   },
   "devDependencies": {
     "@astrojs/mdx": "^4.3.4",
+    "@axe-core/playwright": "^4.12.1",
     "@iconify/json": "^2.2.363",
-    "@tailwindcss/typography": "^0.5.16",
+    "@simulacrum/foundation-simulator": "^0.8.0",
+    "@simulacrum/server": "^0.10.1",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.13.3",
     "airtable": "^0.12.2",
     "js-yaml": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",
+    "playwright": "^1.62.1",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "tailwind-merge": "^3.3.1",
