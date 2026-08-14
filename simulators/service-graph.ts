@@ -1,7 +1,8 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { simulationCLI, useServiceGraph, useSimulation } from "@simulacrum/server";
+import { main } from "effection";
+import { simulationCLIOp, useServiceGraph, useSimulation } from "@simulacrum/server";
 
 import { createAirtableSimulation } from "./airtable.ts";
 import { createDraftsSimulation } from "./drafts.ts";
@@ -15,9 +16,6 @@ export const serviceGraph = useServiceGraph({
   },
 });
 
-if (
-  process.argv[1] &&
-  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
-) {
-  await simulationCLI(serviceGraph);
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  await main(() => simulationCLIOp(serviceGraph));
 }

@@ -14,9 +14,7 @@ interface AirtableTable {
 
 const emptyAirtableTable: AirtableTable = { records: [] };
 
-export function createAirtableSimulation(): FoundationSimulator<
-  Record<string, unknown>
-> {
+export function createAirtableSimulation(): FoundationSimulator<Record<string, unknown>> {
   return createFoundationSimulationServer({
     port: 0,
     extendStore: {
@@ -54,14 +52,10 @@ export function createAirtableSimulation(): FoundationSimulator<
               ],
             },
             "appcL6Jdj7ZrhTg4q/Style": {
-              records: [
-                { id: "recs1", fields: { Name: "Italian", Recipes: ["Test Lasagna"] } },
-              ],
+              records: [{ id: "recs1", fields: { Name: "Italian", Recipes: ["Test Lasagna"] } }],
             },
             "appcL6Jdj7ZrhTg4q/Cooking Method": {
-              records: [
-                { id: "reccm1", fields: { Name: "Baked", Recipes: ["Test Lasagna"] } },
-              ],
+              records: [{ id: "reccm1", fields: { Name: "Baked", Recipes: ["Test Lasagna"] } }],
             },
           },
           empty: emptyAirtableTable,

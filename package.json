@@ -54,6 +54,8 @@
   "devDependencies": {
     "@astrojs/mdx": "^4.3.4",
     "@axe-core/playwright": "^4.12.1",
+    "@bomb.sh/args": "^0.3.1",
+    "@effectionx/process": "^0.8.2",
     "@iconify/json": "^2.2.363",
     "@simulacrum/foundation-simulator": "^0.8.0",
     "@simulacrum/server": "^0.10.1",
@@ -63,6 +65,7 @@
     "@types/express": "^5.0.6",
     "@types/node": "^24.13.3",
     "airtable": "^0.12.2",
+    "effection": "^4.1.0",
     "js-yaml": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",
     "playwright": "^1.62.1",

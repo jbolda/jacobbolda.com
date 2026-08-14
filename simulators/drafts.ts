@@ -10,9 +10,7 @@ interface DraftFile {
 
 const emptyDraftFile: DraftFile = { name: "", blob: "" };
 
-export function createDraftsSimulation(): FoundationSimulator<
-  Record<string, unknown>
-> {
+export function createDraftsSimulation(): FoundationSimulator<Record<string, unknown>> {
   return createFoundationSimulationServer({
     port: 0,
     extendStore: {
