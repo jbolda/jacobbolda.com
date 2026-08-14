@@ -1,0 +1,60 @@
+name: check
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_ref:
+        description: Branch or ref to compare against (the "before")
+        required: false
+        default: production
+  pull_request:
+    paths:
+      - package.json
+      - package-lock.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  MISE_IDIOMATIC_VERSION_FILE_ENABLE_TOOLS: node,npm
+
+jobs:
+  compare-upgrade:
+    name: compare upgrade
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+      ARTICLE_FETCH_ENDPOINT: ${{ secrets.ARTICLE_FETCH_ENDPOINT }}
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: jdx/mise-action@dad1bfd3df957f44999b559dd69dc1671cb4e9ea # v4.2.1
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: run upgrade comparison
+        continue-on-error: true
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref || inputs.base_ref }}
+        run: node scripts/compare-upgrade.ts --base "$BASE_REF"
+      - name: write step summary
+        if: always()
+        run: |
+          if [ -f .tmp/compare/report.md ]; then
+            cat .tmp/compare/report.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No report produced (the comparison failed before writing one)." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: upload report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: upgrade-compare-report
+          path: .tmp/compare
+          if-no-files-found: error
