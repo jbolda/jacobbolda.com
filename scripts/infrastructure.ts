@@ -24,6 +24,20 @@ export function capture(command: string, args: string[], cwd: string): Operation
   })();
 }
 
+export function resolveBaseRef(base: string, root: string): Operation<string> {
+  return (function* () {
+    if (base === "HEAD" || base.includes("/") || /^[0-9a-f]{7,40}$/i.test(base)) {
+      return base;
+    }
+    try {
+      yield* capture("git", ["rev-parse", "--verify", base], root);
+      return base;
+    } catch {
+      return `origin/${base}`;
+    }
+  })();
+}
+
 export function removeWorktree(root: string, worktree: string): Operation<void> {
   return (function* () {
     try {

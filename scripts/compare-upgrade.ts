@@ -10,7 +10,7 @@ import { useServiceTestRig } from "@simulacrum/server";
 import { diffRoutes, summarize, writeHtmlReport, writeMarkdownReport } from "./checks.ts";
 import type { ReportMeta } from "./checks.ts";
 import { collectFingerprints } from "./fingerprint.ts";
-import { capture, removeWorktree, routesFromDist, run } from "./infrastructure.ts";
+import { capture, removeWorktree, resolveBaseRef, routesFromDist, run } from "./infrastructure.ts";
 import { startServer } from "./static-server.ts";
 import { serviceGraph } from "../simulators/service-graph.ts";
 
@@ -80,9 +80,13 @@ await main(function* (args) {
     yield* exit(2, "node_modules missing — run `npm ci` first.");
   }
 
+  const base = parsed.oldDist
+    ? parsed.base
+    : yield* resolveBaseRef(parsed.base, root);
+
   const beforeSha = parsed.oldDist
     ? "existing-dist"
-    : yield* capture("git", ["rev-parse", parsed.base], root);
+    : yield* capture("git", ["rev-parse", base], root);
   const afterSha = parsed.newDist
     ? "existing-dist"
     : yield* capture("git", ["rev-parse", "HEAD"], root);
@@ -113,11 +117,11 @@ await main(function* (args) {
         return removeWorktree(root, worktree);
       }
     });
-    console.log(`[1/6] checking out ${parsed.base} into ${worktree}`);
-    yield* run("git", ["worktree", "add", "--detach", worktree, parsed.base], root);
+    console.log(`[1/6] checking out ${base} into ${worktree}`);
+    yield* run("git", ["worktree", "add", "--detach", worktree, base], root);
     const envLocal = path.join(root, ".env.local");
     if (existsSync(envLocal)) copyFileSync(envLocal, path.join(worktree, ".env.local"));
-    console.log(`[2/6] building before (${parsed.base})…`);
+    console.log(`[2/6] building before (${base})…`);
     yield* run("npm", ["ci"], worktree);
     yield* run("npm", ["run", "build"], worktree);
     oldDist = path.join(worktree, "dist");
