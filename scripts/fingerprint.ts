@@ -134,13 +134,22 @@ export function collectFingerprints({
       }),
     );
     const page = yield* until(context.newPage());
+    yield* until(
+      page.route("**/*", (route) => {
+        const host = new URL(route.request().url()).hostname;
+        if (host === "127.0.0.1" || host === "localhost") {
+          return route.continue();
+        }
+        return route.abort();
+      }),
+    );
     const out: Record<string, Fingerprint> = {};
 
     for (const route of routes) {
       let fingerprint: PageFingerprint;
       try {
         const response = yield* until(
-          page.goto(baseUrl + route, { waitUntil: "load", timeout: 30000 }),
+          page.goto(baseUrl + route, { waitUntil: "load", timeout: 15000 }),
         );
         const status = response ? response.status() : null;
         if (status !== null && status >= 400) {
