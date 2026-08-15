@@ -25,4 +25,18 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
   }
+
+  /*
+    Prevent content from forcing the article grid wider than the viewport.
+    Grid children default to `min-width: auto`, so an unbreakable token
+    (e.g. a long URL, hash, or inline code) propagates its min-content
+    width through the grid and causes horizontal page overflow.
+  */
+  article.grid {
+    overflow-wrap: anywhere;
+  }
+
+  article.grid > * {
+    min-width: 0;
+  }
 }

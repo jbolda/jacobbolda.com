@@ -2,13 +2,25 @@ name: build and push draft
 
 on: pull_request
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-draft:
+    name: build draft
     environment: beta
     runs-on: ubuntu-latest
+    env:
+      MISE_IDIOMATIC_VERSION_FILE_ENABLE_TOOLS: node,npm
     steps:
-      - uses: actions/checkout@v3
-      - uses: volta-cli/action@v1
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+      - uses: jdx/mise-action@dad1bfd3df957f44999b559dd69dc1671cb4e9ea # v4.2.1
       - run: npm ci
       - name: deploy
         if: success()
@@ -18,4 +30,5 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
           ARTICLE_FETCH_ENDPOINT: ${{ secrets.ARTICLE_FETCH_ENDPOINT }}
-        run: npx netlify deploy --dir=dist --message ${{ github.event.pull_request.html_url }}
+          NETLIFY_MESSAGE: ${{ github.event.pull_request.html_url }}
+        run: npx netlify deploy --dir=dist --message "$NETLIFY_MESSAGE"

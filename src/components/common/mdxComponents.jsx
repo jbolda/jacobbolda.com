@@ -82,12 +82,20 @@ const components = {
   hr: ({ children }) => <hr>{children}</hr>,
   a: ({ children, ...rest }) => <Link {...rest}>{children}</Link>,
   pre: ({ children, className, ...rest }) => (
-    <pre className={className + " w-full grid justify-items-center"} {...rest}>
+    <pre
+      className={[
+        className,
+        "w-full grid justify-items-center overflow-x-auto min-w-0",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      {...rest}
+    >
       {children}
     </pre>
   ),
   code: ({ children }) => (
-    <code className="py-3 px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
+    <code className="py-3 px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2 min-w-0">
       {children}
     </code>
   ),
