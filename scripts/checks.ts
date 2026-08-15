@@ -258,8 +258,8 @@ export function writeMarkdownReport({
     sha === "existing-dist" ? label : `${label} @ \`${sha.slice(0, 8)}\``;
   lines.push(`# Upgrade comparison`);
   lines.push("");
-  lines.push(`**Before:** \`${refLabel(meta.before, meta.beforeSha)}\``);
-  lines.push(`**After:** \`${refLabel(meta.after, meta.afterSha)}\``);
+  lines.push(`**Before:** ${refLabel(meta.before, meta.beforeSha)}`);
+  lines.push(`**After:** ${refLabel(meta.after, meta.afterSha)}`);
   lines.push("");
   lines.push(`- Pages compared: ${summary.total}`);
   lines.push(`- Changed: ${summary.changedRoutes}`);
