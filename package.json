@@ -38,21 +38,22 @@
     "simulator": "node simulators/service-graph.ts"
   },
   "dependencies": {
-    "@astrojs/react": "^4.3.0",
-    "@astrojs/rss": "^4.0.12",
-    "@astrojs/sitemap": "^3.5.1",
-    "@playform/compress": "^0.2.0",
-    "@tailwindcss/vite": "^4.1.12",
+    "@astrojs/react": "^6.0.2",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "@playform/compress": "^0.2.5",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.1.9",
-    "@types/react-dom": "^18.2.15",
-    "astro": "^5.13.4",
+    "@types/react-dom": "^19.2.4",
+    "astro": "^7.2.2",
     "big.js": "^6.2.1",
+    "cookie": "^2.0.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^4.3.4",
+    "@astrojs/mdx": "^7.0.5",
     "@axe-core/playwright": "^4.12.1",
     "@bomb.sh/args": "^0.3.1",
     "@effectionx/process": "^0.8.2",
@@ -61,7 +62,7 @@
     "@simulacrum/server": "^0.10.1",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
-    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/typography": "^0.5.20",
     "@types/express": "^5.0.6",
     "@types/node": "^24.13.3",
     "airtable": "^0.12.2",
@@ -72,7 +73,7 @@
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.12",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5.9.2",
     "unplugin-icons": "^22.2.0"
   }

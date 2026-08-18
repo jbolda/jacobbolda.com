@@ -39,6 +39,11 @@ interface DiffSnippet {
   newSnippet: string;
 }
 
+function assetBaseHash(src: string): string | null {
+  const match = /\.([a-zA-Z0-9_-]+)_([a-zA-Z0-9_-]+)\.[a-z0-9]{2,5}$/.exec(src);
+  return match ? match[1] : null;
+}
+
 function firstDiff(oldText: string, newText: string, width = 120): DiffSnippet | null {
   if (oldText === newText) return null;
   let i = 0;
@@ -99,14 +104,38 @@ export function compareFingerprints(
 
   const removedImages = oldFp.images.filter((img) => !newFp.images.some((n) => n.src === img.src));
   const addedImages = newFp.images.filter((img) => !oldFp.images.some((n) => n.src === img.src));
+  const reencoded = removedImages.filter((img) => {
+    const base = assetBaseHash(img.src ?? "");
+    return (
+      base !== null &&
+      addedImages.some(
+        (n) => n.alt === img.alt && assetBaseHash(n.src ?? "") === base,
+      )
+    );
+  });
+  const reencodedSrcs = new Set(reencoded.map((img) => img.src));
   for (const img of removedImages)
+    if (!reencodedSrcs.has(img.src))
+      pushFinding(
+        "high",
+        "image removed or missing",
+        `${img.src}${img.alt ? ` ("${img.alt}")` : ""}`,
+      );
+  for (const img of reencoded)
     pushFinding(
-      "high",
-      "image removed or missing",
-      `${img.src}${img.alt ? ` ("${img.alt}")` : ""}`,
+      "info",
+      "image asset re-encoded",
+      `${img.src}${img.alt ? ` ("${img.alt}")` : ""} → ${
+        addedImages.find(
+          (n) =>
+            n.alt === img.alt &&
+            assetBaseHash(n.src ?? "") === assetBaseHash(img.src ?? ""),
+        )?.src
+      }`,
     );
   for (const img of addedImages)
-    pushFinding("info", "image added", `${img.src}${img.alt ? ` ("${img.alt}")` : ""}`);
+    if (!reencoded.some((n) => n.alt === img.alt && assetBaseHash(img.src ?? "") === assetBaseHash(n.src ?? "")))
+      pushFinding("info", "image added", `${img.src}${img.alt ? ` ("${img.alt}")` : ""}`);
 
   const styleProps = new Set([...Object.keys(oldFp.bodyStyle), ...Object.keys(newFp.bodyStyle)]);
   for (const prop of styleProps) {

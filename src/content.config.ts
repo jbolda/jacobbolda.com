@@ -1,7 +1,8 @@
-import { defineCollection, reference, z } from "astro:content";
+import { defineCollection, reference } from "astro:content";
+import { z } from "astro/zod";
 import { glob } from "astro/loaders";
-import { sourceDraftArticles } from "../../content-loaders/load-draft-articles";
-import { sourceAirtable } from "../../content-loaders/load-airtable";
+import { sourceDraftArticles } from "../content-loaders/load-draft-articles";
+import { sourceAirtable } from "../content-loaders/load-airtable";
 
 const articleSchema = z.object({
   title: z.string(),
