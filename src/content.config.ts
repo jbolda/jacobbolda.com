@@ -96,7 +96,13 @@ const recipes = defineCollection({
           filename: z.string(),
           size: z.number(),
           type: z.string(),
-          thumbnail: z.any(),
+          thumbnails: z
+          .object({
+            small: z.object({ url: z.string(), width: z.number(), height: z.number() }),
+            large: z.object({ url: z.string(), width: z.number(), height: z.number() }),
+            full: z.object({ url: z.string(), width: z.number(), height: z.number() }),
+          })
+          .optional(),
         })
       )
       .optional(),
