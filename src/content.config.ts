@@ -1,7 +1,8 @@
-import { defineCollection, reference, z } from "astro:content";
+import { defineCollection, reference } from "astro:content";
+import { z } from "astro/zod";
 import { glob } from "astro/loaders";
-import { sourceDraftArticles } from "../../content-loaders/load-draft-articles";
-import { sourceAirtable } from "../../content-loaders/load-airtable";
+import { sourceDraftArticles } from "../content-loaders/load-draft-articles";
+import { sourceAirtable } from "../content-loaders/load-airtable";
 
 const articleSchema = z.object({
   title: z.string(),
@@ -95,7 +96,13 @@ const recipes = defineCollection({
           filename: z.string(),
           size: z.number(),
           type: z.string(),
-          thumbnail: z.any(),
+          thumbnails: z
+          .object({
+            small: z.object({ url: z.string(), width: z.number(), height: z.number() }),
+            large: z.object({ url: z.string(), width: z.number(), height: z.number() }),
+            full: z.object({ url: z.string(), width: z.number(), height: z.number() }),
+          })
+          .optional(),
         })
       )
       .optional(),
