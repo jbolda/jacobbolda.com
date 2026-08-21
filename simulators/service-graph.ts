@@ -5,11 +5,15 @@ import { main } from "effection";
 import { simulationCLIOp, useServiceGraph, useSimulation } from "@simulacrum/server";
 
 import { createAirtableSimulation } from "./airtable.ts";
+import { createContentApiSimulation } from "./content-api.ts";
 import { createDraftsSimulation } from "./drafts.ts";
 
 export const serviceGraph = useServiceGraph({
   airtable: {
     operation: useSimulation("airtable", createAirtableSimulation),
+  },
+  contentApi: {
+    operation: useSimulation("content-api", createContentApiSimulation),
   },
   drafts: {
     operation: useSimulation("drafts", createDraftsSimulation),

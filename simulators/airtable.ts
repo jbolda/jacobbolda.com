@@ -21,24 +21,6 @@ export function createAirtableSimulation(): FoundationSimulator<Record<string, u
       schema: ({ slice }) => ({
         tables: slice.table<AirtableTable>({
           initialState: {
-            "appQ4j8G66ikJyYjY/uses": {
-              records: [
-                {
-                  id: "recuses1",
-                  fields: {
-                    title: "MacBook Air",
-                    subtitle: "M1 13-inch",
-                    url: "https://example.com/macbook",
-                  },
-                },
-                { id: "recuses2", fields: { title: "VS Code", subtitle: "Editor" } },
-              ],
-            },
-            "appQ4j8G66ikJyYjY/curate": {
-              records: [
-                { id: "reccur1", fields: { url: "https://example.com/curated", order: 1 } },
-              ],
-            },
             "appcL6Jdj7ZrhTg4q/Recipes": {
               records: [
                 {

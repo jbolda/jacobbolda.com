@@ -99,14 +99,16 @@ await main(function* (args) {
     );
     const rig = yield* useServiceTestRig(serviceGraph)();
     const airtablePort = rig.graph.status.get("airtable")?.port;
+    const contentApiPort = rig.graph.status.get("contentApi")?.port;
     const draftsPort = rig.graph.status.get("drafts")?.port;
-    if (!airtablePort || !draftsPort)
+    if (!airtablePort || !contentApiPort || !draftsPort)
       throw new Error(
-        `simulator graph started without service ports (airtable=${airtablePort}, drafts=${draftsPort})`,
+        `simulator graph started without service ports (airtable=${airtablePort}, contentApi=${contentApiPort}, drafts=${draftsPort})`,
       );
     process.env.AIRTABLE_API_KEY = "simulated";
     process.env.AIRTABLE_ENDPOINT_URL = `http://127.0.0.1:${airtablePort}`;
     process.env.ARTICLE_FETCH_ENDPOINT = `http://127.0.0.1:${draftsPort}/drafts`;
+    process.env.CONTENT_API_URL = `http://127.0.0.1:${contentApiPort}`;
   }
 
   let oldDist = parsed.oldDist;
