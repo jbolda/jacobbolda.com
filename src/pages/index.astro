@@ -14,10 +14,11 @@ const curate_list = curatedCollection
 const articlesCurated = [...drafts, ...articles, ...notes]
   .reduce(
     (c, article) => {
-      if (curate_list.includes(article.id)) {
-        c[curate_list.findIndex((item) => item === article.id)] = {
+      const articleSlug = article.data.slug || article.id;
+      if (curate_list.includes(articleSlug)) {
+        c[curate_list.findIndex((item) => item === articleSlug)] = {
           ...article.data,
-          slug: article.id,
+          slug: articleSlug,
         };
       }
       return c;

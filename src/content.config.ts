@@ -3,6 +3,7 @@ import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 import { sourceDraftArticles } from "../content-loaders/load-draft-articles";
 import { sourceAirtable } from "../content-loaders/load-airtable";
+import { sourceContentApi } from "../content-loaders/load-content-api";
 
 const articleSchema = z.object({
   title: z.string(),
@@ -11,6 +12,7 @@ const articleSchema = z.object({
   updated: z.union([z.date(), z.string()]).optional(),
   category: z.string().optional(),
   description: z.string(),
+  slug: z.string().optional(),
   relatedArticles: z.array(reference("articles")).optional(),
   keywords: z.string().array().optional(),
 });
@@ -36,15 +38,13 @@ const engagements = defineCollection({
   }),
 });
 
+const contentApiBase =
+  import.meta.env.CONTENT_API_URL || "https://content-api.jbolda.workers.dev";
+
 const uses = defineCollection({
-  loader: sourceAirtable({
-    bases: [
-      {
-        baseId: `appQ4j8G66ikJyYjY`,
-        tableName: `uses`,
-        queryName: `uses`,
-      },
-    ],
+  loader: sourceContentApi({
+    endpoint: `${contentApiBase}/uses`,
+    idField: "title",
   }),
   schema: z.object({
     title: z.string(),
@@ -54,14 +54,9 @@ const uses = defineCollection({
 });
 
 const curated = defineCollection({
-  loader: sourceAirtable({
-    bases: [
-      {
-        baseId: `appQ4j8G66ikJyYjY`,
-        tableName: `curate`,
-        queryName: `curate`,
-      },
-    ],
+  loader: sourceContentApi({
+    endpoint: `${contentApiBase}/curated`,
+    idField: "url",
   }),
   schema: z.object({
     url: z.string(),
