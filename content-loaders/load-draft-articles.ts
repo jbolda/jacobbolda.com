@@ -85,8 +85,6 @@ async function fetchWithRetry(
 }
 
 export function sourceDraftArticles(cache): Loader {
-  if (!import.meta.env.ARTICLE_FETCH_ENDPOINT)
-    throw new Error("env var ARTICLE_FETCH_ENDPOINT is not set");
   const url = import.meta.env.ARTICLE_FETCH_ENDPOINT;
 
   return {
@@ -98,6 +96,11 @@ export function sourceDraftArticles(cache): Loader {
       meta,
       generateDigest,
     }: LoaderContext) => {
+      if (!url) {
+        logger.warn("ARTICLE_FETCH_ENDPOINT not set, skipping draft articles");
+        return;
+      }
+
       console.time(`fetch all draft article content`);
       const json = await fetchWithRetry(url, logger);
       console.timeEnd(`fetch all draft article content`);

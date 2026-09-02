@@ -35,11 +35,10 @@ options:
   --strict          exit non-zero when any medium-severity finding exists
   --help            show this message
 
-When AIRTABLE_API_KEY is not set in the environment, both builds are run
+When CONTENT_API_URL is not set in the environment, both builds are run
 against the local simulator graph (simulators/service-graph.ts) so the check
-works without real credentials. Set AIRTABLE_API_KEY (and optionally
-AIRTABLE_ENDPOINT_URL, ARTICLE_FETCH_ENDPOINT) to use the real services
-instead.
+works without real credentials. Set CONTENT_API_URL (and optionally
+ARTICLE_FETCH_ENDPOINT) to use the real services instead.
 `);
 }
 
@@ -93,20 +92,17 @@ await main(function* (args) {
 
   let worktree: string | null = null;
 
-  if (!process.env.AIRTABLE_API_KEY) {
+  if (!process.env.CONTENT_API_URL) {
     console.log(
-      "[sim] AIRTABLE_API_KEY not set — running both builds against the local simulator graph",
+      "[sim] CONTENT_API_URL not set — running both builds against the local simulator graph",
     );
     const rig = yield* useServiceTestRig(serviceGraph)();
-    const airtablePort = rig.graph.status.get("airtable")?.port;
     const contentApiPort = rig.graph.status.get("contentApi")?.port;
     const draftsPort = rig.graph.status.get("drafts")?.port;
-    if (!airtablePort || !contentApiPort || !draftsPort)
+    if (!contentApiPort || !draftsPort)
       throw new Error(
-        `simulator graph started without service ports (airtable=${airtablePort}, contentApi=${contentApiPort}, drafts=${draftsPort})`,
+        `simulator graph started without service ports (contentApi=${contentApiPort}, drafts=${draftsPort})`,
       );
-    process.env.AIRTABLE_API_KEY = "simulated";
-    process.env.AIRTABLE_ENDPOINT_URL = `http://127.0.0.1:${airtablePort}`;
     process.env.ARTICLE_FETCH_ENDPOINT = `http://127.0.0.1:${draftsPort}/drafts`;
     process.env.CONTENT_API_URL = `http://127.0.0.1:${contentApiPort}`;
   }

@@ -22,13 +22,21 @@ jobs:
           persist-credentials: false
       - uses: jdx/mise-action@dad1bfd3df957f44999b559dd69dc1671cb4e9ea # v4.2.1
       - run: npm ci
+      - name: sync recipes from obsidian
+        if: success()
+        env:
+          OBSIDIAN_EMAIL: ${{ secrets.OBSIDIAN_EMAIL }}
+          OBSIDIAN_PASSWORD: ${{ secrets.OBSIDIAN_PASSWORD }}
+          OBSIDIAN_VAULT_NAME: ${{ secrets.OBSIDIAN_VAULT_NAME }}
+        run: |
+          npx obsidian-headless sync --vault "$OBSIDIAN_VAULT_NAME" --path ./obsidian-vault
+          npm run copy-from-vault -- ./obsidian-vault
       - name: deploy
         if: success()
         env:
           NODE_ENV: production
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
           ARTICLE_FETCH_ENDPOINT: ${{ secrets.ARTICLE_FETCH_ENDPOINT }}
           NETLIFY_MESSAGE: ${{ github.event.pull_request.html_url }}
         run: npx netlify deploy --dir=dist --message "$NETLIFY_MESSAGE"

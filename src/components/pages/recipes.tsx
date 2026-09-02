@@ -42,14 +42,17 @@ export const RecipeWrap = ({
   recipe: CollectionEntry<"recipes">;
 }>) => (
   <div className="flex flex-col rounded-lg shadow-lg overflow-hidden">
-    <Link href={recipe.data.slug} flair="none">
+    <Link href={`/${recipe.id}`} flair="none">
       <div className="shrink-0">{children}</div>
       <div className="flex-1 p-6 flex flex-col justify-between">
         <div className="flex-1">
-          <Heading as="h3">{recipe.data.name}</Heading>
+          <Heading as="h3">{recipe.data.title}</Heading>
           <List as="ul">
-            {recipe.data.ingredients.split("\n").map((line) => (
-              <List key={line}>{line.slice(2)}</List>
+            {recipe.data.ingredients.map((ing) => (
+              <List key={ing.name}>
+                {ing.quantity && `${ing.quantity}${ing.units ? ` ${ing.units}` : ""} `}
+                {ing.name}
+              </List>
             ))}
           </List>
         </div>

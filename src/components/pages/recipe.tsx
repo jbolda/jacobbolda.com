@@ -46,47 +46,84 @@ export const RecipeEntry = ({
           fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)"
         />
       </svg>
-      {!recipe.data.images ? null : (
-        <div className="relative text-base mx-auto max-w-lg:max-w-none">
-          <figure>
-            <div className="aspect-w-12 aspect-h-7 lg:aspect-none">
-              {children}
-            </div>
-          </figure>
-        </div>
-      )}
+      <div className="relative text-base mx-auto max-w-lg:max-w-none">
+        <figure>
+          <div className="aspect-w-12 aspect-h-7 lg:aspect-none">
+            {children}
+          </div>
+        </figure>
+      </div>
     </div>
     <div className="mt-8 lg:mt-0">
-      <div className="mt-5 text-gray-500 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1">
+      <div className="mt-5 text-primary-900 dark:text-primary-50 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1">
         <Heading as="h3" classAdd="px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
           Ingredients
         </Heading>
         <List as="ul">
-          {recipe.data.ingredients.split("\n").map((line) => (
-            <List key={line}>{line.slice(2)}</List>
+          {recipe.data.ingredients.map((ing) => (
+            <List key={ing.name}>
+              {ing.quantity && `${ing.quantity}${ing.units ? ` ${ing.units}` : ""} `}
+              {ing.name}
+            </List>
           ))}
         </List>
         <Heading as="h3" classAdd="px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
           Directions
         </Heading>
-        <List as="ol">
-          {recipe.data.directions
-            .split("\n")
-            .filter(Boolean)
-            .map((step, index) => (
-              <List key={index}>{step.slice(3)}</List>
-            ))}
-        </List>{" "}
-      </div>
-    </div>
-    <div className="mt-8 lg:mt-0">
-      <div className="mt-5 text-gray-500 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1">
-        <div className="px-2">
-          <Heading as="h3">Inspiration</Heading>
-          <Link href={recipe.data.inspiration}>{recipe.data.inspiration}</Link>
+        <div className="space-y-6">
+          {recipe.data.sections.map((section, sectionIndex) => (
+            <div key={sectionIndex}>
+              {section.name && (
+                <Heading as="h4" classAdd="px-2">
+                  {section.name}
+                </Heading>
+              )}
+              <div className="space-y-4">
+                {section.steps.map((step, stepIndex) => (
+                  <div key={stepIndex} className="prose prose-sm max-w-none">
+                    {step.map((item, itemIndex) => {
+                      const key = `${sectionIndex}-${stepIndex}-${itemIndex}`;
+                      if (item.type === "text") {
+                        return <span key={key}>{item.value}</span>;
+                      } else if (item.type === "ingredient") {
+                        return (
+                          <strong key={key}>
+                            {item.name}
+                            {item.quantity && ` (${item.quantity}${item.units ? ` ${item.units}` : ""})`}
+                          </strong>
+                        );
+                      } else if (item.type === "cookware") {
+                        return (
+                          <em key={key}>{item.name}</em>
+                        );
+                      } else if (item.type === "timer") {
+                        return (
+                          <span key={key}>
+                            {item.quantity && `${item.quantity}${item.units ? ` ${item.units}` : ""}`}
+                            {item.name && ` (${item.name})`}
+                          </span>
+                        );
+                      }
+                      return null;
+                    })}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
+    {recipe.data.source && (
+      <div className="mt-8 lg:mt-0">
+        <div className="mt-5 text-primary-900 dark:text-primary-50 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1">
+          <div className="px-2">
+            <Heading as="h3">Source</Heading>
+            <span>{recipe.data.source}</span>
+          </div>
+        </div>
+      </div>
+    )}
   </div>
 );
 
@@ -96,25 +133,13 @@ export const RecipeChrome = ({
 }: PropsWithChildren<{ recipe: CollectionEntry<"recipes"> }>) => (
   <div className="overflow-hidden">
     <Helmet>
-      <title>Jacob Bolda | {recipe.data.name}</title>
+      <title>Jacob Bolda | {recipe.data.title}</title>
       <meta property="og:type" content="website" />
     </Helmet>
     <div className="relative max-w-7xl mx-auto py-0 md:py-2 lg:py-8 px-4 sm:px-6 lg:px-8">
       <div className="hidden lg:block absolute top-0 bottom-0 left-3/4 w-screen" />
       <div className="mx-auto text-base max-w-lg:max-w-none">
-        {!recipe?.data?.["last made"] ? null : (
-          <Heading as="h3" classAdd="text-primary-300 dark:text-primary-600">
-            {"Last Made: "}
-            <time dateTime={recipe.data["last made"].toISOString()}>
-              {recipe.data["last made"].toLocaleDateString("en-us", {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              })}
-            </time>
-          </Heading>
-        )}
-        <Heading as="h1">{recipe.data.name}</Heading>
+        <Heading as="h1">{recipe.data.title}</Heading>
       </div>
       {children}
     </div>
