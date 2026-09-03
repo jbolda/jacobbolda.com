@@ -27,10 +27,19 @@ jobs:
         env:
           OBSIDIAN_EMAIL: ${{ secrets.OBSIDIAN_EMAIL }}
           OBSIDIAN_PASSWORD: ${{ secrets.OBSIDIAN_PASSWORD }}
+          OBSIDIAN_SYNC_PASSWORD: ${{ secrets.OBSIDIAN_SYNC_PASSWORD }}
           OBSIDIAN_VAULT_NAME: ${{ secrets.OBSIDIAN_VAULT_NAME }}
         run: |
-          npx obsidian-headless sync --vault "$OBSIDIAN_VAULT_NAME" --path ./obsidian-vault
+          npx obsidian-headless login --email "$OBSIDIAN_EMAIL" --password "$OBSIDIAN_PASSWORD"
+          npx obsidian-headless sync-setup --vault "$OBSIDIAN_VAULT_NAME" --path ./obsidian-vault --password "$OBSIDIAN_SYNC_PASSWORD" --device-name "github-actions"
+          npx obsidian-headless sync-config --path ./obsidian-vault --mode pull-only
+          npx obsidian-headless sync --path ./obsidian-vault
           npm run copy-from-vault -- ./obsidian-vault
+      - name: revoke obsidian session
+        if: always()
+        run: |
+          npx obsidian-headless sync-unlink --path ./obsidian-vault || true
+          npx obsidian-headless logout || true
       - name: deploy
         if: success()
         env:

@@ -5,6 +5,7 @@ import { parse } from "@bomb.sh/args";
 
 const REPO_RECIPES_DIR = join(process.cwd(), "src", "content", "recipes");
 const VAULT_RECIPES_FOLDER = "recipes";
+const VAULT_IMAGES_FOLDER = "images";
 const IMAGE_EXTENSIONS = [".jpg", ".jpeg", ".png", ".gif", ".webp"];
 
 const flags = parse(process.argv.slice(2), {
@@ -16,10 +17,6 @@ const toVault = flags.back;
 const all = flags.all;
 const recipeArgs = (flags.recipe ?? []) as string[];
 const vaultPathArg = Array.isArray(flags._) ? (flags._[0] as string) : (flags._ as string);
-
-function isRecipeFile(file: string): boolean {
-  return extname(file) === ".cook" || IMAGE_EXTENSIONS.includes(extname(file).toLowerCase());
-}
 
 function collectFiles(dir: string, acc: string[] = []): string[] {
   if (!existsSync(dir)) return acc;
@@ -46,7 +43,7 @@ function basenameOf(rel: string): string {
   return rel.slice(rel.lastIndexOf("/") + 1).replace(/\.cook$/i, "");
 }
 
-async function copyToVault(vaultRecipesDir: string) {
+async function copyToVault(vaultRecipesDir: string, vaultImagesDir: string) {
   const cooks = collectFiles(REPO_RECIPES_DIR).filter((f) => extname(f) === ".cook");
   if (cooks.length === 0) {
     p.cancel(`No recipes found in ${REPO_RECIPES_DIR}`);
@@ -92,7 +89,8 @@ async function copyToVault(vaultRecipesDir: string) {
       existsSync(join(REPO_RECIPES_DIR, candidate)),
     );
     for (const image of images) {
-      cpSync(join(REPO_RECIPES_DIR, image), join(vaultRecipesDir, image));
+      mkdirSync(vaultImagesDir, { recursive: true });
+      cpSync(join(REPO_RECIPES_DIR, image), join(vaultImagesDir, basenameOf(image)));
     }
 
     p.log.step(`Copied ${stem.replace(/\.cook$/i, "")}${images.length ? " (+ image)" : ""}`);
@@ -100,21 +98,34 @@ async function copyToVault(vaultRecipesDir: string) {
   p.outro(`Copied ${selected.length} recipe(s) to the vault`);
 }
 
-async function syncFromVault(vaultRecipesDir: string) {
+async function syncFromVault(vaultRecipesDir: string, vaultImagesDir: string) {
+  if (!existsSync(vaultRecipesDir)) {
+    p.cancel(`Recipes folder not found at ${vaultRecipesDir}`);
+    process.exit(1);
+  }
+
   if (existsSync(REPO_RECIPES_DIR)) {
     rmSync(REPO_RECIPES_DIR, { recursive: true });
   }
   mkdirSync(REPO_RECIPES_DIR, { recursive: true });
 
-  const files = collectFiles(vaultRecipesDir).filter(isRecipeFile);
-  for (const file of files) {
-    const dest = join(REPO_RECIPES_DIR, relative(vaultRecipesDir, file));
+  const cooks = collectFiles(vaultRecipesDir).filter((f) => extname(f) === ".cook");
+  for (const cook of cooks) {
+    const dest = join(REPO_RECIPES_DIR, relative(vaultRecipesDir, cook));
     mkdirSync(dirname(dest), { recursive: true });
-    cpSync(file, dest);
+    cpSync(cook, dest);
   }
 
-  const images = files.filter(isImage).length;
-  p.outro(`Synced ${files.length - images} recipes and ${images} images from ${vaultRecipesDir}`);
+  const images = existsSync(vaultImagesDir)
+    ? collectFiles(vaultImagesDir).filter(isImage)
+    : [];
+  for (const image of images) {
+    const dest = join(REPO_RECIPES_DIR, relative(vaultImagesDir, image));
+    mkdirSync(dirname(dest), { recursive: true });
+    cpSync(image, dest);
+  }
+
+  p.outro(`Synced ${cooks.length} recipes and ${images.length} images from the vault`);
 }
 
 function isImage(file: string): boolean {
@@ -130,19 +141,16 @@ async function main() {
   }
   const vaultPath = resolve(vaultPathArg);
   const vaultRecipesDir = join(vaultPath, VAULT_RECIPES_FOLDER);
+  const vaultImagesDir = join(vaultPath, VAULT_IMAGES_FOLDER);
 
   if (toVault) {
     if (!existsSync(REPO_RECIPES_DIR)) {
       p.cancel(`No recipes in repo at ${REPO_RECIPES_DIR}`);
       process.exit(1);
     }
-    await copyToVault(vaultRecipesDir);
+    await copyToVault(vaultRecipesDir, vaultImagesDir);
   } else {
-    if (!existsSync(vaultRecipesDir)) {
-      p.cancel(`Recipes folder not found at ${vaultRecipesDir}`);
-      process.exit(1);
-    }
-    await syncFromVault(vaultRecipesDir);
+    await syncFromVault(vaultRecipesDir, vaultImagesDir);
   }
 }
 
