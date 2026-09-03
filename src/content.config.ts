@@ -2,8 +2,8 @@ import { defineCollection, reference } from "astro:content";
 import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 import { sourceDraftArticles } from "../content-loaders/load-draft-articles";
-import { sourceAirtable } from "../content-loaders/load-airtable";
 import { sourceContentApi } from "../content-loaders/load-content-api";
+import { cooklangLoader } from "../content-loaders/load-cooklang";
 
 const articleSchema = z.object({
   title: z.string(),
@@ -65,82 +65,60 @@ const curated = defineCollection({
 });
 
 const recipes = defineCollection({
-  loader: sourceAirtable({
-    bases: [
-      {
-        baseId: `appcL6Jdj7ZrhTg4q`,
-        tableName: `Recipes`,
-        tableView: `List`,
-        queryName: `Recipes`,
-      },
-    ],
-    slugField: "name",
-  }),
+  loader: cooklangLoader(),
   schema: z.object({
-    name: z.string(),
-    slug: z.string(),
-    ingredients: z.string(),
-    directions: z.string(),
-    images: z
-      .array(
-        z.object({
-          id: z.string(),
-          width: z.number(),
-          height: z.number(),
-          url: z.string().url(),
-          filename: z.string(),
-          size: z.number(),
-          type: z.string(),
-          thumbnails: z
-          .object({
-            small: z.object({ url: z.string(), width: z.number(), height: z.number() }),
-            large: z.object({ url: z.string(), width: z.number(), height: z.number() }),
-            full: z.object({ url: z.string(), width: z.number(), height: z.number() }),
-          })
-          .optional(),
-        })
-      )
-      .optional(),
-    "cooking method": z.string().array().optional(),
-    style: z.string().array().optional(),
-    inspiration: z.string().url().optional(),
-    "last made": z.coerce.date().optional(),
-    rating: z.number().optional(),
-    "cooking time": z.number().optional(),
-    "preparation time": z.number().optional(),
-    "total time": z.number().optional(),
+    title: z.string(),
+    description: z.string().nullable().optional(),
+    servings: z.string().nullable().optional(),
+    time: z.string().nullable().optional(),
+    source: z.string().nullable().optional(),
+    image: z.string().nullable().optional(),
+    ingredients: z.array(
+      z.object({
+        name: z.string(),
+        quantity: z.string().nullable(),
+        units: z.string().nullable(),
+      })
+    ),
+    cookware: z.array(
+      z.object({
+        name: z.string(),
+        quantity: z.string().nullable(),
+      })
+    ),
+    sections: z.array(
+      z.object({
+        name: z.string().nullable(),
+        steps: z.array(
+          z.array(
+            z.union([
+              z.object({
+                type: z.literal("ingredient"),
+                name: z.string(),
+                quantity: z.string().nullable(),
+                units: z.string().nullable(),
+              }),
+              z.object({
+                type: z.literal("cookware"),
+                name: z.string(),
+                quantity: z.string().nullable(),
+              }),
+              z.object({
+                type: z.literal("timer"),
+                quantity: z.string().nullable(),
+                units: z.string().nullable(),
+                name: z.string().nullable(),
+              }),
+              z.object({
+                type: z.literal("text"),
+                value: z.string(),
+              }),
+            ])
+          )
+        ),
+      })
+    ),
   }),
-});
-
-const recipeStyles = defineCollection({
-  loader: sourceAirtable({
-    bases: [
-      {
-        baseId: `appcL6Jdj7ZrhTg4q`,
-        tableName: `Style`,
-        tableView: `Main View`,
-        queryName: `Style`,
-      },
-    ],
-  }),
-  schema: z.object({
-    Name: z.string(),
-    Recipes: z.string().array().optional(),
-  }),
-});
-
-const recipeCookingMethods = defineCollection({
-  loader: sourceAirtable({
-    bases: [
-      {
-        baseId: `appcL6Jdj7ZrhTg4q`,
-        tableName: `Cooking Method`,
-        tableView: `Main View`,
-        queryName: `Cooking Method`,
-      },
-    ],
-  }),
-  schema: z.object({ Name: z.string(), Recipes: z.string().array() }),
 });
 
 export const collections = {
@@ -151,6 +129,4 @@ export const collections = {
   uses,
   curated,
   recipes,
-  recipeStyles,
-  recipeCookingMethods,
 };

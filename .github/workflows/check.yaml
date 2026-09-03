@@ -27,7 +27,6 @@ jobs:
     name: compare upgrade
     runs-on: ubuntu-latest
     env:
-      AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
       ARTICLE_FETCH_ENDPOINT: ${{ secrets.ARTICLE_FETCH_ENDPOINT }}
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0

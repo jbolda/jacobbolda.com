@@ -17,8 +17,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.jacobbolda.com",
-  integrations: [react(), mdx(), sitemap(), playformCompress()],
-  image: { domains: ["v5.airtableusercontent.com"] },
+  integrations: [
+    react(),
+    mdx(),
+    sitemap(),
+    playformCompress({ Image: false }),
+  ],
+  experimental: {
+    incrementalBuild: true,
+  },
   markdown: {
     shikiConfig: {
       // Choose from Shiki's built-in themes (or add your own)
