@@ -22,7 +22,7 @@ jobs:
           persist-credentials: false
       - uses: jdx/mise-action@dad1bfd3df957f44999b559dd69dc1671cb4e9ea # v4.2.1
       - run: npm ci
-      - name: sync recipes from obsidian
+      - name: sync recipe vault from obsidian
         if: success()
         env:
           OBSIDIAN_EMAIL: ${{ secrets.OBSIDIAN_EMAIL }}
@@ -32,7 +32,7 @@ jobs:
         run: |
           npx obsidian-headless login --email "$OBSIDIAN_EMAIL" --password "$OBSIDIAN_PASSWORD"
           npx obsidian-headless sync-setup --vault "$OBSIDIAN_VAULT_NAME" --path ./obsidian-vault --password "$OBSIDIAN_SYNC_PASSWORD" --device-name "github-actions"
-          npx obsidian-headless sync-config --path ./obsidian-vault --mode pull-only
+          npx obsidian-headless sync-config --path ./obsidian-vault --mode pull-only --file-types image,unsupported
           npx obsidian-headless sync --path ./obsidian-vault
           npm run copy-from-vault -- ./obsidian-vault
       - name: revoke obsidian session
