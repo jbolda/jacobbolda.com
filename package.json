@@ -62,7 +62,7 @@
     "@bomb.sh/args": "^0.3.1",
     "@clack/prompts": "^1.7.0",
     "@effectionx/process": "^0.8.2",
-    "@iconify/json": "^2.2.363",
+    "@iconify/json": "^2.2.470",
     "@simulacrum/foundation-simulator": "^0.8.0",
     "@simulacrum/server": "^0.10.1",
     "@svgr/core": "^8.1.0",
