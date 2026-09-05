@@ -5,8 +5,16 @@ import Home from "~/components/pages/home.jsx";
 
 const curatedCollection = await getCollection("curated");
 const articles = await getCollection("articles");
-const drafts = await getCollection("drafts");
 const notes = await getCollection("notes");
+const publishedIds = new Set([
+  ...articles.map((a) => a.id),
+  ...notes.map((n) => n.id),
+]);
+// drafts that share a slug with published content are revisions — the
+// published entry represents them
+const drafts = (await getCollection("drafts")).filter(
+  (draft) => !publishedIds.has(draft.id),
+);
 
 const curate_list = curatedCollection
   .sort((a, b) => a.data.order - b.data.order)
