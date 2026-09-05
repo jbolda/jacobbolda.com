@@ -52,8 +52,8 @@
     "astro": "^7.2.2",
     "big.js": "^6.2.1",
     "cookie": "^2.0.1",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
