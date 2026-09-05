@@ -8,7 +8,15 @@ export async function getStaticPaths() {
   const drafts = await getCollection("drafts");
   const notes = await getCollection("notes");
   const engagements = await getCollection("engagements");
-  return [...articles, ...drafts, ...notes, ...engagements].map((article) => ({
+  // a draft sharing a slug with published content is a revision of it —
+  // the published entry keeps the URL, the draft yields
+  const byId = new Map(
+    [...drafts, ...articles, ...notes, ...engagements].map((entry) => [
+      entry.id,
+      entry,
+    ]),
+  );
+  return [...byId.values()].map((article) => ({
     params: { article: article.id },
     props: article,
   }));

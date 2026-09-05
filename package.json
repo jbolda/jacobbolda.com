@@ -69,6 +69,7 @@
     "@svgr/plugin-jsx": "^8.1.0",
     "@tailwindcss/typography": "^0.5.20",
     "@types/express": "^5.0.6",
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^24.13.3",
     "effection": "^4.1.0",
     "js-yaml": "^4.1.0",

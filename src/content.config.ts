@@ -1,9 +1,12 @@
 import { defineCollection, reference } from "astro:content";
 import { z } from "astro/zod";
 import { glob } from "astro/loaders";
-import { sourceDraftArticles } from "../content-loaders/load-draft-articles";
 import { sourceContentApi } from "../content-loaders/load-content-api";
 import { cooklangLoader } from "../content-loaders/load-cooklang";
+import { sourceDraftsApi } from "../content-loaders/load-drafts-api";
+
+const contentApiBase =
+  import.meta.env.CONTENT_API_URL || "https://content-api.jbolda.workers.dev";
 
 const articleSchema = z.object({
   title: z.string(),
@@ -26,7 +29,7 @@ const notes = defineCollection({
   schema: articleSchema,
 });
 const drafts = defineCollection({
-  loader: sourceDraftArticles(false),
+  loader: sourceDraftsApi({ endpoint: `${contentApiBase}/drafts` }),
   schema: articleSchema,
 });
 const engagements = defineCollection({
@@ -37,9 +40,6 @@ const engagements = defineCollection({
     description: z.string(),
   }),
 });
-
-const contentApiBase =
-  import.meta.env.CONTENT_API_URL || "https://content-api.jbolda.workers.dev";
 
 const uses = defineCollection({
   loader: sourceContentApi({

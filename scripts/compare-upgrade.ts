@@ -98,12 +98,8 @@ await main(function* (args) {
     );
     const rig = yield* useServiceTestRig(serviceGraph)();
     const contentApiPort = rig.graph.status.get("contentApi")?.port;
-    const draftsPort = rig.graph.status.get("drafts")?.port;
-    if (!contentApiPort || !draftsPort)
-      throw new Error(
-        `simulator graph started without service ports (contentApi=${contentApiPort}, drafts=${draftsPort})`,
-      );
-    process.env.ARTICLE_FETCH_ENDPOINT = `http://127.0.0.1:${draftsPort}/drafts`;
+    if (!contentApiPort)
+      throw new Error(`simulator graph started without service ports (contentApi=${contentApiPort})`);
     process.env.CONTENT_API_URL = `http://127.0.0.1:${contentApiPort}`;
   }
 

@@ -5,6 +5,8 @@ on:
     branches:
       - production
   workflow_dispatch:
+  repository_dispatch:
+    types: [draft-update]
 
 permissions:
   contents: read
@@ -50,6 +52,5 @@ jobs:
           NODE_ENV: production
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          ARTICLE_FETCH_ENDPOINT: ${{ secrets.ARTICLE_FETCH_ENDPOINT }}
           NETLIFY_MESSAGE: ${{ github.event.head_commit.message || github.event.ref }}
         run: npx netlify deploy --dir=dist --prod --message "$NETLIFY_MESSAGE"
