@@ -33,7 +33,7 @@ function toSafeString(value: unknown): string | null {
 }
 
 type StepItem =
-  | { type: "ingredient"; name: string; quantity: string | null; units: string | null }
+  | { type: "ingredient"; name: string; quantity: string | null; units: string | null; note: string | null }
   | { type: "cookware"; name: string; quantity: string | null }
   | { type: "timer"; quantity: string | null; units: string | null; name: string | null }
   | { type: "text"; value: string };
@@ -88,6 +88,7 @@ export function cooklangLoader({
                     name: ing.name,
                     quantity: toQuantity(ing.quantity?.value),
                     units: getQuantityUnit(ing.quantity),
+                    note: toSafeString(ing.note),
                   };
                 } else if (typed.type === "cookware") {
                   const cw = recipe.cookware[typed.index ?? -1];
@@ -136,6 +137,7 @@ export function cooklangLoader({
                 name: ing.name,
                 quantity: toQuantity(ing.quantity?.value),
                 units: getQuantityUnit(ing.quantity),
+                note: toSafeString(ing.note),
               })),
               cookware: recipe.cookware.map((cw) => ({
                 name: cw.name,

@@ -78,6 +78,7 @@ const recipes = defineCollection({
         name: z.string(),
         quantity: z.string().nullable(),
         units: z.string().nullable(),
+        note: z.string().nullable(),
       })
     ),
     cookware: z.array(
@@ -97,6 +98,7 @@ const recipes = defineCollection({
                 name: z.string(),
                 quantity: z.string().nullable(),
                 units: z.string().nullable(),
+                note: z.string().nullable(),
               }),
               z.object({
                 type: z.literal("cookware"),
