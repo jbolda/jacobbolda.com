@@ -64,6 +64,7 @@ export const RecipeEntry = ({
             <List key={ing.name}>
               {ing.quantity && `${ing.quantity}${ing.units ? ` ${ing.units}` : ""} `}
               {ing.name}
+              {ing.note && ` (${ing.note})`}
             </List>
           ))}
         </List>
@@ -90,6 +91,7 @@ export const RecipeEntry = ({
                           <strong key={key}>
                             {item.name}
                             {item.quantity && ` (${item.quantity}${item.units ? ` ${item.units}` : ""})`}
+                            {item.note && ` (${item.note})`}
                           </strong>
                         );
                       } else if (item.type === "cookware") {
