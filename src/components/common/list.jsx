@@ -1,14 +1,16 @@
-export default ({ as = "li", classAdd = "", children, ...rest }) => {
+import styles from "./list.module.css";
+
+export default ({ as = "li", className = "", children, ...rest }) => {
   if (!["ol", "ul", "li"].includes(as))
     throw new Error(`got ${as} in a List component, invalid`);
   const Component = as;
+  const listStyle =
+    as === "ul" ? styles.ul : as === "ol" ? styles.ol : "";
   return (
     <Component
-      className={`${
-        as === "ul" ? "list-disc " : as === "ol" ? "list-decimal " : ""
-      }list-inside text-xl md:text-lg lg:text-base text-primary-900 dark:text-primary-50 mx-auto px-2 mb-1 max-w-prose${
-        classAdd.length > 0 ? ` ${classAdd}` : ""
-      }`}
+      className={[styles.list, listStyle, className]
+        .filter(Boolean)
+        .join(" ")}
       {...rest}
     >
       {children}

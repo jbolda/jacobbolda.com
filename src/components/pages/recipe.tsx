@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import Heading from "~/components/common/heading.jsx";
 import Link from "~/components/common/link.jsx";
 import List from "../common/list";
+import styles from "./recipe.module.css";
 
 export const RecipeEntry = ({
   recipe,
@@ -11,10 +12,10 @@ export const RecipeEntry = ({
 }: PropsWithChildren<{
   recipe: CollectionEntry<"recipes">;
 }>) => (
-  <div className="mt-8 lg:grid lg:grid-cols-2 lg:gap-8">
-    <div id="recipe-image" className="relative lg:row-start-1 lg:col-start-2">
+  <div className={styles.recipeEntry}>
+    <div id="recipe-image" className={styles.recipeImageCol}>
       <svg
-        className="hidden lg:block absolute top-0 right-0 -mt-20 -mr-20"
+        className={styles.decorativeSvg}
         width={404}
         height={384}
         fill="none"
@@ -35,7 +36,7 @@ export const RecipeEntry = ({
               y={0}
               width={4}
               height={4}
-              className="text-gray-200"
+              className={styles.decorativeGridDot}
               fill="currentColor"
             />
           </pattern>
@@ -46,17 +47,15 @@ export const RecipeEntry = ({
           fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)"
         />
       </svg>
-      <div className="relative text-base mx-auto max-w-lg:max-w-none">
+      <div className={styles.recipeImageInner}>
         <figure>
-          <div className="aspect-w-12 aspect-h-7 lg:aspect-none">
-            {children}
-          </div>
+          <div>{children}</div>
         </figure>
       </div>
     </div>
-    <div className="mt-8 lg:mt-0">
-      <div className="mt-5 text-primary-900 dark:text-primary-50 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1">
-        <Heading as="h3" classAdd="px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
+    <div className={styles.recipeInfoCol}>
+      <div className={styles.recipeInfoInner}>
+        <Heading as="h3" className={styles.mdxContent}>
           Ingredients
         </Heading>
         <List as="ul">
@@ -67,20 +66,20 @@ export const RecipeEntry = ({
             </List>
           ))}
         </List>
-        <Heading as="h3" classAdd="px-2 w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
+        <Heading as="h3" className={styles.mdxContent}>
           Directions
         </Heading>
-        <div className="space-y-6">
+        <div className={styles.recipeDirections}>
           {recipe.data.sections.map((section, sectionIndex) => (
-            <div key={sectionIndex}>
+            <div key={sectionIndex} className={styles.recipeSection}>
               {section.name && (
-                <Heading as="h4" classAdd="px-2">
+                <Heading as="h4" className={styles.mdxContent}>
                   {section.name}
                 </Heading>
               )}
-              <div className="space-y-4">
+              <div className={styles.recipeSteps}>
                 {section.steps.map((step, stepIndex) => (
-                  <div key={stepIndex} className="prose prose-sm max-w-none">
+                  <div key={stepIndex} className={styles.recipeStep}>
                     {step.map((item, itemIndex) => {
                       const key = `${sectionIndex}-${stepIndex}-${itemIndex}`;
                       if (item.type === "text") {
@@ -93,9 +92,7 @@ export const RecipeEntry = ({
                           </strong>
                         );
                       } else if (item.type === "cookware") {
-                        return (
-                          <em key={key}>{item.name}</em>
-                        );
+                        return <em key={key}>{item.name}</em>;
                       } else if (item.type === "timer") {
                         return (
                           <span key={key}>
@@ -115,9 +112,9 @@ export const RecipeEntry = ({
       </div>
     </div>
     {recipe.data.source && (
-      <div className="mt-8 lg:mt-0">
-        <div className="mt-5 text-primary-900 dark:text-primary-50 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1">
-          <div className="px-2">
+      <div className={styles.recipeSourceCol}>
+        <div className={styles.recipeSourceInner}>
+          <div className={styles.sourceContent}>
             <Heading as="h3">Source</Heading>
             <span>{recipe.data.source}</span>
           </div>
@@ -131,14 +128,14 @@ export const RecipeChrome = ({
   recipe,
   children,
 }: PropsWithChildren<{ recipe: CollectionEntry<"recipes"> }>) => (
-  <div className="overflow-hidden">
+  <div className={styles.recipeChrome}>
     <Helmet>
       <title>Jacob Bolda | {recipe.data.title}</title>
       <meta property="og:type" content="website" />
     </Helmet>
-    <div className="relative max-w-7xl mx-auto py-0 md:py-2 lg:py-8 px-4 sm:px-6 lg:px-8">
-      <div className="hidden lg:block absolute top-0 bottom-0 left-3/4 w-screen" />
-      <div className="mx-auto text-base max-w-lg:max-w-none">
+    <div className={styles.recipeChromeInner}>
+      <div className={styles.recipeChromeDesktopLine} />
+      <div className={styles.recipeChromeTitle}>
         <Heading as="h1">{recipe.data.title}</Heading>
       </div>
       {children}

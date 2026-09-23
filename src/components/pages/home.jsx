@@ -3,14 +3,15 @@ import Engagements from "./home-engagements.jsx";
 import Heading from "~/components/common/heading.jsx";
 import Text from "~/components/common/text.jsx";
 import Img from "~/components/common/img.jsx";
-
 import { ArticleWrap } from "./articles.jsx";
+import styles from "./home.module.css";
+import sectionStyles from "~/styles/home-section.module.css";
 
 export default (props) => {
   return (
     <>
       <Hero />
-      <Social className="text-primary-900 dark:text-white" />
+      <Social />
       <Articles textHeading="Curated" textSubheading="For the best consumption">
         {props.articlesCurated.map((article) => (
           <ArticleWrap key={article.slug} article={article} />
@@ -27,19 +28,19 @@ export default (props) => {
 };
 
 const Hero = (props) => (
-  <div className="relative mx-auto max-w-7xl">
-    <div className="lg:float-right md:absolute md:inset-y-0 md:right-0 md:w-1/2">
+  <div className={styles.hero}>
+    <div className={styles.heroImageWrap}>
       <Img
-        className="mx-auto rounded-full h-48 lg:rounded-none lg:object-contain lg:h-96 lg:w-full"
+        className={styles.heroImage}
         src="/avatar.png"
         avif="./avatar.avif"
         alt="An image of Jacob Bolda trying to look decent."
       />
     </div>
-    <div className="md:max-w-7xl">
-      <div className="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-        <main className="mt-10 max-w-7xl px-4 sm:mt-12 sm:px-3 md:mt-16 lg:mt-20 lg:px-10 xl:mt-28">
-          <div className="sm:text-center lg:text-left">
+    <div>
+      <div className={styles.heroContentWrap}>
+        <main className={styles.heroMain}>
+          <div className={styles.heroTextWrap}>
             <Heading as="h3">Hi, I am</Heading>
             <Heading as="h1">Jacob Bolda</Heading>
             <Heading as="h2">Senior Software Engineer</Heading>
@@ -58,15 +59,15 @@ const Hero = (props) => (
 );
 
 const Articles = ({ children, textHeading, textSubheading }) => (
-  <div className="relative mx-auto max-w-7xl">
-    <div className="relative py-0 md:py-2 lg:py-8 px-2 sm:px-1 lg:px-8 divide-y-2 divide-gray-200">
-      <div className="px-2 mb-8">
+  <div className={sectionStyles.section}>
+    <div className={sectionStyles.inner}>
+      <div className={sectionStyles.header}>
         <Heading as="h2">{textHeading}</Heading>
         <Text>{textSubheading}</Text>
       </div>
-      <div className="max-w-lg grid gap-5 lg:grid-cols-3 lg:max-w-none pt-4 rounded-md">
+      <div className={sectionStyles.grid}>
         {children.map((child) => (
-          <div key={child.key} className="p-2 flex flex-col">
+          <div key={child.key} className={styles.sectionCard}>
             {child}
           </div>
         ))}

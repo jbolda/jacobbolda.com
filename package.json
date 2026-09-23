@@ -46,7 +46,6 @@
     "@astrojs/sitemap": "^3.7.3",
     "@cooklang/cooklang": "^0.18.7",
     "@playform/compress": "^0.2.5",
-    "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.2.4",
     "astro": "^7.2.2",
@@ -67,7 +66,6 @@
     "@simulacrum/server": "^0.10.1",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
-    "@tailwindcss/typography": "^0.5.20",
     "@types/express": "^5.0.6",
     "@types/node": "^24.13.3",
     "effection": "^4.1.0",
@@ -77,8 +75,6 @@
     "playwright": "^1.62.1",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
-    "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.3.3",
     "typescript": "^5.9.2",
     "unplugin-icons": "^22.2.0"
   }

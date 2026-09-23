@@ -1,0 +1,23 @@
+.text {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: var(--color-primary-900);
+}
+
+:global(.dark) .text {
+  color: var(--color-primary-50);
+}
+
+@media (min-width: 768px) {
+  .text {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .text {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}

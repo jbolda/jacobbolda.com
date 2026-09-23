@@ -16,12 +16,14 @@ export async function getStaticPaths() {
 type Props =
   | CollectionEntry<"articles">
   | CollectionEntry<"drafts">
-  | CollectionEntry<"notes">;
+  | CollectionEntry<"notes">
+  | CollectionEntry<"engagements">;
 
 const article = Astro.props;
-const { Content } = await render(article);
+const { Content, headings } = await render(article);
+const showTitle = !headings.some(({ depth }) => depth === 1);
 ---
 
-<ArticleLayout {...article.data}>
+<ArticleLayout {...article.data} showTitle={showTitle}>
   <Content components={components} />
 </ArticleLayout>

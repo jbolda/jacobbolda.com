@@ -2,6 +2,7 @@ import YouTubeLogo from "~icons/simple-icons/youtube";
 import BlueskyLogo from "~icons/simple-icons/bluesky";
 import MastodonLogo from "~icons/simple-icons/mastodon";
 import GitHubLogo from "~icons/simple-icons/github";
+import styles from "./social.module.css";
 
 const socialIcons = {
   youtube: YouTubeLogo,
@@ -13,16 +14,10 @@ const socialIcons = {
 const SocialButton = ({ href, icon, content, slim }) => {
   const Icon = socialIcons[icon];
   return (
-    <a rel="me" href={href} className="hover:opacity-80 place-items-center">
-      <div className="flex place-items-center">
-        <div className="px-2 min-w-fit max-w-s min-h-fit">
-          <Icon height="35" width="35" />
-        </div>
-        {slim ? null : (
-          <span className="grow text-3xl font-bold tracking-tight">
-            {content}
-          </span>
-        )}
+    <a rel="me" href={href} className={styles.socialLink}>
+      <div className={styles.socialIconWrap}>
+        <Icon height="35" width="35" />
+        {slim ? null : <span className={styles.socialLabel}>{content}</span>}
       </div>
     </a>
   );
@@ -52,9 +47,11 @@ const socials = [
 ];
 
 export const Social = (props) => (
-  <section className={`md:max-w-7xl mx-auto ${props.className}`}>
-    <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-wrap gap-12 place-content-center">
+  <section
+    className={[styles.section, props.className].filter(Boolean).join(" ")}
+  >
+    <div className={styles.sectionInner}>
+      <div className={styles.socialGrid}>
         {socials.map((link) => (
           <SocialButton
             key={link.name}
@@ -69,9 +66,11 @@ export const Social = (props) => (
 );
 
 export const SocialSlim = (props) => (
-  <section className={`md:max-w-7xl mx-auto ${props.className}`}>
-    <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-wrap gap-12 place-content-center">
+  <section
+    className={[styles.section, props.className].filter(Boolean).join(" ")}
+  >
+    <div className={styles.sectionInner}>
+      <div className={styles.socialGrid}>
         {socials.map((link) => (
           <SocialButton
             key={link.name}
