@@ -5,6 +5,7 @@ import type { ImageMetadata } from "astro";
 import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
 import PageLayout from "~/layouts/PageLayout.astro";
 import { RecipeEntry, RecipeChrome } from "~/components/pages/recipe.js";
+import styles from "./recipe-page.module.css";
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/content/recipes/**/*.{jpg,jpeg,png,webp}",
@@ -39,11 +40,11 @@ const imageMeta = recipe.data.image
           alt={recipe.data.title}
           widths={[640, 1024, 1600]}
           sizes="(min-width: 1024px) 50vw, 100vw"
-          class="rounded-lg shadow-lg object-cover w-full h-full"
+          class={styles.recipeImageFull}
           loading="eager"
         />
       ) : (
-        <div class="bg-gray-200 h-64 flex items-center justify-center text-gray-500 rounded-lg shadow-lg">
+        <div class={styles.recipePlaceholder}>
           Recipe Image
         </div>
       )}

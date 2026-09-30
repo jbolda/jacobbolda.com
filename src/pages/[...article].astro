@@ -24,12 +24,18 @@ export async function getStaticPaths() {
 type Props =
   | CollectionEntry<"articles">
   | CollectionEntry<"drafts">
-  | CollectionEntry<"notes">;
+  | CollectionEntry<"notes">
+  | CollectionEntry<"engagements">;
 
 const article = Astro.props;
-const { Content } = await render(article);
+const { Content, headings } = await render(article);
+const hasContentTitle = headings.some(
+  ({ depth, text }) =>
+    depth === 1 && text?.trim() && text.trim() !== "{props.title}",
+);
+const showTitle = !hasContentTitle;
 ---
 
-<ArticleLayout {...article.data}>
-  <Content components={components} />
+<ArticleLayout {...article.data} showTitle={showTitle}>
+  <Content components={components} {...article.data} />
 </ArticleLayout>

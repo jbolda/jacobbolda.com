@@ -6,8 +6,6 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import Icons from "unplugin-icons/vite";
 
-import tailwindcss from "@tailwindcss/vite";
-
 import playformCompress from "@playform/compress";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -52,7 +50,6 @@ export default defineConfig({
       },
     },
     plugins: [
-      tailwindcss(),
       Icons({
         compiler: "jsx",
         jsx: "react",
