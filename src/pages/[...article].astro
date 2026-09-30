@@ -21,9 +21,13 @@ type Props =
 
 const article = Astro.props;
 const { Content, headings } = await render(article);
-const showTitle = !headings.some(({ depth }) => depth === 1);
+const hasContentTitle = headings.some(
+  ({ depth, text }) =>
+    depth === 1 && text?.trim() && text.trim() !== "{props.title}",
+);
+const showTitle = !hasContentTitle;
 ---
 
 <ArticleLayout {...article.data} showTitle={showTitle}>
-  <Content components={components} />
+  <Content components={components} {...article.data} />
 </ArticleLayout>

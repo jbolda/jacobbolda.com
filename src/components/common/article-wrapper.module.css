@@ -21,12 +21,16 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  color: var(--color-gray-500);
+  color: var(--color-primary-900);
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 0.75rem;
   justify-items: center;
   overflow-wrap: anywhere;
+}
+
+:global(.dark) .articleGrid {
+  color: var(--color-primary-50);
 }
 
 .articleGrid > * {

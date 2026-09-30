@@ -18,23 +18,26 @@
 }
 
 .mdxContent {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   width: 100%;
-  max-width: 80rem;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .mdxContent {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    width: 75%;
   }
 }
 
 @media (min-width: 1024px) {
   .mdxContent {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+    width: 66.667%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .mdxContent {
+    width: 50%;
   }
 }
 
@@ -60,22 +63,25 @@
 
 .pre > .code {
   display: block;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   width: 100%;
-  max-width: 80rem;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .pre > .code {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    width: 75%;
   }
 }
 
 @media (min-width: 1024px) {
   .pre > .code {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+    width: 66.667%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .pre > .code {
+    width: 50%;
   }
 }
