@@ -10,6 +10,7 @@ dist
 
 # content sync directories
 src/content/drafts
+src/content/articles/drafts
 src/content/uses
 src/content/curated
 src/content/recipe*

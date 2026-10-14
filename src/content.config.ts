@@ -1,7 +1,6 @@
 import { defineCollection, reference } from "astro:content";
 import { z } from "astro/zod";
 import { glob } from "astro/loaders";
-import { sourceDraftArticles } from "../content-loaders/load-draft-articles";
 import { sourceContentApi } from "../content-loaders/load-content-api";
 import { cooklangLoader } from "../content-loaders/load-cooklang";
 
@@ -18,15 +17,14 @@ const articleSchema = z.object({
 });
 
 const articles = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/articles" }),
+  loader: glob({
+    pattern: "**/*.{md,mdx}",
+    base: "./src/content/articles",
+  }),
   schema: articleSchema,
 });
 const notes = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/notes" }),
-  schema: articleSchema,
-});
-const drafts = defineCollection({
-  loader: sourceDraftArticles(false),
   schema: articleSchema,
 });
 const engagements = defineCollection({
@@ -78,13 +76,13 @@ const recipes = defineCollection({
         name: z.string(),
         quantity: z.string().nullable(),
         units: z.string().nullable(),
-      })
+      }),
     ),
     cookware: z.array(
       z.object({
         name: z.string(),
         quantity: z.string().nullable(),
-      })
+      }),
     ),
     sections: z.array(
       z.object({
@@ -113,10 +111,10 @@ const recipes = defineCollection({
                 type: z.literal("text"),
                 value: z.string(),
               }),
-            ])
-          )
+            ]),
+          ),
         ),
-      })
+      }),
     ),
   }),
 });
@@ -124,7 +122,6 @@ const recipes = defineCollection({
 export const collections = {
   articles,
   notes,
-  drafts,
   engagements,
   uses,
   curated,

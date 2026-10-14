@@ -1,12 +1,14 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import { defineConfig } from "astro/config";
+import { loadEnv } from "vite";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import Icons from "unplugin-icons/vite";
 
 import playformCompress from "@playform/compress";
+import { syncDraftArticles } from "./scripts/sync-draft-articles.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -16,6 +18,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   site: "https://www.jacobbolda.com",
   integrations: [
+    {
+      name: "sync-draft-articles",
+      hooks: {
+        "astro:config:setup": async ({ command }) => {
+          const mode = command === "build" ? "production" : "development";
+          const env = loadEnv(mode, process.cwd(), "");
+          await syncDraftArticles(env.ARTICLE_FETCH_ENDPOINT);
+        },
+      },
+    },
     react(),
     mdx(),
     sitemap(),
