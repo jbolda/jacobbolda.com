@@ -24,7 +24,9 @@ export default defineConfig({
         "astro:config:setup": async ({ command }) => {
           const mode = command === "build" ? "production" : "development";
           const env = loadEnv(mode, process.cwd(), "");
-          await syncDraftArticles(env.ARTICLE_FETCH_ENDPOINT);
+          const contentApiBase =
+            env.CONTENT_API_URL || "https://content-api.jbolda.workers.dev";
+          await syncDraftArticles(`${contentApiBase}/drafts`);
         },
       },
     },

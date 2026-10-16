@@ -50,6 +50,7 @@ export const RecipeWrap = ({
               <List key={ing.name}>
                 {ing.quantity && `${ing.quantity}${ing.units ? ` ${ing.units}` : ""} `}
                 {ing.name}
+                {ing.note && ` (${ing.note})`}
               </List>
             ))}
           </List>

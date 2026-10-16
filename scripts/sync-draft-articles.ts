@@ -9,24 +9,16 @@ const draftsDirectory = path.resolve(root, "../src/content/articles/drafts");
 
 interface DraftItem {
   name: string;
-  blob: unknown;
+  content: string;
 }
 
-interface DraftResponse {
-  result?: DraftItem[];
-}
-
-async function fetchDrafts(url: string): Promise<DraftResponse> {
+async function fetchDrafts(url: string): Promise<DraftItem[]> {
   for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
-    const response = await fetch(url, {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      redirect: "follow",
-    });
+    const response = await fetch(url, { redirect: "follow" });
 
     const contentType = response.headers.get("content-type") ?? "";
     if (response.ok && contentType.includes("application/json")) {
-      return response.json();
+      return (await response.json()) as DraftItem[];
     }
 
     const body = await response.text().catch(() => "<unreadable>");
@@ -44,39 +36,26 @@ async function fetchDrafts(url: string): Promise<DraftResponse> {
   throw new Error("draft fetch failed after retries");
 }
 
-function blobToText(blob: unknown): string {
-  if (typeof blob === "string") return blob;
-  if (Array.isArray(blob))
-    return Buffer.from(blob as number[]).toString("utf8");
-  return blob == null ? "" : String(blob);
-}
-
 export async function syncDraftArticles(
-  url = process.env.ARTICLE_FETCH_ENDPOINT,
+  url = process.env.CONTENT_API_URL
+    ? `${process.env.CONTENT_API_URL}/drafts`
+    : undefined,
 ): Promise<void> {
   await rm(draftsDirectory, { recursive: true, force: true });
 
   if (!url) {
-    console.warn("ARTICLE_FETCH_ENDPOINT not set, skipping draft articles");
+    console.warn("CONTENT_API_URL not set, skipping draft articles");
     return;
   }
 
-  const json = await fetchDrafts(url);
+  const drafts = await fetchDrafts(url);
   await mkdir(draftsDirectory, { recursive: true });
 
-  for (const item of json.result ?? []) {
-    const filename = path.basename(String(item.name));
-    if (
-      !filename.startsWith("article.") ||
-      (!filename.endsWith(".md") && !filename.endsWith(".mdx"))
-    ) {
-      continue;
-    }
+  for (const item of drafts) {
+    const name = path.basename(item.name);
+    const filename =
+      name.endsWith(".md") || name.endsWith(".mdx") ? name : `${name}.md`;
 
-    await writeFile(
-      path.join(draftsDirectory, filename),
-      blobToText(item.blob),
-      "utf8",
-    );
+    await writeFile(path.join(draftsDirectory, filename), item.content, "utf8");
   }
 }

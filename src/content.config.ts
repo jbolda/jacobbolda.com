@@ -4,6 +4,9 @@ import { glob } from "astro/loaders";
 import { sourceContentApi } from "../content-loaders/load-content-api";
 import { cooklangLoader } from "../content-loaders/load-cooklang";
 
+const contentApiBase =
+  import.meta.env.CONTENT_API_URL || "https://content-api.jbolda.workers.dev";
+
 const articleSchema = z.object({
   title: z.string(),
   progress: z.enum(["seed", "growth", "article"]).optional(),
@@ -35,9 +38,6 @@ const engagements = defineCollection({
     description: z.string(),
   }),
 });
-
-const contentApiBase =
-  import.meta.env.CONTENT_API_URL || "https://content-api.jbolda.workers.dev";
 
 const uses = defineCollection({
   loader: sourceContentApi({
@@ -76,6 +76,7 @@ const recipes = defineCollection({
         name: z.string(),
         quantity: z.string().nullable(),
         units: z.string().nullable(),
+        note: z.string().nullable(),
       }),
     ),
     cookware: z.array(
@@ -95,6 +96,7 @@ const recipes = defineCollection({
                 name: z.string(),
                 quantity: z.string().nullable(),
                 units: z.string().nullable(),
+                note: z.string().nullable(),
               }),
               z.object({
                 type: z.literal("cookware"),

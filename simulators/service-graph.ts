@@ -5,14 +5,10 @@ import { main } from "effection";
 import { simulationCLIOp, useServiceGraph, useSimulation } from "@simulacrum/server";
 
 import { createContentApiSimulation } from "./content-api.ts";
-import { createDraftsSimulation } from "./drafts.ts";
 
 export const serviceGraph = useServiceGraph({
   contentApi: {
     operation: useSimulation("content-api", createContentApiSimulation),
-  },
-  drafts: {
-    operation: useSimulation("drafts", createDraftsSimulation),
   },
 });
 
