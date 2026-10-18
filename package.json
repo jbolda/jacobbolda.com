@@ -28,8 +28,11 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "predev": "node scripts/sync-draft-articles.ts",
     "start": "astro dev",
+    "prestart": "node scripts/sync-draft-articles.ts",
     "build": "astro build",
+    "prebuild": "node scripts/sync-draft-articles.ts",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier -w .",

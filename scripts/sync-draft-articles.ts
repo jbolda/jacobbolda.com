@@ -39,7 +39,7 @@ async function fetchDrafts(url: string): Promise<DraftItem[]> {
 export async function syncDraftArticles(
   url = process.env.CONTENT_API_URL
     ? `${process.env.CONTENT_API_URL}/drafts`
-    : undefined,
+    : "https://content-api.jbolda.workers.dev/drafts",
 ): Promise<void> {
   await rm(draftsDirectory, { recursive: true, force: true });
 
@@ -53,9 +53,17 @@ export async function syncDraftArticles(
 
   for (const item of drafts) {
     const name = path.basename(item.name);
-    const filename =
-      name.endsWith(".md") || name.endsWith(".mdx") ? name : `${name}.md`;
+    const filename = name.endsWith(".mdx")
+      ? name
+      : `${name.replace(/\.md$/, "")}.mdx`;
 
     await writeFile(path.join(draftsDirectory, filename), item.content, "utf8");
   }
+}
+
+if (
+  process.argv[1] &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+) {
+  await syncDraftArticles();
 }
