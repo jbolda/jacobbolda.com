@@ -9,9 +9,9 @@ import ArticleWrapper from "~/components/common/article-wrapper.jsx";
 const articleProps = Astro.props;
 ---
 
-<Layout>
+<Layout title={articleProps.title}>
   <ClientRouter />
-  <PageWrapper>
+  <PageWrapper title={articleProps.title}>
     <Header client:load />
     <ArticleWrapper {...articleProps}><slot /></ArticleWrapper>
     <Footer client:load />

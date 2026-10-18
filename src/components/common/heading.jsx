@@ -1,22 +1,25 @@
-export default ({ as = "h1", classAdd = "", children }) => {
+import styles from "./heading.module.css";
+
+const weightClass = (c) => {
+  switch (c) {
+    case "h1":
+      return styles.h1;
+    case "h2":
+      return styles.h2;
+    case "h3":
+      return styles.h3;
+    default:
+      return styles.default;
+  }
+};
+
+export default ({ as = "h1", className = "", children }) => {
   const Component = as;
-  const weight = (c) => {
-    switch (c) {
-      case "h1":
-        return "font-extrabold text-3xl mb-6 mt-2";
-      case "h2":
-        return "font-bold text-2xl my-4";
-      case "h3":
-        return "font-semibold text-xl my-2";
-      default:
-        return "font-medium text-lg my-1";
-    }
-  };
   return (
     <Component
-      className={`${weight(as)} text-primary-900 dark:text-primary-50${
-        classAdd.length > 0 ? ` ${classAdd}` : ""
-      }`}
+      className={[styles.text, weightClass(as), className]
+        .filter(Boolean)
+        .join(" ")}
     >
       {children}
     </Component>

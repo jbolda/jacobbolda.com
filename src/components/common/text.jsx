@@ -1,11 +1,9 @@
-export default ({ as = "p", classAdd = "", children }) => {
+import styles from "./text.module.css";
+
+export default ({ as = "p", className = "", children }) => {
   const Component = as;
   return (
-    <Component
-      className={`text-xl md:text-lg lg:text-base text-primary-900 dark:text-primary-50${
-        classAdd.length > 0 ? ` ${classAdd}` : ""
-      }`}
-    >
+    <Component className={[styles.text, className].filter(Boolean).join(" ")}>
       {children}
     </Component>
   );

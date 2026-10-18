@@ -6,8 +6,6 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import Icons from "unplugin-icons/vite";
 
-import tailwindcss from "@tailwindcss/vite";
-
 import playformCompress from "@playform/compress";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -17,12 +15,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.jacobbolda.com",
-  integrations: [
-    react(),
-    mdx(),
-    sitemap(),
-    playformCompress({ Image: false }),
-  ],
+  integrations: [react(), mdx(), sitemap(), playformCompress({ Image: false })],
   experimental: {
     incrementalBuild: true,
   },
@@ -52,7 +45,6 @@ export default defineConfig({
       },
     },
     plugins: [
-      tailwindcss(),
       Icons({
         compiler: "jsx",
         jsx: "react",

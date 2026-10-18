@@ -1,56 +1,42 @@
 import { useState, useEffect } from "react";
 import { SocialSlim } from "./social.jsx";
 import Link from "./link.jsx";
+import styles from "./footer.module.css";
 
 export default () => (
-  <footer className="flex-initial">
-    <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
-      <nav
-        className="-mx-5 -my-2 flex flex-wrap justify-center"
-        aria-label="Footer"
-      >
-        <div className="px-5 py-2">
-          <Link
-            href="/about"
-            className="text-base text-gray-500 hover:text-gray-900"
-          >
+  <footer className={styles.footer}>
+    <div className={styles.footerContainer}>
+      <nav className={styles.footerNav} aria-label="Footer">
+        <div className={styles.footerNavItem}>
+          <Link href="/about" className={styles.footerLink}>
             About
           </Link>
         </div>
 
-        <div className="px-5 py-2">
-          <Link
-            href="/uses"
-            className="text-base text-gray-500 hover:text-gray-900"
-          >
+        <div className={styles.footerNavItem}>
+          <Link href="/uses" className={styles.footerLink}>
             Uses
           </Link>
         </div>
 
-        <div className="px-5 py-2">
-          <Link
-            href="/articles"
-            className="text-base text-gray-500 hover:text-gray-900"
-          >
+        <div className={styles.footerNavItem}>
+          <Link href="/articles" className={styles.footerLink}>
             Articles
           </Link>
         </div>
 
-        <div className="px-5 py-2">
-          <Link
-            href="/recipes"
-            className="text-base text-gray-500 hover:text-gray-900"
-          >
+        <div className={styles.footerNavItem}>
+          <Link href="/recipes" className={styles.footerLink}>
             Recipes
           </Link>
         </div>
 
-        <div className="px-5 py-2">
+        <div className={styles.footerNavItem}>
           <Toggle />
         </div>
       </nav>
-      <SocialSlim className="text-gray-400" />
-      <p className="mt-8 text-center text-base text-gray-400">
+      <SocialSlim className={styles.footerSocial} />
+      <p className={styles.copyright}>
         &copy; Jacob Bolda. All rights reserved.
       </p>
     </div>
@@ -82,31 +68,28 @@ const Toggle = (props) => {
     <button
       type="button"
       aria-pressed="false"
-      className={
-        `relative inline-flex shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer ` +
-        `transition-colors ease-in-out duration-200 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
-          colorMode === "light" ? "bg-gray-200" : "bg-indigo-600"
-        }`
-      }
+      className={`${styles.toggle} ${
+        colorMode === "light" ? styles.toggleLight : styles.toggleDark
+      }`}
       onClick={() => toggleAction()}
     >
-      <span className="sr-only">toggle dark mode</span>
+      <span className={styles.srOnly}>toggle dark mode</span>
       <span
-        className={`${
-          colorMode === "light" ? "translate-x-0" : "translate-x-5"
-        } relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
+        className={`${styles.toggleKnob} ${
+          colorMode === "light" ? "" : styles.toggleKnobDark
+        }`}
       >
         <span
-          className={`${
+          className={`${styles.toggleIcon} ${
             colorMode === "light"
-              ? "opacity-100 ease-in duration-200"
-              : "opacity-0 ease-out duration-100"
-          } absolute inset-0 h-full w-full flex items-center justify-center transition-opacity`}
+              ? styles.toggleIconVisible
+              : styles.toggleIconHidden
+          }`}
           aria-hidden="true"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-3 w-3 text-gray-400"
+            className={styles.toggleIconSvg}
             viewBox="0 0 20 20"
             fill="currentColor"
           >
@@ -118,16 +101,16 @@ const Toggle = (props) => {
           </svg>
         </span>
         <span
-          className={`${
+          className={`${styles.toggleIcon} ${
             colorMode === "light"
-              ? "opacity-0 ease-out duration-100"
-              : "opacity-100 ease-in duration-200"
-          } absolute inset-0 h-full w-full flex items-center justify-center transition-opacity`}
+              ? styles.toggleIconHidden
+              : styles.toggleIconVisible
+          }`}
           aria-hidden="true"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-3 w-3 text-indigo-600"
+            className={styles.toggleIconSvg}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
