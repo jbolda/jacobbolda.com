@@ -12,31 +12,29 @@ const pageTitle = Astro.props.title
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
-    <script>
+    <script is:inline>
       function getInitialColorMode() {
         const persistedColorPreference = window.localStorage.getItem("theme");
-        if (typeof persistedColorPreference === "string") {
+        if (
+          persistedColorPreference === "dark" ||
+          persistedColorPreference === "light"
+        ) {
           return persistedColorPreference;
         }
-        const mql = window.matchMedia("(prefers-color-scheme: dark)");
-        if (typeof mql.matches === "boolean") {
-          if (mql.matches) {
-            window.localStorage.setItem("theme", "dark");
-            return "dark";
-          } else {
-            window.localStorage.setItem("theme", "light");
-            return "light";
-          }
-        }
-        return "light";
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
       }
-      const darkModeCheck = (event) => {
-        getInitialColorMode() == "light"
-          ? document.documentElement.classList.remove("dark")
-          : document.documentElement.classList.add("dark");
+      const applyColorMode = (documentToUpdate) => {
+        documentToUpdate.documentElement.classList.toggle(
+          "dark",
+          getInitialColorMode() !== "light",
+        );
       };
-      document.addEventListener("DOMContentLoaded", darkModeCheck);
-      window.addEventListener("popstate", darkModeCheck);
+      applyColorMode(document);
+      document.addEventListener("astro:before-swap", (event) => {
+        applyColorMode(event.newDocument);
+      });
     </script>
     <script
       defer
