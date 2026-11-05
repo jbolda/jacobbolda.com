@@ -4,13 +4,16 @@ import Layout from "./Layout.astro";
 import PageWrapper from "~/components/common/page-wrapper.jsx";
 import Header from "~/components/common/header.jsx";
 import Footer from "~/components/common/footer.jsx";
+import styles from "./PageLayout.module.css";
+
+const { title } = Astro.props;
 ---
 
-<Layout>
+<Layout title={title}>
   <ClientRouter />
-  <PageWrapper>
+  <PageWrapper title={title}>
     <Header client:load />
-    <div class="grow"><slot /></div>
+    <div class={styles.grow}><slot /></div>
     <Footer client:load />
   </PageWrapper>
 </Layout>

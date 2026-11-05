@@ -1,0 +1,99 @@
+.blockquote {
+  width: calc(100% - 1rem);
+  border-left: 4px solid var(--color-primary-300);
+  padding-left: 1rem;
+  text-align: left;
+}
+
+:global(.dark) .blockquote {
+  border-left-color: var(--color-primary-600);
+}
+
+.blockquote > .mdxContent {
+  width: 100%;
+}
+
+.table {
+  table-layout: auto;
+}
+
+.mdxContent {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .blockquote {
+    width: 75%;
+  }
+
+  .mdxContent {
+    width: 75%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .blockquote {
+    width: 66.667%;
+  }
+
+  .mdxContent {
+    width: 66.667%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .blockquote {
+    width: 50%;
+  }
+
+  .mdxContent {
+    width: 50%;
+  }
+}
+
+.listFull {
+  min-width: 100%;
+}
+
+.pre {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  overflow-x: auto;
+  min-width: 0;
+}
+
+.code {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  min-width: 0;
+}
+
+.pre > .code {
+  display: block;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .pre > .code {
+    width: 75%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pre > .code {
+    width: 66.667%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .pre > .code {
+    width: 50%;
+  }
+}

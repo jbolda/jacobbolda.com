@@ -2,6 +2,9 @@ import { Helmet } from "react-helmet";
 import Heading from "~/components/common/heading.jsx";
 import Text from "~/components/common/text.jsx";
 import Link from "~/components/common/link.jsx";
+import styles from "./uses.module.css";
+import sectionStyles from "~/styles/content-section.module.css";
+import unstyledLinkStyles from "~/styles/unstyled-link.module.css";
 
 export default (props) => (
   <UsesSection>
@@ -18,14 +21,12 @@ export default (props) => (
 );
 
 export const UsesSection = ({ heading = "Uses", children }) => (
-  <div className="py-0 md:py-2 lg:py-8 px-4 sm:px-6 lg:px-8">
-    <div className="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
+  <div className={sectionStyles.section}>
+    <div className={sectionStyles.inner}>
       <div>
-        <h2 className="text-3xl tracking-tight font-extrabold text-primary-900 dark:text-primary-50 sm:text-4xl">
-          {heading}
-        </h2>
+        <h2 className={sectionStyles.title}>{heading}</h2>
       </div>
-      <div className="mt-6 pt-10 grid gap-16 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
+      <div className={sectionStyles.grid}>
         {children.length === 0 ? (
           <Text>{`There are no ${heading.toLowerCase()} currently.`}</Text>
         ) : (
@@ -38,12 +39,12 @@ export const UsesSection = ({ heading = "Uses", children }) => (
 
 export const UseWrap = ({ thing }) => (
   <div>
-    <Link href={thing.url} flair="none">
+    <Link href={thing.url} className={unstyledLinkStyles.link}>
       <Heading as="h3">{thing.title}</Heading>
       {!thing.subtitle ? null : <Text>{thing.subtitle}</Text>}
       <Text>{thing.description}</Text>
     </Link>
-    <div className="mt-3">
+    <div className={styles.useCard}>
       <Link href={thing.url}>Check it out!</Link>
     </div>
   </div>

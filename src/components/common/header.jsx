@@ -1,41 +1,40 @@
 import { useState } from "react";
 import Link from "./link.jsx";
+import styles from "./header.module.css";
 
 export default (props) => {
   const [hamburgerActive, setHamburgerMenu] = useState(false);
   const toggleHamburgerMenu = () => setHamburgerMenu(!hamburgerActive);
 
   return (
-    <div className="relative flex-initial bg-primary-50 dark:bg-primary-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex justify-between items-center px-4 py-6">
-          <div className="flex justify-start lg:w-0 lg:flex-1">
+    <div className={styles.header}>
+      <div className={styles.container}>
+        <div className={styles.bar}>
+          <div className={styles.logoWrap}>
             <Logo />
           </div>
-          <div className="-mr-2 -my-2 md:hidden">
+          <div className={styles.menuBtn}>
             <OpenMenu toggle={toggleHamburgerMenu} />
           </div>
 
-          <nav className="hidden md:flex space-x-10">
+          <nav className={styles.desktopNav}>
             <Items />
           </nav>
         </div>
       </div>
       {!hamburgerActive ? null : (
-        <div className="z-50 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-          <div className="rounded-lg shadow-lg ring-3 ring-primary-300 ring-opacity-5 bg-primary-50 dark:bg-primary-900 divide-y-2 divide-gray-50">
-            <div className="pt-3 sm:pt-4 pb-4 px-6 sm:px-8">
-              <div className="flex items-center justify-between">
+        <div className={styles.mobileMenu}>
+          <div className={styles.mobileMenuInner}>
+            <div className={styles.mobileMenuHeader}>
+              <div className={styles.mobileMenuHeaderRow}>
                 <Logo />
-                <div className="-mr-2">
+                <div className={styles.mobileMenuClose}>
                   <CloseMenu toggle={toggleHamburgerMenu} />
                 </div>
               </div>
-              <div className="py-6 px-5 space-y-6">
-                <nav className="grid grid-cols-2 gap-y-4 gap-x-8">
-                  <Items />
-                </nav>
-              </div>
+              <nav className={styles.mobileMenuNav}>
+                <Items />
+              </nav>
             </div>
           </div>
         </div>
@@ -45,14 +44,10 @@ export default (props) => {
 };
 
 const OpenMenu = ({ toggle }) => (
-  <button
-    type="button"
-    className="bg-primary-50 dark:bg-primary-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-hidden focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-    onClick={toggle}
-  >
-    <span className="sr-only">Open menu</span>
+  <button type="button" className={styles.iconBtn} onClick={toggle}>
+    <span className={styles.srOnly}>Open menu</span>
     <svg
-      className="h-6 w-6"
+      className={styles.icon}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -70,14 +65,10 @@ const OpenMenu = ({ toggle }) => (
 );
 
 const CloseMenu = ({ toggle }) => (
-  <button
-    type="button"
-    className="bg-primary-50 dark:bg-primary-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-hidden focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-    onClick={toggle}
-  >
-    <span className="sr-only">Close menu</span>
+  <button type="button" className={styles.iconBtn} onClick={toggle}>
+    <span className={styles.srOnly}>Close menu</span>
     <svg
-      className="h-6 w-6"
+      className={styles.icon}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -96,9 +87,9 @@ const CloseMenu = ({ toggle }) => (
 
 const Logo = () => (
   <a href="/">
-    <span className="sr-only">Jacob Bolda</span>
+    <span className={styles.srOnly}>Jacob Bolda</span>
     <svg
-      className="h-8 w-auto sm:h-10 text-primary-900 dark:text-primary-50"
+      className={styles.logoIcon}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

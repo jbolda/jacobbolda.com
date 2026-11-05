@@ -6,20 +6,11 @@ import Home from "~/components/pages/home.jsx";
 const curatedCollection = await getCollection("curated");
 const articles = await getCollection("articles");
 const notes = await getCollection("notes");
-const publishedIds = new Set([
-  ...articles.map((a) => a.id),
-  ...notes.map((n) => n.id),
-]);
-// drafts that share a slug with published content are revisions — the
-// published entry represents them
-const drafts = (await getCollection("drafts")).filter(
-  (draft) => !publishedIds.has(draft.id),
-);
 
 const curate_list = curatedCollection
   .sort((a, b) => a.data.order - b.data.order)
   .map((item) => item.data.url);
-const articlesCurated = [...drafts, ...articles, ...notes]
+const articlesCurated = [...articles, ...notes]
   .reduce(
     (c, article) => {
       const articleSlug = article.data.slug || article.id;
@@ -31,7 +22,7 @@ const articlesCurated = [...drafts, ...articles, ...notes]
       }
       return c;
     },
-    curate_list.map((slug) => ({ slug }))
+    curate_list.map((slug) => ({ slug })),
   )
   // @ts-expect-error
   .filter((article) => article?.title && article.slug);
@@ -47,7 +38,7 @@ const sortByDate = (object1, object2) => {
   if (!o2date) return -1;
   return new Date(o2date) > new Date(o1date) ? 1 : -1;
 };
-const articlesRecent = [...drafts, ...articles, ...notes]
+const articlesRecent = [...articles, ...notes]
   .sort(sortByDate)
   .slice(0, 9)
   .map((article) => ({ ...article.data, slug: article.id }));

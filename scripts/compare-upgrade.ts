@@ -7,10 +7,21 @@ import { parse } from "@bomb.sh/args";
 import { all, ensure, exit, main } from "effection";
 import { useServiceTestRig } from "@simulacrum/server";
 
-import { diffRoutes, summarize, writeHtmlReport, writeMarkdownReport } from "./checks.ts";
+import {
+  diffRoutes,
+  summarize,
+  writeHtmlReport,
+  writeMarkdownReport,
+} from "./checks.ts";
 import type { ReportMeta } from "./checks.ts";
 import { collectFingerprints } from "./fingerprint.ts";
-import { capture, removeWorktree, resolveBaseRef, routesFromDist, run } from "./infrastructure.ts";
+import {
+  capture,
+  removeWorktree,
+  resolveBaseRef,
+  routesFromDist,
+  run,
+} from "./infrastructure.ts";
 import { startServer } from "./static-server.ts";
 import { serviceGraph } from "../simulators/service-graph.ts";
 
@@ -37,8 +48,8 @@ options:
 
 When CONTENT_API_URL is not set in the environment, both builds are run
 against the local simulator graph (simulators/service-graph.ts) so the check
-works without real credentials. Set CONTENT_API_URL (and optionally
-ARTICLE_FETCH_ENDPOINT) to use the real services instead.
+works without real credentials. Set CONTENT_API_URL to use the real service
+instead.
 `);
 }
 
@@ -99,7 +110,9 @@ await main(function* (args) {
     const rig = yield* useServiceTestRig(serviceGraph)();
     const contentApiPort = rig.graph.status.get("contentApi")?.port;
     if (!contentApiPort)
-      throw new Error(`simulator graph started without service ports (contentApi=${contentApiPort})`);
+      throw new Error(
+        `simulator graph started without service ports (contentApi=${contentApiPort})`,
+      );
     process.env.CONTENT_API_URL = `http://127.0.0.1:${contentApiPort}`;
   }
 
@@ -114,7 +127,8 @@ await main(function* (args) {
     console.log(`[1/6] checking out ${base} into ${worktree}`);
     yield* run("git", ["worktree", "add", "--detach", worktree, base], root);
     const envLocal = path.join(root, ".env.local");
-    if (existsSync(envLocal)) copyFileSync(envLocal, path.join(worktree, ".env.local"));
+    if (existsSync(envLocal))
+      copyFileSync(envLocal, path.join(worktree, ".env.local"));
     console.log(`[2/6] building before (${base})…`);
     yield* run("npm", ["ci"], worktree);
     yield* run("npm", ["run", "build"], worktree);
@@ -141,7 +155,9 @@ await main(function* (args) {
 
   const oldServer = yield* startServer(oldDist);
   const newServer = yield* startServer(newDist);
-  console.log(`[4/6] serving before on ${oldServer.url}, after on ${newServer.url}`);
+  console.log(
+    `[4/6] serving before on ${oldServer.url}, after on ${newServer.url}`,
+  );
 
   const shotsDir = path.join(parsed.out, "screenshots");
   mkdirSync(path.join(shotsDir, "old"), { recursive: true });
@@ -162,7 +178,13 @@ await main(function* (args) {
   ]);
 
   console.log("[6/6] diffing…");
-  const { findings, added, removed } = diffRoutes(allRoutes, oldFp, newFp, oldRoutes, newRoutes);
+  const { findings, added, removed } = diffRoutes(
+    allRoutes,
+    oldFp,
+    newFp,
+    oldRoutes,
+    newRoutes,
+  );
   const summary = summarize(findings, allRoutes.length, added, removed);
 
   const meta: ReportMeta = {
@@ -186,7 +208,9 @@ await main(function* (args) {
   });
 
   console.log("");
-  console.log(`Report written to ${parsed.out}/report.md and ${parsed.out}/report.html`);
+  console.log(
+    `Report written to ${parsed.out}/report.md and ${parsed.out}/report.html`,
+  );
   console.log(
     `Summary: ${summary.total} pages, ${summary.changedRoutes} changed, ` +
       `${summary.added} added, ${summary.removed} removed — ` +

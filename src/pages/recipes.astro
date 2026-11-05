@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import PageLayout from "~/layouts/PageLayout.astro";
 import { RecipeCards, RecipeWrap } from "~/components/pages/recipes.js";
+import styles from "./recipes-page.module.css";
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/content/recipes/**/*.{jpg,jpeg,png,webp}",
@@ -23,18 +24,18 @@ const recipeCollection = await getCollection("recipes");
           : undefined;
         return (
           <RecipeWrap recipe={r}>
-            <div class="rounded-lg shadow-lg">
+            <div class={styles.recipeImage}>
               {imageMeta ? (
                 <Image
                   src={imageMeta.default}
                   alt={r.data.title}
                   widths={[400, 800]}
                   sizes="(min-width: 1024px) 50vw, 100vw"
-                  class="w-full h-48 object-cover"
+                  class={styles.imageFull}
                   loading="lazy"
                 />
               ) : (
-                <div class="bg-gray-200 h-48 flex items-center justify-center text-gray-500">
+                <div class={styles.placeholder}>
                   Pretend this is a tasty looking meal because I ate it before I could take a picture
                 </div>
               )}

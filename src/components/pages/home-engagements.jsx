@@ -1,17 +1,20 @@
 import Heading from "~/components/common/heading.jsx";
 import Text from "~/components/common/text.jsx";
 import Link from "~/components/common/link.jsx";
+import styles from "./home-engagements.module.css";
+import sectionStyles from "~/styles/home-section.module.css";
+import unstyledLinkStyles from "~/styles/unstyled-link.module.css";
 
 const Engagements = ({ children }) => (
-  <div className="relative mx-auto max-w-7xl">
-    <div className="relative py-0 md:py-2 lg:py-8 px-2 sm:px-1 lg:px-8 divide-y-2 divide-gray-200">
-      <div className="px-2 mb-8">
+  <div className={sectionStyles.section}>
+    <div className={sectionStyles.inner}>
+      <div className={sectionStyles.header}>
         <Heading as="h2">Professional Engagements</Heading>
         <Text>Or things done in public</Text>
       </div>
-      <div className="max-w-lg grid gap-5 lg:grid-cols-3 lg:max-w-none pt-4 rounded-md">
+      <div className={sectionStyles.grid}>
         {children.map((child, index) => (
-          <div key={index} className="p-4 flex flex-col">
+          <div key={index} className={styles.sectionCard}>
             {child}
           </div>
         ))}
@@ -33,7 +36,7 @@ export default ({ children }) => (
 );
 
 const STEMonFire = () => (
-  <Link href="/STEMonFire/" flair="none">
+  <Link href="/STEMonFire/" className={unstyledLinkStyles.link}>
     <Heading as="h3">STEM on Fire Guest</Heading>
     <Text>
       A guest on the podcast representing the AEC industry. The podcast hosts
@@ -43,7 +46,7 @@ const STEMonFire = () => (
 );
 
 const AECC = () => (
-  <Link href="/aeccollective/" flair="none">
+  <Link href="/aeccollective/" className={unstyledLinkStyles.link}>
     <Heading as="h3">AEC Collective</Heading>
     <Text>
       I run a discord based community which is a community for the Architecture,
@@ -55,7 +58,7 @@ const AECC = () => (
 );
 
 const Masters = () => (
-  <Link href="/masters-thesis/" flair="none">
+  <Link href="/masters-thesis/" className={unstyledLinkStyles.link}>
     <Heading as="h3">Master's Degree Thesis</Heading>
     <Text>
       My degree is in Structural Buildings, and my thesis dealt with concrete.
@@ -64,7 +67,7 @@ const Masters = () => (
 );
 
 const Programming = () => (
-  <Link href="/programming/" flair="none">
+  <Link href="/programming/" className={unstyledLinkStyles.link}>
     <Heading as="h3">Programming</Heading>
     <Text>
       My background is in building engineering, but I stepped into programming
@@ -74,7 +77,7 @@ const Programming = () => (
 );
 
 const EWB = () => (
-  <Link href="/engineers-without-borders/" flair="none">
+  <Link href="/engineers-without-borders/" className={unstyledLinkStyles.link}>
     <Heading as="h3">Engineers Without Borders (EWB)</Heading>
     <Text>
       A lovely experience with this org building bridges in the Joyabaj region
@@ -84,7 +87,7 @@ const EWB = () => (
 );
 
 const MitchellLofts = () => (
-  <Link href="/mitchell-street-market-lofts/" flair="none">
+  <Link href="/mitchell-street-market-lofts/" className={unstyledLinkStyles.link}>
     <Heading as="h3">Mitchell Street Market Lofts</Heading>
     <Text>
       This is affordable housing development that was built from my initial
@@ -94,7 +97,7 @@ const MitchellLofts = () => (
 );
 
 const REU = () => (
-  <Link href="/reu-program/" flair="none">
+  <Link href="/reu-program/" className={unstyledLinkStyles.link}>
     <Heading as="h3">Research Experience for Undergraduates</Heading>
     <Text>
       A research program where I explored the feasibility of performing energy

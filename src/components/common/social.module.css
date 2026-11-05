@@ -1,0 +1,67 @@
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  padding: 0;
+  text-decoration: none;
+}
+
+.socialLink:hover {
+  opacity: 0.8;
+}
+
+.socialIconWrap {
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  min-width: fit-content;
+}
+
+.socialLabel {
+  flex-grow: 1;
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.section {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--color-primary-900);
+}
+
+:global(.dark) .section {
+  color: #ffffff;
+}
+
+.sectionInner {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .sectionInner {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sectionInner {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.socialGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+}
