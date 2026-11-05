@@ -4,6 +4,7 @@ on: pull_request
 
 permissions:
   contents: read
+  pull-requests: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -41,10 +42,24 @@ jobs:
           npx obsidian-headless sync-unlink --path ./obsidian-vault || true
           npx obsidian-headless logout || true
       - name: deploy
+        id: netlify
         if: success()
         env:
           NODE_ENV: production
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_MESSAGE: ${{ github.event.pull_request.html_url }}
-        run: npx netlify deploy --dir=dist --message "$NETLIFY_MESSAGE"
+        run: |
+          DEPLOY_OUTPUT=$(npx netlify deploy --dir=dist --message "$NETLIFY_MESSAGE" --json)
+          PREVIEW_URL=$(echo "$DEPLOY_OUTPUT" | jq -er '.deploy_url // .url // .site_url')
+          echo "preview-url=$PREVIEW_URL" >> "$GITHUB_OUTPUT"
+
+      - name: comment preview URL
+        if: success() && github.event.pull_request.head.repo.full_name == github.repository
+        uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88 # v3.0.5
+        with:
+          header: netlify-preview
+          message: |
+            🚀 **Preview deployment ready**
+
+            ${{ steps.netlify.outputs.preview-url }}
